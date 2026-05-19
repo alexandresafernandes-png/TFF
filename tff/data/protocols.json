@@ -1,0 +1,701 @@
+[
+  {
+    "id": "protocol_1_sleep_stack",
+    "name": "Author's Sleep Stack",
+    "protocol_number": 1,
+    "category": "sleep",
+    "goal": "Maximize sleep quality, duration, and hormonal recovery",
+    "priority": "critical",
+    "source_refs": ["Sleep & Recovery, p. 61–63"],
+    "steps": [
+      { "order": 1, "text": "Take all other supplements DURING THE DAY — avoid risks of nighttime interference" },
+      { "order": 2, "text": "5 hours before bedtime: take CBD oil (7 drops, 2%) if using" },
+      { "order": 3, "text": "2 hours before bedtime: put on blue light blockers" },
+      { "order": 4, "text": "30 min before sleep: take stack — Magnesium Citrate 500mg + L-Theanine 200–400mg + Valerian 500mg + Passion Flower 200–400mg + Lemon Balm 200–400mg + Apigenin 50mg" },
+      { "order": 5, "text": "Lower screen brightness to 0; put on ASMR rain sound" },
+      { "order": 6, "text": "Verify room temperature 15–20°C" },
+      { "order": 7, "text": "Read for 15 min (paper book or lowest-brightness e-reader)" },
+      { "order": 8, "text": "Turn off lights, insert earplugs, start ASMR, attempt sleep" },
+      { "order": 9, "text": "On waking unsatisfied: perform NSDR — close eyes, let images play, do not force sleep" }
+    ],
+    "timing": "Daily; supplements 30 min before sleep; CBD 5 hours before bedtime",
+    "items_needed": ["magnesium","l_theanine","valerian_root","passion_flower","lemon_balm","apigenin","cbd_oil","earplugs","blackout_curtains","blue_light_blockers"],
+    "cautions": [
+      "Start with only Magnesium + L-Theanine + Apigenin if overwhelmed — add one supplement at a time.",
+      "Ashwagandha not recommended long-term — author discontinued due to emotional blunting.",
+      "Boron must be taken morning ONLY — causes premature waking if taken in evening.",
+      "Vitamin C at night caused sleep disruption for author — avoid.",
+      "Author is against melatonin supplementation."
+    ],
+    "checklist_ready": true,
+    "advanced": false,
+    "tags": ["sleep","testosterone","dht","cortisol","src_sleep_recovery","type_protocol","pri_critical","goal_sleep_quality","goal_optimize_t","goal_recovery"]
+  },
+  {
+    "id": "protocol_2_morning_light",
+    "name": "Morning Light + Sunlight Protocol",
+    "protocol_number": 2,
+    "category": "sleep",
+    "goal": "Anchor circadian rhythm; support testosterone, cortisol curve, sleep timing, dopamine",
+    "priority": "critical",
+    "source_refs": ["Sleep & Recovery, p. 13","TFF 2.0, p. 92–98","Hair Loss, p. 24","DHT Remastered, Ch. 3"],
+    "steps": [
+      { "order": 1, "text": "Within 30–60 min of waking: get outside — not through glass or windows" },
+      { "order": 2, "text": "Look at the sky (not directly at sun) for 30 seconds; 2–3 sets" },
+      { "order": 3, "text": "Duration: clear day ~5 min; cloud cover ~10 min; dense overcast ~20–30 min" },
+      { "order": 4, "text": "No sunglasses (corrective lenses OK); sunlight on face and upper body" },
+      { "order": 5, "text": "If waking before sunrise: turn on all bright artificial lights indoors; go outside at sunrise" },
+      { "order": 6, "text": "Avoid bright lights after 10pm, especially phone/screen light" }
+    ],
+    "timing": "Every morning within 30–60 min of waking; avoid bright light 10pm–4am",
+    "items_needed": [],
+    "cautions": [
+      "Do NOT get sunlight through glass, windows, or windshields — photons are blocked.",
+      "Do not look directly at the sun.",
+      "Midday sunlight (20–40 min on maximal skin) is a separate protocol for vitamin D production."
+    ],
+    "checklist_ready": true,
+    "advanced": false,
+    "tags": ["sleep","testosterone","dht","hair","cortisol","src_sleep_recovery","src_tff_2_0","src_dht_remastered","src_hair_loss","type_protocol","pri_critical","time_morning","goal_sleep_quality","goal_optimize_t"]
+  },
+  {
+    "id": "protocol_3_pre_workout_nutrition",
+    "name": "Pre-Workout Nutrition (Protein-Only Pre + Intra Glucose)",
+    "protocol_number": 3,
+    "category": "nutrition",
+    "goal": "Maximize training partitioning — preserve lipolysis, avoid pre-workout insulin spike, route intra-glucose directly into working muscle fibers",
+    "priority": "core",
+    "source_refs": ["Performance Nutrition, p. 35–39"],
+    "steps": [
+      { "order": 1, "text": "Maintain low-insulin state (fasted or protein-only) until training" },
+      { "order": 2, "text": "0–60 min before training: 30–40g lean protein (whey isolate, egg whites, or lean meat/fish); fat ≤5–10g; low fiber; zero carbs" },
+      { "order": 3, "text": "Prepare intra-workout drink: 30–50g dextrose or cyclic dextrin in water + 2g sodium" },
+      { "order": 4, "text": "Begin training; after 1–2 heavy work sets (~15 min in): begin sipping intra drink slowly throughout session" },
+      { "order": 5, "text": "Optional: warm shower 10 min + slow breathing post-training before eating" },
+      { "order": 6, "text": "Within 30 min of last set: 100–200g starch + 30–40g lean protein; fat ≤5–7g; no fructose" },
+      { "order": 7, "text": "2–3h later: animal protein + fat (beef, eggs); no carbs in this meal" }
+    ],
+    "timing": "Every training day",
+    "items_needed": ["dextrose_cyclic_dextrin","r_ala","hmb","taurine","msm_glucosamine_chondroitin","white_rice","potatoes","red_meat"],
+    "cautions": [
+      "Do NOT consume pre-workout carbohydrates — pre-carbs spike insulin, shut lipolysis, create energy mismatch.",
+      "Intra-glucose starts AFTER 1–2 hard sets, not at the start.",
+      "Post-workout meal fat must be ≤5–7g — high fat creates Randle competition.",
+      "No fructose post-workout — fructose goes to liver, not working muscle.",
+      "Pre-carbs are appropriate for endurance events >90 min only."
+    ],
+    "checklist_ready": true,
+    "advanced": false,
+    "tags": ["performance","training","testosterone","src_performance_nutrition","type_protocol","pri_core","time_pre_workout","time_intra_workout","time_post_workout","goal_build_muscle","goal_fat_loss"]
+  },
+  {
+    "id": "protocol_4_post_training_convergence",
+    "name": "Post-Training Convergence Window",
+    "protocol_number": 4,
+    "category": "nutrition",
+    "goal": "Maximize muscle building and metabolic adaptation using the window when GLUT4, insulin sensitivity, AMPK, and mTOR all peak simultaneously",
+    "priority": "core",
+    "source_refs": ["Performance Nutrition, p. 63–71"],
+    "steps": [
+      { "order": 1, "text": "After last set: do NOT immediately eat" },
+      { "order": 2, "text": "Warm shower ~10 min + slow/deep breathing with extended exhales — activate parasympathetic" },
+      { "order": 3, "text": "Eat 100–200g starch (hot white rice or freshly peeled hot potatoes) + 30–40g lean protein; fat <5–7g; no fructose" },
+      { "order": 4, "text": "With first bites: R-ALA 300mg + HMB 1g + Taurine 2g + joint stack (MSM 2g + Glucosamine 2g + Chondroitin 1g)" },
+      { "order": 5, "text": "Optional: 10-min slow walk after meal" },
+      { "order": 6, "text": "2–3h later: animal protein + fats (beef, eggs, tallow) — no carbs (GLUT4 tail has faded)" }
+    ],
+    "timing": "Immediately post-training; complete within 30 min of last set",
+    "items_needed": ["white_rice","potatoes","r_ala","hmb","taurine","msm_glucosamine_chondroitin","red_meat","eggs_whole","butter_ghee_tallow"],
+    "cautions": [
+      "Warm shower + breathing before eating — eating in sympathetic state impairs absorption.",
+      "Post-workout meal fat must be <5–7g.",
+      "Avoid cooled/chilled starch (retrogradation creates resistant starch — slower absorption).",
+      "No fructose. No fruit. No honey in this window.",
+      "Second meal (2–3h later): protein + fat only — no carbs once GLUT4 window has closed."
+    ],
+    "checklist_ready": true,
+    "advanced": false,
+    "tags": ["performance","training","testosterone","src_performance_nutrition","type_protocol","pri_core","time_post_workout","goal_build_muscle","goal_optimize_t"]
+  },
+  {
+    "id": "protocol_5_carb_cycling",
+    "name": "Carb Cycling Protocol",
+    "protocol_number": 5,
+    "category": "nutrition",
+    "goal": "Route more carbs to training days when GLUT4 is open; reduce on rest days when it is closed — same weekly total, better results",
+    "priority": "core",
+    "source_refs": ["Performance Nutrition, p. 77–78"],
+    "steps": [
+      { "order": 1, "text": "Pick weekly carb baseline (e.g. body weight kg × 3 g/kg = daily average)" },
+      { "order": 2, "text": "Calculate 25% of daily carbs = transfer amount" },
+      { "order": 3, "text": "Rest days: reduce carbs by the transfer amount" },
+      { "order": 4, "text": "Training days: increase carbs by the transfer amount" },
+      { "order": 5, "text": "Route extra training-day carbs into intra-workout and first post-workout meal" },
+      { "order": 6, "text": "Second post-workout meal: protein + fat only — no carbs (GLUT4 tail faded)" },
+      { "order": 7, "text": "Rest days: keep protein and fat the same; reduce carbs only" }
+    ],
+    "timing": "Weekly plan; daily execution",
+    "items_needed": ["dextrose_cyclic_dextrin","white_rice","potatoes"],
+    "cautions": [
+      "Do not reduce total calories on rest days — only redistribute carbs.",
+      "If multiple consecutive rest days, repeat transfer for each one.",
+      "Protein must remain ≥1.6–2.2 g/kg every day regardless of training day."
+    ],
+    "checklist_ready": false,
+    "advanced": false,
+    "tags": ["performance","training","src_performance_nutrition","type_protocol","pri_core","goal_build_muscle","goal_fat_loss"]
+  },
+  {
+    "id": "protocol_6_microneedling_hair",
+    "name": "Microneedling for Hair",
+    "protocol_number": 6,
+    "category": "hair",
+    "goal": "Trigger wound healing response — collagen, angiogenesis, growth factors; increase topical absorption 10–100×",
+    "priority": "core",
+    "source_refs": ["Hair Loss, p. 25–26"],
+    "steps": [
+      { "order": 1, "text": "Cleanse scalp thoroughly before treatment" },
+      { "order": 2, "text": "Use derma stamp or derma pen (NOT roller — rollers tear; stamps puncture cleanly)" },
+      { "order": 3, "text": "Needle depth: 0.5–1.0mm for scalp" },
+      { "order": 4, "text": "Stamp affected areas: 3–5 passes per section at different angles until mild erythema" },
+      { "order": 5, "text": "Immediately apply treatment oils/serums (absorption 10–100× higher post-needling)" },
+      { "order": 6, "text": "Do not touch scalp for 6–12 hours post-treatment" }
+    ],
+    "timing": "Once every 7–14 days",
+    "items_needed": ["derma_stamp","rosemary_oil_blend","beef_tallow_scalp"],
+    "cautions": [
+      "Derma STAMP or PEN only — NOT roller.",
+      "Apply oils immediately while channels are open.",
+      "Avoid touching scalp for 6–12 hours post-treatment.",
+      "Visible improvements typically take 3–6 months."
+    ],
+    "checklist_ready": true,
+    "advanced": false,
+    "tags": ["hair","src_hair_loss","type_protocol","pri_core","goal_hair_growth"]
+  },
+  {
+    "id": "protocol_7_hair_oil_blend",
+    "name": "Hair Oil Blend Protocol (Tallow + Carrier Oils)",
+    "protocol_number": 7,
+    "category": "hair",
+    "goal": "Nourish scalp, stimulate circulation, deliver fat-soluble vitamins transdermally, promote anagen phase",
+    "priority": "core",
+    "source_refs": ["Hair Loss, p. 29–31"],
+    "steps": [
+      { "order": 1, "text": "BEEF TALLOW (1–2×/week): Melt grass-fed tallow slightly. Apply to scalp, massage 5–10 min. Leave 2–6h or overnight. Wash with egg or clay." },
+      { "order": 2, "text": "CARRIER BLEND (2–3×/week): Mix 40% castor + 30% coconut + 20% olive/avocado + 10% jojoba in dark glass bottle" },
+      { "order": 3, "text": "Add essential oils: 120 drops rosemary EO + optional 30 drops peppermint + 30 drops lavender + 20 drops cedarwood" },
+      { "order": 4, "text": "Apply to scalp (post-microneedling if same day), massage 5–10 min" },
+      { "order": 5, "text": "Leave minimum 2 hours; overnight ideal" },
+      { "order": 6, "text": "Wash with egg wash or bentonite clay" }
+    ],
+    "timing": "Tallow 1–2×/week; carrier blend 2–3×/week",
+    "items_needed": ["beef_tallow_scalp","castor_oil","coconut_oil","rosemary_essential_oil"],
+    "cautions": [
+      "Use 100% pure essential oils — not fragrance oils.",
+      "Store blend in dark glass bottle.",
+      "Rosemary oil (1%) outperformed minoxidil (2%) with zero side effects in comparative study.",
+      "Excess oil can clog pores in some individuals."
+    ],
+    "checklist_ready": true,
+    "advanced": false,
+    "tags": ["hair","src_hair_loss","type_protocol","pri_core","goal_hair_growth"]
+  },
+  {
+    "id": "protocol_8_egg_hair_washing",
+    "name": "Raw Egg Hair Washing",
+    "protocol_number": 8,
+    "category": "hair",
+    "goal": "Cleanse and condition scalp with biotin, B-vitamins, amino acids; eliminate inflammatory stress from conventional shampoo",
+    "priority": "core",
+    "source_refs": ["Hair Loss, p. 24–25"],
+    "steps": [
+      { "order": 1, "text": "Crack 2–4 raw eggs (pasture-raised preferred)" },
+      { "order": 2, "text": "Apply to wet hair; massage into scalp 2–3 min" },
+      { "order": 3, "text": "Leave on 10–15 min" },
+      { "order": 4, "text": "Rinse thoroughly with COOL water — hot water cooks egg and creates residue" },
+      { "order": 5, "text": "Optional: add 1 tsp raw honey before applying (antimicrobial)" }
+    ],
+    "timing": "1–2×/week",
+    "items_needed": ["eggs_whole","raw_honey"],
+    "cautions": [
+      "COOL water only — hot water denatures egg proteins.",
+      "Transition period: expect 2–4 weeks of greasiness when switching from shampoo — normal."
+    ],
+    "checklist_ready": true,
+    "advanced": false,
+    "tags": ["hair","src_hair_loss","type_protocol","pri_core","goal_hair_growth"]
+  },
+  {
+    "id": "protocol_9_hormone_diet",
+    "name": "Testosterone Optimization Starter Diet (Androgen Base Diet)",
+    "protocol_number": 9,
+    "category": "testosterone",
+    "goal": "Build the dietary foundation for testosterone, DHT, and overall hormonal health",
+    "priority": "critical",
+    "source_refs": ["TFF 2.0, Ch. 3–4, p. 34–57"],
+    "steps": [
+      { "order": 1, "text": "Get body fat to 10–20% range (target 0.5–1 lb/week; rapid loss can lower testosterone)" },
+      { "order": 2, "text": "Build base: 80% of intake from animal foods + simple starch" },
+      { "order": 3, "text": "Protein: ~2 g/kg BW (sources: red meat, eggs, shellfish, clean dairy)" },
+      { "order": 4, "text": "Fat: 1.2–1.8 g/kg (sources: beef/lamb fat, egg yolks, butter, ghee, tallow; zero seed oils)" },
+      { "order": 5, "text": "Carbs: 2–4 g/kg (sources: potatoes, white rice, properly prepared oats)" },
+      { "order": 6, "text": "Micronutrients: red meat, organs (2–3×/week), eggs (3–10/day), shellfish, clean dairy" },
+      { "order": 7, "text": "Eliminate: liquid sugar, pastries, candy, all seed oils, soy products, random supermarket dairy" },
+      { "order": 8, "text": "Meat prep: soak in water + baking soda (5g/bowl) 1–3h; cook in own fat in oven; rare to medium-rare" },
+      { "order": 9, "text": "Oats: soak, discard water, ferment ~24h in raw A2 kefir/yogurt before consuming" }
+    ],
+    "timing": "Daily; ongoing lifestyle foundation",
+    "items_needed": ["red_meat","organ_meats_liver","eggs_whole","shellfish_oysters","butter_ghee_tallow","white_rice","potatoes","oats","bone_broth"],
+    "cautions": [
+      "Do NOT drop carbs to zero while training hard — causes high cortisol + low T3 + T suppression.",
+      "Rapid weight loss (>1 lb/week) can reduce testosterone.",
+      "Transition: 8–12 weeks to fully merge with base diet.",
+      "Oats REQUIRE preparation (soak + ferment) — not approved plain.",
+      "RANKED #1 PROTOCOL — every other protocol depends on this foundation being in place."
+    ],
+    "checklist_ready": true,
+    "advanced": false,
+    "tags": ["testosterone","dht","hair","performance","thyroid","src_tff_2_0","src_dht_remastered","src_performance_nutrition","type_protocol","pri_critical","goal_optimize_t","goal_optimize_dht"]
+  },
+  {
+    "id": "protocol_10_dht_starter_stack",
+    "name": "DHT Optimization Starter Stack",
+    "protocol_number": 10,
+    "category": "dht",
+    "goal": "Increase DHT and free androgen activity through foundational supplements, introduced one lever at a time",
+    "priority": "core",
+    "source_refs": ["DHT Remastered, Ch. 4, p. 195–197"],
+    "steps": [
+      { "order": 1, "text": "PREREQUISITE: nutrition baseline (post-training starch + protein), sleep 7.5–9h fixed, consistent training — must be in place first" },
+      { "order": 2, "text": "Week 1: Creatine 10–15g/day split across meals" },
+      { "order": 3, "text": "Week 2: Kestose — start 1g once daily; build to 2–3g twice daily; target 5g twice daily by Week 3–4" },
+      { "order": 4, "text": "Week 3: Boron 3–6mg each morning with food" },
+      { "order": 5, "text": "Week 4 (optional): Topical DHEA 5–10mg to scrotal skin once daily — ONLY if not prone to aromatization" }
+    ],
+    "timing": "Staged weekly introduction; re-evaluate at week 8",
+    "items_needed": ["creatine","kestose","boron","dhea_topical"],
+    "cautions": [
+      "Prerequisites (nutrition, sleep, training) must be in place before starting.",
+      "One new lever per week — essential for attribution.",
+      "Water retention, soft look, nipple sensitivity, mood swings → drop DHEA first.",
+      "GI gas/loose stool → cut kestose to 2–3g twice/day for 1 week.",
+      "Kestose must be 1-kestose ≥90% — NOT generic FOS.",
+      "Boron morning ONLY.",
+      "DHEA topical: raise to 10–20mg only after 2 weeks with zero estrogen signs."
+    ],
+    "checklist_ready": false,
+    "advanced": false,
+    "tags": ["dht","testosterone","gut","src_dht_remastered","type_protocol","pri_core","goal_optimize_dht","goal_optimize_t"]
+  },
+  {
+    "id": "protocol_11_blood_work_monitoring",
+    "name": "Blood Work Monitoring Protocol",
+    "protocol_number": 11,
+    "category": "blood_work",
+    "goal": "Establish baseline, identify root causes, fix upstream, confirm results with re-testing",
+    "priority": "core",
+    "source_refs": ["Blood Work Guide, p. 113–131"],
+    "steps": [
+      { "order": 1, "text": "PHASE 1 — BASELINE: Test full comprehensive panel" },
+      { "order": 2, "text": "PHASE 1: Identify markers clearly off vs optimal ranges" },
+      { "order": 3, "text": "PHASE 1: Fix obvious lifestyle inputs (calories, carbs, sleep, gut, seed oils, alcohol)" },
+      { "order": 4, "text": "PHASE 2 (4–8 weeks later): Re-test only markers that were off; compare before vs after" },
+      { "order": 5, "text": "PHASE 2: If markers moved → continue. If nothing budged → go to Phase 3." },
+      { "order": 6, "text": "PHASE 3: Intracellular micronutrient testing (Vibrant America or SpectraCell)" },
+      { "order": 7, "text": "PHASE 3: Organic acids / mitochondrial testing (OAT/ION panel)" },
+      { "order": 8, "text": "PHASE 3: Gut testing (Gut Zoomer, GI360, GI Effects, Biomesight)" },
+      { "order": 9, "text": "PHASE 3: Genetics (Mitome, Dante Labs) if persistent walls" },
+      { "order": 10, "text": "PHASE 3: Toxin panels only when symptom picture fits" }
+    ],
+    "timing": "Phase 1: at baseline. Phase 2: 4–8 weeks after changes. Phase 3: only after Phase 2 fails.",
+    "items_needed": ["LH, FSH, Total T, SHBG, Free T, DHEA-S, E2, Prolactin, DHT, IGF-1, Morning Cortisol, TSH, Free T4, Free T3, rT3, TPO/Tg antibodies, Fasting glucose, Fasting insulin, HbA1c, hsCRP, Full lipids, Iron panel, Micronutrients, Vitamin D, Liver enzymes, Kidney markers, CBC with differential"],
+    "cautions": [
+      "Do NOT test ALT/AST within 5–7 days of heavy lifting — false elevation from muscle damage.",
+      "Do NOT test hsCRP if currently ill or within 1–2 days of very hard training.",
+      "Test fasting (10–12h) for glucose, insulin, lipids.",
+      "Never treat one number — always read patterns across related markers.",
+      "If money is tight: split panel into 2–3 blocks over a few months."
+    ],
+    "checklist_ready": false,
+    "advanced": false,
+    "tags": ["blood_work","testosterone","thyroid","src_blood_work_guide","type_protocol","pri_core"]
+  },
+  {
+    "id": "protocol_12_hair_phased",
+    "name": "Hair Loss Phased Implementation Protocol",
+    "protocol_number": 12,
+    "category": "hair",
+    "goal": "Systematically restore metabolic conditions for healthy hair growth; address root causes in order of impact",
+    "priority": "core",
+    "source_refs": ["Hair Loss, p. 34"],
+    "steps": [
+      { "order": 1, "text": "PHASE 1 (Weeks 1–4): Fix sleep 7–9h consistent schedule" },
+      { "order": 2, "text": "PHASE 1: Install shower filter (KDF + activated carbon + vitamin C cartridge)" },
+      { "order": 3, "text": "PHASE 1: Daily sunlight 20–40 min midday, 4–6 days/week" },
+      { "order": 4, "text": "PHASE 1: Begin egg washing 1–2×/week (no-shampoo transition)" },
+      { "order": 5, "text": "PHASE 1: Fix diet — animal proteins, no seed oils, no processed sugar" },
+      { "order": 6, "text": "PHASE 2 (Weeks 5–8): Microneedling 1× every 7–14 days" },
+      { "order": 7, "text": "PHASE 2: Hair oiling 2–3×/week, especially post-microneedling" },
+      { "order": 8, "text": "PHASE 2: Bentonite clay masks 1–2×/week" },
+      { "order": 9, "text": "PHASE 2: Collagen 10–20g/day with 1g Vitamin C" },
+      { "order": 10, "text": "PHASE 2: Red light therapy 3–4×/week, 10–15 min/session (660nm + 850nm, 6–12 inches)" },
+      { "order": 11, "text": "PHASE 3 (Weeks 9–12+): Experiment with oil blends; dial in frequency; add wooden comb + silk pillowcase; retest labs" }
+    ],
+    "timing": "12-week phased approach; ongoing beyond that",
+    "items_needed": ["shower_filter","eggs_whole","derma_stamp","rosemary_essential_oil","beef_tallow_scalp","collagen_peptides","vitamin_c","red_light_therapy_device","bentonite_clay","wooden_comb","silk_pillowcase"],
+    "cautions": [
+      "Phase 1 is the foundation — do not skip to topicals without fixing sleep, diet, water quality first.",
+      "Expected visible signs by week 12; full follicle cycle is 2–7 years.",
+      "AVOID keto/very low-carb — raises cortisol chronically, directly causes hair loss.",
+      "Shower filter: replace every 3–6 months.",
+      "'Most people quit right before results appear.'"
+    ],
+    "checklist_ready": true,
+    "advanced": false,
+    "tags": ["hair","sleep","thyroid","cortisol","src_hair_loss","type_protocol","pri_core","goal_hair_growth"]
+  },
+  {
+    "id": "protocol_13_stress_management",
+    "name": "Stress Management Protocol",
+    "protocol_number": 13,
+    "category": "testosterone",
+    "goal": "Reduce cortisol; protect testosterone synthesis from stress-induced suppression",
+    "priority": "critical",
+    "source_refs": ["TFF 2.0, Ch. 3, p. 63–82"],
+    "steps": [
+      { "order": 1, "text": "Acute tool — double breath: inhale to ~90% → pause → quick inhale to ~110% → full exhale → repeat" },
+      { "order": 2, "text": "Morning: no phone for first few hours; turn off notifications" },
+      { "order": 3, "text": "Daily: walk outside 30–60 min (nature/parks preferred)" },
+      { "order": 4, "text": "Daily: supplement magnesium (lowers cortisol under prolonged stress)" },
+      { "order": 5, "text": "When acutely stressed: L-theanine or Ashwagandha short-term only (cycles)" },
+      { "order": 6, "text": "End of day: something relaxing — reading, social time, movie" },
+      { "order": 7, "text": "When carrying cognitive/emotional load: stress journal (date, situation, emotions, physical symptoms, coping, reflection)" },
+      { "order": 8, "text": "Optional: mood journal — score 1–10 every 2 hours for 1 week once per month; identify low-point patterns" }
+    ],
+    "timing": "Daily; journaling when needed; acute technique in the moment",
+    "items_needed": ["magnesium","l_theanine","ashwagandha"],
+    "cautions": [
+      "Ashwagandha: short-term only — author discontinued due to emotional blunting.",
+      "'Managing stress is non-negotiable: no topical treatment or supplement can overcome chronic stress.'",
+      "Magnesium depleted quickly by chronic stress — not optional."
+    ],
+    "checklist_ready": true,
+    "advanced": false,
+    "tags": ["cortisol","testosterone","dht","hair","thyroid","src_tff_2_0","src_dht_remastered","src_hair_loss","type_protocol","pri_critical","goal_stress_reduction","goal_optimize_t"]
+  },
+  {
+    "id": "protocol_14_gut_reset",
+    "name": "Gut Reset Protocol",
+    "protocol_number": 14,
+    "category": "gut",
+    "goal": "Fix gut function to unblock testosterone production, nutrient absorption, and hormonal delivery",
+    "priority": "core",
+    "source_refs": ["TFF 2.0, Ch. 4, p. 261–303"],
+    "steps": [
+      { "order": 1, "text": "Remove all problematic inputs: raw vegetables, cruciferous, garlic/onion/leeks/asparagus, high-fiber foods, seed oils, fructose" },
+      { "order": 2, "text": "Fix water timing: no fluids 20–30 min before meals; minimal sipping during meals; wait 30 min after to drink normally" },
+      { "order": 3, "text": "Elimination diet 2–3 days: red meat + potatoes or white rice only; observe bloating, stool, reflux, skin, mood" },
+      { "order": 4, "text": "Add one food at a time, 2–3 days each; if symptoms → remove permanently" },
+      { "order": 5, "text": "Document everything: what you ate + symptoms 3–12h later" },
+      { "order": 6, "text": "Add gut repair supplements after elimination baseline established" }
+    ],
+    "timing": "2–3 days for initial elimination; ongoing gradual reintroduction",
+    "items_needed": ["l_reuteri","sodium_butyrate","a2_goat_dairy","red_meat","potatoes","white_rice"],
+    "cautions": [
+      "'If your gut is leaking, inflamed, or slow, nothing else in this book lands properly.'",
+      "L. reuteri must be strains 6475 + 17938 specifically.",
+      "Ramp kestose slowly to avoid GI gas.",
+      "Betaine HCl + pepsin: only when protein digestion is poor.",
+      "Ox bile: only when fat digestion is impaired."
+    ],
+    "checklist_ready": false,
+    "advanced": false,
+    "tags": ["gut","testosterone","dht","thyroid","inflammation","src_tff_2_0","src_dht_remastered","type_protocol","pri_core","goal_gut_health","goal_optimize_t"]
+  },
+  {
+    "id": "protocol_15_dht_nutrition_plan",
+    "name": "DHT Boosting Nutrition Plan",
+    "protocol_number": 15,
+    "category": "dht",
+    "goal": "Structure all meals to maximize DHT production and GLUT4-driven partitioning",
+    "priority": "core",
+    "source_refs": ["DHT Remastered, Ch. 6, p. 220–232"],
+    "steps": [
+      { "order": 1, "text": "PRE-TRAINING: Whey isolate 25–40g + pinch salt; OR egg whites 300ml; OR lean meat 150–200g. No fats, no fiber." },
+      { "order": 2, "text": "INTRA (after 1–2 hard sets): Glucose 30–50g + sodium 2g" },
+      { "order": 3, "text": "POST (0–30 min): Lean protein 30–40g + starch 100–200g; fat ≤5–7g; no fructose" },
+      { "order": 4, "text": "LATER MEAL: 85–90% beef or lamb, or 10–20 whole eggs; animal fat only; no seed oils" },
+      { "order": 5, "text": "WEEKLY ANCHORS: Liver 50–100g 2–3×/week; Oysters every other day; Eggs 3–6/day; Selenium 100–200mcg" }
+    ],
+    "timing": "Daily structured meal plan",
+    "items_needed": ["red_meat","organ_meats_liver","shellfish_oysters","eggs_whole","white_rice","potatoes","dextrose_cyclic_dextrin","selenium"],
+    "cautions": [
+      "Very low fat in first post-training meal — ensures insulin signal lands cleanly for DHT conversion.",
+      "Fats return in later meal for steroidogenesis.",
+      "No seed oils. No fructose."
+    ],
+    "checklist_ready": false,
+    "advanced": false,
+    "tags": ["dht","testosterone","performance","src_dht_remastered","src_performance_nutrition","type_protocol","pri_core","goal_optimize_dht","goal_optimize_t"]
+  },
+  {
+    "id": "protocol_16_starter_5alpha_stack",
+    "name": "Starter 5-Alpha Stack (Advanced)",
+    "protocol_number": 16,
+    "category": "dht",
+    "goal": "Basic DHT/5AR support with stepwise additions — starting point for advanced DHT library",
+    "priority": "advanced",
+    "source_refs": ["DHT Remastered, p. 195–197"],
+    "steps": [
+      { "order": 1, "text": "BASELINE: Creatine 5–10g/day + post-training carbs 50–100g + sodium 2g during training + sleep 7.5–9h fixed" },
+      { "order": 2, "text": "Week 1: Creatine 10–15g/day split" },
+      { "order": 3, "text": "Week 2: Kestose ramp (Days 1–3: 1g once; Days 4–6: 1g twice; Days 7–9: 2g twice; Days 10–14: 3g twice; Week 3+: 5g twice)" },
+      { "order": 4, "text": "Week 3: Boron 3–6mg each morning" },
+      { "order": 5, "text": "Week 4 (optional): DHEA topical 5–10mg scrotal skin; raise to 10–20mg only after 2 weeks with no estrogen signs" }
+    ],
+    "timing": "Run 6–8 weeks then 2-week easy phase",
+    "items_needed": ["creatine","kestose","boron","dhea_topical"],
+    "cautions": [
+      "ADVANCED PROTOCOL — not MVP daily checklist.",
+      "STOP: Water retention/soft look/nipple sensitivity/mood swings → drop DHEA first.",
+      "STOP: GI gas/loose stool → cut kestose to 2–3g twice/day for 1 week.",
+      "STOP: Headache/BP creep → check sodium/hydration, review boron.",
+      "TRACK: Morning wood 3 days/week; resting heart rate; waist weekly.",
+      "LABS week 8: DHT, SHBG, Free T, estradiol.",
+      "Safety rule: if BP climbs, edema, sleep tanks, nipples sensitive → pull newest lever first."
+    ],
+    "checklist_ready": false,
+    "advanced": true,
+    "tags": ["dht","testosterone","gut","src_dht_remastered","type_protocol","pri_advanced","goal_optimize_dht"]
+  },
+  {
+    "id": "protocol_17_ultimate_dht_stack",
+    "name": "Ultimate DHT Stack (Advanced)",
+    "protocol_number": 17,
+    "category": "dht",
+    "goal": "Aggressive advanced DHT optimization for users stable on Protocol 16 basics",
+    "priority": "advanced",
+    "source_refs": ["DHT Remastered, p. 198–201"],
+    "steps": [
+      { "order": 1, "text": "PREREQUISITE: Stable on Protocol 16 basics" },
+      { "order": 2, "text": "Add one per week: Creatine 10–20g → Kestose 5g 2× → Boron 6–10mg → Lespedeza 3–5g → L. reuteri 6475 → DHEA topical 10–20mg (if not aromatizing) → Dioscorea (if skipping DHEA) → Methylene blue 2–10mg (last)" },
+      { "order": 3, "text": "Run 6–8 weeks on, 2 weeks easy" }
+    ],
+    "timing": "6–8 weeks on, 2 weeks easy",
+    "items_needed": ["creatine","kestose","boron","l_reuteri","dhea_topical"],
+    "cautions": [
+      "ADVANCED PROTOCOL — hide behind advanced mode in app UI.",
+      "STOP: Insomnia/wired → cut methylene blue; still wired → reduce boron.",
+      "STOP: BP up/edema → remove DHEA first; reduce Lespedeza.",
+      "STOP: Acne/scalp oil/shedding → lower/hold DHEA; add apigenin.",
+      "Methylene blue: pharma/lab grade only; avoid serotonergic meds and G6PD deficiency; morning/midday ONLY.",
+      "Lespedeza: standardized extract, total flavonoids ≥20%.",
+      "Dioscorea: diosgenin 10–20% or pure diosgenin ≥90%; skip if using DHEA."
+    ],
+    "checklist_ready": false,
+    "advanced": true,
+    "tags": ["dht","testosterone","gut","src_dht_remastered","type_protocol","pri_advanced","goal_optimize_dht"]
+  },
+  {
+    "id": "protocol_18_low_t_5alpha_stack",
+    "name": "Low Testosterone + 5-Alpha Stack (Advanced)",
+    "protocol_number": 18,
+    "category": "dht",
+    "goal": "Push LH/testicular output first, then improve conversion and androgen availability",
+    "priority": "advanced",
+    "source_refs": ["DHT Remastered, p. 201–204"],
+    "steps": [
+      { "order": 1, "text": "Week 1: Tongkat Ali 200–400mg each morning" },
+      { "order": 2, "text": "Week 2: Creatine 10–20g/day" },
+      { "order": 3, "text": "Week 3: Boron 6–10mg AM" },
+      { "order": 4, "text": "Week 4: Kestose 5g 2×/day (ramp as Protocol 16)" },
+      { "order": 5, "text": "Week 5: Optional second herb — choose ONE: Fadogia 300–600mg AM | Akarkara 300–600mg | Bryonia 300–600mg" },
+      { "order": 6, "text": "Week 6: Lespedeza cuneata 3–5g/day" },
+      { "order": 7, "text": "Week 7: DHEA topical 10–20mg only if zero estrogen signs; run 8 weeks then 2 easy" }
+    ],
+    "timing": "Stepwise over 7 weeks; 8 weeks total then 2 easy",
+    "items_needed": ["tongkat_ali","creatine","boron","kestose","fadogia_agrestis","dhea_topical"],
+    "cautions": [
+      "ADVANCED — context-triggered only for low T profile/labs.",
+      "STOP: Nipple sensitivity/water/soft look/mood swings → remove DHEA first.",
+      "STOP: BP up/edema → reduce Lespedeza.",
+      "STOP: Insomnia/agitation/testicular discomfort on second herb → stop second herb immediately.",
+      "LABS weeks 6–8: Total T, Free T, LH, FSH, DHT, SHBG, estradiol."
+    ],
+    "checklist_ready": false,
+    "advanced": true,
+    "tags": ["dht","testosterone","src_dht_remastered","type_protocol","pri_advanced","goal_optimize_dht","goal_optimize_t"]
+  },
+  {
+    "id": "protocol_19_high_aromatase_5alpha",
+    "name": "High Aromatase + 5-Alpha Stack (Advanced)",
+    "protocol_number": 19,
+    "category": "dht",
+    "goal": "Trim aromatase activity and keep 5-alpha conversion active when E2 runs high",
+    "priority": "advanced",
+    "source_refs": ["DHT Remastered, p. 204–205"],
+    "steps": [
+      { "order": 1, "text": "Day 1: Damiana 500–1,000mg/day + Apigenin 50–150mg at night + Boron 6mg AM + Creatine 10–20g/day" },
+      { "order": 2, "text": "Day 4: Add Tribulus 500–1,500mg/day (protodioscin ≥20%)" },
+      { "order": 3, "text": "Day 7: Add Lespedeza cuneata ≥20% flavonoids 1,250mg/day or raw herb 3–5g/day" },
+      { "order": 4, "text": "Per kestose ramp: 2–3g 2×/day × 7 days, then 5g 2×/day" },
+      { "order": 5, "text": "Run 6–8 weeks, then 2 easy weeks; hold herbs during easy, keep creatine/boron" }
+    ],
+    "timing": "6–8 weeks on, 2 weeks easy",
+    "items_needed": ["apigenin","boron","creatine","kestose"],
+    "cautions": [
+      "ADVANCED — requires E2/aromatase context; not for generic use.",
+      "STOP: Joints ache/libido flat/mood low → likely E2 too low; halve damiana or drop apigenin to 50mg.",
+      "STOP: Nipple sensitivity/water → raise apigenin within range.",
+      "TRACK: Estradiol sensitive at weeks 3–4 and 6–8."
+    ],
+    "checklist_ready": false,
+    "advanced": true,
+    "tags": ["dht","estrogen","testosterone","src_dht_remastered","type_protocol","pri_advanced","goal_optimize_dht"]
+  },
+  {
+    "id": "protocol_20_anti_anxiety_5alpha",
+    "name": "Anti-Anxiety 5-Alpha Stack (Advanced)",
+    "protocol_number": 20,
+    "category": "dht",
+    "goal": "Calm sympathetic tone while supporting 5-alpha/neurosteroid output — wired/stressed profile",
+    "priority": "advanced",
+    "source_refs": ["DHT Remastered, p. 205–207"],
+    "steps": [
+      { "order": 1, "text": "Day 1: Creatine 10–15g + Boron 6–10mg AM + PEA 600mg 2×/day (max 1,200mg) + Glycine 1–3g at night" },
+      { "order": 2, "text": "Day 4: Lespedeza cuneata ≥20% flavonoids 1,250mg/day" },
+      { "order": 3, "text": "Day 7: Kestose ramp (2–3g 2× → 5g 2×)" },
+      { "order": 4, "text": "Optional: Gelsemium 1 cap at night, OR L-theanine 200–300mg PM" },
+      { "order": 5, "text": "Optional: DHEA topical 5–10mg only if anxiety stable and no estrogen signs; run 6–8 weeks" }
+    ],
+    "timing": "6–8 weeks on, 2 weeks easy",
+    "items_needed": ["creatine","boron","kestose","l_theanine","glycine","dhea_topical"],
+    "cautions": [
+      "ADVANCED — for wired/stressed user profile.",
+      "STOP: Groggy/depressed/flat → drop glycine to 1g; remove Gelsemium first.",
+      "STOP: Irritability/insomnia/BP up → lower PEA.",
+      "STOP: Nipple sensitivity → remove DHEA first.",
+      "TRACK: Nightly anxiety score 0–10; aim for -2 to -3 points by week 6–8."
+    ],
+    "checklist_ready": false,
+    "advanced": true,
+    "tags": ["dht","cortisol","testosterone","src_dht_remastered","type_protocol","pri_advanced","goal_optimize_dht","goal_stress_reduction"]
+  },
+  {
+    "id": "protocol_21_libido_5alpha_stack",
+    "name": "Libido 5-Alpha Stack (Advanced)",
+    "protocol_number": 21,
+    "category": "dht",
+    "goal": "Libido and erection support through androgen availability, conversion, and gut 5AR",
+    "priority": "advanced",
+    "source_refs": ["DHT Remastered, p. 207–208"],
+    "steps": [
+      { "order": 1, "text": "Day 1: Tongkat Ali 200–400mg AM + Tribulus 500–1,500mg/day (protodioscin ≥20%) + Creatine 10–20g/day + Boron 6–10mg AM" },
+      { "order": 2, "text": "Day 3: L. reuteri 6475 1–2 caps/day if using" },
+      { "order": 3, "text": "Day 7: Kestose ramp" },
+      { "order": 4, "text": "Optional: Apigenin 50–150mg at night; run 6–8 weeks, 2 easy weeks" }
+    ],
+    "timing": "6–8 weeks on, 2 weeks easy",
+    "items_needed": ["tongkat_ali","creatine","boron","kestose","l_reuteri","apigenin"],
+    "cautions": [
+      "ADVANCED — not default MVP.",
+      "STOP: Irritability/insomnia → reduce tongkat to 200mg.",
+      "STOP: Nipple sensitivity → hold boron at 6mg.",
+      "LABS weeks 6–8: DHT, SHBG, Total T, Free T, estradiol sensitive."
+    ],
+    "checklist_ready": false,
+    "advanced": true,
+    "tags": ["dht","testosterone","gut","src_dht_remastered","type_protocol","pri_advanced","goal_optimize_dht","goal_optimize_t"]
+  },
+  {
+    "id": "protocol_22_scalp_sparing_5alpha",
+    "name": "Scalp-Sparing 5-Alpha Lane (Advanced)",
+    "protocol_number": 22,
+    "category": "dht",
+    "goal": "Maintain androgenic strength and libido while protecting hairline — without systemic 5-alpha blockade",
+    "priority": "advanced",
+    "source_refs": ["DHT Remastered, p. 208–210"],
+    "steps": [
+      { "order": 1, "text": "Core: Tongkat Ali 200–400mg AM + Creatine 10–15g/day + Kestose 5g 2× + Boron 6–10mg AM + Apigenin 50–150mg night" },
+      { "order": 2, "text": "Optional: DHEA topical 5–10mg only if not aromatizing" },
+      { "order": 3, "text": "SCALP KIT: Ketoconazole shampoo 2% 2–4×/week (3–5 min contact time)" },
+      { "order": 4, "text": "SCALP KIT: Caffeine scalp tonic 1% daily on off-ketoconazole days" },
+      { "order": 5, "text": "SCALP KIT: Rosemary oil 1–2% in carrier — daily massage to thinning zones" },
+      { "order": 6, "text": "SCALP KIT: Microneedling 0.6–1.0mm once weekly; optional topical melatonin 0.1–0.3% nightly" }
+    ],
+    "timing": "6–8 weeks on, 2 weeks easy; scalp defense ongoing",
+    "items_needed": ["tongkat_ali","creatine","kestose","boron","apigenin","dhea_topical","rosemary_essential_oil","derma_stamp"],
+    "cautions": [
+      "ADVANCED — combines DHT + Hair modules.",
+      "STOP: Scalp burning/flaking → dilute rosemary or pause 7 days.",
+      "STOP: Shedding >30% for 3 weeks → increase ketoconazole; drop tongkat to 200mg.",
+      "STOP: Nipple sensitivity → remove DHEA first.",
+      "TRACK: Wash-day shed count weekly; standardized photos monthly."
+    ],
+    "checklist_ready": false,
+    "advanced": true,
+    "tags": ["dht","hair","testosterone","src_dht_remastered","src_hair_loss","type_protocol","pri_advanced","goal_optimize_dht","goal_hair_growth"]
+  },
+  {
+    "id": "protocol_23_neuro_framework_stack",
+    "name": "Neuro Framework Stack (Advanced)",
+    "protocol_number": 23,
+    "category": "dht",
+    "goal": "Upregulate neurosteroids and growth signals so existing DHT has greater tissue impact; calmer NS, deeper sleep, faster repair",
+    "priority": "advanced",
+    "source_refs": ["DHT Remastered, p. 210–211"],
+    "steps": [
+      { "order": 1, "text": "L-Theanine 200–400mg evening, 60–90 min before bed" },
+      { "order": 2, "text": "Sodium butyrate 500–1,000mg with meals OR tributyrin 1,000mg with biggest meal" },
+      { "order": 3, "text": "Apigenin 50–150mg at night" },
+      { "order": 4, "text": "PEA ultramicronized 600mg twice/day with meals (max 1,200mg/day)" },
+      { "order": 5, "text": "Pregnenolone 5mg morning; step by 5mg weekly ONLY if mood stays calm and focus improves; max 15mg" }
+    ],
+    "timing": "6–8 weeks run; track throughout",
+    "items_needed": ["l_theanine","sodium_butyrate","apigenin"],
+    "cautions": [
+      "ADVANCED — not MVP.",
+      "STOP: Wired/irritable/acne/insomnia → remove pregnenolone first.",
+      "STOP: Daytime sedation → cut apigenin to 50mg.",
+      "STOP: Head pressure/GI upset → halve sodium butyrate.",
+      "STOP: Anxiety up/sleep lighter → reduce/stop PEA.",
+      "STOP: Nipple sensitivity/soft watery look → stop pregnenolone immediately.",
+      "Pregnenolone must be stepped up slowly — 5mg weekly increments."
+    ],
+    "checklist_ready": false,
+    "advanced": true,
+    "tags": ["dht","sleep","testosterone","src_dht_remastered","type_protocol","pri_advanced","goal_optimize_dht","goal_sleep_quality"]
+  },
+  {
+    "id": "protocol_24_sleep_shift_worker_rescue",
+    "name": "Sleep and Shift-Worker 5-Alpha Rescue (Advanced)",
+    "protocol_number": 24,
+    "category": "dht",
+    "goal": "Protect sleep, thyroid tone, IGF-1, and 5-alpha signaling under shift work or severely disrupted sleep",
+    "priority": "advanced",
+    "source_refs": ["DHT Remastered, p. 212–214"],
+    "steps": [
+      { "order": 1, "text": "Glycine 3g + Magnesium glycinate 200–400mg + Apigenin 50–150mg — all 60–90 min before sleep" },
+      { "order": 2, "text": "Melatonin 0.3–1mg 60–90 min before sleep (smallest dose that works)" },
+      { "order": 3, "text": "Phosphatidylserine 200–300mg 30–60 min before sleep — ONLY if wired at bedtime" },
+      { "order": 4, "text": "Vitamin D3 2,000–5,000 IU + K2 MK-7 100–200mcg with first meal after waking" },
+      { "order": 5, "text": "Creatine 10–15g/day + Boron 6–10mg AM + Kestose 5g 2×/day" },
+      { "order": 6, "text": "LIGHT: Wake → 10,000 lux 20–30 min or full sun. Night shift → bright/cool workspace. Commute home → dark glasses. Bedroom → blackout, 17–19°C, eye mask, white noise." },
+      { "order": 7, "text": "TRAINING: After longest sleep block; 45–75 min; post-training 50–100g carbs + 30–40g protein, fat ≤5–7g" }
+    ],
+    "timing": "Context-dependent — shift work / disrupted sleep / wired bedtime only",
+    "items_needed": ["glycine","magnesium","apigenin","vitamin_d3_k2","creatine","boron","kestose"],
+    "cautions": [
+      "ADVANCED CONTEXT-DEPENDENT — do not show unless user selects shift work / disrupted sleep profile.",
+      "STOP: Groggy/vivid dreams → cut melatonin to 0.3–0.5mg or drop.",
+      "STOP: Daytime lethargy → reduce apigenin to 50mg.",
+      "STOP: Wired bedtime → increase phosphatidylserine by 100mg.",
+      "Note: melatonin is not recommended generally (Protocol 1) — this is a specific exception for severe circadian disruption.",
+      "Use smallest melatonin dose possible — start at 0.3mg."
+    ],
+    "checklist_ready": false,
+    "advanced": true,
+    "tags": ["dht","sleep","testosterone","thyroid","src_dht_remastered","src_sleep_recovery","type_protocol","pri_advanced","goal_optimize_dht","goal_sleep_quality"]
+  }
+]

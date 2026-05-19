@@ -1,0 +1,642 @@
+[
+  {
+    "id": "red_meat",
+    "name": "Red Meat (Beef / Lamb / Bison)",
+    "status": "APPROVED_CORE",
+    "category": "protein",
+    "purpose": "Androgen base — heme iron, zinc, B12, carnitine, creatine, saturated fat, cholesterol",
+    "why": "Provides complete raw material for steroid hormone synthesis (cholesterol, saturated fat) plus all key cofactors (zinc, iron, B12, carnitine, creatine). 'Chicken and turkey are diet brain foods.' Red meat is the hormonal base of the diet.",
+    "prep_required": true,
+    "cooking_method": "Soak in water + baking soda (5g per bowl) for 1–3 hours before cooking. Cook in own fat in oven. Rare to medium-rare. Never overcook.",
+    "timing": "Any main meal; eggs in the evening to drip-feed cholesterol during sleep",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_9_hormone_diet",
+      "protocol_14_gut_reset"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 122–147",
+      "DHT Remastered, Ch. 6",
+      "Hair Loss, p. 27–28"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "hair",
+      "performance",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "type_food",
+      "pri_core",
+      "goal_optimize_t",
+      "goal_optimize_dht"
+    ]
+  },
+  {
+    "id": "eggs_whole",
+    "name": "Whole Eggs (with yolks)",
+    "status": "APPROVED_CORE",
+    "category": "protein",
+    "purpose": "Cholesterol for steroidogenesis, choline, fat-soluble vitamins, biotin",
+    "why": "Testosterone is made from cholesterol. Eggs are one of the best natural sources of cholesterol. 3–10 whole eggs/day recommended. Eating in the evening drip-feeds cholesterol while sleeping when testosterone is synthesized. Yolks contain lecithin, biotin, B-vitamins — also useful topically for hair washing.",
+    "prep_required": false,
+    "cooking_method": "Any cooking method acceptable. Whole eggs with yolks — do NOT discard yolks. Raw eggs used for hair washing protocol (external use).",
+    "timing": "Evening preferred for hormonal support (drip-feed cholesterol during sleep); flexible for other meals",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_9_hormone_diet",
+      "protocol_12_hair_phased"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 125–129",
+      "Hair Loss, p. 27",
+      "Sleep & Recovery, p. 6"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "hair",
+      "src_tff_2_0",
+      "src_hair_loss",
+      "type_food",
+      "pri_core",
+      "goal_optimize_t",
+      "time_evening"
+    ]
+  },
+  {
+    "id": "organ_meats_liver",
+    "name": "Organ Meats (Liver — beef/lamb)",
+    "status": "APPROVED_CORE",
+    "category": "protein",
+    "purpose": "Vitamin A, B12, folate, copper, choline — nutrient density unmatched by muscle meat",
+    "why": "Liver is the most micronutrient-dense food. Provides vitamin A (follicle cycling, skin, steroidogenesis), B12 (methylation, energy), folate (methylation), copper (iron transport, ceruloplasmin), choline (cell membranes, neurotransmitters). These are cofactors for every hormonal and metabolic system. Frequency: 50–100g serving, 2–3 times per week.",
+    "prep_required": false,
+    "cooking_method": "Not clearly stated in KB beyond general meat prep guidance (own fat, oven, not overcooked).",
+    "timing": "2–3 times per week; any main meal",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 112–122",
+      "DHT Remastered, Ch. 6",
+      "Hair Loss, p. 12",
+      "Blood Work Guide, p. 101"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "hair",
+      "thyroid",
+      "src_tff_2_0",
+      "src_hair_loss",
+      "type_food",
+      "pri_core",
+      "goal_optimize_t",
+      "goal_hair_growth"
+    ]
+  },
+  {
+    "id": "shellfish_oysters",
+    "name": "Shellfish / Oysters",
+    "status": "APPROVED_CORE",
+    "category": "protein",
+    "purpose": "Zinc, copper, selenium, iodine — most mineral-dense whole food",
+    "why": "Oysters are the highest dietary source of zinc (5AR cofactor, testosterone synthesis, immune function). Also provide copper (paired with zinc balance), selenium (deiodinase function, Leydig cell protection), and iodine (thyroid hormone synthesis). Zinc deficiency directly limits testosterone production.",
+    "prep_required": false,
+    "cooking_method": "Not clearly stated in KB beyond 'oysters or canned shellfish.' Fresh or canned both mentioned.",
+    "timing": "Every other day if possible; weekly minimum",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4",
+      "DHT Remastered, Ch. 3",
+      "Hair Loss, p. 12"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "thyroid",
+      "hair",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "type_food",
+      "pri_core",
+      "goal_optimize_t",
+      "goal_optimize_dht"
+    ]
+  },
+  {
+    "id": "butter_ghee_tallow",
+    "name": "Saturated Fats (Butter / Ghee / Tallow)",
+    "status": "APPROVED_CORE",
+    "category": "fat",
+    "purpose": "Steroid hormone precursors; cooking fat free of PUFAs; supports 5AR",
+    "why": "Saturated and monounsaturated fats are the structural basis for steroid hormones. Unlike seed oils (PUFAs), these fats do not inhibit 5-alpha-reductase and do not cause oxidative stress. Grass-fed butter is rich in saturated fats, cholesterol, omega-3, vitamins A, D, K2. Tallow used both as cooking fat and topically for scalp (animal fat provides follicle building blocks transdermally).",
+    "prep_required": false,
+    "cooking_method": "Use as cooking fat (tallow, ghee preferred for high-heat). Butter as table fat or low-heat cooking. Coconut oil also approved.",
+    "timing": "Any meal; use as primary cooking fat",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_9_hormone_diet",
+      "protocol_12_hair_phased"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 130",
+      "DHT Remastered, Ch. 2, suppressor 13",
+      "Hair Loss, p. 28–29"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "hair",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "src_hair_loss",
+      "type_food",
+      "pri_core",
+      "goal_optimize_t",
+      "goal_optimize_dht"
+    ]
+  },
+  {
+    "id": "coconut_oil",
+    "name": "Coconut Oil",
+    "status": "APPROVED_CORE",
+    "category": "fat",
+    "purpose": "Saturated fat for cooking; PUFA-free cooking oil",
+    "why": "Listed alongside butter, ghee, and tallow as approved saturated/monounsaturated fat. Does not inhibit 5AR. Suitable as cooking fat.",
+    "prep_required": false,
+    "cooking_method": "Use as cooking fat; suitable for high-heat.",
+    "timing": "Any meal",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4",
+      "Hair Loss, p. 27"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "src_tff_2_0",
+      "type_food",
+      "pri_core",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "white_rice",
+    "name": "White Rice",
+    "status": "APPROVED_CONTEXT",
+    "category": "starch",
+    "purpose": "Simple starch for glycogen replenishment, NADPH production, thyroid T3 support",
+    "why": "Simple starch is essential for maintaining thyroid T3 output (which drives 5AR), keeping cortisol low, replenishing glycogen for training, and generating NADPH via the pentose phosphate pathway. White rice preferred over brown (lower anti-nutrient content). Post-workout and carb base use. Do not combine first post-training meal with high fat; keep fat ≤5–7g in that window.",
+    "prep_required": false,
+    "cooking_method": "Standard cooking. No specific prep method stated beyond choosing white over brown.",
+    "timing": "Post-workout (primary); any carb-based meal on training days",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_9_hormone_diet",
+      "protocol_4_post_training_convergence"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 41–48",
+      "Performance Nutrition, p. 16–17",
+      "DHT Remastered, Ch. 1"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "performance",
+      "thyroid",
+      "src_tff_2_0",
+      "src_performance_nutrition",
+      "type_food",
+      "pri_core",
+      "time_post_workout",
+      "goal_optimize_t",
+      "goal_optimize_dht"
+    ]
+  },
+  {
+    "id": "potatoes",
+    "name": "Potatoes (white / sweet / regular)",
+    "status": "APPROVED_CONTEXT",
+    "category": "starch",
+    "purpose": "Simple starch; exception in vegetable category; GLUT4 fuelling",
+    "why": "Potatoes are listed as approved exceptions within the generally cautioned vegetable category. Provide simple starch for the same purpose as white rice: glycogen, T3, NADPH. Sweet potatoes also mentioned in hair loss context. Cucumbers are the only other vegetable explicitly mentioned as an exception by the author.",
+    "prep_required": false,
+    "cooking_method": "Not clearly stated in KB beyond general cooking. Not mentioned as requiring soaking like oats.",
+    "timing": "Post-workout (primary); any carb-based meal",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_9_hormone_diet",
+      "protocol_14_gut_reset"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 199–211",
+      "Hair Loss, p. 27",
+      "Performance Nutrition"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "performance",
+      "src_tff_2_0",
+      "src_hair_loss",
+      "type_food",
+      "pri_core",
+      "time_post_workout",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "oats",
+    "name": "Oats (properly prepared only)",
+    "status": "PREP_REQUIRED",
+    "category": "starch",
+    "purpose": "Simple starch carb source — ONLY when properly prepared to reduce anti-nutrients",
+    "why": "Oats contain phytic acid and avenin. Author recommends specific prep to degrade anti-nutrients before consuming. Unprepared oats are not approved. Properly prepared oats fall into the approved simple starch category.",
+    "prep_required": true,
+    "cooking_method": "Soak oats, discard soaking water. Ferment approximately 24 hours in raw A2 dairy (kefir or yogurt). This degrades phytic acid, reduces avenin content, ferments some starch, and flattens insulin spike.",
+    "timing": "Any carb-based meal",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 265"
+    ],
+    "tags": [
+      "testosterone",
+      "src_tff_2_0",
+      "type_food",
+      "pri_core",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "bone_broth",
+    "name": "Bone Broth",
+    "status": "APPROVED_CORE",
+    "category": "protein",
+    "purpose": "Glycine, proline, collagen precursors, minerals — supports hair, joints, gut",
+    "why": "Bone broth provides glycine, proline, and hydroxyproline — the amino acids most needed for collagen and keratin synthesis. Muscle meat alone is sparse in these. Collagen needed for hair (keratin is a structural protein requiring massive energy and specific amino acids). Also provides minerals. Recommended 1–2 cups daily or several times per week.",
+    "prep_required": false,
+    "cooking_method": "Not clearly stated in KB beyond 'bone broth or collagen peptides 10–20g/day'.",
+    "timing": "Daily or several times per week",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_12_hair_phased"
+    ],
+    "source_refs": [
+      "Hair Loss, p. 27",
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "hair",
+      "gut",
+      "testosterone",
+      "src_hair_loss",
+      "src_tff_2_0",
+      "type_food",
+      "pri_core",
+      "goal_hair_growth"
+    ]
+  },
+  {
+    "id": "raw_honey",
+    "name": "Raw Honey",
+    "status": "DEPENDS",
+    "category": "condiment",
+    "purpose": "Pre-bed micro-dose tool only — antimicrobial polyphenols, Leydig cell support, sleep aid",
+    "why": "Raw honey contains polyphenols that modulate oxidative stress in testes and Leydig cells. Author uses a small pre-bed dose. 'I do not build diets around honey.' This is NOT a free daily sugar — it is a context-specific micro-dose (5–10g) taken only pre-bed. Fructose in honey still applies if overconsumed.",
+    "prep_required": false,
+    "cooking_method": "Not cooked. Taken raw in small dose.",
+    "timing": "Pre-bed only; small dose 5–10g maximum",
+    "avoid_reason": null,
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 131–135"
+    ],
+    "tags": [
+      "testosterone",
+      "sleep",
+      "src_tff_2_0",
+      "type_food",
+      "pri_optional",
+      "time_pre_bed",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "a2_goat_dairy",
+    "name": "A2 / Raw / Goat / Sheep Dairy",
+    "status": "APPROVED_CONTEXT",
+    "category": "dairy",
+    "purpose": "Clean dairy option when source is verified; used in oat preparation",
+    "why": "Standard supermarket dairy (A1, grain-fed cows) is avoided due to estrogenic signaling. A2, raw, goat, or sheep dairy from trusted sources is an acceptable contextual option. Used in oat preparation protocol (raw A2 kefir/yogurt for fermentation). 'Source matters' note applies.",
+    "prep_required": false,
+    "cooking_method": "Not clearly stated in KB beyond use in oat fermentation.",
+    "timing": "Context-dependent; as part of oat prep or standalone if tolerated",
+    "avoid_reason": null,
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 160–161",
+      "TFF 2.0, Ch. 4, p. 265"
+    ],
+    "tags": [
+      "testosterone",
+      "src_tff_2_0",
+      "type_food",
+      "pri_optional",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "cucumbers",
+    "name": "Cucumbers",
+    "status": "APPROVED_CONTEXT",
+    "category": "vegetable",
+    "purpose": "One of the few explicitly approved vegetable exceptions",
+    "why": "Cucumbers are mentioned as an exception in the TFF 2.0 vegetable section, where most vegetables are cautioned against due to goitrogens, oxalates, lectins, and fiber-related endotoxin. No detailed mechanism stated beyond being an exception.",
+    "prep_required": false,
+    "cooking_method": "Not clearly stated in KB.",
+    "timing": "Not clearly stated in KB.",
+    "avoid_reason": null,
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 199–211"
+    ],
+    "tags": [
+      "testosterone",
+      "src_tff_2_0",
+      "type_food",
+      "pri_optional"
+    ]
+  },
+  {
+    "id": "raw_carrot",
+    "name": "Raw Carrot",
+    "status": "DEPENDS",
+    "category": "vegetable",
+    "purpose": "Special niche tool — not a general approved vegetable",
+    "why": "Raw carrot is acknowledged by the author as a special niche tool. Not framed as a general daily vegetable. Context not fully elaborated in the extracted KB. Should not be treated as a broadly approved food.",
+    "prep_required": false,
+    "cooking_method": "Raw — specific context not clearly stated in KB.",
+    "timing": "Context-dependent; not clearly stated in KB.",
+    "avoid_reason": null,
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 199–211"
+    ],
+    "tags": [
+      "testosterone",
+      "src_tff_2_0",
+      "type_food",
+      "pri_optional"
+    ]
+  },
+  {
+    "id": "seed_oils",
+    "name": "Seed / Vegetable Oils (Sunflower, Canola, Soybean, Corn, etc.)",
+    "status": "AVOID",
+    "category": "fat",
+    "purpose": null,
+    "why": null,
+    "prep_required": false,
+    "cooking_method": null,
+    "timing": null,
+    "avoid_reason": "Polyunsaturated fatty acids (PUFAs) directly inhibit 5-alpha-reductase (5AR) — the enzyme that converts testosterone to DHT. GLA, DHA, linoleic acid are the strongest inhibitors. These oils are oxidized, pro-inflammatory, suppress thyroid function, and promote oxidative stress. 'Remove every single one from your kitchen.' Hard avoid — no exceptions.",
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 158–159",
+      "DHT Remastered, Ch. 2, suppressor 13",
+      "TFF 2.0, p. 250"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "thyroid",
+      "inflammation",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "type_food",
+      "pri_critical"
+    ]
+  },
+  {
+    "id": "sugar_fructose_hfcs",
+    "name": "Sugar / Fructose / HFCS",
+    "status": "AVOID",
+    "category": "other",
+    "purpose": null,
+    "why": null,
+    "prep_required": false,
+    "cooking_method": null,
+    "timing": null,
+    "avoid_reason": "Human study showed ~25% testosterone drop after a standard sugar drink. Fructose drives belly fat accumulation → more aromatase (T→E2 conversion). Fructose bypasses muscle doors (GLUT5/GLUT2 → liver), promotes de novo lipogenesis, forms AGEs 10× faster than glucose, disrupts appetite hormones (ghrelin/leptin), promotes gut irritation/endotoxin. 'I see sugar as a narcotic with calories.' Hard avoid.",
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 153–155",
+      "TFF 2.0, Ch. 4, p. 162–189"
+    ],
+    "tags": [
+      "testosterone",
+      "estrogen",
+      "insulin",
+      "src_tff_2_0",
+      "type_food",
+      "pri_critical"
+    ]
+  },
+  {
+    "id": "soy",
+    "name": "Soy (all forms)",
+    "status": "AVOID",
+    "category": "protein",
+    "purpose": null,
+    "why": null,
+    "prep_required": false,
+    "cooking_method": null,
+    "timing": null,
+    "avoid_reason": "Contains phytoestrogens (isoflavones) that act like weak estrogen and suppress LH signaling. 'Soy is not a testosterone food.' Isoflavones can shift estrogen:androgen balance. Hard avoid.",
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 156–158"
+    ],
+    "tags": [
+      "testosterone",
+      "estrogen",
+      "src_tff_2_0",
+      "type_food",
+      "pri_critical"
+    ]
+  },
+  {
+    "id": "supermarket_dairy_a1",
+    "name": "Regular Supermarket Dairy (A1, grain-fed cows)",
+    "status": "AVOID",
+    "category": "dairy",
+    "purpose": null,
+    "why": null,
+    "prep_required": false,
+    "cooking_method": null,
+    "timing": null,
+    "avoid_reason": "Estrogenic signal from grain-fed cows. Random supermarket dairy is A1 casein from hormone-treated, grain-fed cows. Avoided for its estrogenic signaling. Use A2, raw, goat, or sheep dairy from trusted sources instead.",
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 160–161"
+    ],
+    "tags": [
+      "testosterone",
+      "estrogen",
+      "src_tff_2_0",
+      "type_food",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "fruit_fructose",
+    "name": "Fruit (general)",
+    "status": "AVOID",
+    "category": "other",
+    "purpose": null,
+    "why": null,
+    "prep_required": false,
+    "cooking_method": null,
+    "timing": null,
+    "avoid_reason": "Per TFF 2.0: fructose bypasses muscle (GLUT5→GLUT2→liver), promotes de novo lipogenesis, forms AGEs 10× faster than glucose, disrupts appetite hormones (ghrelin/leptin), promotes gut irritation/endotoxin/water retention. Author removed fruit completely. This is the author's personal position. Marked as controversial per KB — 'If kept, tag as controversial/avoid per TFF.'",
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 162–189"
+    ],
+    "tags": [
+      "testosterone",
+      "insulin",
+      "gut",
+      "src_tff_2_0",
+      "type_food",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "nuts_seeds",
+    "name": "Nuts and Seeds (large amounts)",
+    "status": "AVOID",
+    "category": "other",
+    "purpose": null,
+    "why": null,
+    "prep_required": false,
+    "cooking_method": null,
+    "timing": null,
+    "avoid_reason": "High in PUFAs (inhibit 5AR), phytic acid (blocks zinc/magnesium/iron absorption), lectins, trypsin inhibitors. Some contain phytoestrogens (flax lignans, soy, sesame). Not approved as a snack food. Large amounts are problematic.",
+    "related_protocols": [
+      "protocol_9_hormone_diet"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 190–198"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "src_tff_2_0",
+      "type_food",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "cruciferous_raw",
+    "name": "Raw Cruciferous Vegetables (Broccoli, Cauliflower, Kale, etc.)",
+    "status": "AVOID",
+    "category": "vegetable",
+    "purpose": null,
+    "why": null,
+    "prep_required": false,
+    "cooking_method": null,
+    "timing": null,
+    "avoid_reason": "Raw cruciferous vegetables contain goitrogens that suppress thyroid function (block iodine uptake, inhibit thyroid peroxidase). Low T3 → low DHT factory output → lower androgens. Cooking may reduce but not eliminate goitrogens. Ebook frames most vegetables as problematic for testosterone.",
+    "related_protocols": [
+      "protocol_9_hormone_diet",
+      "protocol_14_gut_reset"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 199–211"
+    ],
+    "tags": [
+      "thyroid",
+      "testosterone",
+      "dht",
+      "src_tff_2_0",
+      "type_food",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "alcohol",
+    "name": "Alcohol",
+    "status": "AVOID",
+    "category": "other",
+    "purpose": null,
+    "why": null,
+    "prep_required": false,
+    "cooking_method": null,
+    "timing": null,
+    "avoid_reason": "Alcohol's harmful metabolites promote the conversion of testosterone to estrogen (aromatase upregulation). Disrupts REM sleep. Increases nighttime urination. Even moderate amounts raise estrogen. Alcohol at 0.8 g/kg before bed reduces nighttime GH secretion by 70–75%. Recommendation: ≤2 drinks/week, ideally zero.",
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 3, p. 99–112",
+      "Sleep & Recovery, p. 17",
+      "DHT Remastered, Ch. 2, suppressor 15"
+    ],
+    "tags": [
+      "testosterone",
+      "sleep",
+      "estrogen",
+      "src_tff_2_0",
+      "src_sleep_recovery",
+      "type_food",
+      "pri_critical"
+    ]
+  },
+  {
+    "id": "royal_jelly",
+    "name": "Royal Jelly",
+    "status": "APPROVED_CONTEXT",
+    "category": "other",
+    "purpose": "Concentrated proteins, 10-HDA fatty acids, peptides — hormonal support",
+    "why": "Described as better than honey for hormones due to concentrated proteins, 10-hydroxy-2-decenoic acid (10-HDA) fatty acids, and bioactive peptides. Dose: 1,000–3,000 mg/day, 4–8 week cycles. Listed under Level 2 Experimental supplements in TFF 2.0.",
+    "prep_required": false,
+    "cooking_method": "Not cooked. Taken as supplement form or raw.",
+    "timing": "4–8 week cycles; daily during cycle",
+    "avoid_reason": null,
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 136–139"
+    ],
+    "tags": [
+      "testosterone",
+      "src_tff_2_0",
+      "type_food",
+      "pri_experimental",
+      "goal_optimize_t"
+    ]
+  }
+]

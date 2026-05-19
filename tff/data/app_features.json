@@ -1,0 +1,661 @@
+[
+  {
+    "id": "feature_1_knowledge_search",
+    "name": "Knowledge Search System",
+    "big_feature_number": "1",
+    "subfeatures": [
+      {
+        "id": "1.1",
+        "name": "Supplement Database",
+        "phase": "phase_1",
+        "notes": "Full supplement list with search, filter by tier/category/topic. Each card: name, tier, purpose, dose, timing, cautions, source refs."
+      },
+      {
+        "id": "1.2",
+        "name": "Food Database with Status Taxonomy",
+        "phase": "phase_1",
+        "notes": "APPROVED_CORE / APPROVED_CONTEXT / PREP_REQUIRED / AVOID / DEPENDS / NOT_MENTIONED status for each food. Search + filter by status and category."
+      },
+      {
+        "id": "1.3",
+        "name": "Blood Markers Table",
+        "phase": "phase_1",
+        "notes": "All 77 blood markers searchable and filterable by panel. Shows optimal range, standard range, high/low interpretation, related markers."
+      },
+      {
+        "id": "1.4",
+        "name": "Claims Database",
+        "phase": "phase_1",
+        "notes": "All 59 claims with claim_type and app_usage filters. Distinguish: actionable_protocol / food_rule / lab_interpretation / mechanistic_concept / avoid_caution / etc."
+      },
+      {
+        "id": "1.5",
+        "name": "Protocol Library",
+        "phase": "phase_1",
+        "notes": "All 15 standard protocols with steps, timing, items needed, cautions. Advanced DHT protocols 16–24 hidden behind advanced mode toggle."
+      },
+      {
+        "id": "1.6",
+        "name": "Topic Pages",
+        "phase": "phase_1",
+        "notes": "Static KB content pages for all 6 topics: Sleep, Testosterone, DHT, Hair, Bloodwork, Performance Nutrition."
+      },
+      {
+        "id": "1.7",
+        "name": "Source References",
+        "phase": "phase_1",
+        "notes": "All content links back to source ebook. Source filter on all database views."
+      },
+      {
+        "id": "1.8",
+        "name": "Food Cooking Guides",
+        "phase": "phase_1",
+        "notes": "12 cooking guides with prep_method, cooking_method, avoid, timing, notes per food. Linked from food cards."
+      },
+      {
+        "id": "1.9",
+        "name": "Cooking Preparation Fields on Food Cards",
+        "phase": "phase_1",
+        "notes": "Food cards include how_to_prepare and when_to_use — exact source-backed content only."
+      },
+      {
+        "id": "1.10",
+        "name": "Claim Type Filtering",
+        "phase": "phase_1",
+        "notes": "Filter claims by: actionable / concept / lab / theory / caution / advanced compound. From Patch v1 additions."
+      },
+      {
+        "id": "1.11",
+        "name": "Food Search Cards (Status Engine)",
+        "phase": "phase_1",
+        "notes": "Food cards show: status badge, why, source ebook, how to prepare, when to use, avoid notes. From Patch v1 additions."
+      },
+      {
+        "id": "1.12",
+        "name": "Full-Text Search Across KB",
+        "phase": "phase_2",
+        "notes": "Cross-entity search: returns relevant supplements, foods, protocols, claims, and markers in one results view."
+      }
+    ],
+    "priority": "high",
+    "effectiveness": "high",
+    "utility": "high",
+    "implementation_speed": "high",
+    "phase": "phase_1",
+    "notes": "Core static knowledge layer. All data already in JSON files. Highest priority — foundation for all other features."
+  },
+  {
+    "id": "feature_2_daily_execution",
+    "name": "Daily Execution System (Checklist Engine)",
+    "big_feature_number": "2",
+    "subfeatures": [
+      {
+        "id": "2.1",
+        "name": "Daily Checklist",
+        "phase": "phase_1",
+        "notes": "44 checklist items by day type. User checks off items. State saved in local storage."
+      },
+      {
+        "id": "2.2",
+        "name": "Day-Type Switcher",
+        "phase": "phase_1",
+        "notes": "User selects: training_day / rest_day / sleep_recovery_day / minimum_effective_day. Checklist filters to relevant items for that day type."
+      },
+      {
+        "id": "2.3",
+        "name": "Weekly Checklist",
+        "phase": "phase_1",
+        "notes": "Weekly items: liver 2–3×/week, oysters every other day, microneedling every 7–14 days, supplement review, stress journal."
+      },
+      {
+        "id": "2.4",
+        "name": "Monthly Checklist",
+        "phase": "phase_1",
+        "notes": "Bloodwork panel prep, protocol review, progress notes, monthly supplement audit."
+      },
+      {
+        "id": "2.5",
+        "name": "Minimum Effective Day Mode",
+        "phase": "phase_1",
+        "notes": "Reduced checklist for hard days: non-negotiables only (sleep, sunlight, protein, zero seed oils, caffeine cutoff, room temp)."
+      },
+      {
+        "id": "2.6",
+        "name": "Checklist Streak Tracking",
+        "phase": "phase_2",
+        "notes": "Track consecutive days of completion per checklist item or per day type. Streak display per item."
+      },
+      {
+        "id": "2.7",
+        "name": "Custom Item Priority Ranking",
+        "phase": "phase_2",
+        "notes": "User can reorder checklist items by their personal priority within each category."
+      },
+      {
+        "id": "2.8",
+        "name": "Checklist Completion Score",
+        "phase": "phase_2",
+        "notes": "Daily score: checked items / total items × 100. Weekly rolling average. Dashboard widget."
+      }
+    ],
+    "priority": "high",
+    "effectiveness": "high",
+    "utility": "high",
+    "implementation_speed": "high",
+    "phase": "phase_1",
+    "notes": "Core daily usability feature. Makes app useful every single day. Data from checklist_items.json and routines.json. Local storage state is sufficient for MVP."
+  },
+  {
+    "id": "feature_3_protocol_library",
+    "name": "Protocol & Routine Library",
+    "big_feature_number": "3",
+    "subfeatures": [
+      {
+        "id": "3.1",
+        "name": "Protocol Cards (1–15)",
+        "phase": "phase_1",
+        "notes": "Standard protocols 1–15 with full detail: goal, steps, timing, items needed, cautions, checklist_ready flag."
+      },
+      {
+        "id": "3.2",
+        "name": "Routine Pages",
+        "phase": "phase_1",
+        "notes": "11 routines displayed as structured section lists: daily, morning, training day, rest day, sleep, weekly, monthly, minimum effective day, nutrition, hair, supplement timing."
+      },
+      {
+        "id": "3.3",
+        "name": "Protocol-to-Checklist Link",
+        "phase": "phase_1",
+        "notes": "Each checklist item links back to its source protocol. Protocol page shows which checklist items it generates."
+      },
+      {
+        "id": "3.4",
+        "name": "Protocol Filter by Category/Goal",
+        "phase": "phase_1",
+        "notes": "Filter protocols by: category (sleep/testosterone/dht/hair/nutrition/gut/blood_work), priority (critical/core), checklist_ready status."
+      },
+      {
+        "id": "3.5",
+        "name": "Advanced DHT Protocol Library (16–24)",
+        "phase": "phase_3",
+        "notes": "Hidden behind Advanced Mode toggle. Full detail with stop rules, tracking metrics, and stepwise addition instructions. Not shown by default."
+      },
+      {
+        "id": "3.6",
+        "name": "Stop Rules & Tracking Engine",
+        "phase": "phase_3",
+        "notes": "Advanced protocols include stop rules and tracking metric prompts. User can log tracked metrics per protocol."
+      },
+      {
+        "id": "3.7",
+        "name": "Protocol Progress Tracker",
+        "phase": "phase_2",
+        "notes": "Track adherence to each protocol over time. Streak per protocol. Notes per session."
+      }
+    ],
+    "priority": "high",
+    "effectiveness": "high",
+    "utility": "high",
+    "implementation_speed": "high",
+    "phase": "phase_1",
+    "notes": "Data fully available in protocols.json and routines.json. Advanced DHT protocols locked behind toggle per KB instruction."
+  },
+  {
+    "id": "feature_4_personal_tracking",
+    "name": "Personal Tracking Hub",
+    "big_feature_number": "4",
+    "subfeatures": [
+      {
+        "id": "4.1",
+        "name": "Daily Biometric Log",
+        "phase": "phase_2",
+        "notes": "Log: morning wood (y/n), resting heart rate, energy 1–10, libido 1–10, mood 1–10, sleep quality 1–10. Tracks the KB's own recommended tracking metrics."
+      },
+      {
+        "id": "4.2",
+        "name": "Weekly Waist Measurement Log",
+        "phase": "phase_2",
+        "notes": "Log waist measurement weekly (at navel). Used as proxy for insulin resistance and body composition progress."
+      },
+      {
+        "id": "4.3",
+        "name": "Supplement Addition Log",
+        "phase": "phase_2",
+        "notes": "Log: date supplement added, dose, effects observed, any side effects. Critical for staged one-lever-at-a-time attribution."
+      },
+      {
+        "id": "4.4",
+        "name": "Protocol Adherence Tracker",
+        "phase": "phase_2",
+        "notes": "Log which protocols are in progress, start date, week number, current status."
+      },
+      {
+        "id": "4.5",
+        "name": "Hair Progress Log",
+        "phase": "phase_2",
+        "notes": "Monthly photo log, shed count log, comb test log. Tracks hair protocol progress."
+      },
+      {
+        "id": "4.6",
+        "name": "Trend Charts",
+        "phase": "phase_2",
+        "notes": "Simple line charts for tracked metrics over time. 30-day and 90-day views."
+      },
+      {
+        "id": "4.7",
+        "name": "Personal Notes",
+        "phase": "phase_2",
+        "notes": "Free-form notes per day. Stress journal entries. Mood journal entries."
+      }
+    ],
+    "priority": "medium",
+    "effectiveness": "high",
+    "utility": "high",
+    "implementation_speed": "medium",
+    "phase": "phase_2",
+    "notes": "Phase 2 feature. Requires persistent storage (user account or device storage). DHT Advanced Protocol tracking metrics map to specific KB stop rules and tracking lists."
+  },
+  {
+    "id": "feature_5_bloodwork_hub",
+    "name": "Bloodwork Hub",
+    "big_feature_number": "5",
+    "subfeatures": [
+      {
+        "id": "5.1",
+        "name": "Blood Marker Reference Table",
+        "phase": "phase_1",
+        "notes": "All 77 markers with optimal range, standard range, high/low interpretation, related markers. Filter by panel."
+      },
+      {
+        "id": "5.2",
+        "name": "Panel Grouping",
+        "phase": "phase_1",
+        "notes": "Markers grouped by: thyroid / sex_hormones / metabolic / lipids / inflammation / micronutrients / liver / kidney / bone_mineral / cbc / dutch."
+      },
+      {
+        "id": "5.3",
+        "name": "Bloodwork Preparation Checklist",
+        "phase": "phase_1",
+        "notes": "Pre-test checklist: 10–12h fast, no heavy lifting 5–7 days, not ill/inflamed, morning draw. From protocol_11."
+      },
+      {
+        "id": "5.4",
+        "name": "Result Input (user enters own values)",
+        "phase": "phase_2",
+        "notes": "User inputs their lab result values. App shows: in optimal range / suboptimal / investigate. Visual flag per marker."
+      },
+      {
+        "id": "5.5",
+        "name": "Marker Context Engine",
+        "phase": "phase_2",
+        "notes": "When a marker is flagged, app shows: what it means, what to check next, which related markers to interpret together."
+      },
+      {
+        "id": "5.6",
+        "name": "Pattern Recognition View",
+        "phase": "phase_2",
+        "notes": "Groups flagged markers into likely root causes: thyroid issue / insulin resistance / iron problem / inflammation / etc."
+      },
+      {
+        "id": "5.7",
+        "name": "CBC Full Panel with NLR Auto-Calculation",
+        "phase": "phase_2",
+        "notes": "CBC expansion: all 15 CBC markers. Auto-calculates NLR (neutrophils ÷ lymphocytes). From Patch v1."
+      },
+      {
+        "id": "5.8",
+        "name": "Calculated Markers",
+        "phase": "phase_2",
+        "notes": "Auto-calculates: NLR, TG:HDL ratio, T:DHT ratio, T:E2 ratio from user-entered values. From Patch v1."
+      },
+      {
+        "id": "5.9",
+        "name": "DUTCH Androgen Metabolites Add-on",
+        "phase": "phase_3",
+        "notes": "DUTCH testing view: 5α:5β ratio interpretation, androsterone vs etiocholanolone, 3α-diol-G. Phase 2/3 only per KB instruction."
+      },
+      {
+        "id": "5.10",
+        "name": "Historical Trend View",
+        "phase": "phase_3",
+        "notes": "Compare labs over time. Show trend for each marker. Identify improving vs worsening markers."
+      }
+    ],
+    "priority": "high",
+    "effectiveness": "high",
+    "utility": "high",
+    "implementation_speed": "medium",
+    "phase": "phase_1",
+    "notes": "MVP: read-only reference table. Phase 2: user input + interpretation engine. Phase 3: DUTCH add-on and historical trends."
+  },
+  {
+    "id": "feature_6_nutrition_cooking",
+    "name": "Nutrition & Cooking System",
+    "big_feature_number": "6",
+    "subfeatures": [
+      {
+        "id": "6.1",
+        "name": "Food Status Cards",
+        "phase": "phase_1",
+        "notes": "Food status badge per food (APPROVED_CORE / APPROVED_CONTEXT / PREP_REQUIRED / AVOID / DEPENDS). Tap for detail card."
+      },
+      {
+        "id": "6.2",
+        "name": "Cooking Guides",
+        "phase": "phase_1",
+        "notes": "12 cooking guides: prep_method, cooking_method, avoid, timing, notes per food/meal pattern. Exact source-backed content."
+      },
+      {
+        "id": "6.3",
+        "name": "Avoid List",
+        "phase": "phase_1",
+        "notes": "Persistent avoid list: seed oils, soy, sugar/fructose, supermarket dairy, processed carbs. Shown prominently in food database."
+      },
+      {
+        "id": "6.4",
+        "name": "Meal Timing Reference",
+        "phase": "phase_1",
+        "notes": "Shows what to eat and when: pre-workout / intra / post-workout first meal / post-workout second meal / rest day meals."
+      },
+      {
+        "id": "6.5",
+        "name": "Food Detail Cards with Prep Instructions",
+        "phase": "phase_1",
+        "notes": "Each approved food card includes: when to eat, how to prepare, what to avoid, source ref. From Patch v1 cooking_detail_lock."
+      },
+      {
+        "id": "6.6",
+        "name": "Carb Cycling Calculator",
+        "phase": "phase_1",
+        "notes": "Input bodyweight → get training day / rest day carb targets. Shows the 25% borrow rule calculation. Output in grams."
+      },
+      {
+        "id": "6.7",
+        "name": "Food Status Engine (Approved / Avoid / Depends)",
+        "phase": "phase_1",
+        "notes": "Full taxonomy applied consistently across all food cards. From Patch v1 food_status_engine."
+      },
+      {
+        "id": "6.8",
+        "name": "Cooking Detail Lock",
+        "phase": "phase_1",
+        "notes": "Enforce: food cards only show exact source-backed prep instructions. No invented preparation details. From Patch v1."
+      },
+      {
+        "id": "6.9",
+        "name": "Approved Shopping List Generator",
+        "phase": "phase_2",
+        "notes": "Generate a shopping list from selected protocols, meal plans, or supplement stacks. Links to shopping_items.json."
+      }
+    ],
+    "priority": "high",
+    "effectiveness": "high",
+    "utility": "high",
+    "implementation_speed": "high",
+    "phase": "phase_1",
+    "notes": "Data fully available in foods.json, cooking_guides.json. Key MVP differentiator: most biohacking apps have no food prep detail."
+  },
+  {
+    "id": "feature_7_macro_fuel",
+    "name": "Macro & Fuel System",
+    "big_feature_number": "7",
+    "subfeatures": [
+      {
+        "id": "7.1",
+        "name": "Day-Type Macro Targets",
+        "phase": "phase_2",
+        "notes": "User inputs bodyweight. App calculates: protein target (1.6–2.2 g/kg), carb target (2–4 g/kg training / ~25% less rest day), fat target (1.2–1.8 g/kg). Shown as training_day / rest_day / minimum_effective_day targets."
+      },
+      {
+        "id": "7.2",
+        "name": "Training vs Rest Day Macro Split",
+        "phase": "phase_2",
+        "notes": "Training day: higher carbs (intra + post-workout), protein unchanged, fat unchanged. Rest day: -25% carbs, same protein and fat. Carb cycling rule applied automatically."
+      },
+      {
+        "id": "7.3",
+        "name": "Saved Meals with Macros",
+        "phase": "phase_2",
+        "notes": "User creates saved meals (e.g. 'Post-workout meal: 150g rice + 200g chicken breast'). Stores macros per meal. App builds a personal meal library."
+      },
+      {
+        "id": "7.4",
+        "name": "Meal Checklist Builder",
+        "phase": "phase_2",
+        "notes": "User marks meals as completed or selects from saved meals. Completion drives macro tracking. Checklist-style — not a calorie-counting UI."
+      },
+      {
+        "id": "7.5",
+        "name": "Macro Gap Correction",
+        "phase": "phase_2",
+        "notes": "After meals completed: app shows remaining protein / carb / fat gap for the day. Suggests approved food/meal options to close the gap."
+      },
+      {
+        "id": "7.6",
+        "name": "Training Fuel Timing Check",
+        "phase": "phase_2",
+        "notes": "On training days: app flags if pre-workout meal (protein only, no carbs) was logged, if intra-workout glucose was logged, and if post-workout starch window was hit within 30 min. Simple checklist — not a timer."
+      },
+      {
+        "id": "7.7",
+        "name": "Approved Food Source Suggestions",
+        "phase": "phase_2",
+        "notes": "Macro gap suggestions pull only from APPROVED_CORE and APPROVED_CONTEXT food cards. Never suggests AVOID foods."
+      },
+      {
+        "id": "7.8",
+        "name": "Macro Compliance Score",
+        "phase": "phase_2",
+        "notes": "End-of-day score: protein hit (y/n), carb target within range (y/n), fat target within range (y/n), timing rules followed (y/n). Score 0–4 shown as simple indicator."
+      },
+      {
+        "id": "7.9",
+        "name": "Dashboard Macro Card",
+        "phase": "phase_2",
+        "notes": "Dashboard widget: shows today's day type, macro targets, completed macros so far, remaining gap. Compact and action-oriented."
+      }
+    ],
+    "priority": "medium",
+    "effectiveness": "high",
+    "utility": "high",
+    "implementation_speed": "medium",
+    "phase": "phase_2",
+    "notes": "Phase 2 only — NOT Phase 1 MVP. This is a checklist-based macro correction layer, not a heavy generic calorie tracker. Built on saved meals + day-type targets. Approved foods only as suggestions. No barcode scanner, no restaurant database, no generic food library."
+  },
+  {
+    "id": "feature_8_shopping_inventory",
+    "name": "Shopping & Inventory System",
+    "big_feature_number": "8",
+    "subfeatures": [
+      {
+        "id": "8.1",
+        "name": "Shopping List View",
+        "phase": "phase_1",
+        "notes": "All 57 shopping items with category, priority, reason, status (not_bought / bought). Filter by category and priority."
+      },
+      {
+        "id": "8.2",
+        "name": "Priority Filter (critical / core / optional)",
+        "phase": "phase_1",
+        "notes": "User can filter to only critical or core items for a focused first-buy list."
+      },
+      {
+        "id": "8.3",
+        "name": "Status Toggle (not_bought / bought)",
+        "phase": "phase_1",
+        "notes": "User marks items as bought. State persists. Unchecked items float to top."
+      },
+      {
+        "id": "8.4",
+        "name": "Category Grouping",
+        "phase": "phase_1",
+        "notes": "Groups: supplement / food / tool / other. Each group collapsible."
+      },
+      {
+        "id": "8.5",
+        "name": "Shopping Item Detail",
+        "phase": "phase_1",
+        "notes": "Each item shows: name, reason (why needed), linked protocol/food/supplement, source ref, priority badge."
+      },
+      {
+        "id": "8.6",
+        "name": "Protocol-Based Shopping List Generator",
+        "phase": "phase_2",
+        "notes": "User selects active protocols → app generates minimum shopping list for those protocols only."
+      },
+      {
+        "id": "8.7",
+        "name": "Inventory / Restock Tracker",
+        "phase": "phase_2",
+        "notes": "User marks items as running low. Generates restock list. Optional refill reminders."
+      }
+    ],
+    "priority": "medium",
+    "effectiveness": "medium",
+    "utility": "high",
+    "implementation_speed": "high",
+    "phase": "phase_1",
+    "notes": "Data fully available in shopping_items.json. MVP: static list with toggle state. Phase 2: protocol-linked generation."
+  },
+  {
+    "id": "feature_9_dashboard",
+    "name": "Dashboard & Insights System",
+    "big_feature_number": "9",
+    "subfeatures": [
+      {
+        "id": "9.1",
+        "name": "Today Card (Day Type + Active Protocols)",
+        "phase": "phase_1",
+        "notes": "Shows: today's day type (training/rest/minimum), active protocols, checklist completion %, quick access to today's checklist."
+      },
+      {
+        "id": "9.2",
+        "name": "Current Focus Protocols",
+        "phase": "phase_1",
+        "notes": "User marks 1–3 protocols as currently active. Dashboard surface them with week number and current step."
+      },
+      {
+        "id": "9.3",
+        "name": "Quick Links",
+        "phase": "phase_1",
+        "notes": "Fast nav to: today's checklist, supplement timing reference, current protocol steps, bloodwork panel reference."
+      },
+      {
+        "id": "9.4",
+        "name": "Weekly Summary Card",
+        "phase": "phase_2",
+        "notes": "Shows: average daily checklist score this week, key weekly items completed (liver, oysters, microneedling), supplement log entries."
+      },
+      {
+        "id": "9.5",
+        "name": "Biometric Trend Mini-Charts",
+        "phase": "phase_2",
+        "notes": "Compact trend charts: morning wood frequency, resting heart rate, energy score. 14-day rolling view."
+      },
+      {
+        "id": "9.6",
+        "name": "Bloodwork Status Summary",
+        "phase": "phase_2",
+        "notes": "Shows: last test date, number of markers flagged vs optimal, next test reminder."
+      },
+      {
+        "id": "9.7",
+        "name": "Macro Dashboard Card",
+        "phase": "phase_2",
+        "notes": "Today's macro targets vs completed. Day type. Gap remaining. Action suggestions. From Macro & Fuel System (Feature 7)."
+      }
+    ],
+    "priority": "medium",
+    "effectiveness": "high",
+    "utility": "high",
+    "implementation_speed": "medium",
+    "phase": "phase_1",
+    "notes": "MVP dashboard is simple: day type card + active protocols + quick links. Full dashboard with charts and tracking cards is Phase 2."
+  },
+  {
+    "id": "feature_10_roadmap_progress",
+    "name": "Personal Roadmap & Progress System",
+    "big_feature_number": "10",
+    "subfeatures": [
+      {
+        "id": "10.1",
+        "name": "Goal Selection Onboarding",
+        "phase": "phase_2",
+        "notes": "User selects primary goals from KB goal taxonomy: optimize_t / optimize_dht / hair_growth / build_muscle / fat_loss / sleep_quality / stress_reduction / gut_health. App suggests relevant protocols and checklist priorities."
+      },
+      {
+        "id": "10.2",
+        "name": "Protocol Roadmap Builder",
+        "phase": "phase_2",
+        "notes": "Based on goals, app builds a phased roadmap: Phase 1 (foundation — sleep, diet, stress), Phase 2 (targeted protocols), Phase 3 (advanced if applicable). KB priority ranking drives the order."
+      },
+      {
+        "id": "10.3",
+        "name": "Protocol Stage Tracking",
+        "phase": "phase_2",
+        "notes": "For each active protocol: show current week, completed steps, upcoming steps. Protocols 16–24 show current lever in the stepwise stack."
+      },
+      {
+        "id": "10.4",
+        "name": "Progress Milestones",
+        "phase": "phase_2",
+        "notes": "Milestone markers: 'Completed Week 1 of DHT Starter Stack', 'First bloodwork baseline drawn', '30 days of morning sunlight'. Simple achievement system."
+      },
+      {
+        "id": "10.5",
+        "name": "Adaptive Recommendations",
+        "phase": "phase_3",
+        "notes": "Based on logged biometrics and bloodwork results, app suggests protocol adjustments. Example: if logged prolactin flagged high → surface Protocol 11 bloodwork guidance and prolactin suppressor list from KB."
+      }
+    ],
+    "priority": "medium",
+    "effectiveness": "high",
+    "utility": "high",
+    "implementation_speed": "low",
+    "phase": "phase_2",
+    "notes": "Phase 2 feature requiring user account and persistent storage. Roadmap logic is derived directly from KB protocol rankings (Section 8B) and priority taxonomy."
+  },
+  {
+    "id": "feature_11_integrations_data_management",
+    "name": "Integrations & Data Management",
+    "big_feature_number": "11",
+    "subfeatures": [
+      {
+        "id": "11.1",
+        "name": "Export / Backup",
+        "phase": "phase_2",
+        "notes": "Export all user data (checklist history, biometric logs, bloodwork entries, supplement log, saved meals, notes) as JSON or CSV. App database files (foods, supplements, protocols, etc.) exportable as JSON bundle. PDF export of daily/weekly summaries if feasible. Simple JSON export can target Phase 2; rich PDF export is Phase 3."
+      },
+      {
+        "id": "11.2",
+        "name": "Import Data",
+        "phase": "phase_3",
+        "notes": "Import bloodwork results from CSV or lab export, saved meal libraries, checklist history, notes, or full app data backups. Enables device migration and data portability."
+      },
+      {
+        "id": "11.3",
+        "name": "WHOOP Integration",
+        "phase": "phase_3",
+        "notes": "Pull sleep data, recovery score, HRV, and strain from WHOOP API. Surface in Personal Tracking Hub and Dashboard. Future roadmap only — no current API connection."
+      },
+      {
+        "id": "11.4",
+        "name": "Garmin Integration",
+        "phase": "phase_3",
+        "notes": "Pull sleep data, stress score, Body Battery, resting heart rate from Garmin Connect API. Surface in Personal Tracking Hub and Dashboard. Future roadmap only."
+      },
+      {
+        "id": "11.5",
+        "name": "Future AI Search",
+        "phase": "phase_3",
+        "notes": "Internal AI/chat search grounded exclusively in the /data JSON files (foods, supplements, protocols, claims, blood_markers, cooking_guides, etc.) and the user's own notes and logs. No internet or external knowledge by default. Query examples: 'What should I eat post-workout?', 'Which supplements support thyroid?', 'What does my high TSH mean?'. Output links back to source records."
+      }
+    ],
+    "priority": "low",
+    "effectiveness": "medium",
+    "utility": "medium",
+    "implementation_speed": "low",
+    "phase": "phase_3",
+    "notes": "Phase 3 feature set. Export/backup is the earliest sub-feature (Phase 2 for basic JSON export). Wearable integrations and AI search are future roadmap items. No external dependencies required for Phase 2 export."
+  }
+]

@@ -1,0 +1,590 @@
+[
+  {
+    "id": "routine_daily",
+    "name": "Daily Routine (Every Day — Training or Rest)",
+    "type": "daily",
+    "sections": [
+      {
+        "title": "Morning",
+        "items": [
+          "Wake at fixed time (±30 min of target; consistent daily)",
+          "Get outside within 30–60 min of waking — 5–30 min sunlight on face/eyes (not through glass, no sunglasses)",
+          "Phone down until after sunlight exposure and morning movement",
+          "Take morning supplements with food: Magnesium (partial dose), B-Complex, D3+K2, Zinc, Selenium, Vitamin C (split dose), Creatine (partial), Boron (morning only — causes early waking if taken later)"
+        ]
+      },
+      {
+        "title": "Throughout Day",
+        "items": [
+          "Hit protein target: ≥1.6–2.2 g/kg BW across meals",
+          "Eat from animal base: red meat, eggs, liver 2–3×/week, shellfish/oysters every other day",
+          "Cook only in animal fats (tallow, butter, ghee) — zero seed/vegetable oils",
+          "Eat simple starches (white rice, potatoes) as primary carb source — no fructose, no liquid sugar, no soy",
+          "Walk 10–15 min after main meal (GLUT4 partial activation, lowers insulin faster, improves digestion)",
+          "No caffeine within 10–12 hours of bedtime",
+          "Drink filtered water where possible; avoid tap water for long-term daily use"
+        ]
+      },
+      {
+        "title": "Evening",
+        "items": [
+          "Last large meal 2–3 hours before bed",
+          "Blue light blockers on 1–2 hours before bed",
+          "Lower screen brightness; no social media scrolling in wind-down window",
+          "Reduce cognitive stimulation — no important tasks or problem-solving in the 1 hour before bed"
+        ]
+      },
+      {
+        "title": "Pre-Sleep",
+        "items": [
+          "Verify room temperature 15–20°C (60–68°F)",
+          "Blackout curtains closed, earplugs accessible",
+          "CBD oil if using: take 5 hours before bed (not immediately pre-sleep)",
+          "Sleep supplement stack ~30 min before sleep: Magnesium 300–500mg + L-Theanine 200–400mg + Apigenin 50mg ± Valerian 500mg ± Passion Flower 200–400mg ± Lemon Balm 200–400mg",
+          "Read for 15 min (paper book; no screen); insert earplugs; start ASMR/rain sound; attempt sleep"
+        ]
+      }
+    ],
+    "source_refs": ["Sleep & Recovery, p. 61–63", "TFF 2.0, Ch. 3–4", "Performance Nutrition, p. 35–78", "DHT Remastered, Ch. 3–4"],
+    "tags": ["sleep", "testosterone", "dht", "performance", "src_sleep_recovery", "src_tff_2_0", "src_performance_nutrition", "type_habit", "pri_critical"]
+  },
+  {
+    "id": "routine_morning",
+    "name": "Morning Routine",
+    "type": "daily",
+    "sections": [
+      {
+        "title": "On Waking",
+        "items": [
+          "Wake at consistent fixed time (±30 min; body clock requires regularity)",
+          "Do not look at phone until after sunlight exposure and morning movement",
+          "Get outside within 30–60 min of waking"
+        ]
+      },
+      {
+        "title": "Morning Sunlight (Protocol 2)",
+        "items": [
+          "Go outside — do NOT get sunlight through glass, windows, or windshield",
+          "Look at the sky (not directly at sun) for 30 seconds; 2–3 sets",
+          "Duration: clear day ~5 min; cloud cover ~10 min; dense overcast ~20–30 min",
+          "No sunglasses (corrective lenses OK); sunlight on face and upper body",
+          "If waking before sunrise: turn on all bright artificial lights indoors; go outside at sunrise"
+        ]
+      },
+      {
+        "title": "Morning Supplements (with first food)",
+        "items": [
+          "Magnesium: partial morning dose (reserve remaining for pre-bed)",
+          "B-Complex: with food",
+          "D3 + K2 MK-7: with food (fat-soluble — needs dietary fat for absorption)",
+          "Zinc: with food (15–30mg; monitor copper if supplementing long-term)",
+          "Selenium: 100–200mcg with food",
+          "Vitamin C: split dose morning (3–5g total/day split across meals)",
+          "Creatine: partial dose (remaining split across meals; total 10–15g/day)",
+          "Boron: 3–6mg with morning food ONLY — never evening (causes premature waking)"
+        ]
+      },
+      {
+        "title": "Morning Food",
+        "items": [
+          "Protein-first breakfast from animal sources (eggs, meat)",
+          "If training today: protein-only pre-workout meal (zero carbs, fat ≤5–10g, low fiber) — see Training Day Routine",
+          "If rest day: normal first meal from base diet (protein + fat + optional starch)"
+        ]
+      }
+    ],
+    "source_refs": ["Sleep & Recovery, p. 13", "TFF 2.0, p. 92–98", "DHT Remastered, Ch. 3", "Hair Loss, p. 24"],
+    "tags": ["sleep", "testosterone", "dht", "cortisol", "src_sleep_recovery", "src_tff_2_0", "src_dht_remastered", "type_habit", "pri_critical", "time_morning", "goal_optimize_t", "goal_sleep_quality"]
+  },
+  {
+    "id": "routine_training_day",
+    "name": "Training Day Routine",
+    "type": "training_day",
+    "sections": [
+      {
+        "title": "Morning (same as daily)",
+        "items": [
+          "Wake fixed time; morning sunlight 5–30 min; morning supplements with food"
+        ]
+      },
+      {
+        "title": "Pre-Workout (0–60 min before training)",
+        "items": [
+          "Pre-workout meal: 30–40g lean protein only (whey isolate, egg whites, or lean meat/fish) — zero carbs, fat ≤5–10g, low fiber",
+          "Prepare intra-workout drink: 30–50g dextrose or cyclic dextrin + 2g sodium (Celtic sea salt) in water",
+          "Optional performance supplements 30–60 min pre-training: LCLT 2–3g; Citrulline 6–8g; Beta-Alanine 3g; TMG 2g; Creatine partial dose"
+        ]
+      },
+      {
+        "title": "During Training",
+        "items": [
+          "Start sipping intra-workout drink AFTER first 1–2 real heavy sets (not before; not during warm-up)",
+          "Continue sipping throughout session",
+          "Sodium during training: target ~2g/session (Celtic sea salt in intra drink)"
+        ]
+      },
+      {
+        "title": "Immediately Post-Training (0–30 min window)",
+        "items": [
+          "Warm shower ~10 min + slow/deep breathing with extended exhales (parasympathetic shift before eating)",
+          "Eat within 30 min of last set: 100–200g hot starch (white rice or freshly peeled hot potatoes) + 30–40g lean protein — fat ≤5–7g, zero fructose",
+          "With post-workout meal: R-ALA 300mg + HMB 1g + Taurine 2g + joint stack (MSM 2g + Glucosamine 2g + Chondroitin 1g)",
+          "Walk 10–15 min after post-workout meal"
+        ]
+      },
+      {
+        "title": "2–3 Hours Post-Workout",
+        "items": [
+          "Second post-workout meal: animal protein + animal fat (beef, eggs, tallow/butter) — no carbs in this meal (GLUT4 tail has faded)"
+        ]
+      },
+      {
+        "title": "Evening / Pre-Sleep (same as daily)",
+        "items": [
+          "Last large meal 2–3 hours before bed; blue light blockers 1–2 hours before bed; sleep stack 30 min before sleep"
+        ]
+      }
+    ],
+    "source_refs": ["Performance Nutrition, p. 35–78", "DHT Remastered, Ch. 6"],
+    "tags": ["performance", "training", "testosterone", "src_performance_nutrition", "src_dht_remastered", "type_protocol", "pri_core", "time_pre_workout", "time_intra_workout", "time_post_workout", "goal_build_muscle", "goal_optimize_t"]
+  },
+  {
+    "id": "routine_rest_day",
+    "name": "Rest Day Routine",
+    "type": "rest_day",
+    "sections": [
+      {
+        "title": "Morning (same as daily)",
+        "items": [
+          "Wake fixed time; morning sunlight 5–30 min; morning supplements with food"
+        ]
+      },
+      {
+        "title": "Nutrition Adjustments",
+        "items": [
+          "Reduce carbs by ~25% vs training day (borrow those carbs for training days — same weekly total, different results)",
+          "Keep protein unchanged: ≥1.6–2.2 g/kg BW",
+          "Keep fat allocation unchanged; animal fats as base",
+          "No intra-workout carbs (no training session)",
+          "Eat simple starches with meals; keep fat and protein as training day"
+        ]
+      },
+      {
+        "title": "Movement",
+        "items": [
+          "Walk 10–15 min after main meals (maintain GLUT4 sensitivity, digestion, insulin management)",
+          "Light activity only — no heavy CNS demand on rest days; protect recovery"
+        ]
+      },
+      {
+        "title": "Recovery Focus",
+        "items": [
+          "Sleep is the primary rest-day tool — do not compromise on rest days",
+          "Use rest day for stress management: walk, sunlight, journal if needed"
+        ]
+      },
+      {
+        "title": "Evening / Pre-Sleep (same as daily)",
+        "items": [
+          "Last large meal 2–3 hours before bed; blue light blockers 1–2 hours before bed; sleep stack 30 min before sleep"
+        ]
+      }
+    ],
+    "source_refs": ["Performance Nutrition, p. 77–78", "TFF 2.0, Ch. 3"],
+    "tags": ["performance", "sleep", "cortisol", "src_performance_nutrition", "src_tff_2_0", "type_habit", "pri_core", "goal_recovery", "goal_fat_loss"]
+  },
+  {
+    "id": "routine_sleep",
+    "name": "Sleep / Pre-Bed Protocol",
+    "type": "sleep",
+    "sections": [
+      {
+        "title": "5 Hours Before Sleep",
+        "items": [
+          "CBD oil (if using): 7 drops 2% — take now, NOT at bedtime (stimulating effect reverses 3–4 hours after ingestion)"
+        ]
+      },
+      {
+        "title": "2 Hours Before Sleep",
+        "items": [
+          "Blue light blocking glasses on",
+          "Lower all screen brightness to lowest setting",
+          "No more important tasks, stressful thinking, or phone scrolling",
+          "No more caffeine (should have stopped 10–12h before bed)"
+        ]
+      },
+      {
+        "title": "1 Hour Before Sleep",
+        "items": [
+          "Easy activity only: reading, light conversation, low-stimulation",
+          "Begin cognitive wind-down — avoid problem-solving"
+        ]
+      },
+      {
+        "title": "30 Minutes Before Sleep",
+        "items": [
+          "Take sleep supplement stack: Magnesium Citrate 500mg + L-Theanine 200–400mg + Apigenin 50mg",
+          "Optional additions (one at a time): Valerian Root 500mg / Passion Flower 200–400mg / Lemon Balm 200–400mg",
+          "Note: start with only Magnesium + L-Theanine + Apigenin — add others one at a time if needed",
+          "Verify room temperature: 15–20°C (60–68°F)",
+          "Close blackout curtains; set out earplugs"
+        ]
+      },
+      {
+        "title": "15 Minutes Before Sleep",
+        "items": [
+          "Read paper book or e-reader on lowest brightness for 15 min"
+        ]
+      },
+      {
+        "title": "Bedtime",
+        "items": [
+          "Turn off all lights",
+          "Insert earplugs",
+          "Start ASMR/rain sound (YouTube or app)",
+          "Attempt sleep"
+        ]
+      },
+      {
+        "title": "On Waking Unsatisfied (NSDR)",
+        "items": [
+          "Do NOT look at phone or clock",
+          "Close eyes; let images play naturally; do not force sleep",
+          "Even without sleeping, the rest has recovery value (Non-Sleep Deep Rest)"
+        ]
+      }
+    ],
+    "source_refs": ["Sleep & Recovery, p. 61–63"],
+    "tags": ["sleep", "testosterone", "cortisol", "src_sleep_recovery", "type_protocol", "pri_critical", "time_pre_bed", "goal_sleep_quality", "goal_optimize_t", "goal_recovery"]
+  },
+  {
+    "id": "routine_weekly",
+    "name": "Weekly Routine",
+    "type": "weekly",
+    "sections": [
+      {
+        "title": "Weekly Food Anchors",
+        "items": [
+          "Liver / organ meats: 50–100g serving, 2–3 times this week (vitamins A, B12, folate, copper)",
+          "Oysters or canned shellfish: 1 can or 6 large, every other day if possible",
+          "Bone broth: 1–2 cups daily or several times per week",
+          "Eggs: 3–10/day as tolerated — include throughout week"
+        ]
+      },
+      {
+        "title": "Hair Protocols (if applicable)",
+        "items": [
+          "Microneedling: once every 7–14 days (derma stamp 0.5–1.0mm; apply oil immediately after while channels are open)",
+          "Hair oiling: 2–3 times this week (rosemary oil blend or tallow; minimum 2h leave-on, overnight preferred)",
+          "Egg hair washing: 1–2 times this week (2–4 eggs, cool water rinse, 10–15 min leave-on)",
+          "Bentonite clay scalp mask: 1–2 times this week (10–20 min contact time; follow with oil or egg conditioning)",
+          "Wooden comb: 2–3 times daily, 50–100 strokes, gentle pressure",
+          "Red light therapy (if using device): 3–4 times this week, 10–15 min per session (660nm + 850nm, 6–12 inches)"
+        ]
+      },
+      {
+        "title": "Stress and Recovery Check",
+        "items": [
+          "Stress journal: write when carrying cognitive or emotional load — review any recurring stressors",
+          "Optional mood tracking: score energy/mood 1–10 daily; identify low-point patterns to act on"
+        ]
+      },
+      {
+        "title": "Supplement Review",
+        "items": [
+          "Note any supplements added this week and observed effects on sleep, mood, libido, energy",
+          "Confirm no supplement is causing disruption (insomnia, GI issues, mood swings, acne, water retention)",
+          "Boron: confirm morning timing — if taken in the evening it can cause premature waking",
+          "If on DHT starter stack: track morning wood frequency, resting heart rate, waist measurement"
+        ]
+      },
+      {
+        "title": "Training Review",
+        "items": [
+          "Review training adherence: were all sessions completed?",
+          "Review recovery markers: bar speed, sleep quality, resting heart rate trend",
+          "Adjust carb cycling ratios if body composition is stalling"
+        ]
+      }
+    ],
+    "source_refs": ["TFF 2.0, Ch. 3–4", "DHT Remastered, Ch. 3–4", "Hair Loss, p. 24–34", "Performance Nutrition, p. 77–78"],
+    "tags": ["testosterone", "dht", "hair", "sleep", "cortisol", "src_tff_2_0", "src_dht_remastered", "src_hair_loss", "type_habit", "pri_core"]
+  },
+  {
+    "id": "routine_monthly",
+    "name": "Monthly / Blood Work Routine",
+    "type": "monthly",
+    "sections": [
+      {
+        "title": "Before Testing",
+        "items": [
+          "Do NOT test ALT/AST within 5–7 days of heavy lifting (false elevation from muscle damage)",
+          "Do NOT test hsCRP if currently ill or within 1–2 days of very hard training",
+          "Test fasting: 10–12h fast for glucose, insulin, and lipid panels",
+          "Test morning cortisol in the AM (before 9am ideally)",
+          "Book test for a normal week — not during illness, extreme training block, or unusual stress"
+        ]
+      },
+      {
+        "title": "Core Lab Panel (Phase 1 Baseline)",
+        "items": [
+          "Sex hormones: TSH, Free T3, Free T4, rT3, Total T, Free T, SHBG, DHT, LH, FSH, E2 (sensitive), Prolactin, IGF-1, AM Cortisol, DHEA-S",
+          "Metabolic: Fasting glucose, fasting insulin, HbA1c, C-peptide, TG, HDL, LDL, ApoB, TG:HDL ratio",
+          "Inflammation: hsCRP, ESR, ferritin + TSAT",
+          "Micronutrients: Vitamin D (25-OH), Zinc, Copper + Ceruloplasmin, Selenium, Magnesium (RBC), B12, Folate, Homocysteine",
+          "Liver/Kidney: ALT, AST, GGT, ALP, Bilirubin, Albumin, Creatinine, Cystatin C, eGFR, BUN"
+        ]
+      },
+      {
+        "title": "After Results",
+        "items": [
+          "Compare each marker to optimal ranges (not just lab reference ranges)",
+          "Identify which markers are off and which cluster of causes they suggest",
+          "Make one targeted change at a time; retest specific off-markers in 4–8 weeks",
+          "Do not chase individual numbers — read patterns across related markers",
+          "Note: trends over time matter more than any single reading"
+        ]
+      },
+      {
+        "title": "Monthly Protocol Review",
+        "items": [
+          "Review supplement stack: what is working, what to drop, what to add — one change at a time",
+          "Review sleep log: compare average quality scores, identify persistent issues",
+          "Review protocol adherence: which protocols consistently applied, which were not",
+          "Note physical changes: body composition, energy, libido, mood, hair density/shedding, skin"
+        ]
+      }
+    ],
+    "source_refs": ["Blood Work Guide, p. 113–131"],
+    "tags": ["blood_work", "testosterone", "thyroid", "inflammation", "src_blood_work_guide", "type_habit", "pri_core"]
+  },
+  {
+    "id": "routine_minimum_effective",
+    "name": "Minimum Effective Day",
+    "type": "daily",
+    "sections": [
+      {
+        "title": "Non-Negotiables (Every Day Regardless)",
+        "items": [
+          "Sleep 7.5–9h on a fixed schedule (±30 min) — single highest-leverage free intervention",
+          "Morning sunlight within 30–60 min of waking — 5–30 min, outside, no glass",
+          "Protein target: ≥1.6–2.2 g/kg BW across meals — animal sources preferred",
+          "Zero seed oils in cooking or food prep",
+          "No sugar / liquid fructose / soy products",
+          "No caffeine within 10–12h of bedtime",
+          "Room temperature 15–20°C at sleep"
+        ]
+      },
+      {
+        "title": "Minimum Supplement Set (If Only Doing a Few)",
+        "items": [
+          "Magnesium: split dose — partial morning, remainder pre-bed",
+          "D3 + K2: with food",
+          "Zinc: with food (15–30mg)",
+          "Apigenin 50mg + L-Theanine 200mg: 30 min before bed (minimum sleep stack)"
+        ]
+      },
+      {
+        "title": "Minimum Movement",
+        "items": [
+          "Walk 10–15 min after at least one main meal",
+          "Aim for 8,000+ steps/day where possible"
+        ]
+      }
+    ],
+    "source_refs": ["TFF 2.0, Ch. 3–4", "Sleep & Recovery, p. 61–63", "Performance Nutrition, p. 81"],
+    "tags": ["sleep", "testosterone", "cortisol", "src_tff_2_0", "src_sleep_recovery", "type_habit", "pri_critical", "goal_optimize_t", "goal_sleep_quality"]
+  },
+  {
+    "id": "routine_nutrition",
+    "name": "Nutrition Routine (Daily Food Structure)",
+    "type": "daily",
+    "sections": [
+      {
+        "title": "Base Diet Rules (Every Day)",
+        "items": [
+          "80% of intake from animal foods + simple starch",
+          "Protein: ~2 g/kg BW; sources: red meat, eggs, shellfish, clean dairy",
+          "Fat: 1.2–1.8 g/kg; sources: beef/lamb fat, egg yolks, butter, ghee, tallow — zero seed oils",
+          "Carbs: 2–4 g/kg; sources: potatoes, white rice, properly prepared oats",
+          "Weekly anchors: liver 50–100g 2–3×/week; oysters every other day; eggs 3–10/day"
+        ]
+      },
+      {
+        "title": "Training Day Food Timing",
+        "items": [
+          "Pre-workout: 30–40g lean protein only — no carbs, fat ≤5–10g (30–60 min before)",
+          "Intra-workout: 30–50g dextrose/cyclic dextrin + 2g sodium — start after first 1–2 heavy sets",
+          "Post-workout (0–30 min): 100–200g hot starch + 30–40g lean protein — fat ≤5–7g, no fructose",
+          "2–3h post-workout: animal protein + fat — no carbs (GLUT4 closed)"
+        ]
+      },
+      {
+        "title": "Rest Day Food Timing",
+        "items": [
+          "Reduce carbs ~25% vs training day",
+          "Keep protein and fat allocations unchanged",
+          "Eat protein + fat meals; minimal standalone starch meals"
+        ]
+      },
+      {
+        "title": "Foods to Eliminate Permanently",
+        "items": [
+          "All seed/vegetable oils (sunflower, canola, soybean, corn, safflower, peanut, rapeseed)",
+          "All soy products (soy milk, tofu, edamame, soy protein, soy lecithin from processed food)",
+          "Liquid sugar (sodas, juices, sports drinks with sugar, alcohol mixers)",
+          "Pastries, candy, sweets, refined processed carbohydrates",
+          "Random supermarket dairy (use A2/goat/trusted source only)",
+          "Fructose as a daily carb source (fruit, honey used freely, HFCS)"
+        ]
+      },
+      {
+        "title": "Meat and Food Prep Rules",
+        "items": [
+          "Meat: soak in water + baking soda (5g/bowl) for 1–3h before cooking",
+          "Meat: cook in oven in own fat; rare to medium-rare — never overcook",
+          "Oats: soak, discard water, ferment ~24h in raw A2 kefir/yogurt before eating",
+          "Produce (if consumed): soak 15–60 min in water + natural soap or baking soda/vinegar"
+        ]
+      }
+    ],
+    "source_refs": ["TFF 2.0, Ch. 3–4, p. 34–57", "Performance Nutrition, p. 35–78", "DHT Remastered, Ch. 6"],
+    "tags": ["testosterone", "dht", "performance", "thyroid", "gut", "src_tff_2_0", "src_performance_nutrition", "src_dht_remastered", "type_habit", "pri_critical", "goal_optimize_t", "goal_build_muscle"]
+  },
+  {
+    "id": "routine_hair",
+    "name": "Hair Health Routine",
+    "type": "weekly",
+    "sections": [
+      {
+        "title": "Daily Hair Habits",
+        "items": [
+          "Wooden comb: 2–3 times daily, 50–100 strokes, gentle pressure (distributes sebum, stimulates scalp circulation)",
+          "Morning sunlight: 20–40 min midday on maximum skin for vitamin D production (separate from morning circadian light)",
+          "Silk/satin pillowcase: reduces friction and breakage overnight",
+          "No conventional shampoo with SLS/SLES — switch to egg washing"
+        ]
+      },
+      {
+        "title": "Weekly Hair Treatments",
+        "items": [
+          "Egg hair washing: 1–2×/week — 2–4 raw pasture-raised eggs; apply to wet hair; massage 2–3 min; leave 10–15 min; rinse COOL water only",
+          "Hair oiling (carrier blend): 2–3×/week — rosemary (10–15%) + castor (40%) + coconut (30%) + olive/avocado (20%) + jojoba (10%); massage 5–10 min; leave minimum 2h; overnight preferred",
+          "Beef tallow scalp treatment: 1–2×/week — melt grass-fed tallow; apply to scalp; massage; leave 2–6h or overnight; wash with egg or clay",
+          "Bentonite clay scalp mask: 1–2×/week — 10–20 min contact; follow with oil or egg wash",
+          "Red light therapy: 3–4×/week — 10–15 min/session (660nm + 850nm at 6–12 inches distance)"
+        ]
+      },
+      {
+        "title": "Every 7–14 Days",
+        "items": [
+          "Microneedling: derma stamp or pen (NOT roller) 0.5–1.0mm depth; 3–5 passes per area; stamp until mild erythema",
+          "Apply oil or serum IMMEDIATELY post-needling while channels are open (absorption 10–100× higher)",
+          "Do not touch scalp for 6–12 hours post-needling to prevent infection"
+        ]
+      },
+      {
+        "title": "Internal Support (Daily)",
+        "items": [
+          "Vitamin D: optimize to 50–80 ng/mL (86% of men with pattern hair loss are deficient)",
+          "Collagen peptides: 10–20g/day with 1g Vitamin C",
+          "Selenium: 100–200mcg/day",
+          "Zinc: 15–30mg/day with food",
+          "Liver 2–3×/week: provides biotin, B12, B-vitamins, copper"
+        ]
+      },
+      {
+        "title": "Shower Filter",
+        "items": [
+          "Install multi-stage shower filter: KDF + activated carbon + vitamin C cartridge",
+          "Replace filter every 3–6 months",
+          "Chlorine and heavy metals in tap water stress the scalp and alter local androgen sensitivity"
+        ]
+      }
+    ],
+    "source_refs": ["Hair Loss, p. 24–34"],
+    "tags": ["hair", "testosterone", "dht", "src_hair_loss", "type_protocol", "pri_core", "goal_hair_growth"]
+  },
+  {
+    "id": "routine_supplement_timing",
+    "name": "Supplement Timing Reference",
+    "type": "daily",
+    "sections": [
+      {
+        "title": "Morning (with first food)",
+        "items": [
+          "Boron: 3–6mg — MORNING ONLY (causes premature waking if taken in evening)",
+          "D3 + K2 MK-7: with food (fat-soluble; needs dietary fat)",
+          "B-Complex: with food",
+          "Zinc: 15–30mg with food",
+          "Selenium: 100–200mcg with food",
+          "Vitamin C: partial dose (split across 2–3 meals)",
+          "Magnesium: partial morning dose (remainder pre-bed)",
+          "Creatine: partial dose (10–15g total/day split across meals)"
+        ]
+      },
+      {
+        "title": "Pre-Workout (30–60 min before training)",
+        "items": [
+          "LCLT (L-Carnitine L-Tartrate): 2–3g",
+          "Citrulline: 6–8g",
+          "Beta-Alanine: 3g",
+          "TMG (Betaine): 2g",
+          "HMB-FA (if using fast-absorb form): 1g",
+          "Creatine: partial dose"
+        ]
+      },
+      {
+        "title": "Intra-Workout",
+        "items": [
+          "Dextrose or cyclic dextrin: 30–50g in water",
+          "Sodium (Celtic sea salt): ~2g",
+          "Optional: Potassium 500mg; Glycerin 10ml for hyperhydration"
+        ]
+      },
+      {
+        "title": "Post-Workout (with first post-training meal)",
+        "items": [
+          "R-ALA: 300mg (pure R-form only)",
+          "HMB: 1g (Ca-HMB or HMB-FA/BetaTOR)",
+          "Taurine: 2g",
+          "Joint stack: MSM 2g + Glucosamine 2g + Chondroitin 1g",
+          "Creatine: partial dose (glucose aids creatine uptake post-workout)"
+        ]
+      },
+      {
+        "title": "With Meals (general)",
+        "items": [
+          "Kestose (if using): 2–5g with meals — ramp up slowly (1g → 2g → 3g → 5g per meal over 2+ weeks)",
+          "L. reuteri 6475/17938 (if using): 1–2 caps with food",
+          "Sodium butyrate (if using): 500–1,000mg with meals",
+          "Digestive enzymes (if needed): with heavy meat or fat meals only"
+        ]
+      },
+      {
+        "title": "Pre-Bed (30 min before sleep)",
+        "items": [
+          "Magnesium: 300–500mg (Citrate, Glycinate, or Bisglycinate)",
+          "L-Theanine: 200–400mg",
+          "Apigenin: 50mg",
+          "Optional: Valerian Root 500mg / Passion Flower 200–400mg / Lemon Balm 200–400mg",
+          "Glycine (if using): 3–5g",
+          "CBD oil: 5 HOURS before bed (not 30 min — stimulating effect delays 3–4h before calming)"
+        ]
+      },
+      {
+        "title": "Timing Cautions",
+        "items": [
+          "Boron: morning only — causes early waking if taken in evening",
+          "Vitamin C: do NOT take at night — author experienced disrupted sleep",
+          "Forskolin: do NOT take at night — sleep disruption",
+          "Ashwagandha: only short-term stress cycles — not long-term; author experienced emotional blunting",
+          "Melatonin: not recommended by author for regular use (added only 3.9 min average sleep time in meta-analysis)",
+          "Caffeine: cut off 10–12h before sleep"
+        ]
+      }
+    ],
+    "source_refs": ["Sleep & Recovery, p. 61–63", "TFF 2.0, Ch. 4", "DHT Remastered, Ch. 3–4", "Performance Nutrition, p. 35–78"],
+    "tags": ["sleep", "testosterone", "dht", "performance", "src_sleep_recovery", "src_tff_2_0", "src_dht_remastered", "src_performance_nutrition", "type_supplement", "pri_core"]
+  }
+]

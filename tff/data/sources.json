@@ -1,0 +1,38 @@
+[
+  {
+    "id": "sleep_recovery",
+    "ebook_title": "Sleep & Recovery for Real Hormonal Output",
+    "shorthand": "Sleep & Recovery",
+    "notes": "Disclaimer in ebook: 'This is not medical advice. I am just sharing my experience with how I fixed and increased my sleep so I could recover better from intense training and perform at my best cognitive level.'"
+  },
+  {
+    "id": "tff_2_0",
+    "ebook_title": "Testosterone For Free — TFF 2.0",
+    "shorthand": "TFF 2.0",
+    "notes": "Disclaimer in ebook: 'This entire book is my opinion + experience. I'm not your doctor, I'm not your dad. Use this as a blueprint to test things, not as a religion.'"
+  },
+  {
+    "id": "dht_remastered",
+    "ebook_title": "DHT Remastered",
+    "shorthand": "DHT Remastered",
+    "notes": "Primary source on 5-alpha-reductase, DHT optimization, 21 suppressors, 28 enhancement levers, and advanced DHT stacks (Protocols 16–24)."
+  },
+  {
+    "id": "hair_loss",
+    "ebook_title": "The Metabolic & Hormonal Truth About Hair Loss",
+    "shorthand": "Hair Loss",
+    "notes": "Argues DHT is not the primary cause of hair loss. Metabolic context hypothesis — follicle energy insufficiency is the root cause."
+  },
+  {
+    "id": "blood_work_guide",
+    "ebook_title": "Ultimate Blood Work Guide",
+    "shorthand": "Blood Work Guide",
+    "notes": "Author notes having more extensive documents on improving individual markers available separately. Covers comprehensive panel interpretation, optimal ranges, patterns."
+  },
+  {
+    "id": "performance_nutrition",
+    "ebook_title": "Performance Nutrition",
+    "shorthand": "Performance Nutrition",
+    "notes": "Primary source on pre/intra/post-workout nutrition, fuel partitioning, GLUT4, glycogen, and performance supplements (R-ALA, HMB, Taurine, L-Carnitine)."
+  }
+]

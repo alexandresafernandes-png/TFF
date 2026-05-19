@@ -1,0 +1,2014 @@
+[
+  {
+    "id": "tsh",
+    "name": "TSH (Thyroid Stimulating Hormone)",
+    "panel": "thyroid",
+    "units": "mIU/L",
+    "optimal_range": "0.5–1.5 (most feel best 0.5–2.0)",
+    "standard_range": "0.5–4.5",
+    "high_means": "Pituitary pushing hard; likely underproducing thyroid gland (hypothyroid). When TSH >2 + total cholesterol >200 — assume thyroid output or conversion issue.",
+    "low_means": "Possible hyperthyroid, or from exogenous T3/T4. TSH can be artificially normal from glucocorticoids, dopamine agonists, high-dose iodine, or exogenous thyroid hormone.",
+    "why_it_matters": "TSH is a control signal — NOT a king marker. 'TSH is not king.' Never read TSH alone — always run with Free T3, Free T4, rT3. Full thyroid panel required. Standard TSH testing misses majority of functional hypothyroidism.",
+    "related_markers": [
+      "free_t3",
+      "free_t4",
+      "rt3",
+      "tpo_antibodies",
+      "tgab",
+      "total_cholesterol",
+      "shbg"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 1–6",
+      "Hair Loss, p. 19",
+      "DHT Remastered, Ch. 2, suppressor 2"
+    ],
+    "tags": [
+      "thyroid",
+      "testosterone",
+      "dht",
+      "hair",
+      "src_blood_work_guide",
+      "src_hair_loss",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "free_t3",
+    "name": "Free T3 (Free Triiodothyronine)",
+    "panel": "thyroid",
+    "units": "pmol/L",
+    "optimal_range": "Upper half of reference range; >4 pmol/L; 4–6.2 pmol/L",
+    "standard_range": "Varies by lab; ~3.1–6.8 pmol/L typical",
+    "high_means": "Hyperthyroid state or over-replacement. Hyperthyroid men have DHT 8–10x above euthyroid averages.",
+    "low_means": "Conversion problem or hypothyroid. Low T3 = low DHT factory output regardless of testosterone levels. Drives: high total cholesterol, high LDL, high TG, weird SHBG, low free T, low DHT, higher E2:T ratio, elevated ALT/AST, elevated hsCRP.",
+    "why_it_matters": "The active thyroid hormone. 'T3 is the throttle for the SRD5A gene.' Drives steroidogenesis, mitochondrial biogenesis, keratin synthesis, anagen phase, fat metabolism, heart/liver/kidney/brain function. ~80% made from T4 conversion in liver/tissues. Most impactful thyroid marker for androgen optimization.",
+    "related_markers": [
+      "tsh",
+      "free_t4",
+      "rt3",
+      "total_cholesterol",
+      "shbg",
+      "dht",
+      "igf1",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 4–8",
+      "DHT Remastered, Ch. 2, suppressor 2",
+      "Hair Loss, p. 2",
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "thyroid",
+      "testosterone",
+      "dht",
+      "hair",
+      "src_blood_work_guide",
+      "src_dht_remastered",
+      "src_hair_loss",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "free_t4",
+    "name": "Free T4 (Free Thyroxine)",
+    "panel": "thyroid",
+    "units": "pmol/L",
+    "optimal_range": "Upper half of reference range",
+    "standard_range": "Varies by lab; ~12–22 pmol/L typical",
+    "high_means": "If TSH low + T4 high = hyperthyroid. If TSH high + T4 high with T3 low = conversion problem (DIO1/DIO2 impaired).",
+    "low_means": "If TSH high + T4 low = underproducing gland. Fix: iodine, selenium, zinc, iron, copper, calories/protein.",
+    "why_it_matters": "T4 is mostly a pro-hormone; ~80% converted to T3 in liver/tissues. Ideal: upper half of reference range. Patterns: TSH high + T4 low = gland problem; TSH high + T4 normal/high + T3 low = conversion problem.",
+    "related_markers": [
+      "tsh",
+      "free_t3",
+      "rt3",
+      "tpo_antibodies"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 6–10"
+    ],
+    "tags": [
+      "thyroid",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "rt3",
+    "name": "Reverse T3 (rT3)",
+    "panel": "thyroid",
+    "units": "pg/mL or pmol/L",
+    "optimal_range": "Low; T3:rT3 ratio >10 is functional target",
+    "standard_range": "Varies by lab",
+    "high_means": "Body deliberately braking metabolism. Causes: chronic stress, calorie deficit, low-carb diet, illness, high T4 doses with poor conversion. rT3 competes with T3 at receptors — tissue-level hypothyroid even with normal TSH/T3. DIO3 (inflammatory/stress deiodinase) produces rT3 from T4.",
+    "low_means": "Favorable — low rT3 means less competition with active T3 at receptors.",
+    "why_it_matters": "'You don't treat a ratio — you use rT3 to explain why a guy with normal T3 still feels hypothyroid.' Elevated rT3 explains chronic fatigue, low DHT, hair loss, poor training recovery despite apparently normal labs. T3:rT3 ratio useful only when clearly collapsed (e.g. <5:1).",
+    "related_markers": [
+      "free_t3",
+      "free_t4",
+      "cortisol_am",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 10–13",
+      "Hair Loss, p. 19",
+      "DHT Remastered, Ch. 2, suppressor 2"
+    ],
+    "tags": [
+      "thyroid",
+      "cortisol",
+      "hair",
+      "src_blood_work_guide",
+      "src_hair_loss",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "tpo_antibodies",
+    "name": "TPO Antibodies (Thyroid Peroxidase Antibodies)",
+    "panel": "thyroid",
+    "units": "IU/mL",
+    "optimal_range": "<35 IU/mL (negative/low)",
+    "standard_range": "<35–60 IU/mL (negative); varies by lab",
+    "high_means": "Hashimoto-type autoimmune thyroid attack. Fix: gut/endotoxin, micronutrients (selenium, zinc, iron, magnesium, D), remove immune triggers (chronic infections, seed oils, heavy alcohol).",
+    "low_means": "No autoimmune attack present — favorable.",
+    "why_it_matters": "Autoimmune thyroid destruction is the most common cause of hypothyroidism. Must always run with TgAb for complete autoimmune picture. Positive TPO with positive TgAb = strong Hashimoto indicator.",
+    "related_markers": [
+      "tgab",
+      "tsh",
+      "free_t3",
+      "free_t4"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 13–16"
+    ],
+    "tags": [
+      "thyroid",
+      "inflammation",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "tgab",
+    "name": "Thyroglobulin Antibodies (TgAb)",
+    "panel": "thyroid",
+    "units": "IU/mL",
+    "optimal_range": "Negative / <35 IU/mL",
+    "standard_range": "Varies by lab",
+    "high_means": "Hashimoto-type autoimmunity. Run alongside TPO antibodies for complete picture.",
+    "low_means": "No autoimmune thyroid attack — favorable.",
+    "why_it_matters": "Paired with TPO antibodies to confirm autoimmune thyroid disease. Either or both can be elevated in Hashimoto's.",
+    "related_markers": [
+      "tpo_antibodies",
+      "tsh",
+      "free_t3"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 13–16"
+    ],
+    "tags": [
+      "thyroid",
+      "inflammation",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "lh",
+    "name": "LH (Luteinizing Hormone)",
+    "panel": "sex_hormones",
+    "units": "IU/L",
+    "optimal_range": "2.5–7 IU/L with testosterone in range",
+    "standard_range": "1.7–8.6 IU/L (adult male)",
+    "high_means": "LH high (7-8+) + T low/mediocre = Leydig cell insensitivity or primary hypogonadism (testicular hardware problem). Check FSH, inhibin B. Consider HCG/enclomiphene.",
+    "low_means": "LH low + T low = central/functional shutdown (hypothalamic or pituitary). Check TSH/FT3, prolactin, cortisol, iron, hsCRP.",
+    "why_it_matters": "'How hard the brain is pushing the balls.' Always read LH with total testosterone. LH pattern determines whether to fix upstream (brain/pituitary) or testicular level. Never read LH alone.",
+    "related_markers": [
+      "total_testosterone",
+      "fsh",
+      "prolactin",
+      "tsh",
+      "free_t3",
+      "cortisol_am"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 22–25",
+      "TFF 2.0, Ch. 1"
+    ],
+    "tags": [
+      "testosterone",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "fsh",
+    "name": "FSH (Follicle Stimulating Hormone)",
+    "panel": "sex_hormones",
+    "units": "IU/L",
+    "optimal_range": "1.5–7 IU/L",
+    "standard_range": "1.5–12.4 IU/L (adult male)",
+    "high_means": "High FSH + low sperm = Sertoli cell/testicular damage. Concerning for fertility.",
+    "low_means": "Low FSH with low LH = central suppression (thyroid, prolactin, stress, medications, obesity, androgens).",
+    "why_it_matters": "Most clinically relevant at extremes or for fertility evaluation. Always read with LH and testosterone.",
+    "related_markers": [
+      "lh",
+      "total_testosterone",
+      "prolactin"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 25–26"
+    ],
+    "tags": [
+      "testosterone",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "total_testosterone",
+    "name": "Total Testosterone",
+    "panel": "sex_hormones",
+    "units": "ng/dL",
+    "optimal_range": "650–900 ng/dL; most men feel best in this range with good free T and DHT",
+    "standard_range": "300–1,000 ng/dL (wide reference range; 'normal' but symptomatic at lower end)",
+    "high_means": "Above 1,000 ng/dL endogenously: check SHBG, free T, DHT. Very high without symptoms generally favorable. Supraphysiological typically from TRT.",
+    "low_means": "Below 500 ng/dL with symptoms = problem. Men at 300–400 ng/dL 'feel like trash.' Minimum target >600 ng/dL; functional goal 650–900 ng/dL with good free T.",
+    "why_it_matters": "Total testosterone alone is insufficient — must read with free T, SHBG, DHT, and E2 for complete picture. 'High total T with trash free T and trash DHT = not impressive.' Synthesized from cholesterol via StAR/CYP11A1/CYP17A1 pathway.",
+    "related_markers": [
+      "free_testosterone",
+      "shbg",
+      "dht",
+      "estradiol",
+      "lh",
+      "prolactin"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 27–32",
+      "TFF 2.0, p. 18",
+      "DHT Remastered, Ch. 5"
+    ],
+    "tags": [
+      "testosterone",
+      "src_blood_work_guide",
+      "src_tff_2_0",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "free_testosterone",
+    "name": "Free Testosterone",
+    "panel": "sex_hormones",
+    "units": "pg/mL or nmol/L",
+    "optimal_range": ">=1% of total T; 2–3% is good performance target; >=20 pg/mL",
+    "standard_range": "9–30 pg/mL typical (varies significantly by lab/method)",
+    "high_means": "High free T with high total T generally favorable. High free T with low SHBG — check for insulin resistance or liver issues.",
+    "low_means": "Total T normal + free T low = binding problem (usually high SHBG). Total T low + free T low = production problem. Only 1–3% truly free; 30–50% albumin-bound (bioavailable).",
+    "why_it_matters": "Only free (and albumin-bound) testosterone is bioavailable for tissues. SHBG-bound T is essentially inactive. 'High total T is meaningless if SHBG is eating it all.'",
+    "related_markers": [
+      "total_testosterone",
+      "shbg",
+      "dht",
+      "estradiol"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 32–36",
+      "DHT Remastered, Ch. 5"
+    ],
+    "tags": [
+      "testosterone",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "shbg",
+    "name": "SHBG (Sex Hormone Binding Globulin)",
+    "panel": "sex_hormones",
+    "units": "nmol/L",
+    "optimal_range": "20–40 nmol/L",
+    "standard_range": "10–57 nmol/L (wide range)",
+    "high_means": "SHBG >45–50 = often high thyroid/estrogen/underfueling (low insulin/low carbs/excessive fasting). Binds DHT > T > androstenediol > estradiol. High SHBG eats free testosterone and DHT simultaneously.",
+    "low_means": "SHBG <15 = often fatty liver/insulin resistance/androgen abuse. Low SHBG means more free androgens but also signals metabolic dysfunction.",
+    "why_it_matters": "Liver-made protein. Tight binder of DHT and T — key variable between total and free androgen status. Levers to lower high SHBG: eat enough carbs/calories; reduce estradiol; fix liver/gut. Levers to raise low SHBG: fix liver/insulin resistance. Free T:SHBG ratio >=0.3 is a target.",
+    "related_markers": [
+      "free_testosterone",
+      "total_testosterone",
+      "dht",
+      "estradiol",
+      "tsh",
+      "free_t3",
+      "fasting_insulin"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 36–40",
+      "DHT Remastered, Ch. 2, suppressor 8"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "thyroid",
+      "insulin",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "dht",
+    "name": "DHT (Dihydrotestosterone)",
+    "panel": "sex_hormones",
+    "units": "ng/dL",
+    "optimal_range": "60–120 ng/dL; 80–120 ng/dL solid if hair/prostate OK",
+    "standard_range": "30–85 ng/dL (wide, often tested inconsistently)",
+    "high_means": "Chronically very high DHT can trigger AR saturation at hypothalamus -> suppresses LH -> lowers T. Check T:DHT ratio.",
+    "low_means": "DHT <40–50 ng/dL despite good T = 'under-androgenized at tissue level.' Low DHT causes: low T (no substrate), suppressed 5AR, high SHBG, inflammation, low T3, finasteride/dutasteride, low zinc/NADPH.",
+    "why_it_matters": "Most potent natural androgen. Binds AR 2–3x stronger than T. Up to 10x more transcriptional potency. Does NOT aromatize to estrogen. T:DHT ratio target ~8–15:1. 'Low DHT isn't just low sex drive. It's low you.' Test separately — total testosterone does not predict DHT.",
+    "related_markers": [
+      "total_testosterone",
+      "free_testosterone",
+      "shbg",
+      "free_t3",
+      "prolactin",
+      "igf1",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 44–46",
+      "DHT Remastered, Ch. 1",
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "dht",
+      "testosterone",
+      "hair",
+      "src_blood_work_guide",
+      "src_dht_remastered",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "estradiol",
+    "name": "Estradiol / E2 (Sensitive Assay)",
+    "panel": "sex_hormones",
+    "units": "pg/mL",
+    "optimal_range": "25–35 pg/mL; T:E2 ratio ~20–30:1",
+    "standard_range": "8–42 pg/mL (male)",
+    "high_means": "High E2: water retention, emotional instability, gynecomastia risk, high prolactin, erectile dysfunction, insomnia, hair issues. Main causes: excess aromatase from body fat, poor liver clearance, gut recirculation (beta-glucuronidase), seed oils, zinc/B-vitamin deficiency. Lower by: reducing body fat, fixing insulin/leptin, improving sleep, supporting liver/bile/gut.",
+    "low_means": "Too low E2 (<15): joint pain, flat libido, poor vascular health, cognitive decline, dry skin. Estrogen is necessary — the goal is balance, not elimination.",
+    "why_it_matters": "Necessary for joints, brain, libido, vascular health — but must be kept in tight range. Excess aromatase (fat mass) is the primary cause. Always run sensitive assay (not standard immunoassay) for males.",
+    "related_markers": [
+      "total_testosterone",
+      "shbg",
+      "prolactin",
+      "fasting_insulin",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 40–43",
+      "DHT Remastered, Ch. 2, suppressor 9"
+    ],
+    "tags": [
+      "testosterone",
+      "estrogen",
+      "hair",
+      "src_blood_work_guide",
+      "type_marker"
+    ],
+    "related_untracked_markers": [
+      "body_fat_percent"
+    ]
+  },
+  {
+    "id": "prolactin",
+    "name": "Prolactin",
+    "panel": "sex_hormones",
+    "units": "ng/mL",
+    "optimal_range": "3–10 ng/mL; best 5–8 ng/mL",
+    "standard_range": "2–18 ng/mL (male)",
+    "high_means": "Prolactin >10–15 = investigate; >25–30 repeated = proper workup for pituitary tumor. High prolactin: suppresses GnRH -> low LH/FSH; directly inhibits 5AR; lowers T/DHT (~58% DHT drop in study; reversed in 48–72h). Causes: hypothyroidism (TRH stimulates both), high E2, chronic stress/sleep deprivation, obesity/IR, nutritional deficiencies (B6, zinc, magnesium), medications (antipsychotics, antidepressants, opioids, GI drugs), pituitary tumor.",
+    "low_means": "Low prolactin is not a clinical concern in this context.",
+    "why_it_matters": "Direct, fast-acting DHT suppressor. Must control prolactin for DHT optimization. Test alongside testosterone, DHT, E2, TSH for complete picture.",
+    "related_markers": [
+      "dht",
+      "total_testosterone",
+      "estradiol",
+      "tsh",
+      "free_t3",
+      "cortisol_am",
+      "zinc_serum"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 47–50",
+      "DHT Remastered, Ch. 2, suppressor 4"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "src_blood_work_guide",
+      "src_dht_remastered",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "igf1",
+    "name": "IGF-1 (Insulin-Like Growth Factor 1)",
+    "panel": "sex_hormones",
+    "units": "ng/mL",
+    "optimal_range": "160–250 ng/mL for active men 20–40y; upper half of age-adjusted range",
+    "standard_range": "115–355 ng/mL (age-dependent)",
+    "high_means": "High IGF-1 generally favorable within physiological range. Supraphysiological from GH abuse has health risks.",
+    "low_means": "IGF-1 <120 = functionally low. Causes: poor sleep (GH pulses during deep sleep), liver dysfunction/inflammation, low insulin/protein/calories, hypothyroidism, low androgens. Low IGF-1 reduces 5AR type 1 activity in skin/muscle.",
+    "why_it_matters": "GH triggers liver to make IGF-1. Drives muscle/bone/cartilage/tendon, brain, skin/hair, metabolic health, DHT and erectile function. IGF-1 activates 5AR type 1 via PI3K/Akt in skin/muscle.",
+    "related_markers": [
+      "total_testosterone",
+      "dht",
+      "fasting_insulin",
+      "free_t3",
+      "alt"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 51–54",
+      "DHT Remastered, Ch. 2, suppressor 7"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "hair",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "cortisol_am",
+    "name": "Cortisol (AM Serum)",
+    "panel": "sex_hormones",
+    "units": "mcg/dL or nmol/L",
+    "optimal_range": "Mid-range of reference; ~14–18 mcg/dL AM. Healthy DHEA-S:cortisol ratio ~20:1.",
+    "standard_range": "6–23 mcg/dL (AM sample)",
+    "high_means": "High AM + high PM = overstressed. Normal AM + high PM = 'tired but wired.' High cortisol = muscle breakdown, lower T, higher rT3, more aromatase, raised prolactin, central fat gain, insulin resistance.",
+    "low_means": "Flat/low = burnout. Low cortisol + low DHEA-S = burnout pattern.",
+    "why_it_matters": "Single serum test = just a snapshot. Better: 4-point salivary or DUTCH. Cortisol and testosterone compete for cholesterol — 'cortisol goes up, testosterone goes down.' Chronic stress pattern = low testosterone, high aromatase, elevated rT3, suppressed LH.",
+    "related_markers": [
+      "dhea_s",
+      "total_testosterone",
+      "free_t3",
+      "rt3",
+      "prolactin",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 54–58",
+      "DHT Remastered, Ch. 2, suppressor 5",
+      "TFF 2.0, Ch. 3"
+    ],
+    "tags": [
+      "testosterone",
+      "cortisol",
+      "thyroid",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "dhea_s",
+    "name": "DHEA-S (Dehydroepiandrosterone Sulfate)",
+    "panel": "sex_hormones",
+    "units": "mcg/dL",
+    "optimal_range": "Upper half of age-adjusted range; men 20–40y: 300–450 mcg/dL; men 40–60y: 200–350 mcg/dL",
+    "standard_range": "Wide age-dependent ranges",
+    "high_means": "Not clearly stated as concerning in KB at physiological levels.",
+    "low_means": "Low DHEA-S: adrenal insufficiency, pregnenolone steal from chronic stress, overtraining, inflammation, nutrient gaps (zinc/vitamin C/cholesterol). High cortisol + low DHEA-S = chronic stress catabolic tilt. Low cortisol + low DHEA-S = burnout.",
+    "why_it_matters": "Adrenal precursor for androgens; neurosteroid; cortisol counterweight. DHEA-S + cortisol pattern interpretation is key. Declines ~2%/year after age 30 — parallels androgenetic alopecia progression. DHEA-S:cortisol ratio may be more important than absolute levels.",
+    "related_markers": [
+      "cortisol_am",
+      "total_testosterone",
+      "dht",
+      "estradiol"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 58–60",
+      "DHT Remastered, Ch. 2, suppressor 6",
+      "Hair Loss, p. 4"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "hair",
+      "cortisol",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "fasting_insulin",
+    "name": "Fasting Insulin",
+    "panel": "metabolic",
+    "units": "mcU/mL (µIU/mL)",
+    "optimal_range": "2–6 mcU/mL; definitely <10 with normal glucose",
+    "standard_range": "3–25 mcU/mL (wide; functional target much lower)",
+    "high_means": "Insulin resistance. >10 with normal glucose = likely IR. IR suppresses testosterone, raises SHBG, impairs thyroid conversion, upregulates scalp 5AR independently (local hair DHT problem). TG:HDL >2 often co-presents.",
+    "low_means": "Favorable at 2–6. Too low (<1) may indicate insufficient food intake.",
+    "why_it_matters": "'Insulin is not just a fat storage hormone — needed for muscle preservation, IGF-1, T3, LH/gonadal axis, electrolytes, NO, satiety.' Goal: low fasting, big healthy pulses when eating, fast clearance after. IR is a silent testosterone suppressor that appears in lipids before glucose levels change.",
+    "related_markers": [
+      "hba1c",
+      "tg_hdl_ratio",
+      "total_testosterone",
+      "shbg",
+      "free_t3",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 83–84",
+      "TFF 2.0, Ch. 3"
+    ],
+    "tags": [
+      "insulin",
+      "testosterone",
+      "thyroid",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "hba1c",
+    "name": "HbA1c (Glycated Haemoglobin)",
+    "panel": "metabolic",
+    "units": "%",
+    "optimal_range": "<5.3%",
+    "standard_range": "<5.7% normal; 5.7–6.4% prediabetes; >=6.5% diabetes",
+    "high_means": "Average glucose elevated over 90–120 days. Indicates glucose management failure; associated with insulin resistance, aromatase upregulation, low testosterone.",
+    "low_means": "Very low HbA1c with low average glucose — generally favorable.",
+    "why_it_matters": "Reflects 90–120 day average glucose. Use with fasting insulin for full insulin sensitivity picture. Pair with fructosamine for shorter-term trends.",
+    "related_markers": [
+      "fasting_insulin",
+      "fructosamine",
+      "tg_hdl_ratio"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 84–85"
+    ],
+    "tags": [
+      "insulin",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "tg_hdl_ratio",
+    "name": "TG:HDL Ratio (Triglycerides to HDL)",
+    "panel": "metabolic",
+    "units": "ratio (mg/dL units)",
+    "optimal_range": "<2 (mg/dL units); ~1 or less = elite insulin sensitivity",
+    "standard_range": "<2 low risk; 2–3 moderate; >3 high IR probability",
+    "high_means": ">3 = likely insulin resistance. TG:HDL is a reliable proxy for IR that often appears before glucose/HbA1c becomes abnormal.",
+    "low_means": "~1 or less = excellent insulin sensitivity.",
+    "why_it_matters": "Most reliable lipid-based proxy for insulin sensitivity and metabolic health. If TG:HDL >2 or fasting insulin >10, insulin resistance is likely the hidden bottleneck for testosterone.",
+    "related_markers": [
+      "fasting_insulin",
+      "hba1c",
+      "triglycerides",
+      "hdl"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 85–86"
+    ],
+    "tags": [
+      "insulin",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "triglycerides",
+    "name": "Triglycerides",
+    "panel": "lipids",
+    "units": "mg/dL",
+    "optimal_range": "<100 mg/dL; ideal <80 mg/dL",
+    "standard_range": "<150 mg/dL (normal); 150–199 borderline",
+    "high_means": "Elevated TG: excess carbohydrate (especially fructose), insulin resistance, alcohol, poor thyroid. High TG + low HDL = classic insulin resistance pattern.",
+    "low_means": "Very low TG generally favorable.",
+    "why_it_matters": "High fructose intake directly raises TG via de novo lipogenesis. Part of TG:HDL ratio for IR assessment.",
+    "related_markers": [
+      "hdl",
+      "tg_hdl_ratio",
+      "fasting_insulin",
+      "apob"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 72–75"
+    ],
+    "tags": [
+      "insulin",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "hdl",
+    "name": "HDL Cholesterol",
+    "panel": "lipids",
+    "units": "mg/dL",
+    "optimal_range": "50–70+ mg/dL",
+    "standard_range": ">40 mg/dL (men)",
+    "high_means": "High HDL generally favorable (but very high HDL may reflect dysfunctional particles — interpret with context).",
+    "low_means": "Low HDL + high TG = classic insulin resistance / metabolic syndrome. Associated with cardiovascular risk.",
+    "why_it_matters": "Part of TG:HDL ratio for insulin sensitivity. Essential component of lipid panel interpretation.",
+    "related_markers": [
+      "triglycerides",
+      "tg_hdl_ratio",
+      "apob",
+      "ldl"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 72–75"
+    ],
+    "tags": [
+      "insulin",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "ldl",
+    "name": "LDL Cholesterol",
+    "panel": "lipids",
+    "units": "mg/dL",
+    "optimal_range": "<100 mg/dL; interpret with ApoB, hsCRP, context",
+    "standard_range": "<130 mg/dL optimal; <100 mg/dL desirable",
+    "high_means": "Context-dependent. 'High LDL in a lean, insulin-sensitive guy with low ApoB, low hsCRP and a zero CAC scan is not the same risk as high LDL in a diabetic with chronic inflammation.' Fix thyroid first — if thyroid normalizes and LDL stays very high, then look at IR, diet, genetics.",
+    "low_means": "Very low LDL (<140 total cholesterol) in lifters often correlates with low hormones/T3.",
+    "why_it_matters": "Never interpret LDL alone — always pair with ApoB, hsCRP, insulin sensitivity markers, thyroid. LDL is often high from hypothyroidism and normalizes with thyroid correction.",
+    "related_markers": [
+      "apob",
+      "hs_crp",
+      "total_cholesterol",
+      "tsh",
+      "free_t3",
+      "fasting_insulin"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 72–76"
+    ],
+    "tags": [
+      "thyroid",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "apob",
+    "name": "ApoB (Apolipoprotein B)",
+    "panel": "lipids",
+    "units": "mg/dL",
+    "optimal_range": "<80 mg/dL",
+    "standard_range": "<100 mg/dL",
+    "high_means": "High atherogenic particle count. Better predictor of cardiovascular risk than LDL alone. Each LDL and VLDL particle carries one ApoB molecule — counts actual atherogenic particles.",
+    "low_means": "Favorable cardiovascular risk profile.",
+    "why_it_matters": "More meaningful than LDL for cardiovascular risk. Interpret with hsCRP and insulin sensitivity.",
+    "related_markers": [
+      "ldl",
+      "hs_crp",
+      "triglycerides",
+      "lp_a"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 75–76"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "lp_a",
+    "name": "Lp(a) (Lipoprotein a)",
+    "panel": "lipids",
+    "units": "mg/dL",
+    "optimal_range": "<30 mg/dL",
+    "standard_range": "<30 mg/dL optimal; >50 = elevated risk",
+    "high_means": "More atherogenic and pro-thrombotic than regular LDL due to attached apolipoprotein(a). Amplifies ApoB risk. 'Lifestyle barely moves it.' Almost entirely genetic. Use as risk multiplier — tighten all other cardiovascular markers.",
+    "low_means": "Favorable.",
+    "why_it_matters": "Genetic cardiovascular risk marker. Cannot be meaningfully changed by lifestyle. Context marker rather than intervention target.",
+    "related_markers": [
+      "apob",
+      "ldl",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 74–75"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "hs_crp",
+    "name": "hsCRP (High-Sensitivity C-Reactive Protein)",
+    "panel": "inflammation",
+    "units": "mg/L",
+    "optimal_range": "<0.5 mg/L optimal; <1.0 acceptable; <0.3 best for DHT optimization",
+    "standard_range": "<3.0 mg/L low risk",
+    "high_means": "1.0–3.0 = mild chronic inflammation. >3.0 = something driving it (gut, infection, visceral fat, seed oils). Chronic inflammation: blunts GnRH -> lower LH -> lower T; raises SHBG; epigenetically silences SRD5A2 (5AR gene). 'Men with higher hsCRP exhibit significantly lower total and free testosterone, independent of BMI.'",
+    "low_means": "<0.5 = very clean. Favorable for testosterone, DHT, hair, and metabolic function.",
+    "why_it_matters": "One of the most impactful hidden suppressors of testosterone and DHT. Inflammation is a direct epigenetic brake on the DHT-making enzyme. hsCRP target: <0.5 for optimization; >1.0 demands investigation of cause.",
+    "related_markers": [
+      "total_testosterone",
+      "dht",
+      "shbg",
+      "ferritin",
+      "hba1c"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 86–88",
+      "DHT Remastered, Ch. 2, suppressor 11"
+    ],
+    "tags": [
+      "inflammation",
+      "testosterone",
+      "dht",
+      "hair",
+      "src_blood_work_guide",
+      "src_dht_remastered",
+      "type_marker"
+    ],
+    "related_untracked_markers": [
+      "il6_tnf_proxy"
+    ]
+  },
+  {
+    "id": "ferritin",
+    "name": "Ferritin",
+    "panel": "micronutrients",
+    "units": "ng/mL",
+    "optimal_range": "50–100 ng/mL functional sweet spot",
+    "standard_range": "12–300 ng/mL (wide range; lower end differs by lab)",
+    "high_means": "Ferritin >150 ng/mL with elevated hsCRP: check TSAT — may indicate iron overload. High ferritin + high hsCRP correlates inversely with testosterone (Liu et al., 2013, PLOS ONE). Iron overload -> Leydig cell oxidative damage -> raised SHBG -> lower T. Ferritin is also an acute-phase reactant — rises with inflammation regardless of iron status.",
+    "low_means": "Ferritin <40–50 ng/mL correlates with hair loss even when hemoglobin is normal. Below 40 = iron deficiency likely impacting follicle metabolism.",
+    "why_it_matters": "Always interpret with hsCRP. High ferritin is not always 'good iron stores' — it can mean inflammation. Target 50–100 ng/mL for testosterone optimization and hair health.",
+    "related_markers": [
+      "tsat",
+      "serum_iron",
+      "transferrin",
+      "hs_crp",
+      "total_testosterone"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 95–98",
+      "Hair Loss, p. 12",
+      "DHT Remastered, Ch. 2, suppressor 14"
+    ],
+    "tags": [
+      "inflammation",
+      "testosterone",
+      "hair",
+      "src_blood_work_guide",
+      "src_hair_loss",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "tsat",
+    "name": "TSAT (Transferrin Saturation)",
+    "panel": "micronutrients",
+    "units": "%",
+    "optimal_range": "20–35%; functional 30–40%",
+    "standard_range": "20–50%",
+    "high_means": "45–50%+ = iron overload pattern. Always check alongside ferritin and hsCRP.",
+    "low_means": "<20% = likely iron deficiency.",
+    "why_it_matters": "Paired with ferritin and serum iron for complete iron status picture. Better at identifying true iron deficiency than ferritin alone (which can be falsely elevated by inflammation).",
+    "related_markers": [
+      "ferritin",
+      "serum_iron",
+      "transferrin",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 95–98"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "vitamin_d_25oh",
+    "name": "Vitamin D (25-OH)",
+    "panel": "micronutrients",
+    "units": "ng/mL",
+    "optimal_range": "40–60 ng/mL general; 50–80 ng/mL for athletic focus",
+    "standard_range": "20–50 ng/mL (insufficiency typically <30; deficiency <20)",
+    "high_means": "Above 80–100 ng/mL potentially pro-oxidant at very high doses. Above 150 ng/mL = toxicity concern.",
+    "low_means": "86% of men with pattern hair loss are vitamin D deficient. Vitamin D deficiency limits Leydig cell STAR protein activation. D3 1-year supplementation raised total T ~25% and free T ~20% in deficient men.",
+    "why_it_matters": "Always pair with PTH and calcium. VDR (vitamin D receptor) expressed in follicle stem cells. VDR knockout mice develop alopecia. 'You don't judge vitamin D in isolation.'",
+    "related_markers": [
+      "pth",
+      "calcium",
+      "magnesium_rbc",
+      "total_testosterone"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 99–101",
+      "Hair Loss, p. 24",
+      "DHT Remastered, Ch. 3, lever 7"
+    ],
+    "tags": [
+      "testosterone",
+      "hair",
+      "src_blood_work_guide",
+      "src_hair_loss",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "zinc_serum",
+    "name": "Zinc (Serum)",
+    "panel": "micronutrients",
+    "units": "mcg/dL",
+    "optimal_range": "100–120 mcg/dL",
+    "standard_range": "60–130 mcg/dL (lab-dependent)",
+    "high_means": "Above 130+ mcg/dL without reason can push copper too low. Monitor ceruloplasmin.",
+    "low_means": "Below 90 mcg/dL = suboptimal. Zinc deficiency -> lower T and DHT (restricts steroidogenic enzymes). 20-week zinc restriction cut testosterone in healthy young men.",
+    "why_it_matters": "Always read with copper and ceruloplasmin. Long-term high-dose zinc supplementation depletes copper. Zinc is a cofactor for steroidogenic enzymes and immune function.",
+    "related_markers": [
+      "copper_serum",
+      "ceruloplasmin",
+      "total_testosterone",
+      "dht"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 101–103"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "copper_serum",
+    "name": "Copper (Serum)",
+    "panel": "micronutrients",
+    "units": "mcg/dL",
+    "optimal_range": "90–120 mcg/dL; always read with ceruloplasmin",
+    "standard_range": "70–140 mcg/dL",
+    "high_means": "High copper + low zinc = dysregulated mineral status. Elevated copper without elevation in ceruloplasmin may indicate unbound ('free') copper toxicity.",
+    "low_means": "Copper deficiency: anemia, neurological symptoms, disrupted dopamine synthesis (dopamine drives LH).",
+    "why_it_matters": "Always read with ceruloplasmin. Long-term high-dose zinc supplementation depletes copper. Copper required for dopamine synthesis which drives LH (and thus testosterone).",
+    "related_markers": [
+      "zinc_serum",
+      "ceruloplasmin",
+      "total_testosterone"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 101–103"
+    ],
+    "tags": [
+      "testosterone",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "selenium_serum",
+    "name": "Selenium (Serum)",
+    "panel": "micronutrients",
+    "units": "ng/mL",
+    "optimal_range": "100–130 ng/mL",
+    "standard_range": "70–150 ng/mL",
+    "high_means": "Above 140 ng/mL = no additional benefit; increases pro-oxidant risk.",
+    "low_means": "Selenium deficiency -> impaired DIO1 deiodinase (T4->T3 conversion and rT3 clearance) -> functional hypothyroidism -> lower DHT. Also impairs Leydig cell protection.",
+    "why_it_matters": "Cofactor for all three deiodinase enzymes. Required for thyroid hormone activation. Leydig cell antioxidant. Target 100–130 ng/mL; above 140 gives no additional gain.",
+    "related_markers": [
+      "free_t3",
+      "free_t4",
+      "total_testosterone",
+      "tpo_antibodies"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 101–103"
+    ],
+    "tags": [
+      "thyroid",
+      "testosterone",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "magnesium_rbc",
+    "name": "Magnesium (RBC — Red Blood Cell)",
+    "panel": "micronutrients",
+    "units": "mg/dL",
+    "optimal_range": "RBC Mg: 5.0–6.5 mg/dL. Serum Mg: 0.85–1 mmol/L.",
+    "standard_range": "RBC Mg varies by lab; serum Mg 0.75–0.95 mmol/L",
+    "high_means": "Not clearly a concern at dietary levels.",
+    "low_means": "Serum magnesium drops late — it is tightly regulated. RBC magnesium is the better measure of true intracellular status. Low RBC Mg: impaired Mg-ATP, sleep disruption, cortisol elevation, steroidogenesis limitation.",
+    "why_it_matters": "RBC magnesium is more sensitive than serum. Serum drops only after significant depletion. Chronic stress depletes magnesium rapidly. Required for Mg-ATP (all enzyme reactions), nerve/muscle function, GLUT4, sleep.",
+    "related_markers": [
+      "cortisol_am",
+      "total_testosterone",
+      "fasting_insulin"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 101–103"
+    ],
+    "tags": [
+      "testosterone",
+      "sleep",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "vitamin_b12",
+    "name": "Vitamin B12",
+    "panel": "micronutrients",
+    "units": "pg/mL",
+    "optimal_range": "500–800 pg/mL sweet spot",
+    "standard_range": "200–900 pg/mL (labs vary widely)",
+    "high_means": "Not clearly stated in KB at dietary supplementation levels.",
+    "low_means": "200–300 pg/mL = 'normal' per labs but often correlates with fatigue and neuropathy. Below 400 pg/mL is functionally low for neurological function.",
+    "why_it_matters": "Required for methylation, neurological function, DNA synthesis. Deficiency presents as fatigue/neuropathy before labs look abnormal. If B12 unclear, pair with MMA (methylmalonic acid) for functional status.",
+    "related_markers": [
+      "folate",
+      "homocysteine",
+      "mma"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 103–105"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "homocysteine",
+    "name": "Homocysteine",
+    "panel": "micronutrients",
+    "units": "µmol/L",
+    "optimal_range": "6–8 µmol/L",
+    "standard_range": "<15 µmol/L",
+    "high_means": ">10 µmol/L = find cause: B2, B6, folate, B12, choline, or kidney function issue. Elevated homocysteine = methylation cycle disruption and cardiovascular risk.",
+    "low_means": "Very low homocysteine generally favorable.",
+    "why_it_matters": "Indicator of B-vitamin methylation cycle function. High homocysteine suggests B2/B6/B12/folate deficiency and increases cardiovascular risk.",
+    "related_markers": [
+      "vitamin_b12",
+      "folate",
+      "copper_serum"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 105"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "alt",
+    "name": "ALT (Alanine Aminotransferase)",
+    "panel": "liver",
+    "units": "U/L",
+    "optimal_range": "<30 U/L",
+    "standard_range": "7–56 U/L",
+    "high_means": "Liver-specific marker of damage or inflammation. Elevated after hard training (muscle contains some ALT) — do not test within 5–7 days of heavy lifting. High ALT can indicate fatty liver, alcohol use, medications, toxin load.",
+    "low_means": "Low ALT is favorable.",
+    "why_it_matters": "ALT is liver-specific (unlike AST which also comes from muscle). Always run with AST, GGT. Do NOT test within 5–7 days of heavy lifting.",
+    "related_markers": [
+      "ast",
+      "ggt",
+      "albumin",
+      "total_testosterone"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 108–111"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "ast",
+    "name": "AST (Aspartate Aminotransferase)",
+    "panel": "liver",
+    "units": "U/L",
+    "optimal_range": "<30 U/L",
+    "standard_range": "10–40 U/L",
+    "high_means": "AST also found in muscle — elevated after hard training is NORMAL. Liver-specific interpretation requires comparison with ALT (ALT:AST ratio).",
+    "low_means": "Low AST is favorable.",
+    "why_it_matters": "Run alongside ALT. AST:ALT ratio pattern helps identify source (muscle vs liver). Do not test within 5–7 days of heavy lifting.",
+    "related_markers": [
+      "alt",
+      "ggt"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 108–111"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ],
+    "related_untracked_markers": [
+      "creatine_kinase"
+    ]
+  },
+  {
+    "id": "ggt",
+    "name": "GGT (Gamma-Glutamyl Transferase)",
+    "panel": "liver",
+    "units": "U/L",
+    "optimal_range": "<30 U/L",
+    "standard_range": "8–61 U/L (male)",
+    "high_means": "Sensitive to alcohol and toxic load. High GGT + high ALP = biliary/cholestatic issue. High GGT with normal ALP = alcohol, medications, fatty liver.",
+    "low_means": "Low GGT is favorable.",
+    "why_it_matters": "Most sensitive liver enzyme for alcohol and toxin load. Useful for assessing total toxic burden on liver.",
+    "related_markers": [
+      "alt",
+      "ast",
+      "alp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 108–111"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "albumin",
+    "name": "Albumin",
+    "panel": "liver",
+    "units": "g/dL",
+    "optimal_range": "4.2–5.0 g/dL",
+    "standard_range": "3.5–5.0 g/dL",
+    "high_means": "Not clearly a concern in this context.",
+    "low_means": "Albumin <4.0 in a young person: ask why — liver disease, malnutrition, inflammation. Albumin also carries bioavailable (weakly bound) testosterone.",
+    "why_it_matters": "Liver functional capacity marker. Albumin-bound testosterone is bioavailable (unlike SHBG-bound). Low albumin = reduced bioavailable T even if total T looks normal.",
+    "related_markers": [
+      "alt",
+      "ast",
+      "total_testosterone",
+      "free_testosterone"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 111–112"
+    ],
+    "tags": [
+      "testosterone",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "creatinine_egfr",
+    "name": "Creatinine + eGFR",
+    "panel": "kidney",
+    "units": "mg/dL (creatinine); mL/min/1.73m2 (eGFR)",
+    "optimal_range": "eGFR >=90 mL/min/1.73m2 for young trained male",
+    "standard_range": "eGFR >60 normal; creatinine 0.74–1.35 mg/dL (male)",
+    "high_means": "High creatinine / low eGFR may indicate kidney impairment — but in trained men, muscle mass elevates creatinine artificially. Use cystatin C for lifters.",
+    "low_means": "Low creatinine may indicate low muscle mass.",
+    "why_it_matters": "Use cystatin C for lifters rather than creatinine-based eGFR — less influenced by muscle mass. Track trends over time.",
+    "related_markers": [
+      "cystatin_c",
+      "bun",
+      "albumin"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 113–116"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "cystatin_c",
+    "name": "Cystatin C",
+    "panel": "kidney",
+    "units": "mg/L",
+    "optimal_range": "0.6–0.9 mg/L",
+    "standard_range": "0.5–1.0 mg/L",
+    "high_means": "Kidney function declining. More reliable in trained men than creatinine-based eGFR.",
+    "low_means": "Favorable kidney function.",
+    "why_it_matters": "Better kidney marker for athletes/lifters because it is not influenced by muscle mass (unlike creatinine). Trend over time matters more than single value. Monitor when using high-dose creatine.",
+    "related_markers": [
+      "creatinine_egfr",
+      "albumin"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 113–116"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "rbc_count",
+    "name": "RBC (Red Blood Cell Count)",
+    "panel": "cbc",
+    "units": "x10^6/µL",
+    "optimal_range": "4.5–5.5 x10^6/µL (male)",
+    "standard_range": "4.7–6.1 x10^6/µL (male)",
+    "high_means": "Elevated RBC (polycythemia): can indicate dehydration, sleep apnea, or exogenous androgens. Increases blood viscosity.",
+    "low_means": "Low RBC = anemia. Possible iron, B12, folate deficiency.",
+    "why_it_matters": "Part of complete blood count. Read with hemoglobin, hematocrit, MCV for anemia pattern identification.",
+    "related_markers": [
+      "hemoglobin",
+      "hematocrit",
+      "mcv",
+      "ferritin",
+      "vitamin_b12"
+    ],
+    "source_refs": [
+      "Blood Work Guide, CBC Panel section (Patch v1)"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "hemoglobin",
+    "name": "Hemoglobin (Hgb)",
+    "panel": "cbc",
+    "units": "g/dL",
+    "optimal_range": "14–17.5 g/dL (male)",
+    "standard_range": "13.5–17.5 g/dL (male)",
+    "high_means": "High Hgb: possible dehydration, polycythemia vera, sleep apnea, exogenous androgens.",
+    "low_means": "Low Hgb = anemia. Impairs oxygen delivery to all tissues including testes and follicles.",
+    "why_it_matters": "Oxygen-carrying capacity. Anemia impairs training performance, recovery, and testosterone production.",
+    "related_markers": [
+      "rbc_count",
+      "hematocrit",
+      "ferritin",
+      "tsat",
+      "vitamin_b12",
+      "folate"
+    ],
+    "source_refs": [
+      "Blood Work Guide, CBC Panel section (Patch v1)"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "mcv",
+    "name": "MCV (Mean Corpuscular Volume)",
+    "panel": "cbc",
+    "units": "fL",
+    "optimal_range": "80–96 fL",
+    "standard_range": "80–100 fL",
+    "high_means": "Macrocytosis: B12 or folate deficiency (megaloblastic anemia), alcohol, hypothyroidism. High MCV = large RBCs that do not function optimally.",
+    "low_means": "Microcytosis: iron deficiency anemia. Small RBCs — iron-deficient state.",
+    "why_it_matters": "Classifies anemia type: low MCV = iron deficiency; high MCV = B12/folate/alcohol. Guides what deficiency to fix.",
+    "related_markers": [
+      "ferritin",
+      "tsat",
+      "vitamin_b12",
+      "folate"
+    ],
+    "source_refs": [
+      "Blood Work Guide, CBC Panel section (Patch v1)"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "rdw",
+    "name": "RDW (Red Blood Cell Distribution Width)",
+    "panel": "cbc",
+    "units": "%",
+    "optimal_range": "11.5–14.5%",
+    "standard_range": "11.5–14.5%",
+    "high_means": "High RDW = mixed populations of RBCs of different sizes. Indicates mixed deficiency (iron + B12/folate simultaneously), inflammation, or chronic disease.",
+    "low_means": "Normal RDW is favorable.",
+    "why_it_matters": "Flagging tool for nutritional complexity. High RDW with anemia suggests multiple simultaneous deficiencies.",
+    "related_markers": [
+      "mcv",
+      "ferritin",
+      "vitamin_b12",
+      "folate"
+    ],
+    "source_refs": [
+      "Blood Work Guide, CBC Panel section (Patch v1)"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "wbc_differential",
+    "name": "WBC with Differential (White Blood Cell Count)",
+    "panel": "cbc",
+    "units": "x10^3/µL",
+    "optimal_range": "4.5–9.0 x10^3/µL total WBC; NLR (Neutrophil:Lymphocyte Ratio) <2.5 optimal",
+    "standard_range": "4.5–11.0 x10^3/µL",
+    "high_means": "High WBC: active infection, inflammation, or physiological stress. High neutrophils + low lymphocytes = high NLR = chronic inflammatory/stress state.",
+    "low_means": "Low WBC: viral illness, nutritional deficiency, immune suppression.",
+    "why_it_matters": "NLR (Neutrophil:Lymphocyte Ratio) = neutrophils divided by lymphocytes. NLR >3.0 = elevated systemic stress/inflammation. NLR is a cheap, calculated inflammatory proxy using CBC data. High NLR correlates with worse outcomes across many conditions.",
+    "related_markers": [
+      "hs_crp",
+      "ferritin",
+      "cortisol_am"
+    ],
+    "source_refs": [
+      "Blood Work Guide, CBC Panel section (Patch v1)"
+    ],
+    "tags": [
+      "inflammation",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "platelets",
+    "name": "Platelets",
+    "panel": "cbc",
+    "units": "x10^3/µL",
+    "optimal_range": "150–350 x10^3/µL",
+    "standard_range": "150–400 x10^3/µL",
+    "high_means": "High platelets (>400): inflammation, iron deficiency, reactive thrombocytosis after illness/surgery.",
+    "low_means": "Low platelets: immune destruction, viral illness, liver disease, bone marrow issues.",
+    "why_it_matters": "Part of standard CBC interpretation. Extreme values warrant further investigation.",
+    "related_markers": [
+      "wbc_differential",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, CBC Panel section (Patch v1)"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "dutch_androsterone",
+    "name": "DUTCH — Androsterone (5α pathway metabolite)",
+    "panel": "dutch",
+    "units": "mcg/g creatinine (urinary)",
+    "optimal_range": "Androsterone >= etiocholanolone (5alpha:5beta ratio >= 1)",
+    "standard_range": "Not clearly stated in KB — compare within DUTCH report ranges",
+    "high_means": "High androsterone relative to etiocholanolone = strong 5-alpha pathway activity (favorable for DHT).",
+    "low_means": "Low androsterone with high etiocholanolone = 5-alpha pathway depressed. Pattern: DHT stubbornly low despite solid T, FT3, IGF-1.",
+    "why_it_matters": "DUTCH urinary androgen metabolites measure 5alpha vs 5beta pathway balance. Androsterone (5alpha-reduced) vs etiocholanolone (5beta-reduced). Low 5alpha:5beta ratio = reduced 5AR activity. Phase 2/3 testing — advanced. Not MVP panel.",
+    "related_markers": [
+      "dutch_etiocholanolone",
+      "dutch_3alpha_diol_g",
+      "dht",
+      "total_testosterone"
+    ],
+    "source_refs": [
+      "Blood Work Guide, DUTCH Add-on (Patch v1)",
+      "DHT Remastered, Ch. 5"
+    ],
+    "tags": [
+      "dht",
+      "src_blood_work_guide",
+      "src_dht_remastered",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "dutch_etiocholanolone",
+    "name": "DUTCH — Etiocholanolone (5beta pathway metabolite)",
+    "panel": "dutch",
+    "units": "mcg/g creatinine (urinary)",
+    "optimal_range": "Etiocholanolone <= androsterone (5alpha:5beta ratio >= 1)",
+    "standard_range": "Not clearly stated in KB — compare within DUTCH report ranges",
+    "high_means": "High etiocholanolone relative to androsterone = 5-beta pathway dominant = reduced 5AR (5-alpha) activity.",
+    "low_means": "Low etiocholanolone relative to androsterone = favorable 5-alpha dominance.",
+    "why_it_matters": "5beta pathway produces androgenic steroids with far less potency than 5alpha pathway. Dominance of 5beta pattern = under-androgenized tissues despite adequate serum testosterone.",
+    "related_markers": [
+      "dutch_androsterone",
+      "dutch_3alpha_diol_g",
+      "dht"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 5",
+      "Blood Work Guide, DUTCH Add-on (Patch v1)"
+    ],
+    "tags": [
+      "dht",
+      "src_dht_remastered",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "dutch_3alpha_diol_g",
+    "name": "DUTCH — 3alpha-diol-G (DHT Breakdown Metabolite)",
+    "panel": "dutch",
+    "units": "mcg/g creatinine (urinary)",
+    "optimal_range": "Not clearly stated in KB — lower relative value more favorable",
+    "standard_range": "Not clearly stated in KB",
+    "high_means": "High 3alpha-diol-G = fast DHT breakdown (via 3alpha-HSD enzyme). DHT is being made but rapidly inactivated.",
+    "low_means": "Lower 3alpha-diol-G = slower DHT breakdown = longer DHT tissue half-life.",
+    "why_it_matters": "Identifies whether DHT production OR DHT clearance is the limiting factor. If androsterone is reasonable but 3alpha-diol-G is high = DHT made but rapidly broken down. Apigenin and nicotine (non-smoke) inhibit 3alpha-HSD, slowing this breakdown.",
+    "related_markers": [
+      "dutch_androsterone",
+      "dht",
+      "total_testosterone"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 5",
+      "Blood Work Guide, DUTCH Add-on (Patch v1)"
+    ],
+    "tags": [
+      "dht",
+      "src_dht_remastered",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "pth",
+    "name": "PTH (Parathyroid Hormone)",
+    "panel": "bone_mineral",
+    "units": "pg/mL",
+    "optimal_range": "20–40 pg/mL when calcium and D are in range",
+    "standard_range": "15–65 pg/mL",
+    "high_means": "Chronically elevated PTH -> more bone resorption. Often indicates vitamin D insufficiency pushing PTH up to maintain calcium.",
+    "low_means": "Very low PTH with high calcium: possible hypoparathyroidism or vitamin D toxicity.",
+    "why_it_matters": "Always pair with vitamin D and calcium. PTH is the compensatory signal when vitamin D/calcium status is poor.",
+    "related_markers": [
+      "vitamin_d_25oh",
+      "calcium"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 99–101"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "uric_acid",
+    "name": "Uric Acid",
+    "panel": "metabolic",
+    "units": "mg/dL",
+    "optimal_range": "Mid-range of lab values",
+    "standard_range": "3.4–7.0 mg/dL (male)",
+    "high_means": "High uric acid: insulin resistance and/or high fructose intake. High fructose -> uric acid -> lowers nitric oxide -> worse blood flow/vascular health.",
+    "low_means": "Very low uric acid not clearly stated as a concern in KB.",
+    "why_it_matters": "Useful marker for fructose load and insulin resistance. Elevated in IR and metabolic syndrome.",
+    "related_markers": [
+      "fasting_insulin",
+      "hba1c",
+      "tg_hdl_ratio"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 86"
+    ],
+    "tags": [
+      "insulin",
+      "src_blood_work_guide",
+      "type_marker"
+    ]
+  },
+  {
+    "id": "hematocrit",
+    "name": "Hematocrit (Hct)",
+    "panel": "cbc",
+    "optimal_range": "Not clearly stated as a standalone optimal range in KB; interpreted alongside hemoglobin",
+    "standard_range": "Men: ~40–54% (lab reference)",
+    "units": "%",
+    "high_means": "Dehydration, smoking, high altitude, EPO/androgens, sleep apnea",
+    "low_means": "Anemia, iron/B12/folate deficiency, chronic disease, bleeding",
+    "why_it_matters": "Measures blood concentration / oxygen-carrying capacity. Read alongside hemoglobin — same causes drive both. Context: dehydration, smoking, sleep apnea.",
+    "related_markers": [
+      "hemoglobin",
+      "rbc_count",
+      "ferritin",
+      "vitamin_b12"
+    ],
+    "source_refs": [
+      "Blood Work Guide (CBC Panel Expansion, Patch v1)"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "mch",
+    "name": "MCH (Mean Corpuscular Hemoglobin)",
+    "panel": "cbc",
+    "optimal_range": "Not clearly stated as a standalone optimal range in KB",
+    "standard_range": "27–33 pg (lab reference)",
+    "units": "pg",
+    "high_means": "Not clearly stated in KB",
+    "low_means": "Low MCH with low Hb/Hct and low MCV → iron deficiency pattern",
+    "why_it_matters": "Read as part of the iron-deficiency pattern triad: low MCV + low MCH + low Hb/Hct. Not interpreted in isolation. KB note: 'MCHC not clearly extracted from ebook text — do not create detailed MCHC logic without further source verification.'",
+    "related_markers": [
+      "mcv",
+      "hemoglobin",
+      "hematocrit",
+      "ferritin"
+    ],
+    "source_refs": [
+      "Blood Work Guide (CBC Panel Expansion, Patch v1)"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "mchc",
+    "name": "MCHC (Mean Corpuscular Hemoglobin Concentration)",
+    "panel": "cbc",
+    "optimal_range": "Not clearly stated in KB",
+    "standard_range": "32–36 g/dL (lab reference)",
+    "units": "g/dL",
+    "high_means": "Not clearly stated in KB",
+    "low_means": "Not clearly stated in KB",
+    "why_it_matters": "KB patch note: 'MCHC not clearly extracted from ebook text — do not create detailed MCHC logic without further source verification.' Record created for linkability; interpret using standard clinical rules only.",
+    "related_markers": [
+      "mch",
+      "mcv",
+      "hemoglobin"
+    ],
+    "source_refs": [
+      "Blood Work Guide (CBC Panel Expansion, Patch v1)"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_optional"
+    ]
+  },
+  {
+    "id": "wbc_total",
+    "name": "WBC Total (White Blood Cell Count)",
+    "panel": "cbc",
+    "optimal_range": "~4–8 ×10⁹/L rough zone per KB; differential matters more than total alone",
+    "standard_range": "4.5–11.0 ×10⁹/L (lab reference)",
+    "units": "×10⁹/L",
+    "high_means": "Infection, acute inflammation, stress, hard training/trauma, smoking. Not clearly stated as a standalone interpretation rule in KB — use differential.",
+    "low_means": "Not clearly stated as a standalone interpretation rule in KB — use differential.",
+    "why_it_matters": "'Quick guide gives rough WBC zone ~4–8 ×10⁹/L. Differential matters more than total.' Always read WBC total alongside the neutrophil/lymphocyte breakdown and NLR.",
+    "related_markers": [
+      "neutrophils",
+      "lymphocytes",
+      "monocytes",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide (CBC Panel Expansion, Patch v1)"
+    ],
+    "tags": [
+      "inflammation",
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "neutrophils",
+    "name": "Neutrophils (% of WBC differential)",
+    "panel": "cbc",
+    "optimal_range": "~50–70% of WBC differential",
+    "standard_range": "40–75% (lab reference)",
+    "units": "% or ×10⁹/L",
+    "high_means": "Bacterial infection, acute inflammation, recent injury/surgery, cortisol/stress response, hard training/trauma, smoking",
+    "low_means": "Viral infections, some drugs, B12/folate deficiency, autoimmune neutropenia, marrow suppression issues",
+    "why_it_matters": "Fast 'kill now' immune cells. Used with lymphocytes to calculate NLR (neutrophils ÷ lymphocytes). NLR target: 1–3:1; >3–4 warrants investigation. 'Use with NLR, hsCRP, symptoms, recent training context.'",
+    "related_markers": [
+      "lymphocytes",
+      "wbc_total",
+      "hs_crp",
+      "vitamin_b12"
+    ],
+    "source_refs": [
+      "Blood Work Guide (CBC Panel Expansion, Patch v1)"
+    ],
+    "tags": [
+      "inflammation",
+      "cortisol",
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "lymphocytes",
+    "name": "Lymphocytes (% of WBC differential)",
+    "panel": "cbc",
+    "optimal_range": "~20–40% of WBC differential",
+    "standard_range": "20–45% (lab reference)",
+    "units": "% or ×10⁹/L",
+    "high_means": "Viral infections, chronic infections, autoimmune activation, lymphoproliferative disease",
+    "low_means": "Chronic stress/high cortisol, steroids/immunosuppressants, nutrient deficiencies, heavy alcohol",
+    "why_it_matters": "Adaptive immune cells (viral/memory response). Low lymphocytes with high neutrophils = elevated NLR = stress/inflammation signal. 'Useful stress/cortisol context when low.' NLR = neutrophils ÷ lymphocytes; target 1–3:1.",
+    "related_markers": [
+      "neutrophils",
+      "wbc_total",
+      "cortisol_am",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide (CBC Panel Expansion, Patch v1)"
+    ],
+    "tags": [
+      "inflammation",
+      "cortisol",
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "monocytes",
+    "name": "Monocytes (% of WBC differential)",
+    "panel": "cbc",
+    "optimal_range": "~2–10% of WBC differential",
+    "standard_range": "2–10% (lab reference)",
+    "units": "% or ×10⁹/L",
+    "high_means": "Chronic infections, autoimmune disease, recovery phase post-acute infection, blood disorders, chronic inflammation",
+    "low_means": "Not clearly stated in KB — usually not significant alone",
+    "why_it_matters": "'Clean-up crew / chronic stuff.' Treat as pattern marker, not standalone diagnosis. Elevations suggest chronic rather than acute immune activity.",
+    "related_markers": [
+      "wbc_total",
+      "hs_crp",
+      "neutrophils"
+    ],
+    "source_refs": [
+      "Blood Work Guide (CBC Panel Expansion, Patch v1)"
+    ],
+    "tags": [
+      "inflammation",
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_optional"
+    ]
+  },
+  {
+    "id": "eosinophils",
+    "name": "Eosinophils (% of WBC differential)",
+    "panel": "cbc",
+    "optimal_range": "Usually 0–5%, often 1–3% of WBC differential",
+    "standard_range": "0–6% (lab reference)",
+    "units": "% or ×10⁹/L",
+    "high_means": "Allergies, asthma/atopy, parasites, autoimmune disease, drug reactions, low cortisol/adrenal insufficiency",
+    "low_means": "Stress/cortisol or steroids; usually not clinically significant alone",
+    "why_it_matters": "'Useful for allergy/parasite/histamine context flags.' Not interpreted in isolation. Elevated eosinophils can signal occult parasitic infection or undiagnosed allergy contributing to systemic inflammation.",
+    "related_markers": [
+      "wbc_total",
+      "cortisol_am",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide (CBC Panel Expansion, Patch v1)"
+    ],
+    "tags": [
+      "inflammation",
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_optional"
+    ]
+  },
+  {
+    "id": "basophils",
+    "name": "Basophils (% of WBC differential)",
+    "panel": "cbc",
+    "optimal_range": "Often 0–1% of WBC differential",
+    "standard_range": "0–1% (lab reference)",
+    "units": "% or ×10⁹/L",
+    "high_means": "Chronic allergy/histamine issues, hypothyroidism, rare myeloproliferative disorders",
+    "low_means": "Common; can go down with steroids/stress/acute infections — usually not significant alone",
+    "why_it_matters": "'High value can point to histamine/allergy/thyroid context.' Rarely clinically significant alone; flag for allergy and thyroid workup when elevated.",
+    "related_markers": [
+      "wbc_total",
+      "tsh",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide (CBC Panel Expansion, Patch v1)"
+    ],
+    "tags": [
+      "thyroid",
+      "inflammation",
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_optional"
+    ]
+  },
+  {
+    "id": "total_cholesterol",
+    "name": "Total Cholesterol",
+    "panel": "lipids",
+    "optimal_range": "160–200 mg/dL for most lifters; very low (<140 mg/dL) often correlates with low hormones/T3",
+    "standard_range": "<200 mg/dL desirable (lab reference)",
+    "units": "mg/dL",
+    "high_means": "When TSH >2 + total cholesterol >200 → assume thyroid output or conversion issue. Elevated with hypothyroidism, liver dysfunction, or dietary excess.",
+    "low_means": "Very low (<140 mg/dL) often correlates with low hormones/T3 in lifters — cholesterol is the raw material for steroid hormone synthesis",
+    "why_it_matters": "Cholesterol is the precursor for all steroid hormones (testosterone, DHT, cortisol). 'Very low cholesterol = often low hormones/T3.' Fix thyroid first if LDL/total cholesterol is elevated — hypothyroidism raises cholesterol. Always read with ApoB, hsCRP, context.",
+    "related_markers": [
+      "ldl",
+      "hdl",
+      "apob",
+      "tsh",
+      "free_t3"
+    ],
+    "source_refs": [
+      "Blood Work Guide",
+      "TFF 2.0"
+    ],
+    "tags": [
+      "testosterone",
+      "thyroid",
+      "src_blood_work_guide",
+      "src_tff_2_0",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "non_hdl_cholesterol",
+    "name": "Non-HDL Cholesterol",
+    "panel": "lipids",
+    "optimal_range": "<130 mg/dL",
+    "standard_range": "<130 mg/dL (lab reference)",
+    "units": "mg/dL",
+    "high_means": "Elevated atherogenic particle burden — calculated as total cholesterol minus HDL; includes LDL + VLDL + IDL",
+    "low_means": "Not clearly stated as a concern at low levels in KB",
+    "why_it_matters": "'Non-HDL: aim <130 mg/dL.' Captures all atherogenic cholesterol fractions in one number. Useful when TG is elevated (VLDL inflates LDL calculation errors). Read alongside ApoB.",
+    "related_markers": [
+      "total_cholesterol",
+      "hdl",
+      "ldl",
+      "apob"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "fasting_glucose",
+    "name": "Fasting Glucose",
+    "panel": "metabolic",
+    "optimal_range": "3.9–5.0 mmol/L (70–90 mg/dL)",
+    "standard_range": "3.9–5.6 mmol/L / 70–100 mg/dL (lab reference)",
+    "units": "mmol/L or mg/dL",
+    "high_means": "Insulin resistance, prediabetes, or diabetes. Even mildly elevated fasting glucose (5.1–5.5 mmol/L) with elevated fasting insulin = meaningful metabolic dysfunction.",
+    "low_means": "Not clearly stated as a concern in KB at low normal levels",
+    "why_it_matters": "Pair with fasting insulin, HbA1c, TG:HDL, and C-peptide for full metabolic picture. Fasting glucose alone can be normal while insulin is elevated (compensated insulin resistance).",
+    "related_markers": [
+      "fasting_insulin",
+      "hba1c",
+      "c_peptide",
+      "tg_hdl_ratio"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "insulin",
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "c_peptide",
+    "name": "C-Peptide",
+    "panel": "metabolic",
+    "optimal_range": "~1.0–2.5 ng/mL fasting (pancreatic output marker)",
+    "standard_range": "0.5–2.0 ng/mL fasting (lab reference; varies)",
+    "units": "ng/mL",
+    "high_means": "Excess pancreatic insulin secretion — insulin resistance, hyperinsulinemia",
+    "low_means": "Pancreatic beta-cell insufficiency or exhaustion",
+    "why_it_matters": "'Low fasting insulin + decent C-peptide + low TG:HDL ratio = the insulin sensitivity you actually want.' C-peptide distinguishes whether insulin is being secreted by the pancreas (endogenous) vs given exogenously. Useful for confirming pancreatic function in context of metabolic workup.",
+    "related_markers": [
+      "fasting_insulin",
+      "hba1c",
+      "fasting_glucose",
+      "tg_hdl_ratio"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 84"
+    ],
+    "tags": [
+      "insulin",
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "fructosamine",
+    "name": "Fructosamine",
+    "panel": "metabolic",
+    "optimal_range": "<280 µmol/L",
+    "standard_range": "200–285 µmol/L (lab reference)",
+    "units": "µmol/L",
+    "high_means": "Elevated average blood glucose over the past 2–3 weeks — shorter window than HbA1c",
+    "low_means": "Not clearly stated as a concern in KB",
+    "why_it_matters": "Reflects average glucose over 2–3 weeks vs HbA1c's 90–120 day window. Useful for monitoring short-term dietary changes or interventions. Part of the stubborn fat loss / insulin resistance panel: 'Fasting insulin/C-peptide/HbA1c/Fructosamine' workup.",
+    "related_markers": [
+      "hba1c",
+      "fasting_insulin",
+      "c_peptide",
+      "fasting_glucose"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "insulin",
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "serum_iron",
+    "name": "Serum Iron",
+    "panel": "micronutrients",
+    "optimal_range": "Not clearly stated as a specific optimal range in KB; interpret with TSAT and ferritin",
+    "standard_range": "60–170 µg/dL for men (lab reference)",
+    "units": "µg/dL",
+    "high_means": "Iron overload when paired with high TSAT and high ferritin",
+    "low_means": "Iron deficiency; read with TSAT and ferritin for full picture",
+    "why_it_matters": "Listed in the KB Phase 1 iron panel: 'Ferritin, serum iron, transferrin, TSAT, sTfR.' Serum iron fluctuates daily — never interpret alone. Must be read with ferritin and TSAT.",
+    "related_markers": [
+      "ferritin",
+      "tsat",
+      "transferrin"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "transferrin",
+    "name": "Transferrin",
+    "panel": "micronutrients",
+    "optimal_range": "Not clearly stated as a specific optimal range in KB",
+    "standard_range": "200–360 mg/dL (lab reference)",
+    "units": "mg/dL",
+    "high_means": "Iron deficiency (liver upregulates transferrin to carry more iron)",
+    "low_means": "Iron overload, liver disease, malnutrition, or inflammatory state",
+    "why_it_matters": "Listed in the KB Phase 1 iron panel alongside ferritin, serum iron, TSAT, sTfR. Transferrin is the iron transport protein — high transferrin with low saturation = iron deficiency; low transferrin with high saturation = overload.",
+    "related_markers": [
+      "serum_iron",
+      "ferritin",
+      "tsat"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "folate",
+    "name": "Folate (Serum)",
+    "panel": "micronutrients",
+    "optimal_range": ">12 ng/mL",
+    "standard_range": ">3 ng/mL (lab reference; varies)",
+    "units": "ng/mL",
+    "high_means": "Not clearly stated as a concern in KB",
+    "low_means": "Methylation impairment; macrocytic anemia (with high MCV); elevated homocysteine",
+    "why_it_matters": "Essential for methylation alongside B12 and B6. Low folate → elevated homocysteine. Liver is the highest folate-containing organ — liver consumption supports folate status from food. Required in the KB micronutrient panel.",
+    "related_markers": [
+      "vitamin_b12",
+      "homocysteine",
+      "mcv"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "ceruloplasmin",
+    "name": "Ceruloplasmin",
+    "panel": "micronutrients",
+    "optimal_range": "~25–35 mg/dL with low hsCRP",
+    "standard_range": "20–60 mg/dL (lab reference)",
+    "units": "mg/dL",
+    "high_means": "Inflammation (ceruloplasmin is an acute-phase reactant — rises with hsCRP); or excess copper",
+    "low_means": "Copper deficiency; unreliable alone if hsCRP is elevated (may appear normal when copper is depleted if inflamed)",
+    "why_it_matters": "'Always read with ceruloplasmin.' Ceruloplasmin is copper's primary transport protein — a more reliable marker of copper status than serum copper alone. Must be interpreted alongside hsCRP since it is an acute-phase reactant. 'Aim ~25–35 mg/dL with low hsCRP.'",
+    "related_markers": [
+      "copper_serum",
+      "zinc_serum",
+      "hs_crp"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 101"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "calcium",
+    "name": "Calcium (Serum)",
+    "panel": "bone_mineral",
+    "optimal_range": "Not clearly stated as a specific optimal range in KB; always pair with PTH and vitamin D",
+    "standard_range": "8.5–10.5 mg/dL (lab reference)",
+    "units": "mg/dL",
+    "high_means": "Hypercalcemia — can indicate vitamin D toxicity, hyperparathyroidism, or malignancy",
+    "low_means": "Hypocalcemia — often secondary to vitamin D deficiency or hypoparathyroidism",
+    "why_it_matters": "'Always pair with PTH and calcium. You don't judge vitamin D in isolation.' Calcium is listed in the KB bone-mineral panel alongside vitamin D 25-OH, PTH, phosphorus, and albumin. Never interpret calcium without PTH and vitamin D context.",
+    "related_markers": [
+      "pth",
+      "vitamin_d_25oh",
+      "albumin"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "alp",
+    "name": "ALP (Alkaline Phosphatase)",
+    "panel": "liver",
+    "optimal_range": "40–120 U/L",
+    "standard_range": "44–147 U/L (lab reference)",
+    "units": "U/L",
+    "high_means": "ALP high + GGT high = biliary/cholestatic liver issue. ALP high + GGT normal = bone issue (not liver). Isolated ALP elevation: bone turnover, growing adolescent, pregnancy.",
+    "low_means": "Not clearly stated as a concern in KB",
+    "why_it_matters": "'High ALP + high GGT = biliary/cholestatic; high ALP + normal GGT = bone issue.' The GGT co-interpretation rule makes ALP highly specific for the biliary vs bone differentiation. Listed in the KB full liver/kidney panel.",
+    "related_markers": [
+      "ggt",
+      "alt",
+      "ast",
+      "bilirubin"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "bilirubin",
+    "name": "Bilirubin (Total)",
+    "panel": "liver",
+    "optimal_range": "<1.0 mg/dL",
+    "standard_range": "0.2–1.2 mg/dL (lab reference)",
+    "units": "mg/dL",
+    "high_means": "Liver dysfunction, hemolysis, or biliary obstruction. Isolated mild elevation = Gilbert's syndrome (benign). Elevated bilirubin + rising INR + low albumin = advanced liver disease territory.",
+    "low_means": "Not clearly stated as a concern in KB",
+    "why_it_matters": "'Bilirubin: <1.0 mg/dL; isolated mild elevation (Gilbert's syndrome = benign).' Read alongside INR, albumin, ALT/AST/GGT for liver synthetic function context. Gilbert's syndrome is the most common benign cause of mildly elevated bilirubin.",
+    "related_markers": [
+      "alt",
+      "ast",
+      "ggt",
+      "alp",
+      "albumin"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "inr",
+    "name": "INR (International Normalized Ratio)",
+    "panel": "liver",
+    "optimal_range": "~1.0",
+    "standard_range": "0.8–1.2 (lab reference for non-anticoagulated individuals)",
+    "units": "ratio",
+    "high_means": "Rising INR = liver losing functional (synthetic) capacity — impaired clotting factor production. INR trending up with prolonged course + high liver enzymes → more advanced liver disease territory.",
+    "low_means": "Not clearly stated as a concern in KB",
+    "why_it_matters": "'Rising INR = liver losing functional capacity.' Use with platelets, albumin, bilirubin, and liver enzymes to assess liver synthetic function as a whole. Not relevant to individuals on anticoagulation therapy in this context.",
+    "related_markers": [
+      "albumin",
+      "bilirubin",
+      "alt",
+      "platelets"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "bun",
+    "name": "BUN (Blood Urea Nitrogen)",
+    "panel": "kidney",
+    "optimal_range": "Not clearly stated as a specific optimal range in KB",
+    "standard_range": "7–25 mg/dL (lab reference)",
+    "units": "mg/dL",
+    "high_means": "Impaired kidney filtration, dehydration, or high protein intake. High BUN + high creatinine = likely renal impairment.",
+    "low_means": "Not clearly stated as a concern in KB",
+    "why_it_matters": "Listed in the KB Phase 1 comprehensive panel: 'BUN, electrolytes, CBC with differential.' BUN/creatinine ratio helps distinguish pre-renal (dehydration) from intrinsic renal causes. Always read with creatinine, eGFR, and cystatin C.",
+    "related_markers": [
+      "creatinine_egfr",
+      "cystatin_c"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "urine_acr",
+    "name": "Urine ACR (Albumin-to-Creatinine Ratio)",
+    "panel": "kidney",
+    "optimal_range": "<30 mg/g normal",
+    "standard_range": "<30 mg/g normal; 30–300 = microalbuminuria; >300 = macroalbuminuria",
+    "units": "mg/g",
+    "high_means": "30–300 = microalbuminuria (early kidney damage signal); >300 = significant/overt damage",
+    "low_means": "Not a concern",
+    "why_it_matters": "'Urine ACR: <30 mg/g normal; 30–300 = microalbuminuria (early damage); >300 = significant damage.' Microalbuminuria is an early marker of kidney stress, endothelial dysfunction, and cardiovascular risk — detectable before eGFR falls.",
+    "related_markers": [
+      "creatinine_egfr",
+      "cystatin_c",
+      "bun"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_core"
+    ]
+  },
+  {
+    "id": "mma",
+    "name": "MMA (Methylmalonic Acid)",
+    "panel": "micronutrients",
+    "optimal_range": "<0.40 µmol/L",
+    "standard_range": "0.0–0.4 µmol/L (lab reference)",
+    "units": "µmol/L",
+    "high_means": "Functional B12 deficiency at tissue level even when serum B12 appears normal",
+    "low_means": "Not a concern",
+    "why_it_matters": "Confirmatory test for B12 deficiency when serum B12 is borderline (200–400 pg/mL). Elevated MMA with borderline serum B12 = true functional deficiency. Listed in the KB micronutrient panel: 'MMA (if B12 unclear).'",
+    "related_markers": [
+      "vitamin_b12",
+      "folate",
+      "homocysteine"
+    ],
+    "source_refs": [
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "src_blood_work_guide",
+      "type_marker",
+      "pri_optional"
+    ]
+  }
+]

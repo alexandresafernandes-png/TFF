@@ -1,0 +1,1133 @@
+[
+  {
+    "id": "vitamin_d3_k2",
+    "name": "Vitamin D3 + K2 (MK-7)",
+    "tier": "TIER_1",
+    "category": "vitamin",
+    "purpose": "Testosterone / DHT support via Leydig cell STAR protein; immune modulation; calcium routing",
+    "mechanism": "D3 is a hormone signal, not just a bone vitamin. Activates the STAR protein in Leydig cells which facilitates cholesterol transport into mitochondria (the first step of steroidogenesis). VDR (vitamin D receptors) are expressed in follicle stem cells — VDR knockout mice develop alopecia. D3 supplementation over 1 year (3,332 IU/day) raised testosterone ~25% and free T ~20% in deficient men — with no effect in men already replete. 86% of men with pattern hair loss are vitamin D deficient. K2 MK-7 routes calcium properly (bones/teeth not arteries).",
+    "dose": "D3: 5,000–10,000 IU/day. K2 MK-7: 300–700 mcg/day.",
+    "timing": "Morning with food (fat-soluble — requires dietary fat for absorption)",
+    "cautions": [
+      "Test 25(OH)D before dosing. No benefit in men already replete at 40–60 ng/mL.",
+      "Always pair D3 with K2 — high-dose D3 without K2 can cause soft tissue calcium deposition.",
+      "Pair with PTH and calcium for full picture."
+    ],
+    "related_protocols": [
+      "protocol_10_dht_starter_stack"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 316–320",
+      "DHT Remastered, Ch. 3, lever 7",
+      "Hair Loss, p. 24"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "hair",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "src_hair_loss",
+      "type_supplement",
+      "pri_core",
+      "time_morning",
+      "goal_optimize_t",
+      "goal_optimize_dht",
+      "goal_hair_growth"
+    ]
+  },
+  {
+    "id": "magnesium",
+    "name": "Magnesium (Citrate / Glycinate / Bisglycinate / Threonate)",
+    "tier": "TIER_1",
+    "category": "mineral",
+    "purpose": "Sleep quality; cortisol regulation; testosterone support; thyroid conversion; steroidogenesis cofactor",
+    "mechanism": "Involved in 300+ enzyme reactions. Inhibitory neurotransmitter support (GABA pathway) for sleep. Muscle relaxation. Lowers cortisol during prolonged stress — magnesium depleted quickly by chronic stress creating symptoms of hypothyroidism and hypogonadism. Required for steroidogenic enzyme activity throughout the pathway. Supports T4→T3 conversion. Binds to 5AR as a cofactor. Sleep dose targets falling asleep and staying asleep. Author personally uses 2–3g/day split across multiple forms.",
+    "dose": "Sleep dose: 300–500mg 30–60 min before bed. General: 500mg–3g/day split in multiple doses. Start low.",
+    "timing": "30–60 min before bed (sleep); split across day (general hormonal support)",
+    "cautions": [
+      "Excess GI discomfort (especially citrate — lower forms if this occurs).",
+      "Forms differ significantly in absorption and effect: Glycinate/bisglycinate = most bioavailable/gentle; Threonate = best brain penetration; Citrate = good general form but laxative at high doses.",
+      "Boron can cause waking after 6–7h — not a magnesium caution but important sleep context."
+    ],
+    "related_protocols": [
+      "protocol_1_sleep_stack",
+      "protocol_13_stress_management"
+    ],
+    "source_refs": [
+      "Sleep & Recovery, p. 37–38",
+      "TFF 2.0, Ch. 4, p. 320–325",
+      "DHT Remastered, Ch. 3",
+      "Blood Work Guide"
+    ],
+    "tags": [
+      "sleep",
+      "testosterone",
+      "dht",
+      "cortisol",
+      "thyroid",
+      "src_sleep_recovery",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "type_supplement",
+      "pri_critical",
+      "time_pre_bed",
+      "goal_sleep_quality",
+      "goal_optimize_t",
+      "goal_stress_reduction"
+    ]
+  },
+  {
+    "id": "zinc",
+    "name": "Zinc (Picolinate / Bisglycinate / Citrate / Gluconate)",
+    "tier": "TIER_1",
+    "category": "mineral",
+    "purpose": "5AR cofactor; testosterone synthesis; immune function; DHT production",
+    "mechanism": "Zinc is a direct cofactor for steroidogenic enzymes including 5-alpha-reductase and 17β-HSD. Zinc restriction over 20 weeks cut testosterone significantly in healthy young men; 30mg/day in deficient elderly men raised it substantially. Required for the proper function of multiple enzymes in the steroidogenesis pathway. Zinc deficiency directly limits testosterone production. Note: must be balanced with copper — long-term high-dose zinc depletes copper. Do NOT take zinc oxide form (poorly absorbed).",
+    "dose": "15–30mg/day elemental zinc",
+    "timing": "With food to reduce nausea; not at same time as high-phytate foods",
+    "cautions": [
+      "Always balance with copper — long-term zinc supplementation without copper monitoring can deplete copper, leading to anemia and neurological issues.",
+      "Zinc oxide form poorly absorbed — avoid.",
+      "Monitor serum zinc and copper together. Target zinc 100–120 µg/dL; copper 90–120 µg/dL."
+    ],
+    "related_protocols": [
+      "protocol_10_dht_starter_stack"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 325–330",
+      "DHT Remastered, Ch. 3, lever 5",
+      "Blood Work Guide, p. 101"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "thyroid",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "type_supplement",
+      "pri_core",
+      "time_with_meals",
+      "goal_optimize_t",
+      "goal_optimize_dht"
+    ]
+  },
+  {
+    "id": "selenium",
+    "name": "Selenium",
+    "tier": "TIER_1",
+    "category": "mineral",
+    "purpose": "Deiodinase function (T4→T3 conversion); Leydig cell protection",
+    "mechanism": "Selenium is a cofactor for all three deiodinase enzymes (DIO1, DIO2, DIO3) that convert T4 to active T3. DIO1 specifically converts T4→T3 and clears reverse T3 — it is killed by selenium deficiency. Also protects Leydig cells from oxidative damage. Required for thyroid peroxidase (TPO) function. Above 140 ng/mL provides no additional gain and may increase pro-oxidant risk.",
+    "dose": "100–200 mcg/day",
+    "timing": "With food; anytime",
+    "cautions": [
+      "Do not exceed 200 mcg/day — above 140 ng/mL serum is pro-oxidant territory.",
+      "Selenomethionine preferred over selenite for absorption.",
+      "Test serum selenium — optimal 100–130 ng/mL."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4",
+      "DHT Remastered, Ch. 3",
+      "Blood Work Guide, p. 101"
+    ],
+    "tags": [
+      "thyroid",
+      "testosterone",
+      "dht",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "src_blood_work_guide",
+      "type_supplement",
+      "pri_core",
+      "time_with_meals",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "creatine",
+    "name": "Creatine Monohydrate (Creapure grade preferred)",
+    "tier": "TIER_1",
+    "category": "other",
+    "purpose": "ATP regeneration; NADPH support for 5AR; possible direct DHT bump; strength/muscle",
+    "mechanism": "Creatine regenerates ATP via the phosphocreatine system — the fastest energy pathway. Also supports NADPH availability as a cofactor for 5-alpha-reductase. Some evidence of a direct DHT bump, likely via increased testosterone→DHT conversion efficiency when cellular energy is high. Creapure grade recommended for purity. Author uses 10–15g/day split across meals.",
+    "dose": "Minimum 5g/day; author does 10–15g/day split",
+    "timing": "Split across meals; timing flexibility is high",
+    "cautions": [
+      "Slight water retention in early weeks is normal.",
+      "No clinically established cautions at standard doses in healthy individuals per KB.",
+      "Creapure grade preferred to avoid impurities."
+    ],
+    "related_protocols": [
+      "protocol_10_dht_starter_stack"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 330–335",
+      "DHT Remastered, Ch. 3, lever 1",
+      "Performance Nutrition"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "performance",
+      "nadph",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "src_performance_nutrition",
+      "type_supplement",
+      "pri_core",
+      "time_with_meals",
+      "goal_optimize_t",
+      "goal_optimize_dht",
+      "goal_build_muscle"
+    ]
+  },
+  {
+    "id": "boron",
+    "name": "Boron (Glycinate / Citrate / Calcium Fructoborate)",
+    "tier": "TIER_1",
+    "category": "mineral",
+    "purpose": "Lowers SHBG; raises free testosterone and DHT; reduces hsCRP/TNF-α",
+    "mechanism": "Boron suppresses sex hormone binding globulin (SHBG), which binds testosterone and DHT tightly. Lower SHBG = more free testosterone available as substrate for 5AR → more DHT. Also reduces inflammatory cytokines hsCRP and TNF-α (which epigenetically silence 5AR). Buy citrate or glycinate, NOT boric acid.",
+    "dose": "3–10mg/day. Author baseline 2–6mg/day; short experiments at 10mg.",
+    "timing": "Morning with food. NOTE: Boron can disrupt sleep if taken later in the day (causes waking after 6–7h feeling alert). Take in the morning only.",
+    "cautions": [
+      "Take in the morning ONLY — causes early waking if taken in afternoon/evening (author's personal experience).",
+      "Buy glycinate or citrate form, not boric acid.",
+      "Do not exceed 10mg/day beyond short-term experiments."
+    ],
+    "related_protocols": [
+      "protocol_10_dht_starter_stack"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4",
+      "DHT Remastered, Ch. 3, lever 3",
+      "Sleep & Recovery, p. 56"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "type_supplement",
+      "pri_core",
+      "time_morning",
+      "goal_optimize_t",
+      "goal_optimize_dht"
+    ]
+  },
+  {
+    "id": "vitamin_c",
+    "name": "Vitamin C",
+    "tier": "TIER_1",
+    "category": "vitamin",
+    "purpose": "Leydig cell protection; cortisol reduction; collagen synthesis",
+    "mechanism": "Leydig cells are among the most antioxidant-rich cells in the body; vitamin C is a primary antioxidant protecting them from oxidative damage during steroidogenesis. Also reduces cortisol output under stress by supporting adrenal function. Required for collagen synthesis (take with collagen for maximum benefit — Hair Loss protocol specifies 1g Vitamin C with collagen supplements). Note: do NOT take vitamin C at night (can cause sleep disruption per author's experience).",
+    "dose": "3–5g/day baseline",
+    "timing": "Daytime only — NOT at night (can cause sleep disruption). Split doses.",
+    "cautions": [
+      "Do not take at night — author experienced sleep disruption.",
+      "Very high doses may cause GI discomfort (loose stool) — start lower and work up.",
+      "Bowel tolerance varies significantly."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "testosterone",
+      "cortisol",
+      "hair",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_core",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "b_complex",
+    "name": "B-Complex (B1, B2, B3, B6, B12, Folate)",
+    "tier": "TIER_1",
+    "category": "vitamin",
+    "purpose": "NADPH production via pentose phosphate pathway; steroidogenesis; thyroid T4→T3 conversion",
+    "mechanism": "B-vitamins are cofactors for the pentose phosphate pathway (PPP) which generates NADPH — the rate-limiting cofactor for 5-alpha-reductase. Without NADPH, testosterone cannot be converted to DHT regardless of T levels. B1 (thiamine), B3 (niacin/niacinamide), and B6 are the most critical. B6 caution: avoid daily high-dose B6 — neuropathy risk. Author recommends P5P form at 30mg, 2× per week maximum.",
+    "dose": "Standard B-complex daily. B6 as P5P: 30mg maximum, 2× per week (NOT daily).",
+    "timing": "Morning with food",
+    "cautions": [
+      "B6 peripheral neuropathy risk with daily high-dose supplementation — use P5P form at 30mg maximum, 2× per week only.",
+      "Avoid B6 (pyridoxine HCl) in high daily doses.",
+      "B12 and folate interact — supplement balanced forms."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4",
+      "DHT Remastered, Ch. 1"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "thyroid",
+      "nadph",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "type_supplement",
+      "pri_core",
+      "time_morning",
+      "goal_optimize_t",
+      "goal_optimize_dht"
+    ]
+  },
+  {
+    "id": "omega_3",
+    "name": "Omega-3 (EPA + DHA Fish Oil)",
+    "tier": "TIER_1",
+    "category": "other",
+    "purpose": "Anti-inflammatory; vascular health; mood; note: DHA inhibits 5AR",
+    "mechanism": "EPA reduces systemic inflammation (lowers hsCRP, IL-6, TNF-α) which indirectly supports testosterone and DHT by reducing epigenetic silencing of SRD5A2. IMPORTANT NUANCE: DHA is in the ranking of fatty acid 5AR inhibitors (GLA > DHA > Arachidonic acid > ALA > Linoleic acid). DHA inhibits 5AR at high doses. For DHT-focused goals, use in moderation. Keep fish oil cold (PUFA oxidizes rapidly at room temperature) — store in fridge.",
+    "dose": "~1g EPA + 1g DHA per day",
+    "timing": "With food; store in refrigerator",
+    "cautions": [
+      "DHA inhibits 5-alpha-reductase — use in moderation if DHT is a primary goal.",
+      "Store in refrigerator — PUFA oxidizes rapidly at room temperature, creating the exact lipid peroxidation you're trying to avoid.",
+      "Triglyceride form preferred over ethyl ester for absorption."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4",
+      "DHT Remastered, Ch. 2, suppressor 13"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "inflammation",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "type_supplement",
+      "pri_core",
+      "time_with_meals",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "tongkat_ali",
+    "name": "Tongkat Ali (Eurycoma longifolia) — Standardized Extract",
+    "tier": "TIER_2",
+    "category": "adaptogen",
+    "purpose": "Lowers cortisol; nudges LH and free testosterone upward",
+    "mechanism": "Tongkat Ali (Eurycoma longifolia) is the most evidence-backed natural testosterone support. Works primarily by lowering cortisol (freeing cholesterol substrate for testosterone) and modestly nudging LH upward. Some evidence of direct Leydig cell support. Must use standardized extract — non-standardized products are unreliable. Evidence-based among the adaptogenic compounds.",
+    "dose": "200–400mg/day (some sources list 500mg/day). Standardized extract only.",
+    "timing": "Morning or split; cycles 5–8 weeks on, 2–4 weeks off",
+    "cautions": [
+      "Use standardized extract only — generic products have variable potency.",
+      "Cycle: 5–8 weeks on, 2–4 weeks off.",
+      "Not for use with existing hormone therapy without medical supervision."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4",
+      "DHT Remastered, Ch. 3"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "cortisol",
+      "src_tff_2_0",
+      "src_dht_remastered",
+      "type_supplement",
+      "pri_advanced",
+      "goal_optimize_t",
+      "goal_optimize_dht"
+    ]
+  },
+  {
+    "id": "ashwagandha",
+    "name": "Ashwagandha (KSM-66 or Sensoril)",
+    "tier": "TIER_2",
+    "category": "adaptogen",
+    "purpose": "Stress and cortisol reduction; short-term use for acute stress seasons",
+    "mechanism": "Adaptogenic herb that reduces cortisol and anxiety, supporting the HPG axis by reducing cortisol-driven pregnenolone steal. Short-term use during seasons of high stress is the recommendation. Author discontinued after experiencing emotional blunting ('numb to emotions'). Not recommended for long-term continuous use.",
+    "dose": "300–600mg/day during acute stress periods",
+    "timing": "Morning or evening; short-term cycles only",
+    "cautions": [
+      "Author discontinued due to emotional blunting — 'I felt numb to emotions.'",
+      "Recommend for seasons of stress then stopping — NOT long-term continuous.",
+      "Some people experience thyroid interactions — monitor if on thyroid medication."
+    ],
+    "related_protocols": [
+      "protocol_13_stress_management"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4",
+      "Sleep & Recovery, p. 49–50",
+      "DHT Remastered"
+    ],
+    "tags": [
+      "testosterone",
+      "cortisol",
+      "sleep",
+      "src_tff_2_0",
+      "src_sleep_recovery",
+      "type_supplement",
+      "pri_optional",
+      "goal_stress_reduction",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "l_theanine",
+    "name": "L-Theanine",
+    "tier": "TIER_1",
+    "category": "amino_acid",
+    "purpose": "Sleep: promotes relaxation, reduces anxiety without sedation; pre-bed calming",
+    "mechanism": "Promotes alpha brain wave activity and GABAergic tone without causing sedation. Reduces anxiety. May cause vivid dreams at higher doses. Part of author's core sleep stack. Also used short-term for stress management.",
+    "dose": "200–400mg",
+    "timing": "30 min before bed (sleep); can also be taken during day for stress reduction",
+    "cautions": [
+      "May cause vivid dreams — lower dose if this occurs.",
+      "Generally very well tolerated."
+    ],
+    "related_protocols": [
+      "protocol_1_sleep_stack",
+      "protocol_13_stress_management"
+    ],
+    "source_refs": [
+      "Sleep & Recovery, p. 38–39"
+    ],
+    "tags": [
+      "sleep",
+      "cortisol",
+      "src_sleep_recovery",
+      "type_supplement",
+      "pri_core",
+      "time_pre_bed",
+      "goal_sleep_quality",
+      "goal_stress_reduction"
+    ]
+  },
+  {
+    "id": "apigenin",
+    "name": "Apigenin",
+    "tier": "TIER_1",
+    "category": "nootropic",
+    "purpose": "Sleep calming; mild estrogen suppressor; 3α-HSD inhibitor (slows DHT breakdown)",
+    "mechanism": "Flavonoid that binds brain receptors involved in sleep/calming (GABAergic activity). Huberman notes it is a mild estrogen suppressor — 'not recommended for women.' Also acts as a 3α-HSD inhibitor, slowing DHT breakdown into weaker metabolites. Part of author's core sleep stack. Minimum starting point if overwhelmed by full sleep stack.",
+    "dose": "50mg before bed",
+    "timing": "30 min before bed",
+    "cautions": [
+      "Huberman notes mild estrogen suppressor activity — use carefully in men, particularly those with already low estrogen.",
+      "Part of minimum starter sleep stack (Mg + L-Theanine + Apigenin)."
+    ],
+    "related_protocols": [
+      "protocol_1_sleep_stack"
+    ],
+    "source_refs": [
+      "Sleep & Recovery, p. 46–47",
+      "DHT Remastered, Ch. 3"
+    ],
+    "tags": [
+      "sleep",
+      "dht",
+      "estrogen",
+      "src_sleep_recovery",
+      "src_dht_remastered",
+      "type_supplement",
+      "pri_core",
+      "time_pre_bed",
+      "goal_sleep_quality",
+      "goal_optimize_dht"
+    ]
+  },
+  {
+    "id": "valerian_root",
+    "name": "Valerian Root",
+    "tier": "TIER_2",
+    "category": "sleep",
+    "purpose": "Calming; sedative properties for sleep",
+    "mechanism": "Sedative and calming effects. Included in author's full sleep stack.",
+    "dose": "500mg",
+    "timing": "30 min before bed",
+    "cautions": [
+      "Part of the fuller sleep stack — not required in starter stack.",
+      "Some individuals experience vivid dreams or GI sensitivity."
+    ],
+    "related_protocols": [
+      "protocol_1_sleep_stack"
+    ],
+    "source_refs": [
+      "Sleep & Recovery, p. 41–42"
+    ],
+    "tags": [
+      "sleep",
+      "src_sleep_recovery",
+      "type_supplement",
+      "pri_optional",
+      "time_pre_bed",
+      "goal_sleep_quality"
+    ]
+  },
+  {
+    "id": "passion_flower",
+    "name": "Passion Flower (Passiflora incarnata)",
+    "tier": "TIER_2",
+    "category": "sleep",
+    "purpose": "Sleep quality; calming nervous system",
+    "mechanism": "Author: 'Tremendously helped my sleep.' Calming effect on nervous system. Part of full sleep stack.",
+    "dose": "200–400mg (up to 500mg per some sources in KB)",
+    "timing": "30 min before bed",
+    "cautions": [
+      "Part of the fuller sleep stack.",
+      "Generally well tolerated."
+    ],
+    "related_protocols": [
+      "protocol_1_sleep_stack"
+    ],
+    "source_refs": [
+      "Sleep & Recovery, p. 41–42"
+    ],
+    "tags": [
+      "sleep",
+      "src_sleep_recovery",
+      "type_supplement",
+      "pri_optional",
+      "time_pre_bed",
+      "goal_sleep_quality"
+    ]
+  },
+  {
+    "id": "lemon_balm",
+    "name": "Lemon Balm (Melissa officinalis)",
+    "tier": "TIER_2",
+    "category": "sleep",
+    "purpose": "Calms nervous system; reduces nighttime awakenings",
+    "mechanism": "Calms nervous system; reduces nighttime awakenings per ebook. Part of full sleep stack.",
+    "dose": "200–400mg (up to 500mg per KB)",
+    "timing": "30 min before bed",
+    "cautions": [
+      "Part of fuller sleep stack."
+    ],
+    "related_protocols": [
+      "protocol_1_sleep_stack"
+    ],
+    "source_refs": [
+      "Sleep & Recovery, p. 43–44"
+    ],
+    "tags": [
+      "sleep",
+      "src_sleep_recovery",
+      "type_supplement",
+      "pri_optional",
+      "time_pre_bed",
+      "goal_sleep_quality"
+    ]
+  },
+  {
+    "id": "tart_cherry",
+    "name": "Tart Cherry Extract",
+    "tier": "TIER_2",
+    "category": "sleep",
+    "purpose": "Naturally increases melatonin precursors; anthocyanins, tryptophan",
+    "mechanism": "'Doesn't affect the body the same way as actually taking melatonin.' Contains natural tryptophan and anthocyanins that support melatonin pathway without the direct hormone effects of melatonin supplementation.",
+    "dose": "500mg",
+    "timing": "Before bed",
+    "cautions": [
+      "Author is against melatonin supplementation but considers tart cherry a safer alternative.",
+      "Not part of author's core stack."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "Sleep & Recovery, p. 42–43"
+    ],
+    "tags": [
+      "sleep",
+      "src_sleep_recovery",
+      "type_supplement",
+      "pri_optional",
+      "time_pre_bed",
+      "goal_sleep_quality"
+    ]
+  },
+  {
+    "id": "glycine",
+    "name": "Glycine",
+    "tier": "TIER_2",
+    "category": "amino_acid",
+    "purpose": "Sleep: decreases core body temperature; promotes deeper sleep. Also joint / collagen support.",
+    "mechanism": "Glycine decreases core body temperature by dilating peripheral blood vessels. Lower core temp is required for deep N3 sleep. Also structural amino acid in collagen. Per Huberman's protocol: 2g taken 2–3 times per week (not nightly). Author experienced racing thoughts at higher use — individual response varies.",
+    "dose": "2g (2–3 times per week per Huberman protocol); some sources list 3–5g/day for general use",
+    "timing": "Pre-bed for sleep; anytime for collagen/joint support",
+    "cautions": [
+      "Author experienced racing thoughts at some dosing — individual response varies.",
+      "Per Huberman: 2–3 times per week, not every night."
+    ],
+    "related_protocols": [
+      "protocol_1_sleep_stack"
+    ],
+    "source_refs": [
+      "Sleep & Recovery, p. 44–45",
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "sleep",
+      "testosterone",
+      "src_sleep_recovery",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_optional",
+      "time_pre_bed",
+      "goal_sleep_quality"
+    ]
+  },
+  {
+    "id": "cbd_oil",
+    "name": "CBD Oil",
+    "tier": "OPTIONAL",
+    "category": "sleep",
+    "purpose": "Sleep support; pre-bed calming",
+    "mechanism": "Author uses 7 drops of 2% CBD oil taken 5 hours before bed — the longest lead time in his sleep stack. Mechanism not elaborated beyond calming effect in the KB.",
+    "dose": "7 drops 2% oil (author's personal dose)",
+    "timing": "5 hours before bed",
+    "cautions": [
+      "Individual response varies significantly.",
+      "Not part of required sleep stack — optional.",
+      "Author notes effectiveness but dosing is personal."
+    ],
+    "related_protocols": [
+      "protocol_1_sleep_stack"
+    ],
+    "source_refs": [
+      "Sleep & Recovery, p. 47–49"
+    ],
+    "tags": [
+      "sleep",
+      "src_sleep_recovery",
+      "type_supplement",
+      "pri_optional",
+      "goal_sleep_quality"
+    ]
+  },
+  {
+    "id": "fadogia_agrestis",
+    "name": "Fadogia Agrestis",
+    "tier": "TIER_3",
+    "category": "adaptogen",
+    "purpose": "Experimental LH/testosterone support — limited human data",
+    "mechanism": "Proposed to stimulate LH release and support testosterone. Primarily animal data. Limited robust human RCT evidence. Author uses in 4–6 week cycles.",
+    "dose": "300–600mg/day",
+    "timing": "Cycles: 4–6 weeks on, rest period; not for continuous use",
+    "cautions": [
+      "Primarily animal data — limited human RCT evidence.",
+      "4–6 week cycles only.",
+      "Hepatotoxicity concerns noted in animal literature — caution at high doses.",
+      "Author marks as experimental."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "testosterone",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_experimental",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "lclt",
+    "name": "L-Carnitine L-Tartrate (LCLT)",
+    "tier": "TIER_2",
+    "category": "amino_acid",
+    "purpose": "Fat transport; CoA management; androgen receptor density; dual-fuel activation",
+    "mechanism": "Carnitine frees CoA from fat oxidation so CoA is available for glucose oxidation simultaneously — 'with carnitine, fat burns, carbs burn, neither one is waiting in line.' Also increases androgen receptor (AR) density in muscle — more receptors = more response to same DHT/T. LCLT is the preferred form for post-workout use (taken with carbs and protein for absorption). L-Tartrate form provides fast absorption.",
+    "dose": "2–3g pre-workout or 2g post-workout with carbs + protein",
+    "timing": "Pre-workout (2–3g for performance); or post-workout with carbs and protein",
+    "cautions": [
+      "Take with carbs and protein for best absorption.",
+      "LCLT form preferred over L-carnitine base for bioavailability."
+    ],
+    "related_protocols": [
+      "protocol_3_pre_workout_nutrition",
+      "protocol_4_post_training_convergence"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4",
+      "Performance Nutrition, p. 12–13"
+    ],
+    "tags": [
+      "testosterone",
+      "dht",
+      "performance",
+      "src_tff_2_0",
+      "src_performance_nutrition",
+      "type_supplement",
+      "pri_advanced",
+      "time_pre_workout",
+      "time_post_workout",
+      "goal_optimize_t",
+      "goal_build_muscle"
+    ]
+  },
+  {
+    "id": "r_ala",
+    "name": "R-ALA (R-Alpha Lipoic Acid)",
+    "tier": "TIER_2",
+    "category": "other",
+    "purpose": "PDH activation (glucose→mitochondria routing); insulin sensitivity; AMPK; antioxidant recycler",
+    "mechanism": "R-ALA activates pyruvate dehydrogenase (PDH) — the gate for carbohydrates entering the mitochondrial energy pathway. Training activates PDH through calcium; R-ALA activates it through a separate mechanism — 'gate opens wider, stays open longer.' Activates AMPK (mitochondrial biogenesis signal). Also a powerful antioxidant that recycles other antioxidants (glutathione, vitamin C, vitamin E). Improves insulin sensitivity and glucose disposal post-workout. R form has much higher bioavailability than S or racemic ALA.",
+    "dose": "300mg post-workout",
+    "timing": "Post-workout with starch meal",
+    "cautions": [
+      "R-form only — racemic or S-ALA is significantly less effective.",
+      "May lower blood sugar substantially — do not take fasted if prone to hypoglycemia.",
+      "Take with post-workout carbs."
+    ],
+    "related_protocols": [
+      "protocol_4_post_training_convergence"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 18–19",
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "performance",
+      "insulin",
+      "mitochondria",
+      "src_performance_nutrition",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_advanced",
+      "time_post_workout",
+      "goal_build_muscle",
+      "goal_fat_loss"
+    ]
+  },
+  {
+    "id": "hmb",
+    "name": "HMB (β-Hydroxy β-Methylbutyrate)",
+    "tier": "TIER_2",
+    "category": "other",
+    "purpose": "mTOR + AMPK dual activation; anti-catabolic; muscle preservation",
+    "mechanism": "HMB activates mTOR (anabolism/protein synthesis via PI3K/Akt pathway) AND AMPK (mitochondrial biogenesis via LKB1 pathway) simultaneously through non-competing pathways — 'two separate molecular doors; neither cancels the other.' Most compounds force a tradeoff between growth and adaptation. HMB is unusual in triggering both. Anti-catabolic: reduces protein breakdown during training.",
+    "dose": "1g × 3 times per day (total 3g/day)",
+    "timing": "Split across day; one dose post-workout",
+    "cautions": [
+      "Free acid form preferred over calcium HMB for faster absorption.",
+      "Benefits most pronounced in trained individuals during caloric restriction."
+    ],
+    "related_protocols": [
+      "protocol_4_post_training_convergence"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 59"
+    ],
+    "tags": [
+      "performance",
+      "mitochondria",
+      "src_performance_nutrition",
+      "type_supplement",
+      "pri_advanced",
+      "time_post_workout",
+      "goal_build_muscle"
+    ]
+  },
+  {
+    "id": "taurine",
+    "name": "Taurine",
+    "tier": "TIER_2",
+    "category": "amino_acid",
+    "purpose": "Cell swelling (anabolic signal); GABA-A (parasympathetic); bile acid/T4→T3 tissue signaling",
+    "mechanism": "Taurine osmotically pulls water into cells → cell swelling → mechanosensitive mTOR activation (independent of nutrition signals). Also acts on GABA-A receptors promoting parasympathetic tone (important for post-workout recovery/digestion state). Post-workout: activates TGR5 receptor in muscle via conjugated bile acids → stimulates local T4→T3 conversion at tissue level exactly when metabolic demand is highest. 'Taurine is quietly supporting thyroid activation at the tissue level when metabolic demand for active thyroid hormone is highest.'",
+    "dose": "2–5g/day split. Post-workout: 2g.",
+    "timing": "Post-workout (key); can split remainder across day",
+    "cautions": [
+      "Generally very well tolerated.",
+      "Distinct from energy drink taurine context — doses here are therapeutic, not stimulant."
+    ],
+    "related_protocols": [
+      "protocol_4_post_training_convergence"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 67–68",
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "performance",
+      "thyroid",
+      "sleep",
+      "src_performance_nutrition",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_advanced",
+      "time_post_workout",
+      "goal_build_muscle",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "kestose",
+    "name": "Kestose (1-kestose ≥90% purity)",
+    "tier": "TIER_2",
+    "category": "gut",
+    "purpose": "Feeds gut Bacteroidota expressing 5AR genes → local testosterone→DHT conversion in gut",
+    "mechanism": "Gut fecal free DHT in healthy young men is >70× serum DHT. Bacteroidota bacteria express 5AR genes and convert testosterone to DHT locally in the GI tract. Kestose (a specific prebiotic fructooligosaccharide) selectively feeds Bacteroidota. Must be 1-kestose ≥90% purity — NOT generic FOS which may feed less favorable bacteria. Start low to allow GI adaptation.",
+    "dose": "5g 2× per day (start at 2–3g 2× per day for first week to allow GI adaptation)",
+    "timing": "With meals",
+    "cautions": [
+      "Must be 1-kestose ≥90% purity — generic FOS is NOT equivalent.",
+      "Start at 2–3g 2×/day for first week to allow GI adaptation.",
+      "GI gas/loose stool is common early — reduce dose and build slowly.",
+      "Part of DHT Starter Stack Protocol — introduce in Week 2 after establishing nutrition baseline."
+    ],
+    "related_protocols": [
+      "protocol_10_dht_starter_stack"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 3, lever 16"
+    ],
+    "tags": [
+      "dht",
+      "gut",
+      "src_dht_remastered",
+      "type_supplement",
+      "pri_advanced",
+      "time_with_meals",
+      "goal_optimize_dht",
+      "goal_gut_health"
+    ]
+  },
+  {
+    "id": "dhea_topical",
+    "name": "Topical DHEA (Scrotal Application)",
+    "tier": "TIER_3",
+    "category": "advanced",
+    "purpose": "Backdoor DHT production pathway via scrotal 5AR-rich skin",
+    "mechanism": "Scrotal skin has high 5AR expression — applying DHEA topically here converts locally to DHT with high efficiency. Small dose has large local effect. Backdoor pathway: DHEA → androstenedione → DHT without going through serum testosterone. ONLY for men not prone to aromatization. Start at 5–10mg; increase to 10–20mg only after 2 weeks with no estrogen signs.",
+    "dose": "Start 5–10mg; can raise to 10–20mg after 2 weeks only if no estrogen signs",
+    "timing": "Once daily; morning preferred",
+    "cautions": [
+      "Advanced protocol — only after establishing nutrition/sleep/training baseline (first 3 weeks of DHT Starter Stack).",
+      "ONLY if not prone to aromatization — watch for water retention, soft look, nipple sensitivity, mood swings.",
+      "If any estrogen signs appear: drop DHEA immediately.",
+      "Red flags to pause: water retention, soft look, nipple sensitivity, mood swings.",
+      "Monitor E2 risk."
+    ],
+    "related_protocols": [
+      "protocol_10_dht_starter_stack"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 4",
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "dht",
+      "testosterone",
+      "src_dht_remastered",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_experimental",
+      "goal_optimize_dht"
+    ]
+  },
+  {
+    "id": "l_reuteri",
+    "name": "Lactobacillus reuteri (Strains 6475 + 17938)",
+    "tier": "TIER_2",
+    "category": "gut",
+    "purpose": "Gut oxytocin production → 5AR (SRD5A) upregulation; DHT support via gut-oxytocin axis",
+    "mechanism": "L. reuteri strains 6475 and 17938 stimulate oxytocin production in the gut. Oxytocin increased 5AR (SRD5A) activity in both isoforms I and II and raised prostatic DHT in controlled rat studies. Also increased 5AR in human prostate stromal/epithelial cells in vitro. These specific strains matter — not interchangeable with generic L. reuteri.",
+    "dose": "Not clearly stated in KB — use standard probiotic dosing for these specific strains",
+    "timing": "With food or as directed on product",
+    "cautions": [
+      "Must use strains 6475 AND 17938 specifically — not generic L. reuteri.",
+      "Evidence is from animal/in vitro studies for DHT pathway specifically."
+    ],
+    "related_protocols": [
+      "protocol_14_gut_reset"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 3, lever 15",
+      "TFF 2.0, Ch. 4, p. 258–325"
+    ],
+    "tags": [
+      "dht",
+      "gut",
+      "testosterone",
+      "src_dht_remastered",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_advanced",
+      "goal_optimize_dht",
+      "goal_gut_health"
+    ]
+  },
+  {
+    "id": "sodium_butyrate",
+    "name": "Sodium Butyrate (Butyrate)",
+    "tier": "TIER_2",
+    "category": "gut",
+    "purpose": "HDAC inhibitor → reverses 5AR gene methylation; gut barrier support",
+    "mechanism": "Butyrate is an HDAC (histone deacetylase) inhibitor. HDAC inhibition can reverse the epigenetic silencing of the SRD5A2 promoter caused by chronic inflammation (TNF-α/IL-6 → DNMT1 → methylation). This is one of the tools to restore 5AR expression in men with stubbornly low DHT despite normal T/T3/IGF-1. Also feeds colonocytes and supports gut barrier integrity.",
+    "dose": "Not clearly stated in KB — standard gut protocol dosing",
+    "timing": "With meals",
+    "cautions": [
+      "Strong smell/taste — enteric-coated forms preferred.",
+      "Part of gut-5AR restoration protocol."
+    ],
+    "related_protocols": [
+      "protocol_14_gut_reset"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 2, suppressor 10",
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "dht",
+      "gut",
+      "inflammation",
+      "src_dht_remastered",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_advanced",
+      "goal_optimize_dht",
+      "goal_gut_health"
+    ]
+  },
+  {
+    "id": "ubiquinol_coq10",
+    "name": "Ubiquinol (CoQ10 reduced form)",
+    "tier": "TIER_2",
+    "category": "mitochondria",
+    "purpose": "Mitochondrial electron transport; cellular energy; antioxidant",
+    "mechanism": "Ubiquinol is the reduced (active) form of CoQ10. Required in mitochondrial electron transport chain. Supports cellular ATP production. Part of the mitochondria stack in TFF 2.0.",
+    "dose": "100–200mg/day",
+    "timing": "With food containing fat (fat-soluble)",
+    "cautions": [
+      "Ubiquinol form preferred over ubiquinone for absorption.",
+      "Fat required for absorption."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "testosterone",
+      "mitochondria",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_optional",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "nad_precursors",
+    "name": "NAD+ Precursors (NR or NMN)",
+    "tier": "TIER_2",
+    "category": "mitochondria",
+    "purpose": "NAD+ replenishment; mitochondrial function; cellular energy metabolism",
+    "mechanism": "NAD+ is required for mitochondrial function and is a component of NADPH (the 5AR cofactor). NR (nicotinamide riboside) and NMN (nicotinamide mononucleotide) both raise NAD+ levels. Part of mitochondria stack.",
+    "dose": "250–500mg/day",
+    "timing": "Morning",
+    "cautions": [
+      "NR and NMN have different conversion pathways — not clearly compared in KB.",
+      "Part of optional mitochondria stack."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "testosterone",
+      "mitochondria",
+      "nadph",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_optional",
+      "goal_optimize_t"
+    ]
+  },
+  {
+    "id": "pqq",
+    "name": "PQQ (Pyrroloquinoline Quinone)",
+    "tier": "TIER_2",
+    "category": "mitochondria",
+    "purpose": "Mitochondrial biogenesis; cellular energy",
+    "mechanism": "Supports mitochondrial biogenesis (creation of new mitochondria). Part of the mitochondria stack in TFF 2.0.",
+    "dose": "10–20mg/day",
+    "timing": "Morning with food",
+    "cautions": [
+      "Part of optional mitochondria stack."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "TFF 2.0, Ch. 4"
+    ],
+    "tags": [
+      "mitochondria",
+      "src_tff_2_0",
+      "type_supplement",
+      "pri_optional"
+    ]
+  },
+  {
+    "id": "myo_inositol",
+    "name": "Myo-Inositol",
+    "tier": "OPTIONAL",
+    "category": "sleep",
+    "purpose": "Sleep: may help falling back asleep after waking",
+    "mechanism": "Per Huberman protocol. May help falling back asleep after nighttime wakings. Author experienced racing thoughts once — individual response varies. Dose ranges widely (500mg–5g).",
+    "dose": "900mg (Huberman dose); individual responses vary at 500mg–5g",
+    "timing": "Before bed or upon waking during night",
+    "cautions": [
+      "Individual response varies significantly.",
+      "Author experienced racing thoughts — try lower end first."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "Sleep & Recovery, p. 45–46"
+    ],
+    "tags": [
+      "sleep",
+      "src_sleep_recovery",
+      "type_supplement",
+      "pri_optional",
+      "time_pre_bed",
+      "goal_sleep_quality"
+    ]
+  },
+  {
+    "id": "collagen_peptides",
+    "name": "Collagen Peptides / Bone Broth Concentrate",
+    "tier": "TIER_2",
+    "category": "other",
+    "purpose": "Hair keratin synthesis; joint support; gut lining support",
+    "mechanism": "Hair is made of keratin which requires glycine, proline, and hydroxyproline — amino acids sparse in muscle meat but abundant in collagen. 10–20g/day recommended. Take with 1g Vitamin C (required for collagen synthesis — vitamin C is the cofactor for prolyl hydroxylase which produces hydroxyproline). Muscle meat alone will not provide adequate glycine/proline for follicle keratin demands.",
+    "dose": "10–20g/day from bone broth or peptides",
+    "timing": "Any time; take with 1g Vitamin C",
+    "cautions": [
+      "Take with Vitamin C (1g) for proper utilization.",
+      "Bone broth also a suitable source."
+    ],
+    "related_protocols": [
+      "protocol_12_hair_phased"
+    ],
+    "source_refs": [
+      "Hair Loss, p. 27"
+    ],
+    "tags": [
+      "hair",
+      "gut",
+      "src_hair_loss",
+      "type_supplement",
+      "pri_core",
+      "goal_hair_growth"
+    ]
+  },
+  {
+    "id": "msm_glucosamine_chondroitin",
+    "name": "Joint Stack (MSM + Glucosamine + Chondroitin)",
+    "tier": "TIER_2",
+    "category": "joint",
+    "purpose": "Joint support for heavy compound training",
+    "mechanism": "Standard joint support stack for connective tissue maintenance during heavy compound lifting. MSM provides sulfur. Glucosamine and chondroitin support cartilage matrix.",
+    "dose": "Not clearly stated in KB beyond being listed in training day checklist",
+    "timing": "Training days",
+    "cautions": [
+      "Not clearly stated in KB."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "Not clearly stated in KB — listed in training day checklist section"
+    ],
+    "tags": [
+      "training",
+      "performance",
+      "type_supplement",
+      "pri_optional",
+      "goal_build_muscle"
+    ]
+  },
+  {
+    "id": "gaba",
+    "name": "GABA",
+    "tier": "OPTIONAL",
+    "category": "sleep",
+    "purpose": "Sleep: inhibitory neurotransmitter; promotes relaxation",
+    "mechanism": "Author experienced waking with 'racing thoughts' and discontinued. Poor CNS penetration is a known limitation of oral GABA. Individual responses vary widely.",
+    "dose": "100–500mg",
+    "timing": "Before bed",
+    "cautions": [
+      "Author discontinued — experienced racing thoughts upon waking.",
+      "Poor blood-brain barrier penetration may limit efficacy.",
+      "Individual response highly variable."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "Sleep & Recovery, p. 44–45"
+    ],
+    "tags": [
+      "sleep",
+      "src_sleep_recovery",
+      "type_supplement",
+      "pri_optional",
+      "time_pre_bed"
+    ]
+  },
+  {
+    "id": "l_tryptophan_5htp",
+    "name": "L-Tryptophan / 5-HTP",
+    "tier": "OPTIONAL",
+    "category": "sleep",
+    "purpose": "Sleep: serotonin → melatonin precursor",
+    "mechanism": "Both are precursors to serotonin, which converts to melatonin. 5-HTP is stronger (bypasses the initial conversion step). Author stopped L-Tryptophan as it caused early waking after 5–7h. Note: excessive serotonin can suppress thyroid and increase cortisol.",
+    "dose": "L-Tryptophan: 500mg; 5-HTP: variable",
+    "timing": "Before bed",
+    "cautions": [
+      "Author stopped L-Tryptophan due to early waking at 5–7h.",
+      "Excessive serotonin pathway stimulation can suppress thyroid and increase cortisol per hair loss ebook.",
+      "Do not combine with SSRIs."
+    ],
+    "related_protocols": [],
+    "source_refs": [
+      "Sleep & Recovery, p. 39–41"
+    ],
+    "tags": [
+      "sleep",
+      "src_sleep_recovery",
+      "type_supplement",
+      "pri_optional",
+      "time_pre_bed"
+    ]
+  },
+  {
+    "id": "dextrose_cyclic_dextrin",
+    "name": "Intra-Workout Glucose (Dextrose / Cyclic Dextrin)",
+    "tier": "TIER_1",
+    "category": "performance",
+    "purpose": "Intra-workout glucose for glycolysis; GLUT4-independent muscle fuelling during training",
+    "mechanism": "During training, muscle contractions open GLUT4 doors independently of insulin. Starting intra-workout glucose after the first 1–2 heavy sets provides direct fuel for glycolytic demand without the pre-workout insulin spike that would shut down lipolysis. 2g sodium added per serving for SGLT1 co-transporter uptake (sodium-glucose linked absorption). Dextrose (pure glucose) or cyclic dextrin (faster gastric emptying) are both suitable.",
+    "dose": "30–50g dextrose or cyclic dextrin; + 2g sodium",
+    "timing": "Intra-workout — start after 1–2 hard sets (NOT before training starts)",
+    "cautions": [
+      "Do NOT take pre-workout — pre-carb spikes insulin → shuts lipolysis → energy mismatch.",
+      "Start after 1–2 heavy sets only.",
+      "Add 2g sodium for proper SGLT1 uptake."
+    ],
+    "related_protocols": [
+      "protocol_3_pre_workout_nutrition",
+      "protocol_4_post_training_convergence"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 8–12"
+    ],
+    "tags": [
+      "performance",
+      "training",
+      "src_performance_nutrition",
+      "type_supplement",
+      "pri_core",
+      "time_intra_workout",
+      "goal_build_muscle"
+    ]
+  }
+]

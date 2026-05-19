@@ -1,0 +1,1233 @@
+[
+  {
+    "id": "sleep_t_drop_one_night",
+    "claim": "One night of 4-hour sleep cuts testosterone by 60% vs 8-hour sleep in military study context",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "sleep",
+      "testosterone"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 3, p. 62"
+    ],
+    "mechanism": "Sleep is the primary testosterone synthesis window. Testosterone and DHT are primarily synthesized during REM sleep via GnRH/LH pulsatility peaking at night. Truncating sleep cuts the production window.",
+    "practical_implication": "Protect 8-hour minimum as a hard, non-negotiable floor. A single bad night has immediate, measurable hormonal consequences.",
+    "app_usage": "checklist",
+    "tags": [
+      "sleep",
+      "testosterone",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "sleep_t_drop_chronic_short",
+    "claim": "After 8 days of 5.5h sleep or less, testosterone production drops 10–15% on average and does not fully recover within one week of restoring normal sleep",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "sleep",
+      "testosterone"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 3, p. 60"
+    ],
+    "mechanism": "Sleep debt is not simply repaid. Cumulative damage from chronic short sleep suppresses LH pulsatility, raises PM cortisol, and increases rT3.",
+    "practical_implication": "Consistency matters more than occasional catch-up sleep. Fix the schedule, not just isolated nights.",
+    "app_usage": "checklist",
+    "tags": [
+      "sleep",
+      "testosterone",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "sleep_military_hell_week",
+    "claim": "Military Hell Week (2–3h sleep/night): testosterone dropped 70%, cortisol rose 154%, IGF-1 fell 51% (Hamarsland et al., 2018)",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "sleep",
+      "testosterone",
+      "cortisol"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 2, suppressor 17"
+    ],
+    "mechanism": "Extreme sleep deprivation combined with physical load causes complete adrenal and hormonal collapse. Cortisol inversion suppresses all anabolic pathways.",
+    "practical_implication": "Protect sleep during high-stress training blocks. Recovery is not possible without sleep.",
+    "app_usage": "knowledge_only",
+    "tags": [
+      "sleep",
+      "testosterone",
+      "cortisol",
+      "pri_critical",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "sleep_pm_cortisol_rise",
+    "claim": "One week of 5–6h sleep raises PM cortisol by 37%",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "sleep",
+      "cortisol",
+      "dht"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 2, suppressor 16"
+    ],
+    "mechanism": "Elevated PM cortisol suppresses 5-alpha-reductase (5AR) and androgen receptor signaling. Short sleep means higher cortisol, lower DHT — even if total testosterone looks acceptable.",
+    "practical_implication": "Short sleep harms DHT separately from testosterone. Must protect both sleep duration and timing.",
+    "app_usage": "checklist",
+    "tags": [
+      "sleep",
+      "cortisol",
+      "dht",
+      "pri_critical",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "sleep_alcohol_gh",
+    "claim": "Bedtime alcohol at 0.8 g/kg reduced nighttime GH secretion by 70–75% (Prinz et al., 1980)",
+    "claim_type": "avoid_caution",
+    "topic": [
+      "sleep",
+      "testosterone"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 2, suppressor 15"
+    ],
+    "mechanism": "Alcohol disrupts hypothalamic GH-releasing hormone secretion and suppresses REM sleep. GH pulses during deep sleep — when protein synthesis runs.",
+    "practical_implication": "Zero alcohol within 3–4 hours of bed if GH and recovery are a priority.",
+    "app_usage": "warning",
+    "tags": [
+      "sleep",
+      "testosterone",
+      "pri_critical",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "sleep_room_temp",
+    "claim": "Room temperature 15–20°C is optimal for deep sleep; higher temperatures prevent core body cooling needed for N3 sleep",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "sleep"
+    ],
+    "source_refs": [
+      "Sleep & Recovery, p. 8"
+    ],
+    "mechanism": "Core body temperature must drop to enter deep N3 sleep. Warm rooms prevent this cooling. Address temperature before supplements if waking hot or unrefreshed.",
+    "practical_implication": "Set bedroom to 15–20°C. Cool room is a prerequisite — not optional.",
+    "app_usage": "checklist",
+    "tags": [
+      "sleep",
+      "pri_core",
+      "src_sleep_recovery"
+    ]
+  },
+  {
+    "id": "sleep_morning_light_circadian",
+    "claim": "Morning sunlight within 30–60 minutes of waking anchors the circadian rhythm and sets melatonin timing for that night. Light through glass does not work.",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "sleep",
+      "testosterone"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 3, p. 92–97"
+    ],
+    "mechanism": "Sunlight photons activate the SCN (suprachiasmatic nucleus) — the master circadian clock. This sets melatonin onset timing for that night. Glass blocks relevant photons.",
+    "practical_implication": "Step outside (not behind glass) for 5–20 min every morning within 30–60 min of waking.",
+    "app_usage": "checklist",
+    "tags": [
+      "sleep",
+      "testosterone",
+      "pri_critical",
+      "src_tff_2_0",
+      "src_sleep_recovery"
+    ]
+  },
+  {
+    "id": "caffeine_cutoff",
+    "claim": "Stop caffeine 10–12 hours before bed; limit daily intake to 100–300mg; do NOT take if working out within 8 hours of bedtime",
+    "claim_type": "avoid_caution",
+    "topic": [
+      "sleep"
+    ],
+    "source_refs": [
+      "Sleep & Recovery, p. 9–10"
+    ],
+    "mechanism": "Caffeine has a half-life of ~5–7 hours. Caffeine in the system at bedtime prevents sleep onset and impairs deep sleep architecture.",
+    "practical_implication": "Set personal caffeine cutoff time based on usual bedtime (e.g., 2pm cutoff for 12am bedtime).",
+    "app_usage": "checklist",
+    "tags": [
+      "sleep",
+      "pri_core",
+      "src_sleep_recovery"
+    ]
+  },
+  {
+    "id": "t_lab_normal_but_low",
+    "claim": "Men at 300–400 ng/dL total testosterone feel like trash even when labs say 'normal.' Most men feel and perform best between 650–900 ng/dL.",
+    "claim_type": "lab_interpretation",
+    "topic": [
+      "testosterone"
+    ],
+    "source_refs": [
+      "TFF 2.0, p. 18"
+    ],
+    "mechanism": "The standard lab reference range (300–1,000 ng/dL) includes symptomatic men. Functional optimization target is 650–900 ng/dL with good free T.",
+    "practical_implication": "Do not accept 'within range' as good enough if symptoms persist. Target 650–900 ng/dL with good free T and DHT.",
+    "app_usage": "database",
+    "tags": [
+      "testosterone",
+      "pri_core",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "body_fat_aromatase",
+    "claim": "Losing excess body fat can raise testosterone 100–300 ng/dL on its own. Adipose tissue is an aromatase factory.",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "testosterone",
+      "estrogen"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 3, p. 29–32"
+    ],
+    "mechanism": "Adipose tissue expresses aromatase enzyme which converts testosterone to estradiol. Less fat = less aromatization = more testosterone. Also reduces inflammatory cytokines from fat tissue that suppress the HPG axis.",
+    "practical_implication": "For overweight men, fat loss is the highest-leverage single testosterone intervention. Target 10–20% body fat; most men feel best at 12–16%.",
+    "app_usage": "protocol",
+    "tags": [
+      "testosterone",
+      "estrogen",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "sugar_t_drop",
+    "claim": "A standard sugar drink caused approximately 25% drop in testosterone hours afterward in healthy men",
+    "claim_type": "food_rule",
+    "topic": [
+      "testosterone",
+      "insulin"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 154"
+    ],
+    "mechanism": "Sugar/fructose -> insulin spike -> belly fat accumulation -> upregulates aromatase -> T to E2 conversion. Fructose independently drives de novo lipogenesis and liver fat.",
+    "practical_implication": "Eliminate liquid sugar and high-fructose foods first — before any supplement.",
+    "app_usage": "warning",
+    "tags": [
+      "testosterone",
+      "insulin",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "dht_not_testosterone",
+    "claim": "DHT is not just testosterone. It binds the androgen receptor 2–3x more strongly and activates it up to 10x more powerfully. It does not convert to estrogen.",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "dht",
+      "testosterone"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 1",
+      "Blood Work Guide, p. 44–45"
+    ],
+    "mechanism": "DHT forms a longer-lasting receptor-DNA complex and has 10x more transcriptional potency than testosterone. Non-aromatizable — cannot become estrogen.",
+    "practical_implication": "Test DHT separately. Target >=60 ng/dL; 80–120 ng/dL is solid. High total T with low DHT = under-androgenized at tissue level.",
+    "app_usage": "database",
+    "tags": [
+      "dht",
+      "testosterone",
+      "pri_critical",
+      "src_dht_remastered",
+      "src_blood_work_guide"
+    ]
+  },
+  {
+    "id": "t3_dht_throttle",
+    "claim": "T3 (thyroid hormone) is the throttle for the 5-alpha-reductase gene. Hyperthyroid men have DHT 8–10x above euthyroid averages.",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "dht",
+      "thyroid"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 2, suppressor 2",
+      "DHT Remastered, Ch. 3, lever 12"
+    ],
+    "mechanism": "T3 upregulates SRD5A2 (5AR type 2) gene expression. Without adequate T3, the 5AR enzyme factory cannot run even if testosterone substrate is abundant.",
+    "practical_implication": "Run a full thyroid panel including Free T3. Free T3 in the upper half of range is the DHT optimization target.",
+    "app_usage": "database",
+    "tags": [
+      "dht",
+      "thyroid",
+      "pri_critical",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "nadph_rate_limiting",
+    "claim": "NADPH is the rate-limiting cofactor for 5-alpha-reductase. Without sufficient NADPH, testosterone cannot be converted to DHT regardless of T levels.",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "dht",
+      "testosterone"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 1"
+    ],
+    "mechanism": "5AR requires NADPH as a cofactor. NADPH is generated via the pentose phosphate pathway (PPP) which requires B1, B3, B6, and glucose. Low NADPH is common in chronic stress, toxin exposure, inflammation, infections.",
+    "practical_implication": "Eat adequate carbs. Take a B-complex. Reduce chronic stress (which drains NADPH).",
+    "app_usage": "database",
+    "tags": [
+      "dht",
+      "nadph",
+      "pri_critical",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "prolactin_dht_suppression",
+    "claim": "High prolactin inhibited DHT by 58% and testosterone by 39% in healthy men — reversed within 48–72 hours of normalization",
+    "claim_type": "lab_interpretation",
+    "topic": [
+      "dht",
+      "testosterone"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 2, suppressor 4"
+    ],
+    "mechanism": "Prolactin suppresses GnRH -> lower LH -> lower T; directly inhibits 5AR activity in peripheral tissues. Fast-acting and reversible.",
+    "practical_implication": "Test prolactin. Target 5–8 ng/mL. If high: investigate sleep deprivation, high E2, dopamine, thyroid (TRH stimulates both TSH and prolactin).",
+    "app_usage": "database",
+    "tags": [
+      "dht",
+      "testosterone",
+      "pri_critical",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "cortisol_blocks_dht",
+    "claim": "Blocking cortisol receptors experimentally raised DHEA-S by 322 mcg/dL and DHT by approximately 80%",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "dht",
+      "cortisol",
+      "testosterone"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 2, suppressors 5–6"
+    ],
+    "mechanism": "Cortisol and androgens compete for the same cholesterol precursor pool (pregnenolone steal) and the same NADPH cofactor. Lower cortisol = more resources for androgen synthesis.",
+    "practical_implication": "Treating stress is a direct DHT intervention. Stress management is not soft advice.",
+    "app_usage": "protocol",
+    "tags": [
+      "dht",
+      "cortisol",
+      "pri_critical",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "pufa_5ar_inhibition",
+    "claim": "Polyunsaturated fatty acids (PUFAs) directly inhibit 5-alpha-reductase in vitro. GLA, DHA, and linoleic acid are the strongest inhibitors.",
+    "claim_type": "food_rule",
+    "topic": [
+      "dht",
+      "testosterone"
+    ],
+    "source_refs": [
+      "TFF 2.0, p. 250",
+      "DHT Remastered, Ch. 2, suppressor 13"
+    ],
+    "mechanism": "PUFA fatty acids directly inhibit the 5AR enzyme. Ranking strongest to least: GLA > DHA > Arachidonic acid > ALA > Linoleic acid > Palmitoleic acid. Lipid peroxidation from oxidized PUFAs also creates IL-6/TNF-alpha which epigenetically silence SRD5A2.",
+    "practical_implication": "Eliminate all seed and vegetable oils. Cook with tallow, butter, ghee, or coconut oil.",
+    "app_usage": "warning",
+    "tags": [
+      "dht",
+      "testosterone",
+      "pri_critical",
+      "src_tff_2_0",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "seed_oils_avoid",
+    "claim": "All seed and vegetable oils are oxidized, pro-inflammatory, 5AR-inhibiting, and thyroid-suppressing. Remove every single one from your kitchen.",
+    "claim_type": "food_rule",
+    "topic": [
+      "dht",
+      "testosterone",
+      "thyroid",
+      "inflammation"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 158–159",
+      "DHT Remastered, Ch. 2, suppressor 13"
+    ],
+    "mechanism": "PUFAs in seed oils inhibit 5AR directly, cause oxidative stress and lipid peroxidation, upregulate inflammatory cytokines (IL-6, TNF-alpha), and suppress thyroid conversion.",
+    "practical_implication": "Hard eliminate. Replace with tallow, butter, ghee, or coconut oil. No exceptions.",
+    "app_usage": "warning",
+    "tags": [
+      "dht",
+      "testosterone",
+      "thyroid",
+      "inflammation",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "gut_dht_reservoir",
+    "claim": "Gut fecal free DHT in healthy young men is more than 70x serum DHT. The gut microbiome is a major androgen processing organ.",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "dht",
+      "gut"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 3, lever 16",
+      "Blood Work Guide"
+    ],
+    "mechanism": "Bacteroidota bacteria in the gut express 5-alpha-reductase genes and convert testosterone to DHT locally. This DHT reservoir declines with age and antibiotic use.",
+    "practical_implication": "Support gut health. Consider L. reuteri 6475+17938 and kestose to support gut Bacteroidota.",
+    "app_usage": "database",
+    "tags": [
+      "dht",
+      "gut",
+      "pri_advanced",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "resistance_training_dht",
+    "claim": "One year of structured resistance training raised DHT by approximately 58% in a controlled study",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "dht",
+      "training"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 255"
+    ],
+    "mechanism": "Heavy compound lifts and explosive work increase 5AR expression in muscle tissue over time. 'You literally become better at turning testosterone into DHT.'",
+    "practical_implication": "Heavy compound lifts consistently, over months — this is the non-negotiable foundation for DHT.",
+    "app_usage": "checklist",
+    "tags": [
+      "dht",
+      "training",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "srd5a2_methylation",
+    "claim": "SRD5A2 promoter hypermethylation found in 56% of post-finasteride syndrome patients vs 7.7% in controls",
+    "claim_type": "avoid_caution",
+    "topic": [
+      "dht"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 2, suppressor 10"
+    ],
+    "mechanism": "Finasteride can cause epigenetic silencing of the DHT-making enzyme (SRD5A2) that persists in some men after stopping the drug. Tissue-specific epigenetic changes found in CSF samples.",
+    "practical_implication": "Avoid finasteride and dutasteride unless the tradeoff is fully understood. This is a risk of irreversible epigenetic change.",
+    "app_usage": "warning",
+    "tags": [
+      "dht",
+      "pri_critical",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "hair_loss_metabolic_not_dht",
+    "claim": "Hair loss is not caused by DHT. It is caused by the follicle's inability to maintain adequate cellular energy production in the presence of normal androgen signaling.",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "hair",
+      "dht"
+    ],
+    "source_refs": [
+      "Hair Loss, p. 1, 5, 17"
+    ],
+    "mechanism": "Finasteride blocks 70–90% of DHT yet many users continue losing hair. Metabolically compromised follicles cannot sustain anagen phase regardless of DHT levels. The problem is follicle energy state, not DHT concentration.",
+    "practical_implication": "Address energy, inflammation, and thyroid first. Topical tools are second. DHT blockers address symptom, not cause.",
+    "app_usage": "database",
+    "tags": [
+      "hair",
+      "dht",
+      "pri_critical",
+      "src_hair_loss"
+    ]
+  },
+  {
+    "id": "t3_hair_critical",
+    "claim": "T3 (thyroid hormone) is perhaps the most critical and most overlooked factor in hair loss. Standard TSH testing misses the majority of functional hypothyroidism.",
+    "claim_type": "lab_interpretation",
+    "topic": [
+      "hair",
+      "thyroid"
+    ],
+    "source_refs": [
+      "Hair Loss, p. 2"
+    ],
+    "mechanism": "T3 drives mitochondrial biogenesis, keratin synthesis, anagen phase maintenance, and dermal papilla cell function. Subclinical hypothyroidism (even with normal TSH) impairs all follicle energy systems.",
+    "practical_implication": "Run full thyroid panel including Free T3. TSH alone is insufficient for hair loss evaluation.",
+    "app_usage": "database",
+    "tags": [
+      "hair",
+      "thyroid",
+      "pri_critical",
+      "src_hair_loss"
+    ]
+  },
+  {
+    "id": "vitamin_d_hair_deficiency",
+    "claim": "86% of men with pattern hair loss are vitamin D deficient",
+    "claim_type": "lab_interpretation",
+    "topic": [
+      "hair"
+    ],
+    "source_refs": [
+      "Hair Loss, p. 24"
+    ],
+    "mechanism": "Vitamin D receptors (VDR) are expressed in follicle stem cells. VDR knockout mice develop alopecia. Optimal vitamin D reduces autoimmune follicle attack.",
+    "practical_implication": "Test and correct vitamin D to 40–60 ng/mL as a baseline hair loss intervention.",
+    "app_usage": "database",
+    "tags": [
+      "hair",
+      "pri_core",
+      "src_hair_loss"
+    ]
+  },
+  {
+    "id": "inflammation_precedes_hair_loss",
+    "claim": "Inflammation precedes miniaturization. Histological studies show inflammatory infiltrates appear in the scalp before visible thinning begins.",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "hair",
+      "inflammation"
+    ],
+    "source_refs": [
+      "Hair Loss, p. 6"
+    ],
+    "mechanism": "TGF-beta, PGD2, perifollicular immune cell infiltration cause catagen entry and fibrosis. Same mechanisms drive liver cirrhosis and pulmonary fibrosis.",
+    "practical_implication": "hsCRP <0.5 mg/L. Eliminate seed oils. Fix gut. Manage stress. These ARE hair loss interventions.",
+    "app_usage": "protocol",
+    "tags": [
+      "hair",
+      "inflammation",
+      "pri_core",
+      "src_hair_loss"
+    ]
+  },
+  {
+    "id": "rosemary_oil_vs_minoxidil",
+    "claim": "Rosemary oil at 1% concentration outperformed 2% minoxidil for hair regrowth with zero side effects in a comparative study",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "hair"
+    ],
+    "source_refs": [
+      "Hair Loss, p. 30"
+    ],
+    "mechanism": "Ursolic acid and carnosic acid in rosemary oil improve scalp circulation via a different pathway than minoxidil's vasodilation. May also inhibit 5AR locally at scalp.",
+    "practical_implication": "Use 10–15% rosemary essential oil concentration in carrier oil blend. Apply especially after microneedling.",
+    "app_usage": "protocol",
+    "tags": [
+      "hair",
+      "pri_core",
+      "src_hair_loss"
+    ]
+  },
+  {
+    "id": "microneedling_absorption",
+    "claim": "Microneedling increases transdermal absorption of topical treatments by 10–100x",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "hair"
+    ],
+    "source_refs": [
+      "Hair Loss, p. 25–26"
+    ],
+    "mechanism": "Controlled micro-injury creates microscopic channels through stratum corneum and triggers EGF, PDGF, VEGF growth factors. Reduces perifollicular fibrosis.",
+    "practical_implication": "Use derma stamp (not roller), 0.5–1.0mm, once every 7–14 days. Apply oil immediately after for maximum benefit.",
+    "app_usage": "protocol",
+    "tags": [
+      "hair",
+      "pri_core",
+      "src_hair_loss"
+    ]
+  },
+  {
+    "id": "keto_hair_loss",
+    "claim": "Chronic low-carb/keto diets raise cortisol chronically and can directly cause hair loss",
+    "claim_type": "food_rule",
+    "topic": [
+      "hair",
+      "thyroid"
+    ],
+    "source_refs": [
+      "Hair Loss, p. 28"
+    ],
+    "mechanism": "Low carbs -> low T3 -> low mitochondrial function in follicles; simultaneously raises cortisol (body interprets low carbs as famine stress) -> shortens anagen -> promotes catagen.",
+    "practical_implication": "Do not go keto if experiencing hair loss. Minimum 100–150g carbs/day.",
+    "app_usage": "warning",
+    "tags": [
+      "hair",
+      "thyroid",
+      "pri_critical",
+      "src_hair_loss"
+    ]
+  },
+  {
+    "id": "never_treat_one_number",
+    "claim": "Never treat one number. Every blood marker must be read in context with related markers.",
+    "claim_type": "lab_interpretation",
+    "topic": [
+      "blood_work"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 1–4"
+    ],
+    "mechanism": "A single testosterone reading without SHBG, free T, DHT, LH, E2, and thyroid tells almost nothing actionable. Markers reveal root causes only in clusters.",
+    "practical_implication": "Run comprehensive panels. Read patterns across related markers to identify root causes.",
+    "app_usage": "database",
+    "tags": [
+      "blood_work",
+      "pri_critical",
+      "src_blood_work_guide"
+    ]
+  },
+  {
+    "id": "lh_pattern_diagnosis",
+    "claim": "LH tells you whether the testosterone problem is upstream (brain/pituitary) or downstream (testes). Low LH + low T = central issue. High LH + low T = testicular failure.",
+    "claim_type": "lab_interpretation",
+    "topic": [
+      "testosterone",
+      "blood_work"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 22"
+    ],
+    "mechanism": "LH drives Leydig cells to produce testosterone. Low LH = pituitary/hypothalamic not sending signal (central). High LH = signal being sent but testes not responding (hardware problem).",
+    "practical_implication": "Always test LH and FSH alongside total T. They completely change the intervention direction.",
+    "app_usage": "database",
+    "tags": [
+      "testosterone",
+      "blood_work",
+      "pri_critical",
+      "src_blood_work_guide"
+    ]
+  },
+  {
+    "id": "fasting_insulin_target",
+    "claim": "Fasting insulin 2–6 mcU/mL is the target. TG:HDL ratio <2 (ideally ~1) is a reliable proxy for insulin sensitivity.",
+    "claim_type": "lab_interpretation",
+    "topic": [
+      "insulin",
+      "testosterone"
+    ],
+    "source_refs": [
+      "Blood Work Guide, p. 83–84"
+    ],
+    "mechanism": "Insulin resistance suppresses testosterone, raises SHBG, impairs thyroid conversion (more rT3), and locally upregulates 5AR in scalp tissue. Often shows in lipids before glucose becomes abnormal.",
+    "practical_implication": "If TG:HDL >2 or fasting insulin >10, insulin resistance is likely the hidden bottleneck for testosterone and hair.",
+    "app_usage": "database",
+    "tags": [
+      "insulin",
+      "testosterone",
+      "blood_work",
+      "pri_critical",
+      "src_blood_work_guide"
+    ]
+  },
+  {
+    "id": "hs_crp_t_suppression",
+    "claim": "hsCRP above 1.0 mg/L means chronic inflammation is suppressing testosterone and DHT. Men with higher hsCRP have significantly lower total and free testosterone independent of BMI.",
+    "claim_type": "lab_interpretation",
+    "topic": [
+      "inflammation",
+      "testosterone",
+      "dht"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 2, suppressor 11"
+    ],
+    "mechanism": "IL-6 and TNF-alpha blunt hypothalamic GnRH (lower LH -> lower T), raise SHBG, and epigenetically silence SRD5A2 via DNMT1 methylation.",
+    "practical_implication": "Target hsCRP <0.5 mg/L. Anything above 1.0 demands investigation of cause (gut, visceral fat, seed oils, infections).",
+    "app_usage": "database",
+    "tags": [
+      "inflammation",
+      "testosterone",
+      "dht",
+      "blood_work",
+      "pri_critical",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "ferritin_high_low_t",
+    "claim": "High ferritin (especially with elevated hsCRP) correlates inversely with testosterone even after controlling for BMI and other confounders (Liu et al., 2013)",
+    "claim_type": "lab_interpretation",
+    "topic": [
+      "testosterone",
+      "inflammation"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 2, suppressor 14",
+      "Blood Work Guide"
+    ],
+    "mechanism": "Iron overload causes Leydig cell oxidative damage via Fenton reaction (hydroxyl radicals), pituitary iron deposition lowering LH/FSH, and raised SHBG. Ferritin is also an acute-phase reactant — interpret with hsCRP.",
+    "practical_implication": "Target ferritin 50–100 ng/mL. High ferritin is not always good iron stores — it can mean inflammation. Always check TSAT alongside ferritin.",
+    "app_usage": "database",
+    "tags": [
+      "testosterone",
+      "inflammation",
+      "blood_work",
+      "pri_core",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "vitamin_d_testosterone",
+    "claim": "Vitamin D3 supplementation over 1 year (3,332 IU/day) raised total testosterone approximately 25% and free testosterone approximately 20% in men with low vitamin D. No effect in men already replete.",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "testosterone"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 3, lever 7"
+    ],
+    "mechanism": "Vitamin D receptors in Leydig cells support LH-driven testosterone signaling. Works mainly by removing a deficiency brake. No benefit if already replete at 40–60 ng/mL.",
+    "practical_implication": "Test 25(OH)D. If below 40 ng/mL, D3 + K2 is the first supplement to add.",
+    "app_usage": "protocol",
+    "tags": [
+      "testosterone",
+      "pri_core",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "zinc_t_restriction",
+    "claim": "Zinc restriction over 20 weeks cut testosterone significantly in healthy young men; 30mg/day in marginally deficient elderly men raised it substantially",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "testosterone",
+      "dht"
+    ],
+    "source_refs": [
+      "DHT Remastered, Ch. 3, lever 5"
+    ],
+    "mechanism": "Zinc supports steroidogenic enzymes upstream of testosterone and healthy LH signaling. Deficiency directly limits production.",
+    "practical_implication": "Fix zinc deficiency as a foundational step. Always balance with copper — long-term high zinc depletes copper.",
+    "app_usage": "protocol",
+    "tags": [
+      "testosterone",
+      "dht",
+      "pri_core",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "creatine_dht_rugby",
+    "claim": "Creatine loading in rugby players: DHT increased 56% after loading phase, 40% during maintenance; T unchanged (Hirono et al., 2001). Note: not replicated in later studies.",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "dht",
+      "testosterone"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 387",
+      "DHT Remastered, Ch. 3, lever 4"
+    ],
+    "mechanism": "Creatine -> faster ATP/ADP cycling -> more NADPH availability -> 5AR cofactor support. May redistribute T and DHT from blood into skeletal muscle.",
+    "practical_implication": "Creatine is a potential DHT lever but evidence is inconsistent. Use for ATP/performance primarily — DHT benefit is secondary and not guaranteed.",
+    "app_usage": "database",
+    "tags": [
+      "dht",
+      "testosterone",
+      "pri_core",
+      "src_tff_2_0",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "boron_androgens",
+    "claim": "Boron 10mg/day for 1 week: free testosterone rose ~28%, SHBG dropped 10%, E2 dropped, hsCRP dropped, TNF-alpha dropped, DHT rose (Naghii et al., 2011)",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "testosterone",
+      "dht"
+    ],
+    "source_refs": [
+      "TFF 2.0, p. 394–395",
+      "DHT Remastered, Ch. 3, lever 6"
+    ],
+    "mechanism": "Boron suppresses SHBG -> increases free T and DHT; reduces inflammatory cytokines. Short boron trial can rapidly shift free androgen status.",
+    "practical_implication": "Take morning only (causes early waking if taken later). Start 3–6mg/day. Short experiments at 10mg are possible.",
+    "app_usage": "protocol",
+    "tags": [
+      "testosterone",
+      "dht",
+      "pri_core",
+      "src_tff_2_0",
+      "src_dht_remastered"
+    ]
+  },
+  {
+    "id": "intra_glucose_partitioning",
+    "claim": "Intra-workout glucose started after 1–2 heavy sets is pulled directly into working muscle fibers via contraction-activated GLUT4 independent of insulin",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "performance"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 15–16"
+    ],
+    "mechanism": "AMPK + Ca2+/CaMK from muscle contractions bring GLUT4 to the membrane -> glucose enters without needing high insulin -> direct fuel for working sets.",
+    "practical_implication": "Start intra dextrose AFTER 1–2 heavy sets — not before training. Adding sodium (2g) enhances SGLT1 glucose absorption.",
+    "app_usage": "checklist",
+    "tags": [
+      "performance",
+      "pri_core",
+      "src_performance_nutrition"
+    ]
+  },
+  {
+    "id": "pre_workout_protein_only",
+    "claim": "Protein-only pre-workout keeps lipolysis active while providing amino acid protection against muscle catabolism. This is the gold standard for hypertrophy/recomposition.",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "performance"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 35"
+    ],
+    "mechanism": "Small insulin bump from protein (glucagon balances -> liver keeps releasing glucose); lipolysis stays on; contractions open GLUT4. Result: stable fuel, lower cortisol, better pump, nutrients partition into muscle.",
+    "practical_implication": "30–40g lean protein pre-workout with no carbs, minimal fat for physique/strength training.",
+    "app_usage": "checklist",
+    "tags": [
+      "performance",
+      "pri_core",
+      "src_performance_nutrition"
+    ]
+  },
+  {
+    "id": "post_workout_glut4_window",
+    "claim": "Post-training GLUT4 stays elevated for 2–3 hours. This is the window to maximize glycogen refill in the exact trained fibers.",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "performance"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 16–17"
+    ],
+    "mechanism": "Contraction signaling keeps GLUT4 high even after training ends. Insulin-independent uptake continues. Post-workout starch goes into specific trained fibers, not randomly.",
+    "practical_implication": "Use the 0–30 min post-workout window for starch + lean protein, near-zero fat.",
+    "app_usage": "checklist",
+    "tags": [
+      "performance",
+      "pri_core",
+      "src_performance_nutrition"
+    ]
+  },
+  {
+    "id": "gluconeogenesis_inefficiency",
+    "claim": "Gluconeogenesis costs 6 ATP per glucose molecule — a backup generator running on diesel, not a performance strategy",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "performance"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 4–5"
+    ],
+    "mechanism": "GNG is a survival mechanism for famine. A heavy set of squats has glycolytic demand that GNG simply cannot sustain.",
+    "practical_implication": "Low-carb diets are inherently inefficient for resistance training performance. Minimum 2g/kg carbs on training days.",
+    "app_usage": "knowledge_only",
+    "tags": [
+      "performance",
+      "pri_core",
+      "src_performance_nutrition"
+    ]
+  },
+  {
+    "id": "hmb_dual_pathway",
+    "claim": "HMB activates mTOR (PI3K/Akt) and AMPK (LKB1) simultaneously through non-competing pathways — build muscle AND build mitochondria at the same time",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "performance"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 59"
+    ],
+    "mechanism": "Two separate molecular doors that neither cancels the other. Most compounds force a tradeoff between growth and adaptation. HMB does not.",
+    "practical_implication": "HMB is unusual — 1g x 3 doses per day matching morning/pre-training/post-training metabolic contexts.",
+    "app_usage": "database",
+    "tags": [
+      "performance",
+      "pri_advanced",
+      "src_performance_nutrition"
+    ]
+  },
+  {
+    "id": "r_ala_pdh_activation",
+    "claim": "R-ALA activates pyruvate dehydrogenase (PDH) independently from training's calcium signal — the gate opens wider and stays open longer",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "performance"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 18–19"
+    ],
+    "mechanism": "Training activates PDH through calcium; R-ALA activates it through a separate mechanism. Two separate signals -> PDH gate opens wider and stays open longer -> post-workout carbs routed more into mitochondrial oxidation.",
+    "practical_implication": "R-ALA 300mg post-workout with starch meal. R-form ONLY — racemic ALA is significantly less effective.",
+    "app_usage": "protocol",
+    "tags": [
+      "performance",
+      "pri_advanced",
+      "src_performance_nutrition"
+    ]
+  },
+  {
+    "id": "taurine_thyroid_muscle",
+    "claim": "Taurine post-workout activates TGR5 receptor in muscle via conjugated bile acids, stimulating local T4 to T3 conversion at tissue level",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "performance",
+      "thyroid"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 68"
+    ],
+    "mechanism": "Taurine conjugates with bile acids -> activates TGR5 receptor in muscle -> stimulates deiodinase -> local T4->T3 conversion exactly when metabolic demand is highest.",
+    "practical_implication": "Post-workout taurine (2g) supports thyroid activation in trained tissue. Also provides cell swelling (independent anabolic signal) and GABA-A parasympathetic support.",
+    "app_usage": "protocol",
+    "tags": [
+      "performance",
+      "thyroid",
+      "pri_advanced",
+      "src_performance_nutrition"
+    ]
+  },
+  {
+    "id": "sympathetic_eating_impairs",
+    "claim": "Eating in sympathetic (fight-or-flight) state impairs digestion — gastric emptying slows, cortisol opposes protein synthesis, insulin sensitivity is blunted",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "performance",
+      "gut"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 65–66"
+    ],
+    "mechanism": "Sympathetic nervous system diverts blood to muscle, not gut. Growth and repair run on parasympathetic. A warm shower + breathing before the post-workout meal meaningfully improves nutrient absorption.",
+    "practical_implication": "Warm shower + slow breathing 10 min after training before eating post-workout meal.",
+    "app_usage": "checklist",
+    "tags": [
+      "performance",
+      "gut",
+      "pri_core",
+      "src_performance_nutrition"
+    ]
+  },
+  {
+    "id": "fructose_intra_worst",
+    "claim": "Fructose is the worst intra-workout fuel — muscles have no GLUT5 receptor; fructose goes to liver not muscle; forms AGEs approximately 10x faster than glucose",
+    "claim_type": "food_rule",
+    "topic": [
+      "performance"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 21–23",
+      "TFF 2.0, p. 176"
+    ],
+    "mechanism": "Fructose uses GLUT5 (intestine) -> GLUT2 (liver) pathway. Skeletal muscle has no fructose door. Non-enzymatic glycation with fructose is 10x faster than with glucose.",
+    "practical_implication": "Never use honey, fruit juice, or fructose-containing products as intra-workout carbs. Use dextrose or cyclic dextrin only.",
+    "app_usage": "warning",
+    "tags": [
+      "performance",
+      "pri_core",
+      "src_performance_nutrition"
+    ]
+  },
+  {
+    "id": "post_meal_walk",
+    "claim": "A 10–15 minute slow walk after any heavy meal keeps GLUT4 partially active, moves glucose into muscle rather than fat storage, and reduces insulin spike",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "performance",
+      "insulin"
+    ],
+    "source_refs": [
+      "Performance Nutrition, p. 78–80"
+    ],
+    "mechanism": "Movement maintains GLUT4 partially active via low-level muscle contractions. Upright posture helps gastric emptying. Reduces post-meal insulin excursion.",
+    "practical_implication": "10-minute walk after main meals. Simplest upgrade in the nutrition plan.",
+    "app_usage": "checklist",
+    "tags": [
+      "performance",
+      "insulin",
+      "pri_core",
+      "src_performance_nutrition"
+    ]
+  },
+  {
+    "id": "carbs_essential_t",
+    "claim": "Carbohydrates are essential for testosterone — do not drop them to zero while training hard",
+    "claim_type": "food_rule",
+    "topic": [
+      "testosterone",
+      "thyroid"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 3, p. 41–48"
+    ],
+    "mechanism": "Low carbs -> low T3 -> elevated cortisol -> testosterone suppression. The body interprets low carbs + hard training as famine. NADPH for 5AR also requires glucose via pentose phosphate pathway.",
+    "practical_implication": "Minimum 2g/kg BW carbs on training days. Never zero-carb during a hard training block.",
+    "app_usage": "warning",
+    "tags": [
+      "testosterone",
+      "thyroid",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "smoking_t_suppression",
+    "claim": "Smokers average 15–20% lower testosterone vs non-smokers; heavy smokers up to 40% lower",
+    "claim_type": "avoid_caution",
+    "topic": [
+      "testosterone"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 3, p. 115"
+    ],
+    "mechanism": "Cadmium, lead, nicotine, and combustion byproducts disrupt the HPG axis via oxidative stress, aromatase upregulation, and enzyme inhibition (17alpha-hydroxylase).",
+    "practical_implication": "Smoking is a stronger testosterone suppressor than most deficiencies. Quitting allows T to rebound by 15%+ within 1 year.",
+    "app_usage": "warning",
+    "tags": [
+      "testosterone",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "walking_step_count_t",
+    "claim": "Men who walked fewer than 4,000 steps/day had the lowest testosterone; those walking 8,000–12,000 steps/day had the highest",
+    "claim_type": "actionable_protocol",
+    "topic": [
+      "testosterone",
+      "training"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 3, p. 87–89"
+    ],
+    "mechanism": "Regular movement reduces aromatase (via fat management), manages blood sugar, and contributes to overall anabolic environment.",
+    "practical_implication": "Aim for 8,000–12,000 steps/day. Start incrementally — improve overall daily movement.",
+    "app_usage": "checklist",
+    "tags": [
+      "testosterone",
+      "training",
+      "pri_core",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "alcohol_aromatase",
+    "claim": "Alcohol promotes the conversion of testosterone to estrogen via aromatase upregulation. Even half a glass contains ~5g alcohol. Frequent use raises estrogen.",
+    "claim_type": "avoid_caution",
+    "topic": [
+      "testosterone",
+      "estrogen"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 3, p. 109–112"
+    ],
+    "mechanism": "Ethanol metabolism increases NADH/NAD+ ratio -> activates aromatase in multiple tissues (testes, liver, placenta). Also oxidative stress damages pituitary and gonads.",
+    "practical_implication": "Limit to 2 drinks per week maximum; ideally zero.",
+    "app_usage": "warning",
+    "tags": [
+      "testosterone",
+      "estrogen",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "competition_raises_t",
+    "claim": "Competition raises testosterone. Winning generates an ongoing T benefit. Even participation without winning raises T.",
+    "claim_type": "lifestyle_theory",
+    "topic": [
+      "testosterone"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 327–351"
+    ],
+    "mechanism": "The HPG axis responds to real-world challenge and social dominance signals. Winning produces a winner-effect T elevation.",
+    "practical_implication": "Compete — in sport, work, or any real domain where there is a winner. Social engagement and challenge are biological testosterone signals.",
+    "app_usage": "knowledge_only",
+    "tags": [
+      "testosterone",
+      "pri_core",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "endocrine_disruptors_avoid",
+    "claim": "BPA, phthalates, parabens, PCBs, PFAS disrupt testosterone production or raise estrogen. Avoid plastic containers, non-stick pans, and synthetic personal care products.",
+    "claim_type": "avoid_caution",
+    "topic": [
+      "testosterone",
+      "estrogen"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 5, p. 438–467"
+    ],
+    "mechanism": "BPA acts like estrogen; phthalates disrupt testosterone; parabens upregulate aromatase. Half-lives vary from hours (BPA ~6h) to decades (POPs, heavy metals).",
+    "practical_implication": "Use glass/stainless containers, filter water, paraben-free products, no non-stick pans, natural cleaning products.",
+    "app_usage": "warning",
+    "tags": [
+      "testosterone",
+      "estrogen",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "tap_water_hormones",
+    "claim": "Tap water contains chlorine, chloramine, heavy metals, pesticides, and synthetic hormones from birth control — install a water filter",
+    "claim_type": "avoid_caution",
+    "topic": [
+      "testosterone",
+      "estrogen"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 5, p. 459–467"
+    ],
+    "mechanism": "Estrogens from birth control pills pass through water treatment plants largely intact. Chlorine and chloramine are absorbed through skin in showering. Heavy metals disrupt HPG axis.",
+    "practical_implication": "Install activated carbon, reverse osmosis, or UV purifier for drinking water. Install shower filter (KDF + activated carbon + vitamin C cartridge).",
+    "app_usage": "warning",
+    "tags": [
+      "testosterone",
+      "estrogen",
+      "hair",
+      "pri_core",
+      "src_tff_2_0",
+      "src_hair_loss"
+    ]
+  },
+  {
+    "id": "soy_phytoestrogens",
+    "claim": "Soy contains phytoestrogens (isoflavones) that act like weak estrogen and suppress LH signaling. Soy is not a testosterone food.",
+    "claim_type": "food_rule",
+    "topic": [
+      "testosterone",
+      "estrogen"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 156–158"
+    ],
+    "mechanism": "Soy isoflavones bind estrogen receptors and suppress LH signaling in the HPG axis. Shift estrogen:androgen balance unfavorably.",
+    "practical_implication": "Avoid all soy products — hard eliminate.",
+    "app_usage": "warning",
+    "tags": [
+      "testosterone",
+      "estrogen",
+      "pri_critical",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "gut_testosterone_case",
+    "claim": "Case study: testosterone stuck below 400 ng/dL despite doing everything right. Gut overgrowth fixed. T jumped to 700 ng/dL.",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "gut",
+      "testosterone"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 258–259"
+    ],
+    "mechanism": "Gut dysfunction blocks testosterone via: nutrient malabsorption (zinc, fat-solubles, cholesterol, amino acids), chronic inflammation/endotoxin raising cortisol and lowering T, disrupted hormone metabolism.",
+    "practical_implication": "When T is stuck despite doing everything right, investigate gut function. 'Gut is not a side quest.'",
+    "app_usage": "knowledge_only",
+    "tags": [
+      "gut",
+      "testosterone",
+      "pri_core",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "insulin_scalp_5ar",
+    "claim": "Hyperinsulinemia chronically upregulates 5-alpha-reductase in scalp tissue — locally amplifying DHT production independent of circulating levels",
+    "claim_type": "mechanistic_concept",
+    "topic": [
+      "hair",
+      "insulin",
+      "dht"
+    ],
+    "source_refs": [
+      "Hair Loss, p. 7"
+    ],
+    "mechanism": "Insulin resistance -> 5AR gene upregulation in scalp tissue specifically -> excess local DHT -> follicle miniaturization even when serum DHT is in range.",
+    "practical_implication": "Improving insulin sensitivity may reduce scalp DHT without blocking systemic androgen production. Target fasting insulin 2–6 mcU/mL.",
+    "app_usage": "database",
+    "tags": [
+      "hair",
+      "insulin",
+      "dht",
+      "pri_core",
+      "src_hair_loss"
+    ]
+  },
+  {
+    "id": "fiber_gut_study",
+    "claim": "Zero-fiber group had 100% resolution of chronic constipation and bloating in clinical study; high-fiber group worsened",
+    "claim_type": "food_rule",
+    "topic": [
+      "gut"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 4, p. 273–274"
+    ],
+    "mechanism": "'Fiber doesn't clean the gut. It clogs it.' Human colon cannot digest cellulose. Fiber fermentation increases gas, endotoxin, and inflammation in damaged guts.",
+    "practical_implication": "Reducing or eliminating dietary fiber can resolve mystery gut symptoms. This is the ebook's personal approach — not mainstream guidance.",
+    "app_usage": "knowledge_only",
+    "tags": [
+      "gut",
+      "pri_optional",
+      "src_tff_2_0"
+    ]
+  },
+  {
+    "id": "nsaids_t_suppression",
+    "claim": "Long-term ibuprofen/NSAID use blocks enzymes needed for hormone production and can decrease testosterone",
+    "claim_type": "avoid_caution",
+    "topic": [
+      "testosterone"
+    ],
+    "source_refs": [
+      "TFF 2.0, Ch. 5, p. 468–476"
+    ],
+    "mechanism": "NSAIDs inhibit cyclooxygenase (COX) enzymes that are also involved in prostaglandin synthesis in the testes. Chronic use reduces Leydig cell function.",
+    "practical_implication": "Minimize chronic NSAID use. Not for regular use as training recovery tool.",
+    "app_usage": "warning",
+    "tags": [
+      "testosterone",
+      "pri_core",
+      "src_tff_2_0"
+    ]
+  }
+]

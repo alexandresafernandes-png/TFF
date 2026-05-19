@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>VILLAIN.OS — Private Biohacking Command</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        },
+        colors: {
+          ink: {
+            950: '#08080a',
+            900: '#0b0b0d',
+            850: '#101013',
+            800: '#131316',
+            750: '#17171b',
+            700: '#1c1c21',
+            600: '#26262c',
+            500: '#3a3a42',
+            400: '#5a5a64',
+            300: '#86868f',
+            200: '#a8a8b0',
+            100: '#d4d4d8',
+            50:  '#ececef',
+          },
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    /* Spacing scale (8pt base) */
+    --s-1: 4px;
+    --s-2: 8px;
+    --s-3: 12px;
+    --s-4: 16px;
+    --s-5: 20px;
+    --s-6: 24px;
+    --s-7: 32px;
+    --s-8: 40px;
+    --s-9: 56px;
+
+    /* Type scale */
+    --t-display: 28px;
+    --t-h1:      20px;
+    --t-h2:      16px;
+    --t-h3:      14px;
+    --t-body:    13.5px;
+    --t-small:   12.5px;
+    --t-micro:   11px;
+
+    --bg: #0a0a0c;
+    --panel: #101013;
+    --card: #141417;
+    --card-2: #18181c;
+    --border: #26262c;
+    --border-soft: #1c1c21;
+    --text: #ececef;       /* primary */
+    --text-2: #b6b6bd;     /* secondary, more readable than before */
+    --text-3: #8a8a92;     /* tertiary — only for true labels */
+    --text-4: #5a5a62;     /* hint only */
+
+    /* accent (toxic green default) */
+    --accent: #9bd34a;
+    --accent-ink: #0c1305;
+    --accent-soft: rgba(155, 211, 74, 0.10);
+    --accent-line: rgba(155, 211, 74, 0.32);
+
+    --warn: #e8b14a;
+    --warn-soft: rgba(232, 177, 74, 0.10);
+    --danger: #c84545;
+    --danger-soft: rgba(200, 69, 69, 0.10);
+  }
+  html, body { background: var(--bg); color: var(--text); }
+  body {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-feature-settings: 'ss01' on, 'cv11' on;
+    letter-spacing: -0.005em;
+    -webkit-font-smoothing: antialiased;
+    font-size: var(--t-body);
+    line-height: 1.5;
+  }
+  /* Subtle grain on the whole app */
+  .grain::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity: 0.45; mix-blend-mode: screen;
+  }
+  /* Sidebar scanline */
+  .scan {
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 3px);
+    background-size: 100% 3px;
+  }
+  /* Hairline grid for card surfaces */
+  .grid-faint {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: 'tnum' on; }
+
+  /* === Labels (the ONLY uppercase mono usage) ===
+     Reserved for section headers and column headers only. */
+  .label {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10.5px;
+    color: var(--text-3);
+    font-weight: 500;
+  }
+
+  /* For inline kv labels, use a calmer treatment (no uppercase) */
+  .kv-label {
+    font-size: var(--t-small);
+    color: var(--text-3);
+    letter-spacing: 0;
+  }
+
+  .hairline { border: 1px solid var(--border); }
+  .hairline-soft { border: 1px solid var(--border-soft); }
+  .divider { border-color: var(--border); }
+  .divider-soft { border-color: var(--border-soft); }
+
+  /* Cards: more generous padding, defined header strip */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; }
+  .card-2 { background: var(--card-2); border: 1px solid var(--border); border-radius: 6px; }
+  .panel { background: var(--panel); }
+
+  /* Tick / checkbox */
+  .tick {
+    width: 18px; height: 18px; border: 1px solid var(--border); border-radius: 3px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #0e0e11; flex-shrink: 0; transition: background 120ms, border-color 120ms;
+  }
+  .tick:hover { border-color: #3a3a42; }
+  .tick[data-on="true"] { background: var(--accent); border-color: var(--accent); }
+  .tick[data-on="true"] svg { color: var(--accent-ink); }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #1c1c22; border-radius: 6px; border: 2px solid var(--bg); }
+  ::-webkit-scrollbar-thumb:hover { background: #2a2a32; }
+
+  /* Progress bar — taller, more presence */
+  .bar-track { background: #1a1a1f; border: 1px solid var(--border-soft); border-radius: 999px; height: 7px; overflow: hidden; }
+  .bar-fill { background: var(--accent); height: 100%; border-radius: 999px; transition: width 200ms ease; }
+
+  /* Subtle focus */
+  input:focus, button:focus, textarea:focus { outline: none; }
+  input::placeholder { color: var(--text-4); }
+
+  .sharp { border-radius: 4px; }
+
+  /* Sidebar item — taller, more breathing room */
+  .nav-item { color: var(--text-2); border-left: 2px solid transparent; padding-top: 9px; padding-bottom: 9px; }
+  .nav-item:hover { color: var(--text); background: rgba(255,255,255,0.018); }
+  .nav-item[data-active="true"] {
+    color: var(--text);
+    background: linear-gradient(90deg, var(--accent-soft), transparent 70%);
+    border-left-color: var(--accent);
+  }
+  .nav-item[data-active="true"] .nav-glyph { color: var(--accent); }
+
+  /* Badges — slightly more presence, still tactical */
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 9px; border-radius: 3px; border: 1px solid var(--border); color: var(--text-2); background: rgba(255,255,255,0.01); white-space: nowrap; line-height: 1; font-weight: 500; }
+  .badge .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+  .badge-core    { color: var(--accent); border-color: var(--accent-line); background: var(--accent-soft); }
+  .badge-avoid   { color: var(--danger); border-color: rgba(200,69,69,0.36); background: var(--danger-soft); }
+  .badge-warn    { color: var(--warn);   border-color: rgba(232,177,74,0.36); background: var(--warn-soft); }
+  .badge-depends { color: #d2d2d8; border-color: var(--border); }
+  .badge-prep    { color: #d2d2d8; border-color: var(--border); }
+  .badge-na      { color: var(--text-3); border-color: var(--border-soft); }
+
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Geist', system-ui, sans-serif; font-size: 12.5px; letter-spacing: 0; padding: 8px 14px; border-radius: 4px; border: 1px solid var(--border); color: var(--text); background: #181820; white-space: nowrap; font-weight: 500; transition: background 120ms, border-color 120ms; }
+  .btn:hover { background: #1f1f27; border-color: #34343c; }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .btn-primary:hover { filter: brightness(1.08); background: var(--accent); border-color: var(--accent); }
+  .btn-ghost { background: transparent; }
+  .btn-ghost:hover { background: rgba(255,255,255,0.025); }
+  .btn-danger { color: var(--danger); border-color: rgba(200,69,69,0.4); background: var(--danger-soft); }
+  .btn-sm { padding: 6px 10px; font-size: 12px; }
+
+  /* Mono kbd / code chip */
+  .kbd { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--text-3); border: 1px solid var(--border-soft); padding: 3px 7px; border-radius: 3px; background: rgba(255,255,255,0.01); letter-spacing: 0.05em; }
+
+  /* Tabs */
+  .tab { font-family: 'Geist', sans-serif; font-size: 12.5px; letter-spacing: 0; color: var(--text-3); padding: 10px 0; border-bottom: 1px solid transparent; font-weight: 500; }
+  .tab[data-on="true"] { color: var(--text); border-bottom-color: var(--accent); }
+  .tab:hover { color: var(--text-2); }
+
+  /* Density variants — apply to .card-pad utility */
+  body[data-density="compact"]      .card-pad  { padding: 14px 16px; }
+  body[data-density="comfortable"]  .card-pad  { padding: 20px 22px; }
+  body[data-density="roomy"]        .card-pad  { padding: 26px 28px; }
+
+  body[data-density="compact"]      .card-pad-tight { padding: 10px 14px; }
+  body[data-density="comfortable"]  .card-pad-tight { padding: 14px 18px; }
+  body[data-density="roomy"]        .card-pad-tight { padding: 18px 22px; }
+
+  /* No-uppercase mode */
+  body[data-caps="off"] .label,
+  body[data-caps="off"] .badge,
+  body[data-caps="off"] .tab { text-transform: none; letter-spacing: 0.01em; }
+
+  /* Selection */
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+
+  input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+  /* Table-like rows: uniform height by default */
+  .row { min-height: 56px; }
+  .row-tight { min-height: 44px; }
+
+  /* Section spacing */
+  .stack-md > * + * { margin-top: 20px; }
+  .stack-lg > * + * { margin-top: 28px; }
+
+  @keyframes skel {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* Mobile phone frame for mobile preview */
+  .phone {
+    width: 380px; height: 780px;
+    background: var(--bg);
+    border: 1px solid #2a2a32;
+    border-radius: 36px;
+    box-shadow: 0 0 0 8px #050507, 0 30px 80px rgba(0,0,0,0.6);
+    overflow: hidden;
+    position: relative;
+  }
+  .phone::before {
+    content: ''; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    width: 110px; height: 24px; background: #050507; border-radius: 999px; z-index: 5;
+  }
+</style>
+</head>
+<body class="grain min-h-screen" data-density="comfortable" data-caps="on">
+
+<div id="root"></div>
+
+<script type="text/babel" src="components-v2.jsx"></script>
+<script type="text/babel" src="screens-v2.jsx"></script>
+<script type="text/babel" src="screens-extras-v2.jsx"></script>
+<script type="text/babel" src="flow-showcase-v2.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="app-v2.jsx"></script>
+
+</body>
+</html>
