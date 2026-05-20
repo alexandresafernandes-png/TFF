@@ -230,3 +230,6 @@ html, body {
 /* Stack utilities */
 .stack-md > * + * { margin-top: 20px; }
 .stack-lg > * + * { margin-top: 28px; }
+
+/* Quick action card hover */
+.action-card:hover { background: var(--card-2) !important; border-color: #34343c !important; }
