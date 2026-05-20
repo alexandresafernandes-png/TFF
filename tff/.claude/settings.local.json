@@ -13,7 +13,11 @@
       "Bash(awk '{print $6, $7, $8, $9}')",
       "Bash(node -e \"const d = require\\('./data/foods.json'\\); const s = require\\('./data/supplements.json'\\); const p = require\\('./data/protocols.json'\\); const b = require\\('./data/blood_markers.json'\\); const c = require\\('./data/checklist_items.json'\\); const cg = require\\('./data/cooking_guides.json'\\); const sh = require\\('./data/shopping_items.json'\\); const cl = require\\('./data/claims.json'\\); console.log\\('total:', d.length+s.length+p.length+b.length+c.length+cg.length+sh.length+cl.length\\)\")",
       "Bash(node -e \"const t = require\\('./tsconfig.json'\\); console.log\\(JSON.stringify\\(t.compilerOptions.paths, null, 2\\)\\)\")",
-      "Bash(node -e \"const t = require\\('./tsconfig.json'\\); console.log\\('resolveJsonModule:', t.compilerOptions.resolveJsonModule, 'moduleResolution:', t.compilerOptions.moduleResolution\\)\")"
+      "Bash(node -e \"const t = require\\('./tsconfig.json'\\); console.log\\('resolveJsonModule:', t.compilerOptions.resolveJsonModule, 'moduleResolution:', t.compilerOptions.moduleResolution\\)\")",
+      "Bash(node -e \"const d = require\\('./data/cooking_guides.json'\\); console.log\\(JSON.stringify\\(d[0], null, 2\\)\\)\")",
+      "Bash(node -e \"const d = require\\('./data/shopping_items.json'\\); console.log\\(JSON.stringify\\(d[0], null, 2\\)\\)\")",
+      "Bash(node -e \"const d = require\\('./data/claims.json'\\); console.log\\(JSON.stringify\\(d[0], null, 2\\)\\)\")",
+      "Bash(node -e ' *)"
     ]
   }
 }

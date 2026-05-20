@@ -231,5 +231,21 @@ html, body {
 .stack-md > * + * { margin-top: 20px; }
 .stack-lg > * + * { margin-top: 28px; }
 
+/* Input / textarea / select base — matches design system */
+input[type="text"], input[type="search"], input[type="email"],
+input[type="password"], textarea, select {
+  background: #0e0e11;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: 'Geist', sans-serif;
+  font-size: var(--t-body);
+  padding: 8px 12px;
+  transition: border-color 120ms;
+  box-sizing: border-box;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--accent); outline: none; }
+input::placeholder, textarea::placeholder { color: var(--text-4); }
+
 /* Quick action card hover */
 .action-card:hover { background: var(--card-2) !important; border-color: #34343c !important; }
