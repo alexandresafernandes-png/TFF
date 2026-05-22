@@ -1,6 +1,7 @@
 // Temporary edge-safe middleware to unblock Vercel deployment.
 // Auth/session protection is disabled here for now.
-// Later we can re-add route protection in an Edge-compatible way.
+// TODO: re-add route protection using an Edge-compatible Supabase check
+// (e.g. decode the JWT from cookies directly instead of calling supabase.auth.getUser()).
 
 import { NextResponse } from "next/server"
 
