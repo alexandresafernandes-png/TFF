@@ -17,7 +17,14 @@
       "Bash(node -e \"const d = require\\('./data/cooking_guides.json'\\); console.log\\(JSON.stringify\\(d[0], null, 2\\)\\)\")",
       "Bash(node -e \"const d = require\\('./data/shopping_items.json'\\); console.log\\(JSON.stringify\\(d[0], null, 2\\)\\)\")",
       "Bash(node -e \"const d = require\\('./data/claims.json'\\); console.log\\(JSON.stringify\\(d[0], null, 2\\)\\)\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(ls -la /Users/alex/TFF/tff/.vercel 2>/dev/null || echo \"No .vercel dir\"; ls -la /Users/alex/TFF/.vercel 2>/dev/null || echo \"No parent .vercel dir\"; ls -la /Users/alex/TFF/tff/vercel.json 2>/dev/null || echo \"No vercel.json\")",
+      "Read(//Users/alex/TFF/**)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('version:', d.get\\('version'\\)\\)\")",
+      "Bash(git -C /Users/alex/TFF/tff add middleware.ts middleware.disabled.ts)",
+      "Bash(git -C /Users/alex/TFF/tff status)",
+      "Bash(git -C /Users/alex/TFF/tff log --oneline -5)",
+      "Bash(git -C /Users/alex/TFF/tff commit -m ' *)"
     ]
   }
 }

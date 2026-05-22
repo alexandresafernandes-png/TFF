@@ -105,12 +105,11 @@ export function Sidebar() {
           }}
         />
 
-        {/* Settings placeholder */}
+        {/* Settings */}
         <Link
           href="/settings"
           className="nav-item"
-          data-active="false"
-          style={{ opacity: 0.5 }}
+          data-active={pathname.startsWith("/settings") ? "true" : "false"}
         >
           <span>Settings</span>
         </Link>
