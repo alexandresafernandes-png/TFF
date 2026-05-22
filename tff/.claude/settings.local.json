@@ -24,7 +24,9 @@
       "Bash(git -C /Users/alex/TFF/tff add middleware.ts middleware.disabled.ts)",
       "Bash(git -C /Users/alex/TFF/tff status)",
       "Bash(git -C /Users/alex/TFF/tff log --oneline -5)",
-      "Bash(git -C /Users/alex/TFF/tff commit -m ' *)"
+      "Bash(git -C /Users/alex/TFF/tff commit -m ' *)",
+      "Bash(git -C /Users/alex/TFF/tff diff --stat HEAD)",
+      "Bash(git -C /Users/alex/TFF/tff add \"app/\\(app\\)/settings/page.tsx\" components/tff/Sidebar.tsx)"
     ]
   }
 }
