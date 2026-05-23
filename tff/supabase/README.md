@@ -16,6 +16,25 @@
 
 ---
 
+## Phase 1.5 sync status
+
+| Feature | localStorage | Cloud sync | Notes |
+|---------|-------------|------------|-------|
+| Checklist completions | ✓ primary | ✓ when signed in | Daily scope; remote wins on merge |
+| Checklist custom items | ✓ primary | ✓ when signed in | `client_id` bridge for cross-device match |
+| Shopping retainer status | ✓ primary | ✓ when signed in | checked / unchecked per item |
+| Shopping upgrade status | ✓ primary | ✓ when signed in | planned / bought / unchecked per item |
+| Shopping custom items | ✓ primary | ✓ when signed in | `client_id` bridge; mode = retainer \| upgrade |
+| Routine completions | ✓ primary | ✓ when signed in | Daily scope; active / done / inactive |
+| Protocol tracking | ✓ primary | ✓ when signed in | Not date-scoped; one row per protocol per user |
+| Personal notes | ✓ primary | ✓ when signed in | Soft-delete via `is_archived`; area + entity_id scoped |
+| Dashboard summary | — | Read-only fetch | `Promise.allSettled`; partial failure safe |
+| Auth | — | Magic link | No route enforcement |
+| Route protection | — | Not active | All routes open without a session |
+| localStorage fallback | ✓ always | — | Active on all synced pages regardless of auth state |
+
+---
+
 ## Running the migrations
 
 No Supabase CLI is required. Run migrations manually:

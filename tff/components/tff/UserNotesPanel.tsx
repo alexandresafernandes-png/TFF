@@ -130,11 +130,19 @@ export function UserNotesPanel({
         for (const note of localSnapshot) {
           if (!note.cloudId) {
             createUserNote({ area, entityId, body: note.body }).then((cloudId) => {
-              if (cloudId) {
-                setNotes((prev) =>
-                  prev.map((n) => (n.id === note.id ? { ...n, cloudId } : n))
-                )
-              }
+              if (!cloudId) return
+              // Update state so future renders see the cloudId
+              setNotes((prev) =>
+                prev.map((n) => (n.id === note.id ? { ...n, cloudId } : n))
+              )
+              // Also persist directly to localStorage so the cloudId survives
+              // a component unmount before React runs the persist effect.
+              try {
+                const latest = localStorage.getItem(key)
+                const arr: LocalNote[] = latest ? (JSON.parse(latest) as LocalNote[]) : []
+                const patched = arr.map((n) => (n.id === note.id ? { ...n, cloudId } : n))
+                localStorage.setItem(key, JSON.stringify(patched))
+              } catch (_e) { /* ignore */ }
             })
           }
         }

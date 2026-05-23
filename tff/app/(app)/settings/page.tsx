@@ -48,9 +48,9 @@ export default function SettingsPage() {
       <div>
         <SectionHeader>App Status</SectionHeader>
         <TffCard>
-          <KVRow label="Phase" value={<TffBadge variant="core" dot>Phase 1</TffBadge>} />
+          <KVRow label="Phase" value={<TffBadge variant="core" dot>Phase 1.5</TffBadge>} />
           <KVRow label="App" value="TFF — Private Operator Command Center" />
-          <KVRow label="Build" value="Phase 1 · Static data layer" />
+          <KVRow label="Build" value="Phase 1.5 · Sync layer active" />
           <KVRow
             label="Supabase"
             value={
@@ -61,7 +61,17 @@ export default function SettingsPage() {
               )
             }
           />
-          <KVRow label="Auth" value={<TffBadge variant="na">Disabled — Phase 1</TffBadge>} last />
+          <KVRow
+            label="Auth"
+            value={
+              supabaseConfigured ? (
+                <TffBadge variant="core" dot>Magic link — Active</TffBadge>
+              ) : (
+                <TffBadge variant="na">Disabled — no Supabase</TffBadge>
+              )
+            }
+            last
+          />
         </TffCard>
       </div>
 
@@ -79,10 +89,20 @@ export default function SettingsPage() {
               )
             }
           />
-          <KVRow label="Route protection" value={<TffBadge variant="na">Not active</TffBadge>} />
-          <KVRow label="Active session" value={<TffBadge variant="na">Not checked — Phase 1.5</TffBadge>} />
+          <KVRow label="Route protection" value={<TffBadge variant="na">Not active — routes are open</TffBadge>} />
+          <KVRow label="Active session" value={<TffBadge variant="na">Not enforced</TffBadge>} />
           <KVRow label="Local-first mode" value={<TffBadge variant="core" dot>Active</TffBadge>} />
-          <KVRow label="Cloud sync" value={<TffBadge variant="na">Phase 2</TffBadge>} last />
+          <KVRow
+            label="Cloud sync"
+            value={
+              supabaseConfigured ? (
+                <TffBadge variant="core" dot>Active — Phase 1.5</TffBadge>
+              ) : (
+                <TffBadge variant="na">Requires Supabase</TffBadge>
+              )
+            }
+            last
+          />
         </TffCard>
         {supabaseConfigured && (
           <div
@@ -160,7 +180,7 @@ export default function SettingsPage() {
             paddingLeft: 2,
           }}
         >
-          Preference persistence (localStorage / Supabase) ships in Phase 1.5.
+          User-configurable preferences ship in Phase 2.
         </p>
       </div>
 
@@ -183,17 +203,31 @@ export default function SettingsPage() {
         <TffCard style={{ marginTop: 10 }}>
           <TffCardHeader>Supabase &amp; Cloud Sync</TffCardHeader>
           <p style={{ fontSize: "var(--t-small)", color: "var(--text-3)", marginBottom: 12, lineHeight: 1.5 }}>
-            Cloud persistence for checklist state, personal notes, protocol tracking, and
-            user-specific data. Requires Supabase project setup (Phase 1.5).
+            Cloud persistence for checklist, shopping, routines, protocol tracking, and personal
+            notes. Sync is opt-in — local-first fallback is always active on every synced page.
           </p>
           <KVRow label="Supabase project" value={
             supabaseConfigured
               ? <TffBadge variant="core" dot>Configured</TffBadge>
               : <TffBadge variant="warn" dot>Not configured</TffBadge>
           } />
-          <KVRow label="Auth" value={<TffBadge variant="na">Not active — Phase 1.5</TffBadge>} />
-          <KVRow label="Cloud sync" value={<TffBadge variant="na">Phase 2</TffBadge>} />
-          <KVRow label="Local-first mode" value={<TffBadge variant="core" dot>Active</TffBadge>} last />
+          <KVRow
+            label="Auth"
+            value={
+              supabaseConfigured ? (
+                <TffBadge variant="core" dot>Active — Phase 1.5</TffBadge>
+              ) : (
+                <TffBadge variant="na">Not configured</TffBadge>
+              )
+            }
+          />
+          <KVRow label="Checklist" value={supabaseConfigured ? <TffBadge variant="core" dot>Synced</TffBadge> : <TffBadge variant="na">Local only</TffBadge>} />
+          <KVRow label="Shopping" value={supabaseConfigured ? <TffBadge variant="core" dot>Synced</TffBadge> : <TffBadge variant="na">Local only</TffBadge>} />
+          <KVRow label="Routines" value={supabaseConfigured ? <TffBadge variant="core" dot>Synced</TffBadge> : <TffBadge variant="na">Local only</TffBadge>} />
+          <KVRow label="Protocol tracking" value={supabaseConfigured ? <TffBadge variant="core" dot>Synced</TffBadge> : <TffBadge variant="na">Local only</TffBadge>} />
+          <KVRow label="Personal notes" value={supabaseConfigured ? <TffBadge variant="core" dot>Synced</TffBadge> : <TffBadge variant="na">Local only</TffBadge>} />
+          <KVRow label="Route protection" value={<TffBadge variant="na">Not active</TffBadge>} />
+          <KVRow label="Local-first fallback" value={<TffBadge variant="core" dot>Always active</TffBadge>} last />
           {!supabaseConfigured && missingSupabaseEnvNames.length > 0 && (
             <div style={{ marginTop: 12, padding: "10px 12px", background: "var(--card-2)", border: "1px solid var(--border-soft)", borderRadius: 4 }}>
               <p className="mono" style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.08em", marginBottom: 6 }}>MISSING ENV VARS</p>
@@ -211,11 +245,11 @@ export default function SettingsPage() {
         <TffCard>
           <KVRow
             label="Phase 1 — Foundation"
-            value={<TffBadge variant="core" dot>Active Now</TffBadge>}
+            value={<TffBadge variant="core" dot>Complete</TffBadge>}
           />
           <KVRow
-            label="Phase 1.5 — Polish"
-            value={<TffBadge variant="na">Upcoming</TffBadge>}
+            label="Phase 1.5 — Sync Layer"
+            value={<TffBadge variant="core" dot>Active Now</TffBadge>}
           />
           <KVRow
             label="Phase 2 — Personal Tracking"
@@ -226,9 +260,9 @@ export default function SettingsPage() {
         <TffCard style={{ marginTop: 10 }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {[
-              { phase: "Phase 1",   badge: "core" as const,    label: "Local-first app foundation", items: ["Static knowledge base (11 pages)", "TFF source-backed content", "localStorage tracking (checklist, shopping, routines)", "Search across all data files", "No auth, no server, no env vars"] },
-              { phase: "Phase 1.5", badge: "default" as const, label: "Visual polish + infra setup",   items: ["Mobile / PWA improvements", "Supabase project setup", "Auth scaffolding (no user-facing login yet)", "Performance tuning", "CI/CD pipeline"] },
-              { phase: "Phase 2",   badge: "na" as const,      label: "Personal tracking layer",       items: ["User-specific data (macros, bloodwork history)", "Active protocol tracking", "Routine streaks and scheduling", "Dashboard live stats", "Cross-device sync via Supabase"] },
+              { phase: "Phase 1",   badge: "core" as const,    label: "Local-first app foundation", items: ["Static knowledge base (11 pages)", "TFF source-backed content", "localStorage tracking (checklist, shopping, routines)", "Search across all data files", "No auth, no server, no env vars required"] },
+              { phase: "Phase 1.5", badge: "core" as const,    label: "Sync layer + auth",            items: ["Supabase project setup and schema (9 tables)", "Magic link authentication", "Cloud sync for checklist, shopping, routines, protocols", "Personal notes on protocols and bloodwork markers", "Dashboard personal summary (live cloud data)", "localStorage-first with cloud fallback on all synced pages"] },
+              { phase: "Phase 2",   badge: "na" as const,      label: "Personal tracking layer",       items: ["User-specific data (macros, bloodwork history entries)", "Routine streaks and scheduling", "Dashboard trend tracking and live charts", "Enhanced personal health tracking"] },
             ].map((row) => (
               <div key={row.phase} style={{ paddingBottom: 10, borderBottom: "1px solid var(--border-soft)" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
