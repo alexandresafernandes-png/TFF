@@ -1,11 +1,18 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { PageHeader } from "@/components/tff/PageHeader"
 import { TffCard, TffCardHeader } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
 import { StatCard } from "@/components/tff/StatCard"
+import { SyncBadge, type SyncStatus } from "@/components/tff/SyncBadge"
+import { hasSupabaseConfig } from "@/lib/supabase/status"
+import {
+  fetchProtocolTracking,
+  upsertProtocolTracking,
+  type ProtocolStatus,
+} from "@/lib/supabase/protocols-sync"
 import protocolsRaw from "@/data/protocols.json"
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -33,6 +40,15 @@ interface Protocol {
 }
 
 type Difficulty = "Beginner" | "Intermediate" | "Advanced"
+
+interface TrackingEntry {
+  status: ProtocolStatus
+  started_at: string | null
+  ended_at: string | null
+  notes: string
+}
+
+const EMPTY_ENTRY: TrackingEntry = { status: "inactive", started_at: null, ended_at: null, notes: "" }
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -69,6 +85,10 @@ const RECOMMENDED_IDS = [
   "protocol_13_stress_management",    // cortisol control
   "protocol_3_pre_workout_nutrition", // training performance
 ]
+
+// ── LocalStorage key ──────────────────────────────────────────────────────────
+
+const LS_TRACKING = "tff_protocol_tracking"
 
 // ── Stats (computed once at module level) ─────────────────────────────────────
 
@@ -120,9 +140,40 @@ function itemChips(items: string[]): string[] {
   )
 }
 
+// ── Status helpers ────────────────────────────────────────────────────────────
+
+const STATUS_LABELS: Record<ProtocolStatus, string> = {
+  inactive:  "Not Active",
+  active:    "Active",
+  paused:    "Paused",
+  completed: "Completed",
+}
+
+const STATUS_BADGE_VARIANT: Record<ProtocolStatus, "core" | "default" | "na"> = {
+  inactive:  "na",
+  active:    "core",
+  paused:    "default",
+  completed: "core",
+}
+
 // ── ProtocolDetail ────────────────────────────────────────────────────────────
 
-function ProtocolDetail({ p }: { p: Protocol }) {
+function ProtocolDetail({
+  p,
+  tracking,
+  onStatusChange,
+  onNotesChange,
+}: {
+  p: Protocol
+  tracking: TrackingEntry
+  onStatusChange: (status: ProtocolStatus) => void
+  onNotesChange: (notes: string) => void
+}) {
+  const [localNotes, setLocalNotes] = useState(tracking.notes)
+
+  // Keep textarea in sync if external tracking changes (e.g. after initial cloud sync)
+  useEffect(() => { setLocalNotes(tracking.notes) }, [tracking.notes])
+
   const chips = itemChips(p.items_needed)
 
   return (
@@ -244,22 +295,77 @@ function ProtocolDetail({ p }: { p: Protocol }) {
         </div>
       )}
 
-      {/* Phase 2 note */}
-      <div
-        style={{
-          padding: "10px 14px",
-          background: "var(--card-2)",
-          border: "1px solid var(--border-soft)",
-          borderRadius: 4,
-        }}
-      >
-        {/* TODO (Phase 2): Add protocol tracking — active status, start date, completion history, personal notes, scheduling, and link to daily checklist */}
-        <p
-          className="mono"
-          style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.08em" }}
-        >
-          TRACKING · NOTES · SCHEDULING IN PHASE 2
-        </p>
+      {/* Tracking */}
+      <div>
+        <p className="label" style={{ marginBottom: 10 }}>My Tracking</p>
+
+        {/* Status buttons */}
+        <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
+          {(["inactive", "active", "paused", "completed"] as ProtocolStatus[]).map((s) => {
+            const active = tracking.status === s
+            return (
+              <button
+                key={s}
+                onClick={() => onStatusChange(s)}
+                className="mono"
+                style={{
+                  padding: "5px 12px",
+                  fontSize: 9,
+                  letterSpacing: "0.08em",
+                  border: "1px solid",
+                  borderColor: active
+                    ? s === "paused" ? "var(--warn)" : "var(--accent)"
+                    : "var(--border)",
+                  background: active
+                    ? s === "paused" ? "rgba(245,158,11,0.12)" : "var(--accent-soft, rgba(var(--accent-rgb),0.12))"
+                    : "transparent",
+                  color: active
+                    ? s === "paused" ? "var(--warn)" : "var(--accent)"
+                    : "var(--text-4)",
+                  borderRadius: 3,
+                  cursor: "pointer",
+                }}
+              >
+                {STATUS_LABELS[s].toUpperCase()}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Date stamps */}
+        {(tracking.started_at || tracking.ended_at) && (
+          <p
+            className="mono"
+            style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.06em", marginBottom: 10 }}
+          >
+            {tracking.started_at && `STARTED ${new Date(tracking.started_at).toLocaleDateString()}`}
+            {tracking.started_at && tracking.ended_at && " · "}
+            {tracking.ended_at && `ENDED ${new Date(tracking.ended_at).toLocaleDateString()}`}
+          </p>
+        )}
+
+        {/* Notes textarea */}
+        <textarea
+          value={localNotes}
+          onChange={(e) => setLocalNotes(e.target.value)}
+          onBlur={() => { if (localNotes !== tracking.notes) onNotesChange(localNotes) }}
+          placeholder="Personal notes — saved on blur…"
+          rows={3}
+          style={{
+            width: "100%",
+            padding: "8px 12px",
+            fontSize: "var(--t-small)",
+            background: "var(--panel-2)",
+            border: "1px solid var(--border)",
+            borderRadius: 4,
+            color: "var(--text)",
+            resize: "vertical",
+            outline: "none",
+            boxSizing: "border-box",
+            fontFamily: "inherit",
+            lineHeight: 1.5,
+          }}
+        />
       </div>
     </div>
   )
@@ -271,10 +377,16 @@ function ProtocolCard({
   p,
   expanded,
   onToggle,
+  tracking,
+  onStatusChange,
+  onNotesChange,
 }: {
   p: Protocol
   expanded: boolean
   onToggle: (id: string) => void
+  tracking: TrackingEntry
+  onStatusChange: (status: ProtocolStatus) => void
+  onNotesChange: (notes: string) => void
 }) {
   const difficulty = getDifficulty(p)
 
@@ -299,6 +411,11 @@ function ProtocolCard({
           {p.checklist_ready && (
             <TffBadge variant="core" dot>
               Checklist
+            </TffBadge>
+          )}
+          {tracking.status !== "inactive" && (
+            <TffBadge variant={STATUS_BADGE_VARIANT[tracking.status]}>
+              {tracking.status === "active" ? "● " : ""}{STATUS_LABELS[tracking.status]}
             </TffBadge>
           )}
         </div>
@@ -379,7 +496,12 @@ function ProtocolCard({
             borderTop: "1px solid var(--border)",
           }}
         >
-          <ProtocolDetail p={p} />
+          <ProtocolDetail
+            p={p}
+            tracking={tracking}
+            onStatusChange={onStatusChange}
+            onNotesChange={onNotesChange}
+          />
         </div>
       )}
     </TffCard>
@@ -394,6 +516,93 @@ export default function ProtocolLibraryPage() {
   const [catFilter, setCatFilter]         = useState("all")
   const [priFilter, setPriFilter]         = useState("all")
   const [diffFilter, setDiffFilter]       = useState("all")
+
+  // Protocol tracking state
+  const [tracking, setTracking]           = useState<Record<string, TrackingEntry>>({})
+  const [loaded, setLoaded]               = useState(false)
+  const [syncStatus, setSyncStatus]       = useState<SyncStatus>("idle")
+
+  // Load from localStorage
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(LS_TRACKING)
+      if (raw) setTracking(JSON.parse(raw) as Record<string, TrackingEntry>)
+    } catch (_e) { /* ignore */ }
+    setLoaded(true)
+  }, [])
+
+  // Persist to localStorage
+  useEffect(() => {
+    if (!loaded) return
+    try { localStorage.setItem(LS_TRACKING, JSON.stringify(tracking)) } catch (_e) { /* ignore */ }
+  }, [tracking, loaded])
+
+  // Initial cloud sync — runs once after hydration
+  useEffect(() => {
+    if (!loaded) return
+    if (!hasSupabaseConfig) {
+      setSyncStatus("local")
+      return
+    }
+    setSyncStatus("syncing")
+
+    fetchProtocolTracking().then((result) => {
+      if (!result.ok) {
+        setSyncStatus(result.reason === "unauthenticated" ? "unauthenticated" : "error")
+        return
+      }
+
+      const rows = result.data
+
+      if (rows.length === 0) {
+        // Remote empty — upload non-inactive local entries in background
+        Object.entries(tracking).forEach(([id, entry]) => {
+          if (entry.status !== "inactive") void upsertProtocolTracking(id, entry)
+        })
+        setSyncStatus("synced")
+        return
+      }
+
+      // Remote has data — merge into local state (remote wins for each tracked protocol)
+      const updates: Record<string, TrackingEntry> = {}
+      for (const row of rows) {
+        updates[row.protocol_id] = {
+          status: row.status,
+          started_at: row.started_at,
+          ended_at: row.ended_at,
+          notes: row.notes ?? "",
+        }
+      }
+      setTracking((prev) => ({ ...prev, ...updates }))
+      setSyncStatus("synced")
+    })
+  }, [loaded]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Mutation handlers ────────────────────────────────────────────────────────
+
+  function handleStatusChange(protocolId: string, newStatus: ProtocolStatus) {
+    const current = tracking[protocolId] ?? EMPTY_ENTRY
+    const now = new Date().toISOString()
+    const updated: TrackingEntry = {
+      ...current,
+      status: newStatus,
+      started_at:
+        newStatus === "active" && !current.started_at ? now : current.started_at,
+      ended_at:
+        newStatus === "completed" ? (current.ended_at ?? now) :
+        newStatus === "active"    ? null :
+        current.ended_at,
+    }
+    setTracking((prev) => ({ ...prev, [protocolId]: updated }))
+    void upsertProtocolTracking(protocolId, updated)
+  }
+
+  function handleNotesChange(protocolId: string, notes: string) {
+    const current = tracking[protocolId] ?? EMPTY_ENTRY
+    const updated: TrackingEntry = { ...current, notes }
+    setTracking((prev) => ({ ...prev, [protocolId]: updated }))
+    void upsertProtocolTracking(protocolId, updated)
+  }
 
   function toggleExpand(id: string) {
     setExpandedId((prev) => (prev === id ? null : id))
@@ -616,6 +825,7 @@ export default function ProtocolLibraryPage() {
               Clear
             </button>
           )}
+          <SyncBadge status={syncStatus} />
         </div>
       </div>
 
@@ -666,6 +876,9 @@ export default function ProtocolLibraryPage() {
                 p={p}
                 expanded={expandedId === p.id}
                 onToggle={toggleExpand}
+                tracking={tracking[p.id] ?? EMPTY_ENTRY}
+                onStatusChange={(s) => handleStatusChange(p.id, s)}
+                onNotesChange={(n) => handleNotesChange(p.id, n)}
               />
             </div>
           ))}
@@ -693,6 +906,9 @@ export default function ProtocolLibraryPage() {
                       p={p}
                       expanded={expandedId === p.id}
                       onToggle={toggleExpand}
+                      tracking={tracking[p.id] ?? EMPTY_ENTRY}
+                      onStatusChange={(s) => handleStatusChange(p.id, s)}
+                      onNotesChange={(n) => handleNotesChange(p.id, n)}
                     />
                   </div>
                 ))}
@@ -717,9 +933,9 @@ export default function ProtocolLibraryPage() {
             className="mono"
             style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.08em" }}
           >
-            {/* TODO (Phase 2): User protocol tracking — active protocols, start dates, */}
-            {/* completion history, personal notes, scheduling, checklist linking.       */}
-            PHASE 1 — KNOWLEDGE BASE · PROTOCOL TRACKING IN PHASE 2
+            {syncStatus === "synced" || syncStatus === "syncing"
+              ? "TRACKING SYNCS TO CLOUD · LOCALSTORAGE FALLBACK ACTIVE"
+              : "PROTOCOL TRACKING STORED IN BROWSER LOCALSTORAGE"}
           </p>
           <TffBadge variant="na">24 Protocols</TffBadge>
         </div>
