@@ -6,6 +6,9 @@ import { TffCard } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
 import { StatCard } from "@/components/tff/StatCard"
+import { SyncBadge, type SyncStatus } from "@/components/tff/SyncBadge"
+import { hasSupabaseConfig } from "@/lib/supabase/status"
+import { fetchRoutineCompletions, upsertRoutineCompletion } from "@/lib/supabase/routines-sync"
 import routinesRaw from "@/data/routines.json"
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -330,6 +333,9 @@ export default function RoutinesPage() {
   const [completedToday, setCompletedToday] = useState<Set<string>>(new Set())
   const [loaded, setLoaded] = useState(false)
 
+  // Sync status
+  const [syncStatus, setSyncStatus] = useState<SyncStatus>("idle")
+
   // Load
   useEffect(() => {
     try {
@@ -353,23 +359,85 @@ export default function RoutinesPage() {
     try { localStorage.setItem(LS_COMPLETED, JSON.stringify([...completedToday])) } catch (_e) { /* ignore */ }
   }, [completedToday, loaded])
 
+  // Initial cloud sync — runs once after hydration
+  useEffect(() => {
+    if (!loaded) return
+    if (!hasSupabaseConfig) {
+      setSyncStatus("local")
+      return
+    }
+    setSyncStatus("syncing")
+
+    fetchRoutineCompletions().then((result) => {
+      if (!result.ok) {
+        setSyncStatus(result.reason === "unauthenticated" ? "unauthenticated" : "error")
+        return
+      }
+
+      const rows = result.data
+
+      if (rows.length === 0) {
+        // Remote empty — upload local state in background
+        activeToday.forEach((id) => void upsertRoutineCompletion(id, "active"))
+        completedToday.forEach((id) => void upsertRoutineCompletion(id, "done"))
+        setSyncStatus("synced")
+        return
+      }
+
+      // Remote has data — merge into local state (remote wins for known routines)
+      setActiveToday((prev) => {
+        const next = new Set(prev)
+        for (const row of rows) {
+          if (row.status === "active") next.add(row.routine_id)
+          else next.delete(row.routine_id)
+        }
+        return next
+      })
+      setCompletedToday((prev) => {
+        const next = new Set(prev)
+        for (const row of rows) {
+          if (row.status === "done") next.add(row.routine_id)
+          else next.delete(row.routine_id)
+        }
+        return next
+      })
+
+      setSyncStatus("synced")
+    })
+  }, [loaded]) // eslint-disable-line react-hooks/exhaustive-deps
+
   const toggleActive = (id: string) => {
+    const nowActive = !activeToday.has(id)
     setActiveToday((prev) => {
       const n = new Set(prev)
       n.has(id) ? n.delete(id) : n.add(id)
       return n
     })
+    // Highest-priority status wins: done > active > inactive
+    if (nowActive) {
+      void upsertRoutineCompletion(id, "active")
+    } else {
+      void upsertRoutineCompletion(id, completedToday.has(id) ? "done" : "inactive")
+    }
   }
 
   const toggleCompleted = (id: string) => {
+    const nowDone = !completedToday.has(id)
     setCompletedToday((prev) => {
       const n = new Set(prev)
       n.has(id) ? n.delete(id) : n.add(id)
       return n
     })
+    if (nowDone) {
+      void upsertRoutineCompletion(id, "done")
+    } else {
+      void upsertRoutineCompletion(id, activeToday.has(id) ? "active" : "inactive")
+    }
   }
 
   const resetToday = () => {
+    const allIds = new Set([...activeToday, ...completedToday])
+    allIds.forEach((id) => void upsertRoutineCompletion(id, "inactive"))
     setActiveToday(new Set())
     setCompletedToday(new Set())
   }
@@ -438,7 +506,7 @@ export default function RoutinesPage() {
 
       {/* ── Mode tabs ── */}
       <div style={{ padding: "0 24px 20px" }}>
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
           {MODES.map((m) => (
             <button
               key={m.key}
@@ -459,6 +527,9 @@ export default function RoutinesPage() {
               {m.label.toUpperCase()}
             </button>
           ))}
+          <div style={{ marginLeft: 4 }}>
+            <SyncBadge status={syncStatus} />
+          </div>
         </div>
       </div>
 
@@ -694,6 +765,15 @@ export default function RoutinesPage() {
           </div>
         </div>
       )}
+
+      {/* Storage note */}
+      <div style={{ padding: "0 24px 32px" }}>
+        <p className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.08em" }}>
+          {syncStatus === "synced" || syncStatus === "syncing"
+            ? "ROUTINE STATE SYNCS TO CLOUD · LOCALSTORAGE FALLBACK ACTIVE"
+            : "ROUTINE STATE STORED IN BROWSER LOCALSTORAGE"}
+        </p>
+      </div>
     </div>
   )
 }

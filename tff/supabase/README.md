@@ -2,11 +2,12 @@
 
 ## Status
 
-**Schema: defined. `/checklist` and `/shopping` are wired. All other pages: localStorage only.**
+**Schema: defined. `/checklist`, `/shopping`, and `/routines` are wired. All other pages: localStorage only.**
 
 - `/checklist` syncs completions and custom items to Supabase when the user is logged in
 - `/shopping` syncs retainer checkmarks, upgrade status, and custom items to Supabase when the user is logged in
-- All other app pages (`/routines`, `/protocols`, etc.) still use `localStorage` exclusively
+- `/routines` syncs active/completed today state to Supabase when the user is logged in
+- All other app pages (`/protocols`, etc.) still use `localStorage` exclusively
 - Route protection is not active — all pages open without a session
 - `localStorage` remains the fallback for all synced pages when Supabase is unavailable or the user is not signed in
 
@@ -220,7 +221,7 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 2. Add session context provider if needed for client components
 3. ~~Wire `/checklist` to sync `checklist_completions` and `checklist_custom_items`~~ ✓ Done (Phase 1.5 Step 4)
 4. ~~Wire `/shopping` to sync `shopping_item_status` and `shopping_custom_items`~~ ✓ Done (Phase 1.5 Step 5)
-5. Wire `/routines` to sync `routine_completions`
+5. ~~Wire `/routines` to sync `routine_completions`~~ ✓ Done (Phase 1.5 Step 6)
 6. Wire `/protocols` to sync `protocol_tracking`
 7. Wire notes to `user_notes` across relevant pages
 8. Wire profile display in `/settings` from `profiles`
