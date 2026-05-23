@@ -36,7 +36,12 @@
       "Bash(git -C /Users/alex/TFF/tff log --oneline --branches --not --remotes)",
       "Bash(git -C /Users/alex/TFF/tff remote -v)",
       "Bash(git -C /Users/alex/TFF/tff log --oneline -3)",
-      "Bash(git -C /Users/alex/TFF/tff log origin/main --oneline -5)"
+      "Bash(git -C /Users/alex/TFF/tff log origin/main --oneline -5)",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f\\\\\"{p['id']}: {p['name']}\\\\\"\\) for p in data[:20]]\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f\\\\\"{p['id']}: {p.get\\('name','?'\\)} [{p.get\\('category','?'\\)}]\\\\\"\\) for p in data[:30]]\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }

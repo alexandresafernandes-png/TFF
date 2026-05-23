@@ -123,13 +123,22 @@ export default function LoginPage() {
             background: "var(--card-2)",
             border: "1px solid var(--border-soft)",
             borderRadius: 4,
+            display: "flex",
+            flexDirection: "column",
+            gap: 4,
           }}
         >
           <p
             className="mono"
-            style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.1em" }}
+            style={{ fontSize: 10, color: "var(--accent)", letterSpacing: "0.1em" }}
           >
-            SUPABASE AUTH · CONFIGURE IN STEP 2
+            LOCAL-FIRST MODE · PHASE 1
+          </p>
+          <p
+            className="mono"
+            style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.08em" }}
+          >
+            Auth ships in Phase 1.5. App is fully accessible now.
           </p>
         </div>
       </div>

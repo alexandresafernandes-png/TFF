@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/tff/PageHeader"
 import { TffCard, TffCardHeader } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
+import { hasSupabaseConfig, missingSupabaseEnvNames } from "@/lib/supabase/status"
 
 function KVRow({
   label,
@@ -32,10 +33,7 @@ function KVRow({
 }
 
 export default function SettingsPage() {
-  const supabaseConfigured = !!(
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  )
+  const supabaseConfigured = hasSupabaseConfig
 
   return (
     <div className="stack-lg">
@@ -146,28 +144,27 @@ export default function SettingsPage() {
         </TffCard>
 
         <TffCard style={{ marginTop: 10 }}>
-          <TffCardHeader>Supabase Sync</TffCardHeader>
-          <p style={{ fontSize: "var(--t-small)", color: "var(--text-3)", marginBottom: 16, lineHeight: 1.5 }}>
+          <TffCardHeader>Supabase &amp; Cloud Sync</TffCardHeader>
+          <p style={{ fontSize: "var(--t-small)", color: "var(--text-3)", marginBottom: 12, lineHeight: 1.5 }}>
             Cloud persistence for checklist state, personal notes, protocol tracking, and
-            user-specific data will sync through Supabase once auth is configured.
+            user-specific data. Requires Supabase project setup (Phase 1.5).
           </p>
-          <div
-            style={{
-              padding: "12px 14px",
-              background: "var(--card-2)",
-              border: "1px solid var(--border-soft)",
-              borderRadius: 4,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 12,
-            }}
-          >
-            <p className="mono" style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.1em" }}>
-              CLOUD SYNC · NOT ACTIVE
-            </p>
-            <TffBadge variant="na">Phase 2</TffBadge>
-          </div>
+          <KVRow label="Supabase project" value={
+            supabaseConfigured
+              ? <TffBadge variant="core" dot>Configured</TffBadge>
+              : <TffBadge variant="warn" dot>Not configured</TffBadge>
+          } />
+          <KVRow label="Auth" value={<TffBadge variant="na">Not active — Phase 1.5</TffBadge>} />
+          <KVRow label="Cloud sync" value={<TffBadge variant="na">Phase 2</TffBadge>} />
+          <KVRow label="Local-first mode" value={<TffBadge variant="core" dot>Active</TffBadge>} last />
+          {!supabaseConfigured && missingSupabaseEnvNames.length > 0 && (
+            <div style={{ marginTop: 12, padding: "10px 12px", background: "var(--card-2)", border: "1px solid var(--border-soft)", borderRadius: 4 }}>
+              <p className="mono" style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.08em", marginBottom: 6 }}>MISSING ENV VARS</p>
+              {missingSupabaseEnvNames.map((name) => (
+                <p key={name} className="mono" style={{ fontSize: 10, color: "var(--warn)", letterSpacing: "0.06em" }}>{name}</p>
+              ))}
+            </div>
+          )}
         </TffCard>
       </div>
 
