@@ -1,19 +1,13 @@
 # TFF — Setup Guide
 
-## Phase 1 (current)
-
-No environment variables are required. The app runs fully local-first:
-
-- All content is bundled as static JSON at build time
-- Checklist, shopping, and routine state persists in `localStorage`
-- No network requests, no auth, no Supabase
+## Running locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-That's it.
+Requires Supabase env vars (see Phase 1.5 section below). Without them, all app routes redirect to `/login?error=supabase_not_configured`.
 
 ---
 
@@ -78,14 +72,31 @@ If Supabase env vars are not set, all app routes redirect to `/login?error=supab
 
 ---
 
+## Phase 1.5 — Final Status
+
+Phase 1.5 is complete. The app is a fully private personal tool requiring authentication.
+
+| Feature | Status |
+|---------|--------|
+| Supabase auth (magic link) | ✅ Active |
+| Route protection (`app/(app)/layout.tsx`) | ✅ Active |
+| Cloud sync — checklist, shopping, routines, protocols, notes | ✅ Active |
+| Dashboard personal summary | ✅ Active |
+| Auth/session UX (login, settings, sign out) | ✅ Polished |
+| PWA manifest | ✅ Correct |
+| Mobile layout | ✅ Polished |
+| localStorage fallback (all synced pages) | ✅ Always active |
+| Middleware auth | ❌ Intentionally not used |
+
+---
+
 ## Phase 2 — Personal Tracking
 
-Requires Supabase to be configured. Adds:
-- Route protection and session enforcement
-- Cloud-synced checklist state, personal notes, protocol tracking
-- User-specific data (macros, bloodwork history)
-- Active protocol tracking and routine streaks
-- Cross-device sync via Supabase
+Requires Supabase to be configured (already done). Adds:
+- User-specific data (macros, bloodwork history entries)
+- Routine streaks and scheduling
+- Dashboard trend tracking and live charts
+- Enhanced personal health tracking with cloud-persisted profiles
 
 ---
 

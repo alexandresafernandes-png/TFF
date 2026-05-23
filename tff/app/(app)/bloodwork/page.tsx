@@ -517,7 +517,7 @@ export default function BloodworkPage() {
       />
 
       {/* Hero stats */}
-      <div style={{ padding: "0 24px 24px", display: "flex", gap: 12, flexWrap: "wrap" }}>
+      <div className="page-inset" style={{ paddingBottom: 24, display: "flex", gap: 12, flexWrap: "wrap" }}>
         <StatCard value={MARKERS.length} label="TOTAL MARKERS" />
         <StatCard value={CORE_COUNT} label="CORE MARKERS" />
         <StatCard value={PANEL_COUNT} label="CATEGORIES" />
@@ -525,7 +525,7 @@ export default function BloodworkPage() {
       </div>
 
       {/* Tabs */}
-      <div style={{ padding: "0 24px 20px" }}>
+      <div className="page-inset" style={{ paddingBottom: 20 }}>
         <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
           {tabs.map((t) => (
             <button
@@ -552,7 +552,7 @@ export default function BloodworkPage() {
 
       {/* ── Browse Markers ── */}
       {tab === "browse" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           {/* Filters */}
           <div style={{ display: "flex", gap: 10, marginBottom: 20, flexWrap: "wrap" }}>
             <input
@@ -676,7 +676,7 @@ export default function BloodworkPage() {
 
       {/* ── Core Panel ── */}
       {tab === "core_panel" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <TffCard style={{ marginBottom: 20 }}>
             <div style={{ padding: "14px 16px" }}>
               <div style={{ marginBottom: 8 }}>
@@ -746,7 +746,7 @@ export default function BloodworkPage() {
 
       {/* ── Phase 2 ── */}
       {tab === "phase2" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <TffCard style={{ marginBottom: 20 }}>
             <div style={{ padding: "14px 16px" }}>
               <div style={{ marginBottom: 6 }}>

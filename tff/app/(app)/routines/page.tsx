@@ -497,7 +497,7 @@ export default function RoutinesPage() {
       />
 
       {/* ── Stats ── */}
-      <div style={{ padding: "0 24px 20px", display: "flex", gap: 12, flexWrap: "wrap" }}>
+      <div className="page-inset" style={{ paddingBottom: 20, display: "flex", gap: 12, flexWrap: "wrap" }}>
         <StatCard count={TOTAL_ROUTINES} label="ROUTINE BLOCKS" />
         <StatCard count={CORE_COUNT} label="CORE / CRITICAL" />
         <StatCard count={CATEGORY_COUNT} label="CATEGORIES" />
@@ -505,7 +505,7 @@ export default function RoutinesPage() {
       </div>
 
       {/* ── Mode tabs ── */}
-      <div style={{ padding: "0 24px 20px" }}>
+      <div className="page-inset" style={{ paddingBottom: 20 }}>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
           {MODES.map((m) => (
             <button
@@ -535,7 +535,7 @@ export default function RoutinesPage() {
 
       {/* ── BROWSE ── */}
       {mode === "browse" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           {/* Filters */}
           <div style={{ display: "flex", gap: 10, marginBottom: 12, flexWrap: "wrap" }}>
             <input
@@ -646,7 +646,7 @@ export default function RoutinesPage() {
 
       {/* ── DAILY FLOW ── */}
       {mode === "flow" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <TffCard style={{ marginBottom: 20 }}>
             <div style={{ marginBottom: 8 }}>
               <TffBadge variant="core">Phase 1 — TFF Source Structure</TffBadge>
@@ -734,7 +734,7 @@ export default function RoutinesPage() {
 
       {/* ── PHASE 2 ── */}
       {mode === "phase2" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <TffCard style={{ marginBottom: 20 }}>
             <div style={{ marginBottom: 6 }}>
               <TffBadge variant="depends">Phase 2 — Not Yet Active</TffBadge>
@@ -767,7 +767,7 @@ export default function RoutinesPage() {
       )}
 
       {/* Storage note */}
-      <div style={{ padding: "0 24px 32px" }}>
+      <div className="page-inset" style={{ paddingBottom: 32 }}>
         <p className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.08em" }}>
           {syncStatus === "synced" || syncStatus === "syncing"
             ? "ROUTINE STATE SYNCS TO CLOUD · LOCALSTORAGE FALLBACK ACTIVE"

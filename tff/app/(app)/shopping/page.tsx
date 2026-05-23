@@ -869,7 +869,7 @@ export default function ShoppingPage() {
       />
 
       {/* Mode tabs */}
-      <div style={{ padding: "0 24px 20px" }}>
+      <div className="page-inset" style={{ paddingBottom: 20 }}>
         <div style={{ display: "flex", gap: 4, flexWrap: "wrap", alignItems: "center" }}>
           {modeOptions.map((m) => (
             <button
@@ -899,7 +899,7 @@ export default function ShoppingPage() {
 
       {/* ── RETAINER BASKET ── */}
       {mode === "basket" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
             <StatCard value={allBasketItems.length} label="TOTAL ITEMS" />
             <StatCard value={coreBasketCount} label="CORE ITEMS" />
@@ -1089,7 +1089,7 @@ export default function ShoppingPage() {
 
       {/* ── UPGRADE QUEUE ── */}
       {mode === "queue" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
             <StatCard value={allQueueItems.length} label="TOTAL UPGRADES" />
             <StatCard value={coreUpgradeCount} label="CORE UPGRADES" />
@@ -1273,7 +1273,7 @@ export default function ShoppingPage() {
 
       {/* ── PHASE 2 ── */}
       {mode === "phase2" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <TffCard style={{ marginBottom: 20 }}>
             <div style={{ marginBottom: 6 }}>
               <TffBadge variant="depends">Phase 2 — Not Yet Active</TffBadge>
@@ -1301,7 +1301,7 @@ export default function ShoppingPage() {
       )}
 
       {/* Storage note */}
-      <div style={{ padding: "0 24px 32px" }}>
+      <div className="page-inset" style={{ paddingBottom: 32 }}>
         <p className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.08em" }}>
           {syncStatus === "synced" || syncStatus === "syncing"
             ? "CHECKMARKS AND CUSTOM ITEMS SYNC TO CLOUD · LOCALSTORAGE FALLBACK ACTIVE"

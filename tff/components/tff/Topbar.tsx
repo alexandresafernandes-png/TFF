@@ -47,8 +47,8 @@ export function Topbar() {
         zIndex: 10,
       }}
     >
-      {/* Left: crumb + title */}
-      <div>
+      {/* Left: crumb */}
+      <div style={{ minWidth: 0, flex: 1 }}>
         <span
           className="mono"
           style={{
@@ -56,17 +56,21 @@ export function Topbar() {
             color: "var(--text-4)",
             letterSpacing: "0.14em",
             textTransform: "uppercase",
-            marginRight: 12,
+            display: "block",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
           }}
         >
           {meta?.crumb}
         </span>
       </div>
 
-      {/* Right: advanced mode placeholder + date */}
-      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-        {/* Advanced mode pill — visual placeholder, not functional */}
+      {/* Right: advanced mode placeholder (desktop only) + date */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
+        {/* Advanced mode pill — visual placeholder, hidden on mobile */}
         <div
+          className="tff-adv-mode"
           style={{
             display: "flex",
             alignItems: "center",
@@ -96,7 +100,7 @@ export function Topbar() {
         {/* Date */}
         <span
           className="mono"
-          style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.08em" }}
+          style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.08em", whiteSpace: "nowrap" }}
         >
           {new Date().toLocaleDateString("en-US", {
             weekday: "short",

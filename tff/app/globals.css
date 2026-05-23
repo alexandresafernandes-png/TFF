@@ -251,3 +251,17 @@ input::placeholder, textarea::placeholder { color: var(--text-4); }
 
 /* Quick action card hover */
 .action-card:hover { background: var(--card-2) !important; border-color: #34343c !important; }
+
+/* Topbar ADV MODE pill — hidden on mobile */
+@media (max-width: 767px) {
+  .tff-adv-mode { display: none !important; }
+}
+
+/* Page-level inner horizontal inset — 24px on desktop, none on mobile */
+.page-inset { padding-left: 24px; padding-right: 24px; }
+@media (max-width: 767px) {
+  .page-inset { padding-left: 0 !important; padding-right: 0 !important; }
+}
+
+/* Prevent horizontal scroll on all viewports */
+html, body { overflow-x: hidden; }

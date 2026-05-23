@@ -357,7 +357,7 @@ export default function SourcesPage() {
       />
 
       {/* ── Stats ── */}
-      <div style={{ padding: "0 24px 20px", display: "flex", gap: 12, flexWrap: "wrap" }}>
+      <div className="page-inset" style={{ paddingBottom: 20, display: "flex", gap: 12, flexWrap: "wrap" }}>
         <StatCard count={TOTAL_DOCS}           label="SOURCE DOCUMENTS" />
         <StatCard count={TOTAL_ITEMS}          label="SOURCE-BACKED ITEMS" />
         <StatCard count={AREAS_COVERED}        label="APP AREAS COVERED" />
@@ -365,7 +365,7 @@ export default function SourcesPage() {
       </div>
 
       {/* ── Mode tabs ── */}
-      <div style={{ padding: "0 24px 20px" }}>
+      <div className="page-inset" style={{ paddingBottom: 20 }}>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {MODES.map((m) => (
             <button
@@ -387,7 +387,7 @@ export default function SourcesPage() {
 
       {/* ── SOURCE LIBRARY ── */}
       {mode === "library" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <TffCard style={{ marginBottom: 20 }}>
             <div style={{ marginBottom: 6 }}>
               <TffBadge variant="core">6 TFF Source Documents</TffBadge>
@@ -436,7 +436,7 @@ export default function SourcesPage() {
 
       {/* ── COVERAGE MAP ── */}
       {mode === "coverage" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <TffCard style={{ marginBottom: 20 }}>
             <div style={{ marginBottom: 6 }}>
               <TffBadge variant="core">343 / 343 Items Source-Backed</TffBadge>
@@ -511,7 +511,7 @@ export default function SourcesPage() {
 
       {/* ── AUDIT QUEUE ── */}
       {mode === "audit" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <TffCard style={{ marginBottom: 20 }}>
             <div style={{ marginBottom: 6 }}>
               <TffBadge variant="depends">TFF Content Audit Queue</TffBadge>
@@ -577,7 +577,7 @@ export default function SourcesPage() {
 
       {/* ── PHASE 2 ── */}
       {mode === "phase2" && (
-        <div style={{ padding: "0 24px 40px" }}>
+        <div className="page-inset" style={{ paddingBottom: 40 }}>
           <TffCard style={{ marginBottom: 20 }}>
             <div style={{ marginBottom: 6 }}>
               <TffBadge variant="depends">Phase 2 — Not Yet Active</TffBadge>

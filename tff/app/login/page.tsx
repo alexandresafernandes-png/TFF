@@ -7,11 +7,25 @@ import { createClient } from "@/lib/supabase/client"
 
 type FormState = "idle" | "loading" | "sent" | "error" | "signed_in"
 
+const URL_ERRORS: Record<string, string> = {
+  auth_callback_failed: "Sign-in link was invalid or expired. Please request a new one.",
+  supabase_not_configured: "Supabase is not configured. Set environment variables to enable login.",
+}
+
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [formState, setFormState] = useState<FormState>("idle")
   const [errorMsg, setErrorMsg] = useState("")
   const [sessionEmail, setSessionEmail] = useState<string | null>(null)
+
+  // Show URL ?error= param on mount (e.g. after a failed auth callback)
+  useEffect(() => {
+    const err = new URLSearchParams(window.location.search).get("error")
+    if (err && URL_ERRORS[err]) {
+      setFormState("error")
+      setErrorMsg(URL_ERRORS[err])
+    }
+  }, [])
 
   // Check if user is already signed in — non-blocking, fail silent
   useEffect(() => {
