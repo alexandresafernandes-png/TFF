@@ -1,4 +1,40 @@
+"use client"
+
+import { useState } from "react"
+import Link from "next/link"
+import { hasSupabaseConfig } from "@/lib/supabase/status"
+import { createClient } from "@/lib/supabase/client"
+
+type FormState = "idle" | "loading" | "sent" | "error"
+
 export default function LoginPage() {
+  const [email, setEmail] = useState("")
+  const [formState, setFormState] = useState<FormState>("idle")
+  const [errorMsg, setErrorMsg] = useState("")
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    if (!hasSupabaseConfig || !email.trim()) return
+    setFormState("loading")
+    setErrorMsg("")
+    try {
+      const supabase = createClient()
+      const { error } = await supabase.auth.signInWithOtp({
+        email: email.trim(),
+        options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+      })
+      if (error) {
+        setFormState("error")
+        setErrorMsg(error.message)
+      } else {
+        setFormState("sent")
+      }
+    } catch (err) {
+      setFormState("error")
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.")
+    }
+  }
+
   return (
     <div
       style={{
@@ -7,12 +43,14 @@ export default function LoginPage() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        padding: "24px 16px",
       }}
     >
       <div
         className="card"
         style={{
-          width: 360,
+          width: "100%",
+          maxWidth: 360,
           padding: "40px 36px",
           display: "flex",
           flexDirection: "column",
@@ -34,112 +72,229 @@ export default function LoginPage() {
             Operator Access
           </p>
           <h1
-            style={{
-              fontSize: 22,
-              fontWeight: 700,
-              color: "var(--text)",
-              letterSpacing: "0.06em",
-            }}
+            style={{ fontSize: 22, fontWeight: 700, color: "var(--text)", letterSpacing: "0.06em" }}
           >
             TFF
           </h1>
-          <p
-            style={{
-              fontSize: "var(--t-small)",
-              color: "var(--text-3)",
-              marginTop: 6,
-            }}
-          >
+          <p style={{ fontSize: "var(--t-small)", color: "var(--text-3)", marginTop: 6 }}>
             Private command center.
           </p>
         </div>
 
-        {/* Auth placeholder — wired in Step 2 */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-          <div>
-            <label
-              className="kv-label"
-              style={{ display: "block", marginBottom: 6 }}
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              placeholder="operator@tff.private"
+        {/* ── State A: Supabase not configured ── */}
+        {!hasSupabaseConfig && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div
               style={{
-                width: "100%",
-                background: "#0e0e11",
-                border: "1px solid var(--border)",
+                padding: "14px 16px",
+                background: "rgba(232,177,74,0.06)",
+                border: "1px solid rgba(232,177,74,0.24)",
                 borderRadius: 4,
-                color: "var(--text)",
-                fontFamily: "'Geist', sans-serif",
-                fontSize: "var(--t-body)",
-                padding: "9px 12px",
-                outline: "none",
               }}
-              readOnly
-            />
-          </div>
-
-          <div>
-            <label
-              className="kv-label"
-              style={{ display: "block", marginBottom: 6 }}
             >
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="••••••••••"
+              <p
+                className="mono"
+                style={{ fontSize: 10, color: "var(--warn)", letterSpacing: "0.1em", marginBottom: 8 }}
+              >
+                SUPABASE NOT CONFIGURED
+              </p>
+              <p style={{ fontSize: "var(--t-small)", color: "var(--text-3)", lineHeight: 1.6 }}>
+                TFF is running in local-first mode. To enable login, set{" "}
+                <code
+                  style={{
+                    fontFamily: "JetBrains Mono, monospace",
+                    fontSize: 11,
+                    color: "var(--text-2)",
+                  }}
+                >
+                  NEXT_PUBLIC_SUPABASE_URL
+                </code>{" "}
+                and{" "}
+                <code
+                  style={{
+                    fontFamily: "JetBrains Mono, monospace",
+                    fontSize: 11,
+                    color: "var(--text-2)",
+                  }}
+                >
+                  NEXT_PUBLIC_SUPABASE_ANON_KEY
+                </code>
+                .
+              </p>
+            </div>
+
+            {/* Dimmed placeholder form */}
+            <div style={{ opacity: 0.32, pointerEvents: "none" }}>
+              <div style={{ marginBottom: 12 }}>
+                <label className="kv-label" style={{ display: "block", marginBottom: 6 }}>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="operator@tff.private"
+                  style={{ width: "100%" }}
+                  disabled
+                  readOnly
+                />
+              </div>
+              <button
+                className="btn btn-primary"
+                style={{ width: "100%", justifyContent: "center" }}
+                disabled
+              >
+                Send magic link
+              </button>
+            </div>
+
+            <div
               style={{
-                width: "100%",
-                background: "#0e0e11",
-                border: "1px solid var(--border)",
+                padding: "10px 14px",
+                background: "var(--card-2)",
+                border: "1px solid var(--border-soft)",
                 borderRadius: 4,
-                color: "var(--text)",
-                fontFamily: "'Geist', sans-serif",
-                fontSize: "var(--t-body)",
-                padding: "9px 12px",
-                outline: "none",
+                display: "flex",
+                flexDirection: "column",
+                gap: 4,
               }}
-              readOnly
-            />
+            >
+              <p
+                className="mono"
+                style={{ fontSize: 10, color: "var(--accent)", letterSpacing: "0.1em" }}
+              >
+                LOCAL-FIRST MODE · PHASE 1
+              </p>
+              <p
+                className="mono"
+                style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.08em" }}
+              >
+                App is fully accessible without login.
+              </p>
+            </div>
           </div>
+        )}
 
-          <button
-            className="btn btn-primary"
-            style={{ width: "100%", justifyContent: "center", marginTop: 4 }}
-            disabled
-          >
-            Access TFF
-          </button>
-        </div>
+        {/* ── State B: Supabase configured, magic link sent ── */}
+        {hasSupabaseConfig && formState === "sent" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div
+              style={{
+                padding: "20px 16px",
+                background: "var(--accent-soft)",
+                border: "1px solid var(--accent-line)",
+                borderRadius: 4,
+                textAlign: "center",
+              }}
+            >
+              <p
+                className="mono"
+                style={{
+                  fontSize: 10,
+                  color: "var(--accent)",
+                  letterSpacing: "0.12em",
+                  marginBottom: 10,
+                }}
+              >
+                MAGIC LINK SENT
+              </p>
+              <p style={{ fontSize: "var(--t-small)", color: "var(--text-2)", lineHeight: 1.6 }}>
+                Check your inbox at{" "}
+                <strong style={{ color: "var(--text)" }}>{email}</strong> and click the
+                link to sign in.
+              </p>
+            </div>
+            <button
+              className="btn"
+              style={{ width: "100%", justifyContent: "center" }}
+              onClick={() => {
+                setFormState("idle")
+                setEmail("")
+              }}
+            >
+              Use a different address
+            </button>
+          </div>
+        )}
 
-        {/* Status */}
-        <div
-          style={{
-            marginTop: 24,
-            padding: "10px 14px",
-            background: "var(--card-2)",
-            border: "1px solid var(--border-soft)",
-            borderRadius: 4,
-            display: "flex",
-            flexDirection: "column",
-            gap: 4,
-          }}
-        >
-          <p
-            className="mono"
-            style={{ fontSize: 10, color: "var(--accent)", letterSpacing: "0.1em" }}
+        {/* ── State C: Supabase configured, active form ── */}
+        {hasSupabaseConfig && formState !== "sent" && (
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div>
+              <label className="kv-label" style={{ display: "block", marginBottom: 6 }}>
+                Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="operator@tff.private"
+                style={{ width: "100%" }}
+                required
+                autoFocus
+                disabled={formState === "loading"}
+              />
+            </div>
+
+            {formState === "error" && (
+              <p
+                style={{
+                  fontSize: "var(--t-small)",
+                  color: "var(--danger)",
+                  padding: "8px 12px",
+                  background: "var(--danger-soft)",
+                  border: "1px solid rgba(200,69,69,0.3)",
+                  borderRadius: 4,
+                  lineHeight: 1.4,
+                }}
+              >
+                {errorMsg}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{ width: "100%", justifyContent: "center", marginTop: 4 }}
+              disabled={formState === "loading" || !email.trim()}
+            >
+              {formState === "loading" ? "Sending…" : "Send magic link"}
+            </button>
+
+            <div
+              style={{
+                marginTop: 4,
+                padding: "10px 14px",
+                background: "var(--card-2)",
+                border: "1px solid var(--border-soft)",
+                borderRadius: 4,
+                display: "flex",
+                flexDirection: "column",
+                gap: 4,
+              }}
+            >
+              <p
+                className="mono"
+                style={{ fontSize: 10, color: "var(--accent)", letterSpacing: "0.1em" }}
+              >
+                MAGIC LINK AUTH · SUPABASE READY
+              </p>
+              <p
+                className="mono"
+                style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.08em" }}
+              >
+                A sign-in link will be sent to your email.
+              </p>
+            </div>
+          </form>
+        )}
+
+        {/* Back to app — always visible */}
+        <div style={{ marginTop: 28, textAlign: "center" }}>
+          <Link
+            href="/"
+            style={{ fontSize: "var(--t-small)", color: "var(--text-4)", textDecoration: "none" }}
           >
-            LOCAL-FIRST MODE · PHASE 1
-          </p>
-          <p
-            className="mono"
-            style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.08em" }}
-          >
-            Auth ships in Phase 1.5. App is fully accessible now.
-          </p>
+            ← Back to app
+          </Link>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/tff/PageHeader"
 import { TffCard, TffCardHeader } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
+import { SignOutButton } from "@/components/tff/SignOutButton"
 import { hasSupabaseConfig, missingSupabaseEnvNames } from "@/lib/supabase/status"
 
 function KVRow({
@@ -64,7 +65,43 @@ export default function SettingsPage() {
         </TffCard>
       </div>
 
-      {/* ── 2. Personal Profile ───────────────────────────────────────────── */}
+      {/* ── 2. Authentication ─────────────────────────────────────────────── */}
+      <div>
+        <SectionHeader>Authentication</SectionHeader>
+        <TffCard>
+          <KVRow
+            label="Auth UI"
+            value={
+              supabaseConfigured ? (
+                <TffBadge variant="core" dot>Ready</TffBadge>
+              ) : (
+                <TffBadge variant="warn">Not available</TffBadge>
+              )
+            }
+          />
+          <KVRow label="Route protection" value={<TffBadge variant="na">Not active</TffBadge>} />
+          <KVRow label="Active session" value={<TffBadge variant="na">Not checked — Phase 1.5</TffBadge>} />
+          <KVRow label="Local-first mode" value={<TffBadge variant="core" dot>Active</TffBadge>} />
+          <KVRow label="Cloud sync" value={<TffBadge variant="na">Phase 2</TffBadge>} last />
+        </TffCard>
+        {supabaseConfigured && (
+          <div
+            style={{
+              marginTop: 8,
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+            }}
+          >
+            <SignOutButton />
+            <p style={{ fontSize: "var(--t-micro)", color: "var(--text-4)" }}>
+              Signs out of current session if one is active.
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* ── 3. Personal Profile ───────────────────────────────────────────── */}
       <div>
         <SectionHeader>Personal Profile</SectionHeader>
         <TffCard>
@@ -93,7 +130,7 @@ export default function SettingsPage() {
         </TffCard>
       </div>
 
-      {/* ── 3. Preferences ────────────────────────────────────────────────── */}
+      {/* ── 4. Preferences ────────────────────────────────────────────────── */}
       <div>
         <SectionHeader>Preferences</SectionHeader>
         <TffCard>
@@ -127,7 +164,7 @@ export default function SettingsPage() {
         </p>
       </div>
 
-      {/* ── 4. Data & Sync ────────────────────────────────────────────────── */}
+      {/* ── 5. Data & Sync ────────────────────────────────────────────────── */}
       <div>
         <SectionHeader>Data &amp; Sync</SectionHeader>
         <TffCard>
@@ -168,7 +205,7 @@ export default function SettingsPage() {
         </TffCard>
       </div>
 
-      {/* ── 5. Phase Roadmap ──────────────────────────────────────────────── */}
+      {/* ── 6. Phase Roadmap ──────────────────────────────────────────────── */}
       <div>
         <SectionHeader>Phase Roadmap</SectionHeader>
         <TffCard>
