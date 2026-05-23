@@ -7,6 +7,7 @@ import { EmptyState } from "@/components/tff/EmptyState"
 import { StatCard } from "@/components/tff/StatCard"
 import { QuickActionCard } from "@/components/tff/QuickActionCard"
 import { DataHealthCard } from "@/components/tff/DataHealthCard"
+import { DashboardPersonalCards } from "@/components/tff/DashboardPersonalCards"
 import { getDataStats } from "@/lib/data/stats"
 import { getChecklistItems } from "@/lib/data/loaders"
 
@@ -50,6 +51,11 @@ const QUICK_ACTIONS = [
     label: "Routines",
     href: "/routines",
     description: "Daily, training, sleep, and weekly routine systems.",
+  },
+  {
+    label: "Settings",
+    href: "/settings",
+    description: "Account, sign-in, and app preferences.",
   },
 ]
 
@@ -165,7 +171,10 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* ── 4. Current Focus + Minimum Effective Day ──────────────────────── */}
+      {/* ── 4. Personal Summary (client — data from Supabase when signed in) ── */}
+      <DashboardPersonalCards />
+
+      {/* ── 5. Current Focus + Minimum Effective Day ──────────────────────── */}
       <div
         style={{
           display: "grid",
@@ -237,7 +246,7 @@ export default function DashboardPage() {
         </TffCard>
       </div>
 
-      {/* ── 5. Advanced Mode Notice ───────────────────────────────────────── */}
+      {/* ── 6. Advanced Mode Notice ───────────────────────────────────────── */}
       <TffCard>
         <div
           style={{
@@ -268,7 +277,7 @@ export default function DashboardPage() {
         </div>
       </TffCard>
 
-      {/* ── 6. Data Package Health ────────────────────────────────────────── */}
+      {/* ── 7. Data Package Health ────────────────────────────────────────── */}
       <DataHealthCard
         totalRecords={stats.total}
         supabaseReady={supabaseReady}

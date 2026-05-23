@@ -41,7 +41,14 @@
       "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f\\\\\"{p['id']}: {p.get\\('name','?'\\)} [{p.get\\('category','?'\\)}]\\\\\"\\) for p in data[:30]]\")",
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(/Users/alex/.nvm/versions/node/v22.15.0/bin/npx tsc *)",
+      "Bash(ls /usr/local/bin/node /opt/homebrew/bin/node /Users/alex/.volta/bin/node 2>/dev/null; ls /Users/alex/TFF/tff/node_modules/.bin/tsc 2>/dev/null)",
+      "Read(//usr/local/bin/**)",
+      "Bash(find /Users/alex -name \"node\" -type f 2>/dev/null | head -5; find /usr -name \"node\" -type f 2>/dev/null | head -3)",
+      "Read(//Users/alex/**)",
+      "Read(//usr/**)",
+      "Bash(/bin/zsh -i -c \"which node 2>&1 && node -e 'process.exit\\(0\\)' 2>&1 && echo ok\")"
     ]
   }
 }

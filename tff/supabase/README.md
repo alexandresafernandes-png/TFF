@@ -2,13 +2,14 @@
 
 ## Status
 
-**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, and user notes on `/protocols` + `/bloodwork` are wired. All other pages: localStorage only.**
+**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, user notes on `/protocols` + `/bloodwork`, and the dashboard personal summary are wired. All other pages: localStorage only.**
 
 - `/checklist` syncs completions and custom items to Supabase when the user is logged in
 - `/shopping` syncs retainer checkmarks, upgrade status, and custom items to Supabase when the user is logged in
 - `/routines` syncs active/completed today state to Supabase when the user is logged in
 - `/protocols` syncs protocol tracking status and notes to Supabase when the user is logged in; protocol content remains static JSON
 - `/protocols` (per-protocol) and `/bloodwork` (per-marker) support personal notes via `UserNotesPanel`, synced to `user_notes` when signed in
+- `/` (dashboard) shows a personal summary card when signed in: today's checklist count, protocol tracking counts, today's routine counts, shopping checked counts, and last 3 notes; falls back to a "local-first mode" prompt when not signed in
 - All other app pages still use `localStorage` exclusively
 - Route protection is not active — all pages open without a session
 - `localStorage` remains the fallback for all synced pages when Supabase is unavailable or the user is not signed in
@@ -233,5 +234,6 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 5. ~~Wire `/routines` to sync `routine_completions`~~ ✓ Done (Phase 1.5 Step 6)
 6. ~~Wire `/protocols` to sync `protocol_tracking`~~ ✓ Done (Phase 1.5 Step 7)
 7. ~~Wire notes to `user_notes` across relevant pages~~ ✓ Done (Phase 1.5 Step 8) — `UserNotesPanel` on `/protocols` (per-protocol) and `/bloodwork` (per-marker)
-8. Wire profile display in `/settings` from `profiles`
+8. ~~Dashboard personal data layer~~ ✓ Done (Phase 1.5 Step 9) — `DashboardPersonalCards` reads checklist, protocols, routines, shopping, and notes summaries; falls back to local-first prompt when not signed in
+9. Wire profile display in `/settings` from `profiles`
 9. Migrate relevant `localStorage` keys to Supabase (keep localStorage as offline fallback)
