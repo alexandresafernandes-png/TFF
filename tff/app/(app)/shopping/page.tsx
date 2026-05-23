@@ -5,6 +5,14 @@ import { PageHeader } from "@/components/tff/PageHeader"
 import { TffCard } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
+import { SyncBadge, type SyncStatus } from "@/components/tff/SyncBadge"
+import { hasSupabaseConfig } from "@/lib/supabase/status"
+import {
+  fetchShoppingData,
+  upsertShoppingStatus,
+  createCloudShoppingItem,
+  archiveCloudShoppingItem,
+} from "@/lib/supabase/shopping-sync"
 
 type Mode = "basket" | "queue" | "phase2"
 type RetainerPriority = "Core" | "Useful" | "Optional"
@@ -173,6 +181,7 @@ const LS_RETAINER = "tff_retainer_checked"
 const LS_UPGRADE = "tff_upgrade_status"
 const LS_CUSTOM_RETAINER = "tff_custom_retainer"
 const LS_CUSTOM_UPGRADE = "tff_custom_upgrade"
+const LS_CLOUD_IDS = "tff_shopping_cloud_ids"
 
 const RETAINER_PRIORITY_VARIANT: Record<RetainerPriority, "core" | "default" | "na"> = {
   Core: "core",
@@ -491,7 +500,11 @@ export default function ShoppingPage() {
   const [upgradeStatus, setUpgradeStatus] = useState<Record<string, "planned" | "bought">>({})
   const [customRetainer, setCustomRetainer] = useState<RetainerItem[]>([])
   const [customUpgrade, setCustomUpgrade] = useState<UpgradeItem[]>([])
+  const [cloudIdMap, setCloudIdMap] = useState<Record<string, string>>({})
   const [loaded, setLoaded] = useState(false)
+
+  // Sync status
+  const [syncStatus, setSyncStatus] = useState<SyncStatus>("idle")
 
   // Basket filters
   const [bSearch, setBSearch] = useState("")
@@ -530,6 +543,8 @@ export default function ShoppingPage() {
       if (r3) setCustomRetainer(JSON.parse(r3) as RetainerItem[])
       const r4 = localStorage.getItem(LS_CUSTOM_UPGRADE)
       if (r4) setCustomUpgrade(JSON.parse(r4) as UpgradeItem[])
+      const r5 = localStorage.getItem(LS_CLOUD_IDS)
+      if (r5) setCloudIdMap(JSON.parse(r5) as Record<string, string>)
     } catch (_e) { /* ignore */ }
     setLoaded(true)
   }, [])
@@ -554,12 +569,136 @@ export default function ShoppingPage() {
     localStorage.setItem(LS_CUSTOM_UPGRADE, JSON.stringify(customUpgrade))
   }, [customUpgrade, loaded])
 
+  useEffect(() => {
+    if (!loaded) return
+    localStorage.setItem(LS_CLOUD_IDS, JSON.stringify(cloudIdMap))
+  }, [cloudIdMap, loaded])
+
+  // Initial cloud sync — runs once after hydration
+  useEffect(() => {
+    if (!loaded) return
+    if (!hasSupabaseConfig) {
+      setSyncStatus("local")
+      return
+    }
+    setSyncStatus("syncing")
+
+    fetchShoppingData().then((result) => {
+      if (!result.ok) {
+        setSyncStatus(result.reason === "unauthenticated" ? "unauthenticated" : "error")
+        return
+      }
+
+      const { statuses, customItems } = result.data
+
+      // Merge remote statuses into local — remote wins for known items
+      if (statuses.length > 0) {
+        setRetainerChecked((prev) => {
+          const next = new Set(prev)
+          for (const row of statuses) {
+            if (row.mode === "retainer") {
+              if (row.status === "checked") next.add(row.item_id)
+              else next.delete(row.item_id)
+            }
+          }
+          return next
+        })
+        setUpgradeStatus((prev) => {
+          const next = { ...prev }
+          for (const row of statuses) {
+            if (row.mode === "upgrade") {
+              if (row.status === "planned" || row.status === "bought") {
+                next[row.item_id] = row.status as "planned" | "bought"
+              } else {
+                delete next[row.item_id]
+              }
+            }
+          }
+          return next
+        })
+      }
+
+      // Merge remote custom items — compute synchronously then set state
+      if (customItems.length > 0) {
+        const cloudMapUpdates: Record<string, string> = {}
+
+        // Retainer merge: values from closure are current at effect run time
+        const retainerById = new Map(customRetainer.map((i) => [i.id, i]))
+        let newCustomRetainer = [...customRetainer]
+        for (const row of customItems.filter((r) => r.mode === "retainer")) {
+          const localId = row.client_id
+          if (localId && retainerById.has(localId)) {
+            cloudMapUpdates[localId] = row.id
+          } else {
+            const newId = localId ?? `custom_retainer_remote_${row.id.slice(0, 8)}`
+            if (!retainerById.has(newId)) {
+              newCustomRetainer = [
+                ...newCustomRetainer,
+                {
+                  id: newId,
+                  name: row.name,
+                  category: row.category ?? RETAINER_CATEGORIES[0],
+                  priority: (row.priority as RetainerPriority) ?? "Useful",
+                  frequency: (row.frequency as RetainerFrequency) ?? "Monthly",
+                  purpose: row.purpose ?? "",
+                  note: row.note ?? "",
+                },
+              ]
+              cloudMapUpdates[newId] = row.id
+            }
+          }
+        }
+
+        // Upgrade merge
+        const upgradeById = new Map(customUpgrade.map((i) => [i.id, i]))
+        let newCustomUpgrade = [...customUpgrade]
+        for (const row of customItems.filter((r) => r.mode === "upgrade")) {
+          const localId = row.client_id
+          if (localId && upgradeById.has(localId)) {
+            cloudMapUpdates[localId] = row.id
+          } else {
+            const newId = localId ?? `custom_upgrade_remote_${row.id.slice(0, 8)}`
+            if (!upgradeById.has(newId)) {
+              newCustomUpgrade = [
+                ...newCustomUpgrade,
+                {
+                  id: newId,
+                  name: row.name,
+                  category: row.category ?? UPGRADE_CATEGORIES[0],
+                  priority: (row.priority as UpgradePriority) ?? "Useful Upgrade",
+                  cost: (row.cost_tier as CostTier) ?? "€€",
+                  purpose: row.purpose ?? "",
+                  why: "",
+                  buyingNote: row.note ?? "",
+                },
+              ]
+              cloudMapUpdates[newId] = row.id
+            }
+          }
+        }
+
+        setCustomRetainer(newCustomRetainer)
+        setCustomUpgrade(newCustomUpgrade)
+        if (Object.keys(cloudMapUpdates).length > 0) {
+          setCloudIdMap((prev) => ({ ...prev, ...cloudMapUpdates }))
+        }
+      }
+
+      setSyncStatus("synced")
+    })
+  }, [loaded]) // eslint-disable-line react-hooks/exhaustive-deps
+
   // Retainer actions
   const toggleRetainer = (id: string) => {
     setRetainerChecked((prev) => {
       const next = new Set(prev)
-      if (next.has(id)) next.delete(id)
-      else next.add(id)
+      if (next.has(id)) {
+        next.delete(id)
+        void upsertShoppingStatus("retainer", id, "unchecked")
+      } else {
+        next.add(id)
+        void upsertShoppingStatus("retainer", id, "checked")
+      }
       return next
     })
   }
@@ -567,25 +706,52 @@ export default function ShoppingPage() {
   const addCustomRetainerItem = () => {
     if (!bAddName.trim()) return
     const id = `custom_retainer_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`
-    setCustomRetainer((prev) => [
-      ...prev,
-      { id, name: bAddName.trim(), category: bAddCategory, priority: bAddPriority, frequency: bAddFrequency, purpose: "", note: "" },
-    ])
+    const newItem: RetainerItem = {
+      id,
+      name: bAddName.trim(),
+      category: bAddCategory,
+      priority: bAddPriority,
+      frequency: bAddFrequency,
+      purpose: "",
+      note: "",
+    }
+    setCustomRetainer((prev) => [...prev, newItem])
     setBAddName("")
     setBAddOpen(false)
+
+    createCloudShoppingItem({
+      clientId: id,
+      mode: "retainer",
+      name: newItem.name,
+      category: newItem.category,
+      priority: newItem.priority,
+      frequency: newItem.frequency,
+    }).then((cloudId) => {
+      if (cloudId) setCloudIdMap((prev) => ({ ...prev, [id]: cloudId }))
+    })
   }
 
   const deleteCustomRetainerItem = (id: string) => {
     setCustomRetainer((prev) => prev.filter((i) => i.id !== id))
     setRetainerChecked((prev) => { const n = new Set(prev); n.delete(id); return n })
+    const cloudId = cloudIdMap[id]
+    if (cloudId) {
+      void archiveCloudShoppingItem(cloudId)
+      setCloudIdMap((prev) => { const n = { ...prev }; delete n[id]; return n })
+    }
   }
 
   // Upgrade actions
   const setUpgrade = (id: string, s: "none" | "planned" | "bought") => {
     setUpgradeStatus((prev) => {
       const next = { ...prev }
-      if (s === "none") delete next[id]
-      else next[id] = s
+      if (s === "none") {
+        delete next[id]
+        void upsertShoppingStatus("upgrade", id, "unchecked")
+      } else {
+        next[id] = s
+        void upsertShoppingStatus("upgrade", id, s)
+      }
       return next
     })
   }
@@ -593,17 +759,40 @@ export default function ShoppingPage() {
   const addCustomUpgradeItem = () => {
     if (!qAddName.trim()) return
     const id = `custom_upgrade_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`
-    setCustomUpgrade((prev) => [
-      ...prev,
-      { id, name: qAddName.trim(), category: qAddCategory, priority: qAddPriority, cost: qAddCost, purpose: "", why: "", buyingNote: "" },
-    ])
+    const newItem: UpgradeItem = {
+      id,
+      name: qAddName.trim(),
+      category: qAddCategory,
+      priority: qAddPriority,
+      cost: qAddCost,
+      purpose: "",
+      why: "",
+      buyingNote: "",
+    }
+    setCustomUpgrade((prev) => [...prev, newItem])
     setQAddName("")
     setQAddOpen(false)
+
+    createCloudShoppingItem({
+      clientId: id,
+      mode: "upgrade",
+      name: newItem.name,
+      category: newItem.category,
+      priority: newItem.priority,
+      costTier: newItem.cost,
+    }).then((cloudId) => {
+      if (cloudId) setCloudIdMap((prev) => ({ ...prev, [id]: cloudId }))
+    })
   }
 
   const deleteCustomUpgradeItem = (id: string) => {
     setCustomUpgrade((prev) => prev.filter((i) => i.id !== id))
     setUpgradeStatus((prev) => { const n = { ...prev }; delete n[id]; return n })
+    const cloudId = cloudIdMap[id]
+    if (cloudId) {
+      void archiveCloudShoppingItem(cloudId)
+      setCloudIdMap((prev) => { const n = { ...prev }; delete n[id]; return n })
+    }
   }
 
   // Combined item arrays
@@ -681,7 +870,7 @@ export default function ShoppingPage() {
 
       {/* Mode tabs */}
       <div style={{ padding: "0 24px 20px" }}>
-        <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 4, flexWrap: "wrap", alignItems: "center" }}>
           {modeOptions.map((m) => (
             <button
               key={m.id}
@@ -702,6 +891,9 @@ export default function ShoppingPage() {
               {m.label.toUpperCase()}
             </button>
           ))}
+          <div style={{ marginLeft: 8 }}>
+            <SyncBadge status={syncStatus} />
+          </div>
         </div>
       </div>
 
@@ -794,7 +986,11 @@ export default function ShoppingPage() {
                 + ADD ITEM
               </button>
               <button
-                onClick={() => setRetainerChecked(new Set())}
+                onClick={() => {
+                  const prev = retainerChecked
+                  setRetainerChecked(new Set())
+                  prev.forEach((id) => void upsertShoppingStatus("retainer", id, "unchecked"))
+                }}
                 className="mono"
                 style={{ padding: "5px 12px", fontSize: 9, letterSpacing: "0.08em", background: "transparent", border: "1px solid var(--border)", borderRadius: 4, color: "var(--text-4)", cursor: "pointer" }}
               >
@@ -972,7 +1168,15 @@ export default function ShoppingPage() {
               >
                 + ADD UPGRADE
               </button>
-              <button onClick={() => setUpgradeStatus({})} className="mono" style={{ padding: "5px 12px", fontSize: 9, letterSpacing: "0.08em", background: "transparent", border: "1px solid var(--border)", borderRadius: 4, color: "var(--text-4)", cursor: "pointer" }}>
+              <button
+                onClick={() => {
+                  const prev = upgradeStatus
+                  setUpgradeStatus({})
+                  Object.keys(prev).forEach((id) => void upsertShoppingStatus("upgrade", id, "unchecked"))
+                }}
+                className="mono"
+                style={{ padding: "5px 12px", fontSize: 9, letterSpacing: "0.08em", background: "transparent", border: "1px solid var(--border)", borderRadius: 4, color: "var(--text-4)", cursor: "pointer" }}
+              >
                 RESET STATUS
               </button>
             </div>
@@ -1095,6 +1299,15 @@ export default function ShoppingPage() {
           </div>
         </div>
       )}
+
+      {/* Storage note */}
+      <div style={{ padding: "0 24px 32px" }}>
+        <p className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.08em" }}>
+          {syncStatus === "synced" || syncStatus === "syncing"
+            ? "CHECKMARKS AND CUSTOM ITEMS SYNC TO CLOUD · LOCALSTORAGE FALLBACK ACTIVE"
+            : "CHECKMARKS AND CUSTOM ITEMS STORED IN BROWSER LOCALSTORAGE"}
+        </p>
+      </div>
     </div>
   )
 }

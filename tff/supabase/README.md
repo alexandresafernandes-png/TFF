@@ -2,10 +2,11 @@
 
 ## Status
 
-**Schema: defined. `/checklist` is wired. All other pages: localStorage only.**
+**Schema: defined. `/checklist` and `/shopping` are wired. All other pages: localStorage only.**
 
 - `/checklist` syncs completions and custom items to Supabase when the user is logged in
-- All other app pages (`/shopping`, `/routines`, `/protocols`, etc.) still use `localStorage` exclusively
+- `/shopping` syncs retainer checkmarks, upgrade status, and custom items to Supabase when the user is logged in
+- All other app pages (`/routines`, `/protocols`, etc.) still use `localStorage` exclusively
 - Route protection is not active — all pages open without a session
 - `localStorage` remains the fallback for all synced pages when Supabase is unavailable or the user is not signed in
 
@@ -19,6 +20,7 @@ No Supabase CLI is required. Run migrations manually:
 2. Run `001_initial_tff_schema.sql` first
 3. Run `002_tff_user_data_schema.sql` second
 4. Run `003_checklist_client_id.sql` third
+5. Run `004_shopping_client_id.sql` fourth
 
 Each file is idempotent: re-running it is safe (`create table if not exists`, `create or replace function`, `drop trigger if exists` before recreating, etc.).
 
@@ -45,6 +47,12 @@ Also includes: `handle_updated_at()` trigger function, storage bucket instructio
 ### `003_checklist_client_id.sql` — Phase 1.5 Step 4
 
 Adds `client_id text` to `checklist_custom_items`. This maps local `c_<timestamp>_<random>` IDs to Supabase UUIDs so the sync layer can match remote rows to local items without changing the local ID format. Sparse index on `client_id where client_id is not null`.
+
+---
+
+### `004_shopping_client_id.sql` — Phase 1.5 Step 5
+
+Adds `client_id text` to `shopping_custom_items`. This maps local `custom_retainer_<timestamp>_<random>` and `custom_upgrade_<timestamp>_<random>` IDs to Supabase UUIDs, using the same client_id bridge pattern as migration 003. Sparse index on `client_id where client_id is not null`.
 
 ---
 
@@ -210,8 +218,8 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 
 1. Add route protection in `middleware.ts` using `lib/supabase/middleware.ts`
 2. Add session context provider if needed for client components
-3. Wire `/checklist` to sync `checklist_completions` and `checklist_custom_items`
-4. Wire `/shopping` to sync `shopping_item_status` and `shopping_custom_items`
+3. ~~Wire `/checklist` to sync `checklist_completions` and `checklist_custom_items`~~ ✓ Done (Phase 1.5 Step 4)
+4. ~~Wire `/shopping` to sync `shopping_item_status` and `shopping_custom_items`~~ ✓ Done (Phase 1.5 Step 5)
 5. Wire `/routines` to sync `routine_completions`
 6. Wire `/protocols` to sync `protocol_tracking`
 7. Wire notes to `user_notes` across relevant pages

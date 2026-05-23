@@ -13,12 +13,12 @@ import {
   updateCloudCustomItem,
   archiveCloudCustomItem,
 } from "@/lib/supabase/checklist-sync"
+import { SyncBadge, type SyncStatus } from "@/components/tff/SyncBadge"
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 type Priority = "core" | "optional" | "advanced"
 type Mode = "recommendations" | "custom"
-type SyncStatus = "idle" | "syncing" | "synced" | "error" | "local" | "unauthenticated"
 
 interface RecommendedItem {
   id: string
@@ -157,21 +157,6 @@ function Checkmark() {
       />
     </svg>
   )
-}
-
-// ── SyncBadge ─────────────────────────────────────────────────────────────────
-
-function SyncBadge({ status }: { status: SyncStatus }) {
-  if (status === "idle" || status === "local") return null
-  if (status === "syncing")
-    return <TffBadge variant="default">Syncing…</TffBadge>
-  if (status === "synced")
-    return <TffBadge variant="core" dot>Cloud sync</TffBadge>
-  if (status === "error")
-    return <TffBadge variant="warn">Sync error</TffBadge>
-  if (status === "unauthenticated")
-    return <TffBadge variant="na">Not signed in</TffBadge>
-  return null
 }
 
 // ── CheckRow ─────────────────────────────────────────────────────────────────
