@@ -7,6 +7,7 @@ import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
 import { StatCard } from "@/components/tff/StatCard"
 import { SyncBadge, type SyncStatus } from "@/components/tff/SyncBadge"
+import { UserNotesPanel } from "@/components/tff/UserNotesPanel"
 import { hasSupabaseConfig } from "@/lib/supabase/status"
 import {
   fetchProtocolTracking,
@@ -366,6 +367,11 @@ function ProtocolDetail({
             lineHeight: 1.5,
           }}
         />
+      </div>
+
+      {/* Linked notes */}
+      <div>
+        <UserNotesPanel area="protocol" entityId={p.id} />
       </div>
     </div>
   )

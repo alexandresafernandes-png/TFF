@@ -2,12 +2,13 @@
 
 ## Status
 
-**Schema: defined. `/checklist`, `/shopping`, `/routines`, and `/protocols` are wired. All other pages: localStorage only.**
+**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, and user notes on `/protocols` + `/bloodwork` are wired. All other pages: localStorage only.**
 
 - `/checklist` syncs completions and custom items to Supabase when the user is logged in
 - `/shopping` syncs retainer checkmarks, upgrade status, and custom items to Supabase when the user is logged in
 - `/routines` syncs active/completed today state to Supabase when the user is logged in
 - `/protocols` syncs protocol tracking status and notes to Supabase when the user is logged in; protocol content remains static JSON
+- `/protocols` (per-protocol) and `/bloodwork` (per-marker) support personal notes via `UserNotesPanel`, synced to `user_notes` when signed in
 - All other app pages still use `localStorage` exclusively
 - Route protection is not active — all pages open without a session
 - `localStorage` remains the fallback for all synced pages when Supabase is unavailable or the user is not signed in
@@ -23,6 +24,7 @@ No Supabase CLI is required. Run migrations manually:
 3. Run `002_tff_user_data_schema.sql` second
 4. Run `003_checklist_client_id.sql` third
 5. Run `004_shopping_client_id.sql` fourth
+6. Run `005_user_notes_archive.sql` fifth
 
 Each file is idempotent: re-running it is safe (`create table if not exists`, `create or replace function`, `drop trigger if exists` before recreating, etc.).
 
@@ -55,6 +57,12 @@ Adds `client_id text` to `checklist_custom_items`. This maps local `c_<timestamp
 ### `004_shopping_client_id.sql` — Phase 1.5 Step 5
 
 Adds `client_id text` to `shopping_custom_items`. This maps local `custom_retainer_<timestamp>_<random>` and `custom_upgrade_<timestamp>_<random>` IDs to Supabase UUIDs, using the same client_id bridge pattern as migration 003. Sparse index on `client_id where client_id is not null`.
+
+---
+
+### `005_user_notes_archive.sql` — Phase 1.5 Step 8
+
+Adds `is_archived boolean not null default false` to `user_notes`. This enables soft-delete: notes are hidden from fetch queries (`eq("is_archived", false)`) rather than permanently deleted. Partial index on `(user_id, area) where is_archived = false` for fast per-area lookups. Required before using `archiveUserNote()` in `lib/supabase/notes-sync.ts`.
 
 ---
 
@@ -224,6 +232,6 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 4. ~~Wire `/shopping` to sync `shopping_item_status` and `shopping_custom_items`~~ ✓ Done (Phase 1.5 Step 5)
 5. ~~Wire `/routines` to sync `routine_completions`~~ ✓ Done (Phase 1.5 Step 6)
 6. ~~Wire `/protocols` to sync `protocol_tracking`~~ ✓ Done (Phase 1.5 Step 7)
-7. Wire notes to `user_notes` across relevant pages
+7. ~~Wire notes to `user_notes` across relevant pages~~ ✓ Done (Phase 1.5 Step 8) — `UserNotesPanel` on `/protocols` (per-protocol) and `/bloodwork` (per-marker)
 8. Wire profile display in `/settings` from `profiles`
 9. Migrate relevant `localStorage` keys to Supabase (keep localStorage as offline fallback)

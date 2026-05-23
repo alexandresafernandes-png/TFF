@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/tff/PageHeader"
 import { TffCard } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
+import { UserNotesPanel } from "@/components/tff/UserNotesPanel"
 import markersRaw from "@/data/blood_markers.json"
 
 type Tab = "browse" | "core_panel" | "phase2"
@@ -448,6 +449,7 @@ function MarkerCard({ marker }: { marker: Marker }) {
               border: "1px solid var(--border-soft)",
               borderRadius: 4,
               padding: "8px 10px",
+              marginBottom: 12,
             }}
           >
             <p
@@ -458,6 +460,9 @@ function MarkerCard({ marker }: { marker: Marker }) {
               Discuss any findings with a qualified professional. Track trends over time — single values are rarely definitive.
             </p>
           </div>
+
+          {/* Linked notes */}
+          <UserNotesPanel area="bloodwork" entityId={marker.id} />
         </div>
       )}
     </TffCard>
