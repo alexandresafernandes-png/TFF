@@ -11,8 +11,7 @@ export function SignOutButton() {
   async function handleSignOut() {
     setLoading(true)
     await signOut()
-    router.refresh()
-    setLoading(false)
+    router.push("/login")
   }
 
   return (

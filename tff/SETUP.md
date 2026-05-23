@@ -62,9 +62,19 @@ Until the vars are set:
 
 When both vars are present, `hasSupabaseConfig` (from `lib/supabase/status.ts`) becomes `true` and the login form activates.
 
-### 5. Auth is prepared, not enforced
+### 5. Route protection — active
 
-Phase 1.5 wires up the auth UI and utilities but does **not** protect any routes. All app pages remain accessible without a session. Route protection is a Phase 2 concern.
+All routes inside `app/(app)/` (dashboard, checklist, shopping, routines, protocols, nutrition, supplements, bloodwork, search, sources, settings) require a signed-in Supabase session.
+
+The auth boundary lives in `app/(app)/layout.tsx`. On each request it calls `supabase.auth.getUser()` server-side — if no valid session exists, the user is redirected to `/login`.
+
+Public routes (no session required):
+- `/login` — magic link form
+- `/auth/callback` — session exchange after magic link click
+
+**Middleware is intentionally not used for auth.** A prior middleware-based approach caused Vercel Edge runtime issues. The layout-level check is the authoritative auth boundary.
+
+If Supabase env vars are not set, all app routes redirect to `/login?error=supabase_not_configured`.
 
 ---
 
@@ -90,5 +100,6 @@ Requires Supabase to be configured. Adds:
 | `components/tff/SignOutButton.tsx` | Client sign-out button — shown only when Supabase is configured |
 | `app/login/page.tsx` | Login page — two states: local-first notice vs. active magic-link form |
 | `app/auth/callback/route.ts` | Auth callback — guards against missing env vars |
-| `middleware.ts` | Passthrough — does not enforce auth in Phase 1 or 1.5 |
-| `lib/supabase/middleware.ts` | Dormant auth session helper — not called yet (Phase 2) |
+| `app/(app)/layout.tsx` | Auth boundary — redirects to `/login` if no session; uses `supabase.auth.getUser()` server-side |
+| `middleware.ts` | Passthrough — intentionally does not enforce auth (Edge runtime incompatibility) |
+| `lib/supabase/middleware.ts` | Dormant session helper — not used (auth is in layout, not middleware) |

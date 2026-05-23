@@ -11,8 +11,11 @@
 - `/protocols` (per-protocol) and `/bloodwork` (per-marker) support personal notes via `UserNotesPanel`, synced to `user_notes` when signed in
 - `/` (dashboard) shows a personal summary card when signed in: today's checklist count, protocol tracking counts, today's routine counts, shopping checked counts, and last 3 notes; falls back to a "local-first mode" prompt when not signed in
 - All other app pages still use `localStorage` exclusively
-- Route protection is not active — all pages open without a session
-- `localStorage` remains the fallback for all synced pages when Supabase is unavailable or the user is not signed in
+- Route protection is **active** — all `app/(app)` routes require a signed-in session; unauthenticated requests redirect to `/login`
+- Public routes: `/login` and `/auth/callback` — no session required
+- Auth boundary is implemented in `app/(app)/layout.tsx` using `supabase.auth.getUser()` server-side; middleware is intentionally not used for auth
+- `localStorage` remains an internal fallback for all synced pages when Supabase data is unavailable, but app access now requires login
+- Auth UX is polished: login page shows "already signed in" state when revisited, `/settings` Account section shows live session status via `AuthSessionStatus`, dashboard CTA links to `/login`
 
 ---
 
@@ -30,7 +33,7 @@
 | Personal notes | ✓ primary | ✓ when signed in | Soft-delete via `is_archived`; area + entity_id scoped |
 | Dashboard summary | — | Read-only fetch | `Promise.allSettled`; partial failure safe |
 | Auth | — | Magic link | No route enforcement |
-| Route protection | — | Not active | All routes open without a session |
+| Route protection | — | Active | `app/(app)/layout.tsx` redirects to `/login`; middleware not used |
 | localStorage fallback | ✓ always | — | Active on all synced pages regardless of auth state |
 
 ---

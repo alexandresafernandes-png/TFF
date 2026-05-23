@@ -178,11 +178,11 @@ export function DashboardPersonalCards() {
                   lineHeight: 1.55,
                 }}
               >
-                Sign in to sync your checklist, routines, protocols, and shopping across
-                devices. Your data is saved locally and will sync automatically when signed in.
+                Sign in to sync checklist, shopping, routines, protocols, and notes across
+                devices. Local data is safe and merges automatically on first sign-in.
               </p>
             </div>
-            <Link href="/settings" className="btn btn-primary" style={{ flexShrink: 0 }}>
+            <Link href="/login" className="btn btn-primary" style={{ flexShrink: 0 }}>
               Sign In
             </Link>
           </div>

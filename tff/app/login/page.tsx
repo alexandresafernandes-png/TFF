@@ -1,16 +1,31 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { hasSupabaseConfig } from "@/lib/supabase/status"
 import { createClient } from "@/lib/supabase/client"
 
-type FormState = "idle" | "loading" | "sent" | "error"
+type FormState = "idle" | "loading" | "sent" | "error" | "signed_in"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [formState, setFormState] = useState<FormState>("idle")
   const [errorMsg, setErrorMsg] = useState("")
+  const [sessionEmail, setSessionEmail] = useState<string | null>(null)
+
+  // Check if user is already signed in — non-blocking, fail silent
+  useEffect(() => {
+    if (!hasSupabaseConfig) return
+    createClient()
+      .auth.getSession()
+      .then(({ data: { session } }) => {
+        if (session?.user?.email) {
+          setSessionEmail(session.user.email)
+          setFormState("signed_in")
+        }
+      })
+      .catch(() => {})
+  }, [])
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -173,7 +188,45 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* ── State B: Supabase configured, magic link sent ── */}
+        {/* ── State B: Already signed in ── */}
+        {hasSupabaseConfig && formState === "signed_in" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div
+              style={{
+                padding: "20px 16px",
+                background: "var(--accent-soft)",
+                border: "1px solid var(--accent-line)",
+                borderRadius: 4,
+                textAlign: "center",
+              }}
+            >
+              <p
+                className="mono"
+                style={{
+                  fontSize: 10,
+                  color: "var(--accent)",
+                  letterSpacing: "0.12em",
+                  marginBottom: 10,
+                }}
+              >
+                ALREADY SIGNED IN
+              </p>
+              <p style={{ fontSize: "var(--t-small)", color: "var(--text-2)", lineHeight: 1.6 }}>
+                Signed in as{" "}
+                <strong style={{ color: "var(--text)" }}>{sessionEmail}</strong>.
+              </p>
+            </div>
+            <Link
+              href="/"
+              className="btn btn-primary"
+              style={{ width: "100%", justifyContent: "center" }}
+            >
+              Back to dashboard
+            </Link>
+          </div>
+        )}
+
+        {/* ── State C: Supabase configured, magic link sent ── */}
         {hasSupabaseConfig && formState === "sent" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <div
@@ -215,8 +268,8 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* ── State C: Supabase configured, active form ── */}
-        {hasSupabaseConfig && formState !== "sent" && (
+        {/* ── State D: Supabase configured, active form ── */}
+        {hasSupabaseConfig && formState !== "sent" && formState !== "signed_in" && (
           <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <div>
               <label className="kv-label" style={{ display: "block", marginBottom: 6 }}>

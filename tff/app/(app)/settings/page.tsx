@@ -2,7 +2,7 @@ import { PageHeader } from "@/components/tff/PageHeader"
 import { TffCard, TffCardHeader } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
-import { SignOutButton } from "@/components/tff/SignOutButton"
+import { AuthSessionStatus } from "@/components/tff/AuthSessionStatus"
 import { hasSupabaseConfig, missingSupabaseEnvNames } from "@/lib/supabase/status"
 
 function KVRow({
@@ -89,9 +89,9 @@ export default function SettingsPage() {
               )
             }
           />
-          <KVRow label="Route protection" value={<TffBadge variant="na">Not active — routes are open</TffBadge>} />
-          <KVRow label="Active session" value={<TffBadge variant="na">Not enforced</TffBadge>} />
-          <KVRow label="Local-first mode" value={<TffBadge variant="core" dot>Active</TffBadge>} />
+          <KVRow label="Route protection" value={<TffBadge variant="core" dot>Active</TffBadge>} />
+          <KVRow label="Active session" value={<TffBadge variant="core" dot>Required</TffBadge>} />
+          <KVRow label="Local-first fallback" value={<TffBadge variant="core" dot>Active (internal)</TffBadge>} />
           <KVRow
             label="Cloud sync"
             value={
@@ -104,50 +104,12 @@ export default function SettingsPage() {
             last
           />
         </TffCard>
-        {supabaseConfigured && (
-          <div
-            style={{
-              marginTop: 8,
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-            }}
-          >
-            <SignOutButton />
-            <p style={{ fontSize: "var(--t-micro)", color: "var(--text-4)" }}>
-              Signs out of current session if one is active.
-            </p>
-          </div>
-        )}
       </div>
 
-      {/* ── 3. Personal Profile ───────────────────────────────────────────── */}
+      {/* ── 3. Account ────────────────────────────────────────────────────── */}
       <div>
-        <SectionHeader>Personal Profile</SectionHeader>
-        <TffCard>
-          <TffCardHeader>Operator Identity</TffCardHeader>
-          <p style={{ fontSize: "var(--t-small)", color: "var(--text-3)", marginBottom: 16, lineHeight: 1.5 }}>
-            Profile data is tied to Supabase Auth. Once auth is active, name, email, and
-            avatar will be pulled from your session automatically.
-          </p>
-          <div
-            style={{
-              padding: "12px 14px",
-              background: "var(--card-2)",
-              border: "1px solid var(--border-soft)",
-              borderRadius: 4,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 12,
-            }}
-          >
-            <p className="mono" style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.1em" }}>
-              REQUIRES SUPABASE AUTH
-            </p>
-            <TffBadge variant="na">Phase 1.5</TffBadge>
-          </div>
-        </TffCard>
+        <SectionHeader>Account</SectionHeader>
+        <AuthSessionStatus />
       </div>
 
       {/* ── 4. Preferences ────────────────────────────────────────────────── */}
@@ -226,7 +188,7 @@ export default function SettingsPage() {
           <KVRow label="Routines" value={supabaseConfigured ? <TffBadge variant="core" dot>Synced</TffBadge> : <TffBadge variant="na">Local only</TffBadge>} />
           <KVRow label="Protocol tracking" value={supabaseConfigured ? <TffBadge variant="core" dot>Synced</TffBadge> : <TffBadge variant="na">Local only</TffBadge>} />
           <KVRow label="Personal notes" value={supabaseConfigured ? <TffBadge variant="core" dot>Synced</TffBadge> : <TffBadge variant="na">Local only</TffBadge>} />
-          <KVRow label="Route protection" value={<TffBadge variant="na">Not active</TffBadge>} />
+          <KVRow label="Route protection" value={<TffBadge variant="core" dot>Active</TffBadge>} />
           <KVRow label="Local-first fallback" value={<TffBadge variant="core" dot>Always active</TffBadge>} last />
           {!supabaseConfigured && missingSupabaseEnvNames.length > 0 && (
             <div style={{ marginTop: 12, padding: "10px 12px", background: "var(--card-2)", border: "1px solid var(--border-soft)", borderRadius: 4 }}>
