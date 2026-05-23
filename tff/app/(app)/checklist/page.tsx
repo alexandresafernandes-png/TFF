@@ -5,11 +5,20 @@ import { PageHeader } from "@/components/tff/PageHeader"
 import { TffCard, TffCardHeader } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
+import { hasSupabaseConfig } from "@/lib/supabase/status"
+import {
+  fetchChecklistData,
+  upsertCompletion,
+  createCloudCustomItem,
+  updateCloudCustomItem,
+  archiveCloudCustomItem,
+} from "@/lib/supabase/checklist-sync"
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 type Priority = "core" | "optional" | "advanced"
 type Mode = "recommendations" | "custom"
+type SyncStatus = "idle" | "syncing" | "synced" | "error" | "local" | "unauthenticated"
 
 interface RecommendedItem {
   id: string
@@ -94,12 +103,11 @@ const ALL_RECOMMENDED: RecommendedItem[] = RECOMMENDED_GROUPS.flatMap(({ group, 
 )
 
 // ── localStorage keys ─────────────────────────────────────────────────────────
-// TODO (Phase 2): Replace localStorage with Supabase sync.
-//   checklist_completions(user_id, item_id, date, completed_at)
-//   checklist_custom_items(user_id, id, title, description, category, priority, created_at)
 
 const LS_COMPLETIONS = "tff_checklist_completions"
 const LS_CUSTOM = "tff_checklist_custom"
+// Maps local c_xxx IDs → Supabase UUIDs so we can upsert without re-fetching.
+const LS_CLOUD_IDS = "tff_checklist_cloud_ids"
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -130,6 +138,11 @@ function uid(): string {
   return `c_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`
 }
 
+/** Items with IDs starting with "rec_" are app recommendations; everything else is custom. */
+function itemSource(id: string): "app" | "custom" {
+  return id.startsWith("rec_") ? "app" : "custom"
+}
+
 // ── Checkmark SVG ─────────────────────────────────────────────────────────────
 
 function Checkmark() {
@@ -144,6 +157,21 @@ function Checkmark() {
       />
     </svg>
   )
+}
+
+// ── SyncBadge ─────────────────────────────────────────────────────────────────
+
+function SyncBadge({ status }: { status: SyncStatus }) {
+  if (status === "idle" || status === "local") return null
+  if (status === "syncing")
+    return <TffBadge variant="default">Syncing…</TffBadge>
+  if (status === "synced")
+    return <TffBadge variant="core" dot>Cloud sync</TffBadge>
+  if (status === "error")
+    return <TffBadge variant="warn">Sync error</TffBadge>
+  if (status === "unauthenticated")
+    return <TffBadge variant="na">Not signed in</TffBadge>
+  return null
 }
 
 // ── CheckRow ─────────────────────────────────────────────────────────────────
@@ -460,6 +488,12 @@ export default function DailyChecklistPage() {
   // Custom checklist items
   const [customItems, setCustomItems] = useState<CustomItem[]>([])
 
+  // Maps local c_xxx IDs → Supabase UUIDs for cloud mutations
+  const [cloudIdMap, setCloudIdMap] = useState<Record<string, string>>({})
+
+  // Cloud sync status — drives SyncBadge
+  const [syncStatus, setSyncStatus] = useState<SyncStatus>("idle")
+
   // UI state
   const [editingId, setEditingId] = useState<string | null>(null)
   const [showAddForm, setShowAddForm] = useState(false)
@@ -471,6 +505,8 @@ export default function DailyChecklistPage() {
       if (c) setCompletions(JSON.parse(c) as Record<string, boolean>)
       const ci = localStorage.getItem(LS_CUSTOM)
       if (ci) setCustomItems(JSON.parse(ci) as CustomItem[])
+      const cm = localStorage.getItem(LS_CLOUD_IDS)
+      if (cm) setCloudIdMap(JSON.parse(cm) as Record<string, string>)
     } catch {
       // Corrupted data — start fresh
     }
@@ -489,10 +525,118 @@ export default function DailyChecklistPage() {
     localStorage.setItem(LS_CUSTOM, JSON.stringify(customItems))
   }, [customItems, loaded])
 
+  // ── Persist cloud ID map ─────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!loaded) return
+    localStorage.setItem(LS_CLOUD_IDS, JSON.stringify(cloudIdMap))
+  }, [cloudIdMap, loaded])
+
+  // ── Initial Supabase sync (runs once after localStorage hydration) ───────────
+  useEffect(() => {
+    if (!loaded) return
+    if (!hasSupabaseConfig) {
+      setSyncStatus("local")
+      return
+    }
+
+    async function doSync() {
+      setSyncStatus("syncing")
+
+      const result = await fetchChecklistData()
+
+      if (!result.ok) {
+        setSyncStatus(result.reason === "unauthenticated" ? "unauthenticated" : "error")
+        return
+      }
+
+      const { completions: remoteCompletions, customItems: remoteCustom } = result.data
+
+      // ── Merge completions ──────────────────────────────────────────────────
+      // If remote is empty for today, upload any locally-completed items so
+      // Supabase stays in sync after first login.
+      if (remoteCompletions.length === 0) {
+        setCompletions((prev) => {
+          for (const [id, done] of Object.entries(prev)) {
+            if (done) void upsertCompletion(id, itemSource(id), true)
+          }
+          return prev // no change to local state
+        })
+      } else {
+        // Remote rows override local for items Supabase knows about.
+        // Items that exist locally but have no remote row are left unchanged.
+        setCompletions((prev) => {
+          const merged = { ...prev }
+          for (const row of remoteCompletions) {
+            merged[row.checklist_item_id] = row.completed
+          }
+          return merged
+        })
+      }
+
+      // ── Merge custom items ─────────────────────────────────────────────────
+      if (remoteCustom.length > 0) {
+        // Build lookup: client_id → remote item
+        const byClientId: Record<string, (typeof remoteCustom)[0]> = {}
+        for (const r of remoteCustom) {
+          if (r.client_id) byClientId[r.client_id] = r
+        }
+
+        // Update cloudIdMap with any new mappings from remote
+        setCloudIdMap((prev) => {
+          const next = { ...prev }
+          for (const r of remoteCustom) {
+            if (r.client_id) next[r.client_id] = r.id
+          }
+          return next
+        })
+
+        setCustomItems((localItems) => {
+          const localIds = new Set(localItems.map((l) => l.id))
+
+          // Update existing local items with latest remote data
+          const updated = localItems.map((local) => {
+            const remote = byClientId[local.id]
+            if (!remote) return local
+            return {
+              ...local,
+              title: remote.title,
+              description: remote.description ?? local.description,
+              category: remote.category ?? local.category,
+              priority: (remote.priority as Priority) ?? local.priority,
+            }
+          })
+
+          // Append remote-only items (created on another device or before this device had the app)
+          const fromRemote = remoteCustom
+            .filter((r) => !r.client_id || !localIds.has(r.client_id))
+            .map((r) => ({
+              id: r.client_id ?? r.id, // prefer the original local ID; fall back to UUID
+              title: r.title,
+              description: r.description ?? "",
+              category: r.category ?? "Other",
+              priority: (r.priority as Priority) ?? "core",
+              createdAt: new Date(r.created_at).getTime(),
+            }))
+
+          return [...updated, ...fromRemote]
+        })
+      }
+
+      setSyncStatus("synced")
+    }
+
+    doSync()
+  }, [loaded]) // hasSupabaseConfig is a build-time constant — no dep needed
+
   // ── Actions ──────────────────────────────────────────────────────────────────
 
   function toggleCompletion(id: string) {
-    setCompletions((prev) => ({ ...prev, [id]: !prev[id] }))
+    // Compute next value from current state, then sync to Supabase.
+    setCompletions((prev) => {
+      const next = !prev[id]
+      void upsertCompletion(id, itemSource(id), next)
+      return { ...prev, [id]: next }
+    })
   }
 
   function resetToday() {
@@ -507,17 +651,32 @@ export default function DailyChecklistPage() {
       })
       return next
     })
+    // Sync resets to Supabase so they survive a page refresh
+    ids.forEach((id) => void upsertCompletion(id, itemSource(id), false))
   }
 
   function addCustomItem(data: ItemFormData) {
     const newItem: CustomItem = { ...data, id: uid(), createdAt: Date.now() }
     setCustomItems((prev) => [...prev, newItem])
     setShowAddForm(false)
+    // Create in cloud; store the returned UUID so subsequent edits/deletes work
+    createCloudCustomItem({
+      clientId: newItem.id,
+      title: newItem.title,
+      description: newItem.description,
+      category: newItem.category,
+      priority: newItem.priority,
+      sortOrder: customItems.length,
+    }).then((cloudId) => {
+      if (cloudId) setCloudIdMap((prev) => ({ ...prev, [newItem.id]: cloudId }))
+    })
   }
 
   function updateCustomItem(id: string, data: ItemFormData) {
     setCustomItems((prev) => prev.map((i) => (i.id === id ? { ...i, ...data } : i)))
     setEditingId(null)
+    const cloudId = cloudIdMap[id]
+    if (cloudId) void updateCloudCustomItem(cloudId, data)
   }
 
   function deleteCustomItem(id: string) {
@@ -527,12 +686,31 @@ export default function DailyChecklistPage() {
       delete next[id]
       return next
     })
+    const cloudId = cloudIdMap[id]
+    if (cloudId) {
+      void archiveCloudCustomItem(cloudId)
+      setCloudIdMap((prev) => {
+        const next = { ...prev }
+        delete next[id]
+        return next
+      })
+    }
   }
 
   function clearCompleted() {
     const done = new Set(customItems.filter((i) => completions[i.id]).map((i) => i.id))
+    // Archive cloud rows for cleared items
+    done.forEach((id) => {
+      const cloudId = cloudIdMap[id]
+      if (cloudId) void archiveCloudCustomItem(cloudId)
+    })
     setCustomItems((prev) => prev.filter((i) => !done.has(i.id)))
     setCompletions((prev) => {
+      const next = { ...prev }
+      done.forEach((id) => delete next[id])
+      return next
+    })
+    setCloudIdMap((prev) => {
       const next = { ...prev }
       done.forEach((id) => delete next[id])
       return next
@@ -541,8 +719,14 @@ export default function DailyChecklistPage() {
 
   function resetAllCustom() {
     if (!window.confirm("Remove all custom items? This cannot be undone.")) return
+    // Archive all cloud-mapped custom items
+    customItems.forEach((item) => {
+      const cloudId = cloudIdMap[item.id]
+      if (cloudId) void archiveCloudCustomItem(cloudId)
+    })
     const ids = customItems.map((i) => i.id)
     setCustomItems([])
+    setCloudIdMap({})
     setCompletions((prev) => {
       const next = { ...prev }
       ids.forEach((id) => delete next[id])
@@ -634,6 +818,9 @@ export default function DailyChecklistPage() {
             </button>
           </>
         )}
+
+        {/* Sync status — unobtrusive, right of action buttons */}
+        <SyncBadge status={syncStatus} />
 
         <div style={{ flex: 1 }} />
 
@@ -754,10 +941,11 @@ export default function DailyChecklistPage() {
             </TffCard>
           )}
 
-          {/* Phase note */}
+          {/* Storage note */}
           <p className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.08em" }}>
-            {/* TODO (Phase 2): Migrate to Supabase — replace localStorage with cloud sync */}
-            STORED IN BROWSER · SUPABASE SYNC IN PHASE 2
+            {syncStatus === "synced" || syncStatus === "syncing"
+              ? "CLOUD SYNC ACTIVE · SUPABASE CONNECTED"
+              : "STORED IN BROWSER · SIGN IN TO ENABLE CLOUD SYNC"}
           </p>
         </div>
       )}

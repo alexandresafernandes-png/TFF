@@ -2,9 +2,12 @@
 
 ## Status
 
-**Schema: defined. Wiring: not started.**
+**Schema: defined. `/checklist` is wired. All other pages: localStorage only.**
 
-The SQL migrations define the full user data schema for Phase 1.5 and Phase 2. App pages currently use `localStorage` exclusively. No page reads from or writes to Supabase yet. That wiring begins in Phase 2 once session handling and route protection are in place.
+- `/checklist` syncs completions and custom items to Supabase when the user is logged in
+- All other app pages (`/shopping`, `/routines`, `/protocols`, etc.) still use `localStorage` exclusively
+- Route protection is not active — all pages open without a session
+- `localStorage` remains the fallback for all synced pages when Supabase is unavailable or the user is not signed in
 
 ---
 
@@ -15,6 +18,7 @@ No Supabase CLI is required. Run migrations manually:
 1. Open your Supabase project → **SQL Editor**
 2. Run `001_initial_tff_schema.sql` first
 3. Run `002_tff_user_data_schema.sql` second
+4. Run `003_checklist_client_id.sql` third
 
 Each file is idempotent: re-running it is safe (`create table if not exists`, `create or replace function`, `drop trigger if exists` before recreating, etc.).
 
@@ -35,6 +39,12 @@ Each file is idempotent: re-running it is safe (`create table if not exists`, `c
 | `user_day_state` | Flexible per-day JSON state blob |
 
 Also includes: `handle_updated_at()` trigger function, storage bucket instructions.
+
+---
+
+### `003_checklist_client_id.sql` — Phase 1.5 Step 4
+
+Adds `client_id text` to `checklist_custom_items`. This maps local `c_<timestamp>_<random>` IDs to Supabase UUIDs so the sync layer can match remote rows to local items without changing the local ID format. Sparse index on `client_id where client_id is not null`.
 
 ---
 
