@@ -351,7 +351,7 @@ export default function SourcesPage() {
   return (
     <div>
       <PageHeader
-        crumb="INDEX · 11 / SOURCES"
+        crumb="INDEX · 10 / SOURCES"
         title="Sources & References"
         subtitle="Source foundation behind TFF protocols, nutrition, supplements, bloodwork, routines, and shopping content."
       />

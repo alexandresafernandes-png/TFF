@@ -170,6 +170,47 @@ export default function SettingsPage() {
           </div>
         </TffCard>
       </div>
+
+      {/* ── 5. Phase Roadmap ──────────────────────────────────────────────── */}
+      <div>
+        <SectionHeader>Phase Roadmap</SectionHeader>
+        <TffCard>
+          <KVRow
+            label="Phase 1 — Foundation"
+            value={<TffBadge variant="core" dot>Active Now</TffBadge>}
+          />
+          <KVRow
+            label="Phase 1.5 — Polish"
+            value={<TffBadge variant="na">Upcoming</TffBadge>}
+          />
+          <KVRow
+            label="Phase 2 — Personal Tracking"
+            value={<TffBadge variant="na">Future</TffBadge>}
+            last
+          />
+        </TffCard>
+        <TffCard style={{ marginTop: 10 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            {[
+              { phase: "Phase 1",   badge: "core" as const,    label: "Local-first app foundation", items: ["Static knowledge base (11 pages)", "TFF source-backed content", "localStorage tracking (checklist, shopping, routines)", "Search across all data files", "No auth, no server, no env vars"] },
+              { phase: "Phase 1.5", badge: "default" as const, label: "Visual polish + infra setup",   items: ["Mobile / PWA improvements", "Supabase project setup", "Auth scaffolding (no user-facing login yet)", "Performance tuning", "CI/CD pipeline"] },
+              { phase: "Phase 2",   badge: "na" as const,      label: "Personal tracking layer",       items: ["User-specific data (macros, bloodwork history)", "Active protocol tracking", "Routine streaks and scheduling", "Dashboard live stats", "Cross-device sync via Supabase"] },
+            ].map((row) => (
+              <div key={row.phase} style={{ paddingBottom: 10, borderBottom: "1px solid var(--border-soft)" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                  <TffBadge variant={row.badge}>{row.phase}</TffBadge>
+                  <span style={{ fontSize: "var(--t-small)", color: "var(--text-2)", fontWeight: 500 }}>{row.label}</span>
+                </div>
+                <ul style={{ margin: 0, paddingLeft: 16 }}>
+                  {row.items.map((item) => (
+                    <li key={item} style={{ fontSize: "var(--t-small)", color: "var(--text-4)", lineHeight: 1.6 }}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </TffCard>
+      </div>
     </div>
   )
 }

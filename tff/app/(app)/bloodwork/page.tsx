@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { PageHeader } from "@/components/tff/PageHeader"
-import { TffCard, TffCardHeader } from "@/components/tff/TffCard"
+import { TffCard } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
 import markersRaw from "@/data/blood_markers.json"

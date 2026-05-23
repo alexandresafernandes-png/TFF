@@ -33,10 +33,10 @@ export function AppShell({ children }: AppShellProps) {
         <main
           style={{
             flex: 1,
-            padding: "32px",
+            padding: "24px 16px",
             overflowY: "auto",
             /* Mobile: add bottom padding for nav bar */
-            paddingBottom: "calc(32px + env(safe-area-inset-bottom))",
+            paddingBottom: "calc(80px + env(safe-area-inset-bottom))",
           }}
           className="tff-main"
         >
@@ -54,7 +54,7 @@ export function AppShell({ children }: AppShellProps) {
         @media (min-width: 768px) {
           .tff-sidebar { display: flex !important; }
           .tff-mobile-nav { display: none !important; }
-          .tff-main { padding-bottom: 32px !important; }
+          .tff-main { padding: 32px !important; }
         }
         /* Mobile: hide sidebar, show mobile nav */
         @media (max-width: 767px) {

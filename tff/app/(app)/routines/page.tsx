@@ -423,7 +423,7 @@ export default function RoutinesPage() {
   return (
     <div>
       <PageHeader
-        crumb="INDEX · 10 / ROUTINES"
+        crumb="INDEX · 09 / ROUTINES"
         title="Routines"
         subtitle="Turn TFF protocols, nutrition, supplements, and sleep into repeatable daily systems."
       />

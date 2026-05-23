@@ -5,6 +5,7 @@
   /* Surfaces */
   --bg:           #0a0a0c;
   --panel:        #101013;
+  --panel-2:      #0e0e11;
   --card:         #141417;
   --card-2:       #18181c;
   --border:       #26262c;
@@ -33,6 +34,7 @@
   --t-h1:      20px;
   --t-h2:      16px;
   --t-h3:      14px;
+  --t-base:    13.5px;
   --t-body:    13.5px;
   --t-small:   12.5px;
   --t-micro:   11px;

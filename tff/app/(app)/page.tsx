@@ -41,6 +41,16 @@ const QUICK_ACTIONS = [
     href: "/shopping",
     description: "Prioritized items to source for the protocol.",
   },
+  {
+    label: "Supplements",
+    href: "/supplements",
+    description: "Full supplement stack with timing, dose, and source refs.",
+  },
+  {
+    label: "Routines",
+    href: "/routines",
+    description: "Daily, training, sleep, and weekly routine systems.",
+  },
 ]
 
 const CATEGORY_BADGE_VARIANT: Record<string, "core" | "warn" | "default"> = {
@@ -95,7 +105,7 @@ export default function DashboardPage() {
               >
                 Training Day
               </span>
-              <TffBadge variant="na">Placeholder</TffBadge>
+              <TffBadge variant="na">Phase 2</TffBadge>
             </div>
             <p
               style={{
@@ -104,7 +114,7 @@ export default function DashboardPage() {
                 maxWidth: 400,
               }}
             >
-              Day type selector is a static placeholder — will be configurable in an upcoming step.
+              Day type will be user-configurable in Phase 2 with personal tracking and calendar planning.
             </p>
           </div>
           <TffBadge variant="core" dot>
