@@ -345,9 +345,9 @@ export function UserNotesPanel({
                   >
                     {fmtDate(note.updated_at !== note.created_at ? note.updated_at : note.created_at)}
                     {note.cloudId && (
-                      <TffBadge variant="na" style={{ marginLeft: 6, fontSize: 7 }}>
-                        synced
-                      </TffBadge>
+                      <span style={{ marginLeft: 6, display: "inline-flex" }}>
+                        <TffBadge variant="na">synced</TffBadge>
+                      </span>
                     )}
                   </span>
                 </div>
