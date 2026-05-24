@@ -12,7 +12,7 @@ import {
   normalizeMarkerKey,
   fetchBloodworkTests,
   fetchBloodworkTestWithResults,
-  createBloodworkTest,
+  createBloodworkTestWithResults,
   updateBloodworkTest,
   deleteBloodworkTest,
   upsertBloodworkResult,
@@ -275,6 +275,11 @@ export default function BloodworkTrackingPage() {
   const [showMarkerLib, setShowMarkerLib] = useState(false)
   const [libSearch, setLibSearch]         = useState("")
 
+  // Pending markers during test creation
+  const [pendingMarkers, setPendingMarkers]   = useState<ResultForm[]>([])
+  const [showCreateLib,  setShowCreateLib]    = useState(false)
+  const [createLibSearch, setCreateLibSearch] = useState("")
+
   // History marker selector
   const [histSearchInput, setHistSearchInput] = useState("")
 
@@ -324,23 +329,71 @@ export default function BloodworkTrackingPage() {
     setHistoryLoading(false)
   }, [])
 
+  // ── Pending marker helpers ─────────────────────────────────────────────────
+
+  const updatePendingMarker = useCallback((index: number, updates: Partial<ResultForm>) => {
+    setPendingMarkers((prev) => prev.map((m, i) => i === index ? { ...m, ...updates } : m))
+  }, [])
+
+  const removePendingMarker = useCallback((index: number) => {
+    setPendingMarkers((prev) => prev.filter((_, i) => i !== index))
+  }, [])
+
+  const handlePickCreateMarker = useCallback((m: LibMarker) => {
+    setPendingMarkers((prev) => [
+      ...prev,
+      { ...EMPTY_RESULT_FORM(), marker_key: m.id, marker_name: m.name, unit: m.units },
+    ])
+    setShowCreateLib(false)
+    setCreateLibSearch("")
+  }, [])
+
   // ── Add test ───────────────────────────────────────────────────────────────
 
   const handleAddTest = useCallback(async () => {
     if (!testForm.test_date) return
     setTestSaving(true)
-    const res = await createBloodworkTest({
-      test_date: testForm.test_date,
-      lab_name:  testForm.lab_name.trim() || null,
-      notes:     testForm.notes.trim() || null,
-    })
+
+    const markers: BloodworkMarkerInput[] = pendingMarkers
+      .filter((m) => m.marker_name.trim())
+      .map((m) => ({
+        marker_key:           m.marker_key || normalizeMarkerKey(m.marker_name),
+        marker_name:          m.marker_name.trim(),
+        value:                m.value !== "" ? Number(m.value) : null,
+        unit:                 m.unit.trim() || null,
+        reference_range_text: m.reference_range_text.trim() || null,
+        flag:                 m.flag,
+        notes:                m.notes.trim() || null,
+      }))
+
+    const res = await createBloodworkTestWithResults(
+      {
+        test_date: testForm.test_date,
+        lab_name:  testForm.lab_name.trim() || null,
+        notes:     testForm.notes.trim() || null,
+      },
+      markers,
+    )
+
     if (res.ok) {
       setTests((prev) => [res.test, ...prev])
       setTestForm(EMPTY_TEST_FORM())
+      setPendingMarkers([])
       setShowAddTest(false)
+      setShowCreateLib(false)
+      // Auto-navigate to the new test's detail
+      setSelectedTest(res.test)
+      setSelectedResults(res.results)
+      setEditingTest(false)
+      setTestEditForm({
+        test_date: res.test.test_date,
+        lab_name:  res.test.lab_name ?? "",
+        notes:     res.test.notes ?? "",
+      })
+      setView("detail")
     }
     setTestSaving(false)
-  }, [testForm])
+  }, [testForm, pendingMarkers])
 
   // ── Delete test ────────────────────────────────────────────────────────────
 
@@ -467,6 +520,10 @@ export default function BloodworkTrackingPage() {
   // We don't have this without fetching all results — just show counts
   const filteredLib = libSearch.trim()
     ? LIB_MARKERS.filter((m) => m.name.toLowerCase().includes(libSearch.toLowerCase()))
+    : LIB_MARKERS
+
+  const filteredCreateLib = createLibSearch.trim()
+    ? LIB_MARKERS.filter((m) => m.name.toLowerCase().includes(createLibSearch.toLowerCase()))
     : LIB_MARKERS
 
   // ── Render: loading ────────────────────────────────────────────────────────
@@ -913,7 +970,7 @@ export default function BloodworkTrackingPage() {
 
         {tests.length === 0 ? (
           <p style={{ fontSize: "var(--t-small)", color: "var(--text-4)" }}>
-            No bloodwork tests logged yet. Use &quot;+ Add Test&quot; below to record your first panel.
+            No bloodwork tests logged yet. Use &quot;+ Add Test&quot; below to create a test and enter the markers from your lab report.
           </p>
         ) : (
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -943,7 +1000,10 @@ export default function BloodworkTrackingPage() {
           <span className="label">Add Test</span>
           <Btn
             variant={showAddTest ? "ghost" : "primary"}
-            onClick={() => setShowAddTest((v) => !v)}
+            onClick={() => {
+              setShowAddTest((v) => !v)
+              if (showAddTest) { setPendingMarkers([]); setShowCreateLib(false) }
+            }}
           >
             {showAddTest ? "Cancel" : "+ Add Test"}
           </Btn>
@@ -952,7 +1012,11 @@ export default function BloodworkTrackingPage() {
         {showAddTest && (
           <TffCard>
             <TffCardHeader>New Bloodwork Test</TffCardHeader>
+            <p style={{ fontSize: "var(--t-micro)", color: "var(--text-4)", marginBottom: 12 }}>
+              Create a bloodwork test and add the markers measured in that lab result.
+            </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {/* Test header fields */}
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <FieldInput
                   label="TEST DATE" required type="date"
@@ -972,15 +1036,165 @@ export default function BloodworkTrackingPage() {
                 onChange={(v) => setTestForm((f) => ({ ...f, notes: v }))}
                 placeholder="e.g. Fasted 12h, morning draw"
               />
-              <div style={{ display: "flex", gap: 8 }}>
+
+              {/* ── Inline marker rows ── */}
+              <div style={{ borderTop: "1px solid var(--border-soft)", paddingTop: 12 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: pendingMarkers.length > 0 ? 12 : 8 }}>
+                  <span className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.1em" }}>
+                    MARKERS ({pendingMarkers.length})
+                  </span>
+                  <div style={{ display: "flex", gap: 6 }}>
+                    <Btn variant="secondary" onClick={() => setShowCreateLib((v) => !v)}>
+                      {showCreateLib ? "Close Library" : "From Library"}
+                    </Btn>
+                    <Btn variant="secondary" onClick={() => setPendingMarkers((p) => [...p, EMPTY_RESULT_FORM()])}>
+                      + Add Marker
+                    </Btn>
+                  </div>
+                </div>
+
+                {/* Create-lib picker */}
+                {showCreateLib && (
+                  <div style={{ background: "var(--panel-2)", border: "1px solid var(--border-soft)", borderRadius: 4, padding: "10px 12px", marginBottom: 10 }}>
+                    <p style={{ fontSize: "var(--t-micro)", color: "var(--text-4)", marginBottom: 8 }}>
+                      Pre-fills name and unit. Reference range not imported — enter from your lab report.
+                    </p>
+                    <input
+                      type="text"
+                      placeholder="Search markers…"
+                      value={createLibSearch}
+                      onChange={(e) => setCreateLibSearch(e.target.value)}
+                      style={{
+                        width: "100%", padding: "5px 8px",
+                        background: "var(--card-2)", border: "1px solid var(--border-soft)",
+                        borderRadius: 3, color: "var(--text)", fontSize: "var(--t-small)",
+                        fontFamily: "inherit", marginBottom: 8, boxSizing: "border-box",
+                      }}
+                    />
+                    <div style={{ maxHeight: 200, overflowY: "auto" }}>
+                      {filteredCreateLib.map((m, i) => (
+                        <div
+                          key={m.id}
+                          style={{
+                            display: "flex", alignItems: "center", justifyContent: "space-between",
+                            gap: 10, padding: "6px 0",
+                            borderBottom: i < filteredCreateLib.length - 1 ? "1px solid var(--border-soft)" : "none",
+                          }}
+                        >
+                          <div>
+                            <p style={{ fontSize: "var(--t-small)", fontWeight: 500, color: "var(--text)", margin: "0 0 1px" }}>{m.name}</p>
+                            <span className="mono" style={{ fontSize: 9, color: "var(--text-4)" }}>{m.units} · {m.panel}</span>
+                          </div>
+                          <Btn variant="primary" onClick={() => handlePickCreateMarker(m)}>Add</Btn>
+                        </div>
+                      ))}
+                      {filteredCreateLib.length === 0 && (
+                        <p style={{ fontSize: "var(--t-small)", color: "var(--text-4)", padding: "6px 0" }}>
+                          No matches for &quot;{createLibSearch}&quot;
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Pending marker rows */}
+                {pendingMarkers.length === 0 ? (
+                  <p style={{ fontSize: "var(--t-small)", color: "var(--text-4)" }}>
+                    No markers added yet. Use &quot;+ Add Marker&quot; or pick from the library.
+                  </p>
+                ) : (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    {pendingMarkers.map((m, idx) => (
+                      <div
+                        key={idx}
+                        style={{
+                          background: "var(--panel-2)",
+                          border: "1px solid var(--border-soft)",
+                          borderRadius: 4,
+                          padding: "10px 12px",
+                        }}
+                      >
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 8 }}>
+                          <span className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.08em" }}>
+                            MARKER {idx + 1}
+                          </span>
+                          <button
+                            onClick={() => removePendingMarker(idx)}
+                            style={{
+                              background: "none", border: "none", padding: "2px 6px",
+                              color: "var(--text-4)", fontSize: "var(--t-micro)",
+                              fontFamily: "inherit", cursor: "pointer",
+                            }}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                            <FieldInput
+                              label="MARKER NAME" required
+                              value={m.marker_name}
+                              onChange={(v) => updatePendingMarker(idx, {
+                                marker_name: v,
+                                marker_key: m.marker_key || normalizeMarkerKey(v),
+                              })}
+                              placeholder="e.g. Total Testosterone"
+                            />
+                            <FieldInput
+                              label="VALUE"
+                              type="number"
+                              value={m.value}
+                              onChange={(v) => updatePendingMarker(idx, { value: v })}
+                              placeholder="e.g. 650"
+                            />
+                            <FieldInput
+                              label="UNIT"
+                              value={m.unit}
+                              onChange={(v) => updatePendingMarker(idx, { unit: v })}
+                              placeholder="e.g. ng/dL"
+                            />
+                          </div>
+                          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                            <FieldInput
+                              label="REFERENCE RANGE (from lab report)"
+                              value={m.reference_range_text}
+                              onChange={(v) => updatePendingMarker(idx, { reference_range_text: v })}
+                              placeholder="e.g. 300–900 ng/dL"
+                            />
+                            <SelectField
+                              label="FLAG"
+                              value={m.flag}
+                              options={FLAG_OPTIONS}
+                              onChange={(v) => updatePendingMarker(idx, { flag: v as BloodworkFlag })}
+                            />
+                          </div>
+                          <FieldInput
+                            label="NOTES (optional)"
+                            value={m.notes}
+                            onChange={(v) => updatePendingMarker(idx, { notes: v })}
+                            placeholder="Optional notes for this marker"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <p className="mono" style={{ fontSize: 9, color: "var(--text-4)", marginTop: 10, letterSpacing: "0.08em" }}>
+                  MANUAL ENTRY ONLY — no values, ranges, or flags are auto-generated
+                </p>
+              </div>
+
+              {/* Actions */}
+              <div style={{ display: "flex", gap: 8, paddingTop: 4 }}>
                 <Btn
                   variant="primary"
                   disabled={!testForm.test_date || testSaving}
                   onClick={() => void handleAddTest()}
                 >
-                  {testSaving ? "Creating…" : "Create Test"}
+                  {testSaving ? "Creating…" : `Create Test${pendingMarkers.length > 0 ? ` + ${pendingMarkers.length} Marker${pendingMarkers.length !== 1 ? "s" : ""}` : ""}`}
                 </Btn>
-                <Btn variant="ghost" onClick={() => { setShowAddTest(false); setTestForm(EMPTY_TEST_FORM()) }}>
+                <Btn variant="ghost" onClick={() => { setShowAddTest(false); setTestForm(EMPTY_TEST_FORM()); setPendingMarkers([]); setShowCreateLib(false) }}>
                   Cancel
                 </Btn>
               </div>
@@ -995,7 +1209,7 @@ export default function BloodworkTrackingPage() {
         {tests.length === 0 ? (
           <TffCard>
             <p style={{ fontSize: "var(--t-small)", color: "var(--text-4)", textAlign: "center", padding: "24px 0" }}>
-              No tests logged yet.
+              No tests logged yet. Create a bloodwork test and add the markers measured in that lab result.
             </p>
           </TffCard>
         ) : (
