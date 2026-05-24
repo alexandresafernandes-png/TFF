@@ -245,7 +245,21 @@ export async function fetchRecentProgressSnapshots(days = 14): Promise<Snapshots
       .order("progress_date", { ascending: false })
 
     if (error) return { ok: false, reason: "error" }
-    return { ok: true, snapshots: (data ?? []) as ProgressSnapshot[] }
+    type SnapshotRow = Record<string, unknown>
+    const rows = (data ?? []) as unknown as SnapshotRow[]
+    const snapshots: ProgressSnapshot[] = rows.map((row) => ({
+      id:                  String(row.id ?? ""),
+      progress_date:       String(row.progress_date ?? ""),
+      score:               Number(row.score ?? 0),
+      checklist_completed: Number(row.checklist_completed ?? 0),
+      checklist_total:     Number(row.checklist_total ?? 0),
+      routines_completed:  Number(row.routines_completed ?? 0),
+      routines_active:     Number(row.routines_active ?? 0),
+      protocols_active:    Number(row.protocols_active ?? 0),
+      protocols_completed: Number(row.protocols_completed ?? 0),
+      notes_count:         Number(row.notes_count ?? 0),
+    }))
+    return { ok: true, snapshots }
   } catch {
     return { ok: false, reason: "error" }
   }
