@@ -43,7 +43,11 @@ https://YOUR_PROJECT.vercel.app/auth/callback
 https://your-domain.com/auth/callback
 ```
 
-The magic link flow: user submits email → Supabase sends a link → link opens `/auth/callback?code=…` → app exchanges code for session → user is redirected to `/`.
+**Primary auth flow:** user enters email + password → `signInWithPassword` → on success, redirected to `/`.
+
+**Magic link (fallback):** available via "Send magic link instead" on the login page. User submits email → Supabase sends a link → link opens `/auth/callback?code=…` → app exchanges code for session → user is redirected to `/`.
+
+To set a password for your Supabase user: go to **Authentication → Users** in the Supabase dashboard, find the user, and use **Send password reset** or set the password directly via the Supabase Auth API.
 
 ### 4. What works without env vars
 
@@ -63,7 +67,7 @@ All routes inside `app/(app)/` (dashboard, checklist, shopping, routines, protoc
 The auth boundary lives in `app/(app)/layout.tsx`. On each request it calls `supabase.auth.getUser()` server-side — if no valid session exists, the user is redirected to `/login`.
 
 Public routes (no session required):
-- `/login` — magic link form
+- `/login` — email + password form (magic link available as fallback)
 - `/auth/callback` — session exchange after magic link click
 
 **Middleware is intentionally not used for auth.** A prior middleware-based approach caused Vercel Edge runtime issues. The layout-level check is the authoritative auth boundary.
@@ -78,7 +82,7 @@ Phase 1.5 is complete. The app is a fully private personal tool requiring authen
 
 | Feature | Status |
 |---------|--------|
-| Supabase auth (magic link) | ✅ Active |
+| Supabase auth (email + password, magic link fallback) | ✅ Active |
 | Route protection (`app/(app)/layout.tsx`) | ✅ Active |
 | Cloud sync — checklist, shopping, routines, protocols, notes | ✅ Active |
 | Dashboard personal summary | ✅ Active |
@@ -109,7 +113,7 @@ Requires Supabase to be configured (already done). Adds:
 | `lib/supabase/server.ts` | Server Supabase client — throws if env vars missing |
 | `lib/supabase/auth-actions.ts` | `signOut()` utility — no-op if Supabase not configured |
 | `components/tff/SignOutButton.tsx` | Client sign-out button — shown only when Supabase is configured |
-| `app/login/page.tsx` | Login page — two states: local-first notice vs. active magic-link form |
+| `app/login/page.tsx` | Login page — email + password (primary); magic link (secondary toggle) |
 | `app/auth/callback/route.ts` | Auth callback — guards against missing env vars |
 | `app/(app)/layout.tsx` | Auth boundary — redirects to `/login` if no session; uses `supabase.auth.getUser()` server-side |
 | `middleware.ts` | Passthrough — intentionally does not enforce auth (Edge runtime incompatibility) |

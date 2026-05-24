@@ -1,21 +1,26 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { hasSupabaseConfig } from "@/lib/supabase/status"
 import { createClient } from "@/lib/supabase/client"
 
 type FormState = "idle" | "loading" | "sent" | "error" | "signed_in"
+type LoginMode = "password" | "magic"
 
 const URL_ERRORS: Record<string, string> = {
-  auth_callback_failed:   "Sign-in link was invalid or expired. Please request a new one.",
-  supabase_not_configured:"Supabase is not configured. Set environment variables to enable login.",
-  missing_auth_code:      "No authentication code was received. Please request a new magic link.",
-  session_not_persisted:  "Sign-in succeeded but the session could not be saved. Please try again.",
+  auth_callback_failed:    "Sign-in link was invalid or expired. Please request a new one.",
+  supabase_not_configured: "Supabase is not configured. Set environment variables to enable login.",
+  missing_auth_code:       "No authentication code was received. Please request a new magic link.",
+  session_not_persisted:   "Sign-in succeeded but the session could not be saved. Please try again.",
 }
 
 export default function LoginPage() {
+  const router = useRouter()
   const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [loginMode, setLoginMode] = useState<LoginMode>("password")
   const [formState, setFormState] = useState<FormState>("idle")
   const [errorMsg, setErrorMsg] = useState("")
   const [sessionEmail, setSessionEmail] = useState<string | null>(null)
@@ -43,7 +48,35 @@ export default function LoginPage() {
       .catch(() => {})
   }, [])
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handlePasswordSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    if (!hasSupabaseConfig || !email.trim() || !password) return
+    setFormState("loading")
+    setErrorMsg("")
+    try {
+      const supabase = createClient()
+      const { error } = await supabase.auth.signInWithPassword({
+        email: email.trim(),
+        password,
+      })
+      if (error) {
+        setFormState("error")
+        setErrorMsg(
+          error.message === "Invalid login credentials"
+            ? "Incorrect email or password."
+            : error.message,
+        )
+      } else {
+        router.push("/")
+        router.refresh()
+      }
+    } catch (err) {
+      setFormState("error")
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.")
+    }
+  }
+
+  async function handleMagicLinkSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     if (!hasSupabaseConfig || !email.trim()) return
     setFormState("loading")
@@ -64,6 +97,13 @@ export default function LoginPage() {
       setFormState("error")
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.")
     }
+  }
+
+  function switchMode(mode: LoginMode) {
+    setLoginMode(mode)
+    setFormState("idle")
+    setErrorMsg("")
+    setPassword("")
   }
 
   return (
@@ -168,12 +208,24 @@ export default function LoginPage() {
                   readOnly
                 />
               </div>
+              <div style={{ marginBottom: 12 }}>
+                <label className="kv-label" style={{ display: "block", marginBottom: 6 }}>
+                  Password
+                </label>
+                <input
+                  type="password"
+                  placeholder="••••••••"
+                  style={{ width: "100%" }}
+                  disabled
+                  readOnly
+                />
+              </div>
               <button
                 className="btn btn-primary"
                 style={{ width: "100%", justifyContent: "center" }}
                 disabled
               >
-                Send magic link
+                Sign in
               </button>
             </div>
 
@@ -242,7 +294,7 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* ── State C: Supabase configured, magic link sent ── */}
+        {/* ── State C: Magic link sent ── */}
         {hasSupabaseConfig && formState === "sent" && (
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <div
@@ -274,86 +326,196 @@ export default function LoginPage() {
             <button
               className="btn"
               style={{ width: "100%", justifyContent: "center" }}
-              onClick={() => {
-                setFormState("idle")
-                setEmail("")
-              }}
+              onClick={() => switchMode("password")}
             >
-              Use a different address
+              Back to sign in
             </button>
           </div>
         )}
 
-        {/* ── State D: Supabase configured, active form ── */}
+        {/* ── State D: Active forms ── */}
         {hasSupabaseConfig && formState !== "sent" && formState !== "signed_in" && (
-          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-            <div>
-              <label className="kv-label" style={{ display: "block", marginBottom: 6 }}>
-                Email
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="operator@tff.private"
-                style={{ width: "100%" }}
-                required
-                autoFocus
-                disabled={formState === "loading"}
-              />
-            </div>
-
-            {formState === "error" && (
-              <p
-                style={{
-                  fontSize: "var(--t-small)",
-                  color: "var(--danger)",
-                  padding: "8px 12px",
-                  background: "var(--danger-soft)",
-                  border: "1px solid rgba(200,69,69,0.3)",
-                  borderRadius: 4,
-                  lineHeight: 1.4,
-                }}
+          <>
+            {/* ── Password form (primary) ── */}
+            {loginMode === "password" && (
+              <form
+                onSubmit={handlePasswordSubmit}
+                style={{ display: "flex", flexDirection: "column", gap: 12 }}
               >
-                {errorMsg}
-              </p>
+                <div>
+                  <label className="kv-label" style={{ display: "block", marginBottom: 6 }}>
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="operator@tff.private"
+                    style={{ width: "100%" }}
+                    required
+                    autoFocus
+                    autoComplete="email"
+                    disabled={formState === "loading"}
+                  />
+                </div>
+
+                <div>
+                  <label className="kv-label" style={{ display: "block", marginBottom: 6 }}>
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="••••••••"
+                    style={{ width: "100%" }}
+                    required
+                    autoComplete="current-password"
+                    disabled={formState === "loading"}
+                  />
+                </div>
+
+                {formState === "error" && (
+                  <p
+                    style={{
+                      fontSize: "var(--t-small)",
+                      color: "var(--danger)",
+                      padding: "8px 12px",
+                      background: "var(--danger-soft)",
+                      border: "1px solid rgba(200,69,69,0.3)",
+                      borderRadius: 4,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {errorMsg}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ width: "100%", justifyContent: "center", marginTop: 4 }}
+                  disabled={formState === "loading" || !email.trim() || !password}
+                >
+                  {formState === "loading" ? "Signing in…" : "Sign in"}
+                </button>
+
+                <div style={{ textAlign: "center", marginTop: 4 }}>
+                  <button
+                    type="button"
+                    onClick={() => switchMode("magic")}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer",
+                      fontSize: "var(--t-small)",
+                      color: "var(--text-4)",
+                      textDecoration: "underline",
+                      textUnderlineOffset: 3,
+                    }}
+                  >
+                    Send magic link instead
+                  </button>
+                </div>
+              </form>
             )}
 
-            <button
-              type="submit"
-              className="btn btn-primary"
-              style={{ width: "100%", justifyContent: "center", marginTop: 4 }}
-              disabled={formState === "loading" || !email.trim()}
-            >
-              {formState === "loading" ? "Sending…" : "Send magic link"}
-            </button>
+            {/* ── Magic link form (secondary) ── */}
+            {loginMode === "magic" && (
+              <form
+                onSubmit={handleMagicLinkSubmit}
+                style={{ display: "flex", flexDirection: "column", gap: 12 }}
+              >
+                <div>
+                  <label className="kv-label" style={{ display: "block", marginBottom: 6 }}>
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="operator@tff.private"
+                    style={{ width: "100%" }}
+                    required
+                    autoFocus
+                    autoComplete="email"
+                    disabled={formState === "loading"}
+                  />
+                </div>
 
-            <div
-              style={{
-                marginTop: 4,
-                padding: "10px 14px",
-                background: "var(--card-2)",
-                border: "1px solid var(--border-soft)",
-                borderRadius: 4,
-                display: "flex",
-                flexDirection: "column",
-                gap: 4,
-              }}
-            >
-              <p
-                className="mono"
-                style={{ fontSize: 10, color: "var(--accent)", letterSpacing: "0.1em" }}
-              >
-                MAGIC LINK AUTH · SUPABASE READY
-              </p>
-              <p
-                className="mono"
-                style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.08em" }}
-              >
-                A sign-in link will be sent to your email.
-              </p>
-            </div>
-          </form>
+                {formState === "error" && (
+                  <p
+                    style={{
+                      fontSize: "var(--t-small)",
+                      color: "var(--danger)",
+                      padding: "8px 12px",
+                      background: "var(--danger-soft)",
+                      border: "1px solid rgba(200,69,69,0.3)",
+                      borderRadius: 4,
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {errorMsg}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ width: "100%", justifyContent: "center", marginTop: 4 }}
+                  disabled={formState === "loading" || !email.trim()}
+                >
+                  {formState === "loading" ? "Sending…" : "Send magic link"}
+                </button>
+
+                <div
+                  style={{
+                    marginTop: 4,
+                    padding: "10px 14px",
+                    background: "var(--card-2)",
+                    border: "1px solid var(--border-soft)",
+                    borderRadius: 4,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 4,
+                  }}
+                >
+                  <p
+                    className="mono"
+                    style={{ fontSize: 10, color: "var(--accent)", letterSpacing: "0.1em" }}
+                  >
+                    MAGIC LINK AUTH
+                  </p>
+                  <p
+                    className="mono"
+                    style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.08em" }}
+                  >
+                    A sign-in link will be sent to your email.
+                  </p>
+                </div>
+
+                <div style={{ textAlign: "center" }}>
+                  <button
+                    type="button"
+                    onClick={() => switchMode("password")}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer",
+                      fontSize: "var(--t-small)",
+                      color: "var(--text-4)",
+                      textDecoration: "underline",
+                      textUnderlineOffset: 3,
+                    }}
+                  >
+                    ← Back to password sign in
+                  </button>
+                </div>
+              </form>
+            )}
+          </>
         )}
 
         {/* Back to app — always visible */}

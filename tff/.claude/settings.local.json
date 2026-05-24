@@ -48,7 +48,8 @@
       "Bash(find /Users/alex -name \"node\" -type f 2>/dev/null | head -5; find /usr -name \"node\" -type f 2>/dev/null | head -3)",
       "Read(//Users/alex/**)",
       "Read(//usr/**)",
-      "Bash(/bin/zsh -i -c \"which node 2>&1 && node -e 'process.exit\\(0\\)' 2>&1 && echo ok\")"
+      "Bash(/bin/zsh -i -c \"which node 2>&1 && node -e 'process.exit\\(0\\)' 2>&1 && echo ok\")",
+      "Bash(/Users/alex/TFF/tff/node_modules/.bin/tsc --noEmit --project /Users/alex/TFF/tff/tsconfig.json)"
     ]
   }
 }

@@ -16,6 +16,7 @@
 - Auth boundary is implemented in `app/(app)/layout.tsx` using `supabase.auth.getUser()` server-side; middleware is intentionally not used for auth
 - `localStorage` remains an internal fallback for all synced pages when Supabase data is unavailable, but app access now requires login
 - Auth UX is polished: login page shows "already signed in" state when revisited, `/settings` Account section shows live session status via `AuthSessionStatus`, dashboard CTA links to `/login`
+- Primary login method is **email + password** (`signInWithPassword`). Magic link is available as a secondary fallback via "Send magic link instead". Requires the Supabase user to have a password set.
 
 ---
 
