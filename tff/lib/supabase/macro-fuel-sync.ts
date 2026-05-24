@@ -167,7 +167,7 @@ export async function fetchMacroProfile(): Promise<ProfileResult> {
     if (error) return { ok: false, reason: "error" }
     if (!data)  return { ok: false, reason: "not_found" }
 
-    return { ok: true, profile: rowToProfile(data as Record<string, unknown>) }
+    return { ok: true, profile: rowToProfile(data as unknown as Record<string, unknown>) }
   } catch {
     return { ok: false, reason: "error" }
   }
@@ -229,7 +229,7 @@ export async function fetchDailyFuelLog(date: string): Promise<FuelLogResult> {
     if (error) return { ok: false, reason: "error" }
     if (!data)  return { ok: false, reason: "not_found" }
 
-    const row = data as Record<string, unknown>
+    const row = data as unknown as Record<string, unknown>
     return {
       ok:  true,
       log: {
