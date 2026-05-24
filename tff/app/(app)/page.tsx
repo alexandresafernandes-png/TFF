@@ -28,6 +28,11 @@ const QUICK_ACTIONS = [
     description: "Today's execution score — checklist, routines, and protocols.",
   },
   {
+    label: "Weekly Review",
+    href: "/weekly-review",
+    description: "7-day summary of Daily Progress snapshots and consistency trends.",
+  },
+  {
     label: "Protocol Library",
     href: "/protocols",
     description: "Browse and follow structured optimization protocols.",

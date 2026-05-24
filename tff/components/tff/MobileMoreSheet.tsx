@@ -5,6 +5,7 @@ import { useEffect } from "react"
 
 const MORE_ITEMS = [
   { label: "Daily Progress",      href: "/progress" },
+  { label: "Weekly Review",       href: "/weekly-review" },
   { label: "Nutrition & Cooking", href: "/nutrition" },
   { label: "Supplements",         href: "/supplements" },
   { label: "Bloodwork",           href: "/bloodwork" },

@@ -265,6 +265,81 @@ export async function fetchRecentProgressSnapshots(days = 14): Promise<Snapshots
   }
 }
 
+// ── Weekly stats ──────────────────────────────────────────────────────────────
+
+export interface WeeklyDayEntry {
+  date: string
+  snapshot: ProgressSnapshot | null
+}
+
+export interface WeeklyStats {
+  averageScore: number
+  successfulDays: number
+  daysTracked: number
+  bestDay:    { date: string; score: number } | null
+  weakestDay: { date: string; score: number } | null
+  totalChecklistCompleted: number
+  totalChecklistPossible: number
+  totalRoutinesCompleted: number
+  totalRoutinesActive: number
+  totalProtocolsActive: number
+  totalProtocolsCompleted: number
+  totalNotes: number
+  days: WeeklyDayEntry[]
+}
+
+/**
+ * Pure function — no I/O. Derives 7-day weekly summary from snapshots.
+ * todayStr must be a YYYY-MM-DD local date string matching todayLocalDate().
+ */
+export function calculateWeeklyStats(
+  snapshots: ProgressSnapshot[],
+  todayStr: string,
+): WeeklyStats {
+  const byDate = new Map(snapshots.map((s) => [s.progress_date, s]))
+
+  // Build window oldest → newest
+  const days: WeeklyDayEntry[] = []
+  for (let i = 6; i >= 0; i--) {
+    const date = dateAgo(todayStr, i)
+    days.push({ date, snapshot: byDate.get(date) ?? null })
+  }
+
+  const trackedDays = days.filter(
+    (d): d is { date: string; snapshot: ProgressSnapshot } => d.snapshot !== null,
+  )
+  const daysTracked    = trackedDays.length
+  const successfulDays = trackedDays.filter((d) => d.snapshot.score >= STREAK_THRESHOLD).length
+
+  const averageScore =
+    daysTracked > 0
+      ? Math.round(trackedDays.reduce((s, d) => s + d.snapshot.score, 0) / daysTracked)
+      : 0
+
+  let bestDay:    { date: string; score: number } | null = null
+  let weakestDay: { date: string; score: number } | null = null
+  for (const { date, snapshot } of trackedDays) {
+    if (bestDay    === null || snapshot.score > bestDay.score)    bestDay    = { date, score: snapshot.score }
+    if (weakestDay === null || snapshot.score < weakestDay.score) weakestDay = { date, score: snapshot.score }
+  }
+
+  return {
+    averageScore,
+    successfulDays,
+    daysTracked,
+    bestDay,
+    weakestDay,
+    totalChecklistCompleted: trackedDays.reduce((s, d) => s + d.snapshot.checklist_completed, 0),
+    totalChecklistPossible:  trackedDays.reduce((s, d) => s + (d.snapshot.checklist_total || CHECKLIST_TOTAL), 0),
+    totalRoutinesCompleted:  trackedDays.reduce((s, d) => s + d.snapshot.routines_completed, 0),
+    totalRoutinesActive:     trackedDays.reduce((s, d) => s + d.snapshot.routines_active, 0),
+    totalProtocolsActive:    trackedDays.reduce((s, d) => s + d.snapshot.protocols_active, 0),
+    totalProtocolsCompleted: trackedDays.reduce((s, d) => s + d.snapshot.protocols_completed, 0),
+    totalNotes:              trackedDays.reduce((s, d) => s + d.snapshot.notes_count, 0),
+    days,
+  }
+}
+
 // ── Streak calculation ────────────────────────────────────────────────────────
 
 /**

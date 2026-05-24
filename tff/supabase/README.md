@@ -274,6 +274,16 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 - `/progress` reads `checklist_completions`, `routine_completions`, `protocol_tracking`, and `user_notes` (today's notes) via `lib/supabase/progress-sync.ts`.
 - Score formula: `min(completedToday/21, 1) × 70 + min(doneToday × 5, 20) + (active > 0 ? 10 : 0)`. Denominator 21 = actual checklist item count across 7 groups.
 
+### Phase 2 Step 3 — Weekly Review (complete)
+- `/weekly-review` reads from `daily_progress_snapshots` — no new tables required.
+- Sections: Weekly Score Summary, Consistency Breakdown, Last 7 Days, Weekly Insight.
+- Score threshold ≥ 70 = successful day (same as streak engine).
+- Weekly Score Summary: average score, successful days, days tracked, best day, weakest day.
+- Consistency Breakdown: checklist %, routine completion rate, protocol active-days, notes total.
+- Last 7 Days: per-day row showing score, success/fail, and breakdown from snapshot columns.
+- Weekly Insight: 2–4 objective factual summaries from the data — no recommendations or advice.
+- Navigation: Sidebar (key W), MobileMoreSheet, Topbar crumb, and dashboard Quick Actions.
+
 ### Phase 2 Step 2 — Streak Engine / Daily History (complete)
 - `/progress` now upserts a `daily_progress_snapshots` row on every page load (fire-and-forget background write).
 - The unique constraint `(user_id, progress_date)` prevents duplicates — upsert is safe to call on every visit.
@@ -293,8 +303,10 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 7. ~~Dashboard personal data layer~~ ✓ Done (Phase 1.5 Step 9) — `DashboardPersonalCards` reads checklist, protocols, routines, shopping, and notes summaries
 8. ~~Daily Progress page~~ ✓ Done (Phase 2 Step 1) — `/progress` with Daily Execution Score, breakdown bars, and notes today
 9. ~~Streak Engine / Daily History~~ ✓ Done (Phase 2 Step 2) — `daily_progress_snapshots` table, current/best streak, 7-day history
+10. ~~Weekly Review~~ ✓ Done (Phase 2 Step 3) — `/weekly-review` with score summary, consistency breakdown, last 7 days, objective insights
 
 ## Next steps
 
-- Phase 2.5: Trend charts and weekly analytics (build on `daily_progress_snapshots`)
+- Phase 2.5: Trend charts (build on `daily_progress_snapshots`)
+- Phase 2.5.1: Full visual upgrade across all pages
 - Wire profile display in `/settings` from `profiles`
