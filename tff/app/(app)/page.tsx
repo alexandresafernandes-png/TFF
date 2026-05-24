@@ -23,6 +23,11 @@ const QUICK_ACTIONS = [
     description: "Track your critical daily habits and non-negotiables.",
   },
   {
+    label: "Daily Progress",
+    href: "/progress",
+    description: "Today's execution score — checklist, routines, and protocols.",
+  },
+  {
     label: "Protocol Library",
     href: "/protocols",
     description: "Browse and follow structured optimization protocols.",
@@ -85,7 +90,7 @@ export default function DashboardPage() {
       <PageHeader
         crumb="INDEX · 01 / DASHBOARD"
         title="TFF"
-        subtitle="Phase 1 command center."
+        subtitle="Phase 2 — daily tracking active."
       />
 
       {/* ── 1. Today Overview ─────────────────────────────────────────────── */}

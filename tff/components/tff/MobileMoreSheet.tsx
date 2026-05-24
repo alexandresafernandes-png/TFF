@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useEffect } from "react"
 
 const MORE_ITEMS = [
+  { label: "Daily Progress",      href: "/progress" },
   { label: "Nutrition & Cooking", href: "/nutrition" },
   { label: "Supplements",         href: "/supplements" },
   { label: "Bloodwork",           href: "/bloodwork" },

@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { label: "Dashboard",         href: "/",           key: "1" },
   { label: "Knowledge Search",  href: "/search",      key: "2" },
   { label: "Daily Checklist",   href: "/checklist",   key: "3" },
+  { label: "Daily Progress",    href: "/progress",    key: "P" },
   { label: "Protocol Library",  href: "/protocols",   key: "4" },
   { label: "Nutrition & Cooking",href: "/nutrition",  key: "5" },
   { label: "Supplements",       href: "/supplements", key: "6" },

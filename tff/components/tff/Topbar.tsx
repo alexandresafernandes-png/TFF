@@ -13,6 +13,7 @@ const ROUTE_META: Record<string, { crumb: string; title: string }> = {
   "/shopping":   { crumb: "INDEX · 08 / SHOPPING",    title: "Shopping List" },
   "/routines":   { crumb: "INDEX · 09 / ROUTINES",    title: "Routines" },
   "/sources":    { crumb: "INDEX · 10 / SOURCES",     title: "Sources & References" },
+  "/progress":   { crumb: "INDEX · 11 / PROGRESS",    title: "Daily Progress" },
 }
 
 function getRouteKey(pathname: string) {

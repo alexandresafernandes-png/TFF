@@ -48,6 +48,7 @@ No Supabase CLI is required. Run migrations manually:
 4. Run `003_checklist_client_id.sql` third
 5. Run `004_shopping_client_id.sql` fourth
 6. Run `005_user_notes_archive.sql` fifth
+7. Run `006_daily_progress_snapshots.sql` sixth
 
 Each file is idempotent: re-running it is safe (`create table if not exists`, `create or replace function`, `drop trigger if exists` before recreating, etc.).
 
@@ -80,6 +81,25 @@ Adds `client_id text` to `checklist_custom_items`. This maps local `c_<timestamp
 ### `004_shopping_client_id.sql` — Phase 1.5 Step 5
 
 Adds `client_id text` to `shopping_custom_items`. This maps local `custom_retainer_<timestamp>_<random>` and `custom_upgrade_<timestamp>_<random>` IDs to Supabase UUIDs, using the same client_id bridge pattern as migration 003. Sparse index on `client_id where client_id is not null`.
+
+---
+
+### `006_daily_progress_snapshots.sql` — Phase 2 Step 2
+
+Creates `daily_progress_snapshots`. One row per user per calendar day. Captures score, checklist/routine/protocol counts, and a `metrics jsonb` field for future expansion. `unique(user_id, progress_date)` makes upsert safe to call on every `/progress` load.
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `progress_date` | date | Local date (YYYY-MM-DD) |
+| `score` | numeric | 0–100, computed by `calcScore()` in progress-sync.ts |
+| `checklist_completed` | integer | Items completed today |
+| `checklist_total` | integer | Always 21 (denominator) |
+| `routines_completed` | integer | Routines with status=done |
+| `routines_active` | integer | Routines with status=active |
+| `protocols_active` | integer | Protocols with status=active |
+| `protocols_completed` | integer | Protocols with status=completed |
+| `notes_count` | integer | Notes updated today |
+| `metrics` | jsonb | Reserved for future fields |
 
 ---
 
@@ -247,15 +267,33 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 
 ---
 
-## Next steps (Phase 2)
+## Phase 2 — Active
 
-1. Add route protection in `middleware.ts` using `lib/supabase/middleware.ts`
-2. Add session context provider if needed for client components
-3. ~~Wire `/checklist` to sync `checklist_completions` and `checklist_custom_items`~~ ✓ Done (Phase 1.5 Step 4)
-4. ~~Wire `/shopping` to sync `shopping_item_status` and `shopping_custom_items`~~ ✓ Done (Phase 1.5 Step 5)
-5. ~~Wire `/routines` to sync `routine_completions`~~ ✓ Done (Phase 1.5 Step 6)
-6. ~~Wire `/protocols` to sync `protocol_tracking`~~ ✓ Done (Phase 1.5 Step 7)
-7. ~~Wire notes to `user_notes` across relevant pages~~ ✓ Done (Phase 1.5 Step 8) — `UserNotesPanel` on `/protocols` (per-protocol) and `/bloodwork` (per-marker)
-8. ~~Dashboard personal data layer~~ ✓ Done (Phase 1.5 Step 9) — `DashboardPersonalCards` reads checklist, protocols, routines, shopping, and notes summaries; falls back to local-first prompt when not signed in
-9. Wire profile display in `/settings` from `profiles`
-9. Migrate relevant `localStorage` keys to Supabase (keep localStorage as offline fallback)
+### Phase 2 Step 1 — Daily Progress (complete)
+- `/progress` reads `checklist_completions`, `routine_completions`, `protocol_tracking`, and `user_notes` (today's notes) via `lib/supabase/progress-sync.ts`.
+- Score formula: `min(completedToday/21, 1) × 70 + min(doneToday × 5, 20) + (active > 0 ? 10 : 0)`. Denominator 21 = actual checklist item count across 7 groups.
+
+### Phase 2 Step 2 — Streak Engine / Daily History (complete)
+- `/progress` now upserts a `daily_progress_snapshots` row on every page load (fire-and-forget background write).
+- The unique constraint `(user_id, progress_date)` prevents duplicates — upsert is safe to call on every visit.
+- Streak logic: **current streak** = consecutive days ending today with score ≥ 70; **best streak** = longest such run in fetched history; **missed day** = no snapshot OR score < 70.
+- Success threshold: **score ≥ 70** (visible in UI as "STREAK DAY = DAILY EXECUTION SCORE ≥ 70").
+- `/progress` shows: current streak · best streak · 7-day average · days tracked · last 7 days mini history.
+- Phase 2.5: trend charts and weekly analytics will build on these snapshots.
+
+## Completed steps
+
+1. ~~Add route protection in `middleware.ts`~~ — Route protection implemented in `app/(app)/layout.tsx` instead; middleware intentionally not used for auth
+2. ~~Wire `/checklist` to sync `checklist_completions` and `checklist_custom_items`~~ ✓ Done (Phase 1.5 Step 4)
+3. ~~Wire `/shopping` to sync `shopping_item_status` and `shopping_custom_items`~~ ✓ Done (Phase 1.5 Step 5)
+4. ~~Wire `/routines` to sync `routine_completions`~~ ✓ Done (Phase 1.5 Step 6)
+5. ~~Wire `/protocols` to sync `protocol_tracking`~~ ✓ Done (Phase 1.5 Step 7)
+6. ~~Wire notes to `user_notes` across relevant pages~~ ✓ Done (Phase 1.5 Step 8) — `UserNotesPanel` on `/protocols` (per-protocol) and `/bloodwork` (per-marker)
+7. ~~Dashboard personal data layer~~ ✓ Done (Phase 1.5 Step 9) — `DashboardPersonalCards` reads checklist, protocols, routines, shopping, and notes summaries
+8. ~~Daily Progress page~~ ✓ Done (Phase 2 Step 1) — `/progress` with Daily Execution Score, breakdown bars, and notes today
+9. ~~Streak Engine / Daily History~~ ✓ Done (Phase 2 Step 2) — `daily_progress_snapshots` table, current/best streak, 7-day history
+
+## Next steps
+
+- Phase 2.5: Trend charts and weekly analytics (build on `daily_progress_snapshots`)
+- Wire profile display in `/settings` from `profiles`
