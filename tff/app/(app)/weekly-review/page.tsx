@@ -81,7 +81,7 @@ function buildInsights(weekly: WeeklyStats): string[] {
   )
 
   if (weekly.bestDay) {
-    const day = new Date(`${weekly.bestDay.date}T12:00:00`).toLocaleDateString(undefined, {
+    const day = new Date(`${weekly.bestDay.date}T12:00:00`).toLocaleDateString("en-US", {
       weekday: "long",
     })
     insights.push(`Best tracked day: ${day} with a score of ${weekly.bestDay.score}.`)
@@ -105,8 +105,8 @@ function buildInsights(weekly: WeeklyStats): string[] {
 function DayRow({ entry }: { entry: WeeklyDayEntry }) {
   const { date, snapshot } = entry
   const dt      = new Date(`${date}T12:00:00`)
-  const dayAbbr = dt.toLocaleDateString(undefined, { weekday: "short" }).toUpperCase()
-  const dateStr = dt.toLocaleDateString(undefined, { month: "short", day: "numeric" })
+  const dayAbbr = dt.toLocaleDateString("en-US", { weekday: "short" }).toUpperCase()
+  const dateStr = dt.toLocaleDateString("en-US", { month: "short", day: "numeric" })
   const hasData = snapshot !== null
   const success = hasData && snapshot.score >= STREAK_THRESHOLD
 
@@ -263,7 +263,7 @@ export default function WeeklyReviewPage() {
   const insights       = buildInsights(weekly)
 
   function fmtDay(dateStr: string) {
-    return new Date(`${dateStr}T12:00:00`).toLocaleDateString(undefined, {
+    return new Date(`${dateStr}T12:00:00`).toLocaleDateString("en-US", {
       weekday: "short",
       month: "short",
       day: "numeric",

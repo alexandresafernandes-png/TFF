@@ -274,6 +274,16 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 - `/progress` reads `checklist_completions`, `routine_completions`, `protocol_tracking`, and `user_notes` (today's notes) via `lib/supabase/progress-sync.ts`.
 - Score formula: `min(completedToday/21, 1) × 70 + min(doneToday × 5, 20) + (active > 0 ? 10 : 0)`. Denominator 21 = actual checklist item count across 7 groups.
 
+### Phase 2 Step 4 — Active Protocol System v2 (complete)
+- `/protocols` enhanced with an Active Protocol Summary section at the top of the page.
+- No new tables — uses existing `protocol_tracking` table and `lib/supabase/protocols-sync.ts`.
+- Summary shows: Active / Paused / Completed / Not Started counts plus a "Currently Active" list.
+- Currently Active list: shows each active protocol's name, category, days since start, and quick Pause / Complete / View actions.
+- Each protocol detail now shows a Tracking Overview block: status badge, days-since-start, started/ended dates, and a "Duration target: manual review needed" note (no duration field in protocol data).
+- `handleStatusChange` timestamp rules: Active → sets `started_at` if unset, clears `ended_at`; Completed → sets `ended_at`; Paused → preserves both; Not Active → preserves notes, no data loss.
+- Adherence tracking placeholder added with TODO comment in protocol detail (Phase 2.x, not implemented).
+- localStorage fallback and local-first mode unchanged. Daily Progress score formula unchanged.
+
 ### Phase 2 Step 3 — Weekly Review (complete)
 - `/weekly-review` reads from `daily_progress_snapshots` — no new tables required.
 - Sections: Weekly Score Summary, Consistency Breakdown, Last 7 Days, Weekly Insight.
@@ -304,6 +314,7 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 8. ~~Daily Progress page~~ ✓ Done (Phase 2 Step 1) — `/progress` with Daily Execution Score, breakdown bars, and notes today
 9. ~~Streak Engine / Daily History~~ ✓ Done (Phase 2 Step 2) — `daily_progress_snapshots` table, current/best streak, 7-day history
 10. ~~Weekly Review~~ ✓ Done (Phase 2 Step 3) — `/weekly-review` with score summary, consistency breakdown, last 7 days, objective insights
+11. ~~Active Protocol System v2~~ ✓ Done (Phase 2 Step 4) — `/protocols` protocol tracker summary, currently active list, enhanced tracking detail, adherence placeholder
 
 ## Next steps
 

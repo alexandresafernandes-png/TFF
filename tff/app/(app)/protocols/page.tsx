@@ -129,6 +129,13 @@ function timingShort(timing: string): string {
   return first.length > 44 ? first.slice(0, 41) + "…" : first
 }
 
+function daysSince(isoDateStr: string | null): string {
+  if (!isoDateStr) return "—"
+  const diff = Math.floor((Date.now() - new Date(isoDateStr).getTime()) / 86_400_000)
+  if (diff === 0) return "today"
+  return `${diff} day${diff !== 1 ? "s" : ""} ago`
+}
+
 // Converts "snake_case_id" → "Snake Case Id"
 function labelFromSlug(s: string): string {
   return s.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
@@ -155,6 +162,192 @@ const STATUS_BADGE_VARIANT: Record<ProtocolStatus, "core" | "default" | "na"> = 
   active:    "core",
   paused:    "default",
   completed: "core",
+}
+
+// ── ActiveProtocolRow ─────────────────────────────────────────────────────────
+
+function ActiveProtocolRow({
+  protocol,
+  entry,
+  isLast,
+  onPause,
+  onComplete,
+  onView,
+}: {
+  protocol: Protocol
+  entry: TrackingEntry
+  isLast: boolean
+  onPause:    () => void
+  onComplete: () => void
+  onView:     () => void
+}) {
+  return (
+    <div
+      style={{
+        padding: "12px 0",
+        borderBottom: isLast ? "none" : "1px solid var(--border-soft)",
+        display: "flex",
+        flexDirection: "column",
+        gap: 7,
+      }}
+    >
+      {/* Title + badge */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "space-between",
+          gap: 12,
+        }}
+      >
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <p
+            style={{
+              fontSize: "var(--t-small)",
+              fontWeight: 600,
+              color: "var(--text)",
+              lineHeight: 1.3,
+            }}
+          >
+            <span
+              className="mono"
+              style={{ fontSize: 9, color: "var(--text-4)", marginRight: 6 }}
+            >
+              #{protocol.protocol_number}
+            </span>
+            {protocol.name}
+          </p>
+          <p
+            className="mono"
+            style={{
+              fontSize: 9,
+              color: "var(--text-4)",
+              letterSpacing: "0.06em",
+              marginTop: 3,
+            }}
+          >
+            {CATEGORY_LABEL[protocol.category] ?? protocol.category}
+            {entry.started_at && ` · started ${daysSince(entry.started_at)}`}
+          </p>
+        </div>
+        <TffBadge variant="core">● Active</TffBadge>
+      </div>
+
+      {/* Quick actions */}
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+        <button className="btn btn-sm" onClick={onPause}>
+          Pause
+        </button>
+        <button className="btn btn-sm" onClick={onComplete}>
+          Complete
+        </button>
+        <button
+          className="btn btn-sm"
+          style={{
+            background: "var(--accent-soft)",
+            color: "var(--accent)",
+            borderColor: "var(--accent-line)",
+          }}
+          onClick={onView}
+        >
+          View →
+        </button>
+      </div>
+    </div>
+  )
+}
+
+// ── ActiveProtocolsSummary ────────────────────────────────────────────────────
+
+function ActiveProtocolsSummary({
+  tracking,
+  loaded,
+  syncStatus,
+  onStatusChange,
+  onView,
+}: {
+  tracking: Record<string, TrackingEntry>
+  loaded: boolean
+  syncStatus: SyncStatus
+  onStatusChange: (id: string, status: ProtocolStatus) => void
+  onView: (id: string) => void
+}) {
+  const values         = Object.values(tracking)
+  const activeCount    = values.filter((e) => e.status === "active").length
+  const pausedCount    = values.filter((e) => e.status === "paused").length
+  const completedCount = values.filter((e) => e.status === "completed").length
+  const engagedCount   = values.filter((e) => e.status !== "inactive").length
+  const notStartedCount = TOTAL - engagedCount
+
+  const activeProtocols = Object.entries(tracking)
+    .filter(([, e]) => e.status === "active")
+    .map(([id, entry]) => ({
+      protocol: PROTOCOLS.find((p) => p.id === id),
+      entry,
+    }))
+    .filter(
+      (x): x is { protocol: Protocol; entry: TrackingEntry } => x.protocol !== undefined
+    )
+
+  const isLoading = !loaded || syncStatus === "syncing"
+
+  return (
+    <div>
+      <SectionHeader>
+        Protocol Tracker
+        {!isLoading && (
+          <span
+            className="mono"
+            style={{ marginLeft: 10, fontSize: 9, color: "var(--text-4)" }}
+          >
+            {activeCount > 0 ? `${activeCount} ACTIVE` : "NONE ACTIVE"}
+          </span>
+        )}
+      </SectionHeader>
+
+      {/* Status counts */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))",
+          gap: 8,
+          marginBottom: 12,
+        }}
+      >
+        <StatCard label="Active"      count={loaded ? activeCount      : 0} />
+        <StatCard label="Paused"      count={loaded ? pausedCount      : 0} />
+        <StatCard label="Completed"   count={loaded ? completedCount   : 0} />
+        <StatCard label="Not Started" count={loaded ? notStartedCount  : TOTAL} />
+      </div>
+
+      {/* Currently active list */}
+      <TffCard>
+        <TffCardHeader>Currently Active</TffCardHeader>
+
+        {isLoading ? (
+          <p style={{ fontSize: "var(--t-small)", color: "var(--text-4)" }}>Loading…</p>
+        ) : activeProtocols.length === 0 ? (
+          <p style={{ fontSize: "var(--t-small)", color: "var(--text-4)" }}>
+            No active protocols yet. Activate a protocol from the library below to track it.
+          </p>
+        ) : (
+          <div>
+            {activeProtocols.map(({ protocol, entry }, idx) => (
+              <ActiveProtocolRow
+                key={protocol.id}
+                protocol={protocol}
+                entry={entry}
+                isLast={idx === activeProtocols.length - 1}
+                onPause={()    => onStatusChange(protocol.id, "paused")}
+                onComplete={() => onStatusChange(protocol.id, "completed")}
+                onView={()     => onView(protocol.id)}
+              />
+            ))}
+          </div>
+        )}
+      </TffCard>
+    </div>
+  )
 }
 
 // ── ProtocolDetail ────────────────────────────────────────────────────────────
@@ -300,6 +493,54 @@ function ProtocolDetail({
       <div>
         <p className="label" style={{ marginBottom: 10 }}>My Tracking</p>
 
+        {/* Tracking overview */}
+        <div
+          style={{
+            padding: "12px 14px",
+            background: "var(--panel-2)",
+            border: "1px solid var(--border-soft)",
+            borderRadius: 4,
+            marginBottom: 12,
+            display: "flex",
+            flexDirection: "column",
+            gap: 5,
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 2 }}>
+            <TffBadge variant={STATUS_BADGE_VARIANT[tracking.status]}>
+              {tracking.status === "active" ? "● " : ""}
+              {STATUS_LABELS[tracking.status]}
+            </TffBadge>
+            {tracking.started_at && tracking.status !== "inactive" && (
+              <span
+                className="mono"
+                style={{ fontSize: 9, color: "var(--accent)", letterSpacing: "0.06em" }}
+              >
+                {daysSince(tracking.started_at)}
+              </span>
+            )}
+          </div>
+          <p className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.06em" }}>
+            STARTED ·{" "}
+            {tracking.started_at
+              ? new Date(tracking.started_at).toLocaleDateString("en-US", {
+                  month: "short", day: "numeric", year: "numeric",
+                })
+              : "—"}
+          </p>
+          <p className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.06em" }}>
+            ENDED ·{" "}
+            {tracking.ended_at
+              ? new Date(tracking.ended_at).toLocaleDateString("en-US", {
+                  month: "short", day: "numeric", year: "numeric",
+                })
+              : "—"}
+          </p>
+          <p className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.06em" }}>
+            DURATION TARGET · MANUAL REVIEW NEEDED
+          </p>
+        </div>
+
         {/* Status buttons */}
         <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
           {(["inactive", "active", "paused", "completed"] as ProtocolStatus[]).map((s) => {
@@ -318,7 +559,9 @@ function ProtocolDetail({
                     ? s === "paused" ? "var(--warn)" : "var(--accent)"
                     : "var(--border)",
                   background: active
-                    ? s === "paused" ? "rgba(245,158,11,0.12)" : "var(--accent-soft, rgba(var(--accent-rgb),0.12))"
+                    ? s === "paused"
+                      ? "rgba(245,158,11,0.12)"
+                      : "var(--accent-soft, rgba(var(--accent-rgb),0.12))"
                     : "transparent",
                   color: active
                     ? s === "paused" ? "var(--warn)" : "var(--accent)"
@@ -332,18 +575,6 @@ function ProtocolDetail({
             )
           })}
         </div>
-
-        {/* Date stamps */}
-        {(tracking.started_at || tracking.ended_at) && (
-          <p
-            className="mono"
-            style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.06em", marginBottom: 10 }}
-          >
-            {tracking.started_at && `STARTED ${new Date(tracking.started_at).toLocaleDateString()}`}
-            {tracking.started_at && tracking.ended_at && " · "}
-            {tracking.ended_at && `ENDED ${new Date(tracking.ended_at).toLocaleDateString()}`}
-          </p>
-        )}
 
         {/* Notes textarea */}
         <textarea
@@ -367,6 +598,40 @@ function ProtocolDetail({
             lineHeight: 1.5,
           }}
         />
+
+        {/* Phase 2.x — adherence placeholder */}
+        {/* TODO Phase 2.x: implement daily check-ins, missed days, protocol-specific logs */}
+        <div
+          style={{
+            marginTop: 10,
+            padding: "10px 14px",
+            background: "var(--card-2)",
+            border: "1px solid var(--border-soft)",
+            borderRadius: 4,
+          }}
+        >
+          <p
+            className="mono"
+            style={{
+              fontSize: 9,
+              color: "var(--text-4)",
+              letterSpacing: "0.1em",
+              marginBottom: 4,
+            }}
+          >
+            PHASE 2.X · ADHERENCE TRACKING (PLANNED)
+          </p>
+          <p
+            style={{
+              fontSize: "var(--t-micro)",
+              color: "var(--text-4)",
+              lineHeight: 1.55,
+            }}
+          >
+            Daily check-ins, skipped days, and protocol-specific logs are planned
+            for Phase 2.x. Not yet implemented.
+          </p>
+        </div>
       </div>
 
       {/* Linked notes */}
@@ -610,6 +875,17 @@ export default function ProtocolLibraryPage() {
     void upsertProtocolTracking(protocolId, updated)
   }
 
+  function handleView(id: string) {
+    setExpandedId(id)
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        document
+          .getElementById(`proto-${id}`)
+          ?.scrollIntoView({ behavior: "smooth", block: "nearest" })
+      })
+    )
+  }
+
   function toggleExpand(id: string) {
     setExpandedId((prev) => (prev === id ? null : id))
   }
@@ -696,6 +972,15 @@ export default function ProtocolLibraryPage() {
         <StatCard label="Categories" count={CATEGORIES} />
       </div>
 
+      {/* ── Active Protocol Summary ─────────────────────────────────────────── */}
+      <ActiveProtocolsSummary
+        tracking={tracking}
+        loaded={loaded}
+        syncStatus={syncStatus}
+        onStatusChange={handleStatusChange}
+        onView={handleView}
+      />
+
       {/* ── Recommended stack (browse mode only) ────────────────────────────── */}
       {!isFiltering && (
         <div>
@@ -719,17 +1004,7 @@ export default function ProtocolLibraryPage() {
               {recommended.map((p, idx) => (
                 <div
                   key={p.id}
-                  onClick={() => {
-                    setExpandedId(p.id)
-                    // Scroll to the card after React renders the expanded state
-                    requestAnimationFrame(() =>
-                      requestAnimationFrame(() => {
-                        document
-                          .getElementById(`proto-${p.id}`)
-                          ?.scrollIntoView({ behavior: "smooth", block: "nearest" })
-                      })
-                    )
-                  }}
+                  onClick={() => handleView(p.id)}
                   style={{
                     display: "flex",
                     alignItems: "center",
