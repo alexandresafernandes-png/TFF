@@ -15,6 +15,7 @@ import {
   CHECKLIST_TOTAL,
   STREAK_THRESHOLD,
   type ProgressData,
+  type ProgressSnapshot,
   type StreakData,
 } from "@/lib/supabase/progress-sync"
 
@@ -128,12 +129,13 @@ export default function ProgressPage() {
       fetchRecentProgressSnapshots(14),
     ]).then(([dataRes, snapsRes]) => {
       // ── Today's data ──────────────────────────────────────────────────────
+      let liveData: ProgressData | null = null
       if (dataRes.status === "fulfilled" && dataRes.value.ok) {
-        const d = dataRes.value.data
-        setData(d)
+        liveData = dataRes.value.data
+        setData(liveData)
         setSyncStatus("synced")
         // Fire-and-forget snapshot upsert
-        void upsertDailyProgressSnapshot(d)
+        void upsertDailyProgressSnapshot(liveData)
       } else {
         let reason: "unauthenticated" | "error" = "error"
         if (dataRes.status === "fulfilled" && !dataRes.value.ok) {
@@ -142,9 +144,30 @@ export default function ProgressPage() {
         setSyncStatus(reason === "unauthenticated" ? "unauthenticated" : "error")
       }
 
-      // ── Recent snapshots → streaks ─────────────────────────────────────────
+      // ── Recent snapshots → merge today's live data → streaks ──────────────
+      // Merging the live snapshot ensures the streak includes today immediately,
+      // without waiting for the fire-and-forget upsert to complete.
       if (snapsRes.status === "fulfilled" && snapsRes.value.ok) {
-        setStreaks(calculateStreaks(snapsRes.value.snapshots, today))
+        let snapshots = snapsRes.value.snapshots
+        if (liveData !== null) {
+          const syntheticToday: ProgressSnapshot = {
+            id:                  "live",
+            progress_date:       today,
+            score:               calcScore(liveData),
+            checklist_completed: liveData.checklist.completedToday,
+            checklist_total:     CHECKLIST_TOTAL,
+            routines_completed:  liveData.routines.doneToday,
+            routines_active:     liveData.routines.activeToday,
+            protocols_active:    liveData.protocols.active,
+            protocols_completed: liveData.protocols.completed,
+            notes_count:         liveData.notesToday.length,
+          }
+          snapshots = [
+            ...snapshots.filter((s) => s.progress_date !== today),
+            syntheticToday,
+          ]
+        }
+        setStreaks(calculateStreaks(snapshots, today))
       }
     })
   }, [])
@@ -448,10 +471,10 @@ export default function ProgressPage() {
               className="mono"
               style={{ fontSize: 10, color: "var(--accent)", letterSpacing: "0.1em", marginBottom: 6 }}
             >
-              HISTORY STARTS TODAY
+              NO HISTORY YET
             </p>
             <p style={{ fontSize: "var(--t-small)", color: "var(--text-4)" }}>
-              Today&apos;s snapshot has been saved. Return tomorrow to see your first streak day.
+              Complete today&apos;s tasks to record your first entry.
             </p>
           </div>
         ) : (

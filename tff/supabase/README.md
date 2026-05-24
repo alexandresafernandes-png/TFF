@@ -277,7 +277,7 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 ### Phase 2 Step 2 — Streak Engine / Daily History (complete)
 - `/progress` now upserts a `daily_progress_snapshots` row on every page load (fire-and-forget background write).
 - The unique constraint `(user_id, progress_date)` prevents duplicates — upsert is safe to call on every visit.
-- Streak logic: **current streak** = consecutive days ending today with score ≥ 70; **best streak** = longest such run in fetched history; **missed day** = no snapshot OR score < 70.
+- Streak logic: **current streak** = consecutive days ending today if today ≥ 70, otherwise consecutive days ending yesterday (preserves streak while today is in progress); **best streak** = longest such run in fetched history; **missed day** = no snapshot OR score < 70.
 - Success threshold: **score ≥ 70** (visible in UI as "STREAK DAY = DAILY EXECUTION SCORE ≥ 70").
 - `/progress` shows: current streak · best streak · 7-day average · days tracked · last 7 days mini history.
 - Phase 2.5: trend charts and weekly analytics will build on these snapshots.

@@ -298,8 +298,14 @@ export function calculateStreaks(snapshots: ProgressSnapshot[], todayStr: string
       : 0
 
   // ── Current streak (going back from today) ─────────────────────────────────
+  // If today is already a success, count from today.
+  // If today is not yet a success (mid-day, or no snapshot), count from yesterday —
+  // this preserves the streak while the day is still in progress.
+  const todaySuccess = (byDate.get(todayStr)?.score ?? -1) >= STREAK_THRESHOLD
+  const streakStart  = todaySuccess ? 0 : 1
+
   let currentStreak = 0
-  for (let i = 0; ; i++) {
+  for (let i = streakStart; ; i++) {
     const snap = byDate.get(dateAgo(todayStr, i))
     if (!snap || snap.score < STREAK_THRESHOLD) break
     currentStreak++
