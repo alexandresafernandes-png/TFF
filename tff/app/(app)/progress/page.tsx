@@ -135,8 +135,10 @@ export default function ProgressPage() {
         // Fire-and-forget snapshot upsert
         void upsertDailyProgressSnapshot(d)
       } else {
-        const reason =
-          dataRes.status === "fulfilled" ? dataRes.value.reason : "error"
+        let reason: "unauthenticated" | "error" = "error"
+        if (dataRes.status === "fulfilled" && !dataRes.value.ok) {
+          reason = dataRes.value.reason
+        }
         setSyncStatus(reason === "unauthenticated" ? "unauthenticated" : "error")
       }
 
