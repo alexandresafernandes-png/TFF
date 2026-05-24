@@ -8,8 +8,10 @@ import { createClient } from "@/lib/supabase/client"
 type FormState = "idle" | "loading" | "sent" | "error" | "signed_in"
 
 const URL_ERRORS: Record<string, string> = {
-  auth_callback_failed: "Sign-in link was invalid or expired. Please request a new one.",
-  supabase_not_configured: "Supabase is not configured. Set environment variables to enable login.",
+  auth_callback_failed:   "Sign-in link was invalid or expired. Please request a new one.",
+  supabase_not_configured:"Supabase is not configured. Set environment variables to enable login.",
+  missing_auth_code:      "No authentication code was received. Please request a new magic link.",
+  session_not_persisted:  "Sign-in succeeded but the session could not be saved. Please try again.",
 }
 
 export default function LoginPage() {
