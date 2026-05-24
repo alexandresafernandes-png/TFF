@@ -2,7 +2,7 @@
 
 ## Status
 
-**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, `/progress`, `/weekly-review`, `/fuel`, `/supplement-schedule`, user notes on `/protocols` + `/bloodwork`, and the dashboard personal summary are wired. All other pages: localStorage only.**
+**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, `/progress`, `/weekly-review`, `/fuel`, `/supplement-schedule`, `/bloodwork-tracking`, user notes on `/protocols` + `/bloodwork`, and the dashboard personal summary are wired. All other pages: localStorage only.**
 
 - `/checklist` syncs completions and custom items to Supabase when the user is logged in
 - `/shopping` syncs retainer checkmarks, upgrade status, and custom items to Supabase when the user is logged in
@@ -33,6 +33,7 @@
 | Protocol tracking | ✓ primary | ✓ when signed in | Not date-scoped; one row per protocol per user |
 | Personal notes | ✓ primary | ✓ when signed in | Soft-delete via `is_archived`; area + entity_id scoped |
 | Dashboard summary | — | Read-only fetch | `Promise.allSettled`; partial failure safe |
+| Bloodwork tests + results | — | ✓ cloud-only | No localStorage fallback; unauthenticated → clean empty state |
 | Auth | — | Magic link | No route enforcement |
 | Route protection | — | Active | `app/(app)/layout.tsx` redirects to `/login`; middleware not used |
 | localStorage fallback | ✓ always | — | Active on all synced pages regardless of auth state |
@@ -52,6 +53,7 @@ No Supabase CLI is required. Run migrations manually:
 7. Run `006_daily_progress_snapshots.sql` sixth
 8. Run `007_macro_fuel_system.sql` seventh
 9. Run `008_supplement_schedule.sql` eighth
+10. Run `009_bloodwork_tracking.sql` ninth
 
 Each file is idempotent: re-running it is safe (`create table if not exists`, `create or replace function`, `drop trigger if exists` before recreating, etc.).
 
@@ -84,6 +86,37 @@ Adds `client_id text` to `checklist_custom_items`. This maps local `c_<timestamp
 ### `004_shopping_client_id.sql` — Phase 1.5 Step 5
 
 Adds `client_id text` to `shopping_custom_items`. This maps local `custom_retainer_<timestamp>_<random>` and `custom_upgrade_<timestamp>_<random>` IDs to Supabase UUIDs, using the same client_id bridge pattern as migration 003. Sparse index on `client_id where client_id is not null`.
+
+---
+
+### `009_bloodwork_tracking.sql` — Phase 2 Step 7
+
+Creates `bloodwork_tests` and `bloodwork_results`. Both use owner-only RLS (select / insert / update / delete policies) and `set_updated_at()` triggers from migration 002.
+
+**No diagnosis, no range inference, no medical advice is generated.** The system stores only what the user manually enters. Reference ranges are stored as user-provided text (`reference_range_text`), never auto-populated. The flag field (`low` / `normal` / `high` / `manual_review` / `unknown`) is set by the user, never inferred. Trend charts are reserved for Phase 2.5.
+
+**`bloodwork_tests`** — One row per lab draw. Acts as a header for the set of results from that draw.
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `test_date` | date | Required — date of the blood draw (YYYY-MM-DD) |
+| `lab_name` | text | Optional — e.g. "LabCorp", "Quest" |
+| `notes` | text | Optional — freeform notes for the draw |
+
+**`bloodwork_results`** — One row per marker per draw. `unique(test_id, marker_key)` ensures one result per marker per test.
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `test_id` | uuid | FK → bloodwork_tests(id) on delete cascade |
+| `marker_key` | text | snake_case key derived from marker name (max 60 chars) |
+| `marker_name` | text | Display name as entered by user or from TFF library |
+| `value` | numeric | The lab result value (nullable) |
+| `unit` | text | Optional — e.g. "ng/dL", "mIU/L" |
+| `reference_range_text` | text | Optional — lab's range text as printed, user-entered only |
+| `flag` | text | One of: `low`, `normal`, `high`, `manual_review`, `unknown` |
+| `notes` | text | Optional — per-marker notes |
+
+The `marker_key` is computed by `normalizeMarkerKey()` in `lib/supabase/bloodwork-tracking-sync.ts`: lowercased, non-alphanumeric runs collapsed to `_`, trimmed, max 60 chars. The TFF library picker (`data/blood_markers.json`) pre-fills name and unit only — reference ranges from the library are never imported.
 
 ---
 

@@ -54,7 +54,13 @@
       "Bash(git -C /Users/alex/TFF/tff diff --name-only HEAD)",
       "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(s['id'], '|', s.get\\('timing',''\\)[:60]\\) for s in data]\")",
       "Bash(node -e \"console.log\\('/supplement-schedule'.startsWith\\('/supplements'\\)\\)\")",
-      "Bash(python3 -c \"print\\('/supplement-schedule'.startswith\\('/supplements'\\)\\)\")"
+      "Bash(python3 -c \"print\\('/supplement-schedule'.startswith\\('/supplements'\\)\\)\")",
+      "Bash(bun --version)",
+      "Bash(/usr/local/bin/node --version)",
+      "Bash(/opt/homebrew/bin/node --version)",
+      "Bash(~/.nvm/versions/node/*/bin/node --version)",
+      "Bash(find /opt /usr/local /usr/bin -name \"node\" -type f 2>/dev/null | head -5; ls ~/.nvm/ 2>/dev/null || ls ~/.fnm/ 2>/dev/null || echo \"no version managers found\")",
+      "Read(//opt/**)"
     ]
   }
 }

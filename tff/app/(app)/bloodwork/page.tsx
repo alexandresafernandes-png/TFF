@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import Link from "next/link"
 import { PageHeader } from "@/components/tff/PageHeader"
 import { TffCard } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
@@ -750,11 +751,27 @@ export default function BloodworkPage() {
           <TffCard style={{ marginBottom: 20 }}>
             <div style={{ padding: "14px 16px" }}>
               <div style={{ marginBottom: 6 }}>
-                <TffBadge variant="depends">Phase 2 — Not Yet Active</TffBadge>
+                <TffBadge variant="core">Phase 2 — Active</TffBadge>
               </div>
-              <p style={{ fontSize: "var(--t-small)", color: "var(--text-3)", margin: 0, lineHeight: 1.6 }}>
-                Phase 2 will add personal tracking, trend visualization, and protocol linkage. The reference library is fully functional now.
+              <p style={{ fontSize: "var(--t-small)", color: "var(--text-3)", margin: "0 0 12px", lineHeight: 1.6 }}>
+                Manual entry is live. Log your actual lab results, track each marker over time, and compare draws.
+                Trend charts and protocol linkage are reserved for Phase 2.5.
               </p>
+              <Link
+                href="/bloodwork-tracking"
+                style={{
+                  display: "inline-block",
+                  padding: "8px 16px",
+                  background: "var(--accent)",
+                  color: "var(--bg)",
+                  borderRadius: 4,
+                  fontSize: "var(--t-small)",
+                  fontWeight: 600,
+                  textDecoration: "none",
+                }}
+              >
+                Open Bloodwork Tracking →
+              </Link>
             </div>
           </TffCard>
 

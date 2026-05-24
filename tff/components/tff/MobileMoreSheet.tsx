@@ -11,6 +11,7 @@ const MORE_ITEMS = [
   { label: "Supplements",          href: "/supplements" },
   { label: "Supplement Schedule",  href: "/supplement-schedule" },
   { label: "Bloodwork",           href: "/bloodwork" },
+  { label: "Bloodwork Tracking",  href: "/bloodwork-tracking" },
   { label: "Shopping List",       href: "/shopping" },
   { label: "Routines",            href: "/routines" },
   { label: "Sources",             href: "/sources" },

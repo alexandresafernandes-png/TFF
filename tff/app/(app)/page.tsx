@@ -53,6 +53,11 @@ const QUICK_ACTIONS = [
     description: "Optimal ranges and markers to track and interpret.",
   },
   {
+    label: "Bloodwork Tracking",
+    href: "/bloodwork-tracking",
+    description: "Log lab results, track marker history, and compare draws over time.",
+  },
+  {
     label: "Shopping List",
     href: "/shopping",
     description: "Prioritized items to source for the protocol.",

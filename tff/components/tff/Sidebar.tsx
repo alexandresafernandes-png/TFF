@@ -14,19 +14,27 @@ const NAV_ITEMS = [
   { label: "Macro & Fuel",       href: "/fuel",       key: "F" },
   { label: "Supplements",          href: "/supplements",          key: "6" },
   { label: "Supplement Schedule",  href: "/supplement-schedule",  key: "S" },
-  { label: "Bloodwork",         href: "/bloodwork",   key: "7" },
+  { label: "Bloodwork",           href: "/bloodwork",          key: "7" },
+  { label: "Bloodwork Tracking",  href: "/bloodwork-tracking", key: "B" },
   { label: "Shopping List",     href: "/shopping",    key: "8" },
   { label: "Routines",          href: "/routines",    key: "9" },
   { label: "Sources",           href: "/sources",     key: "0" },
 ] as const
 
+function getActiveHref(pathname: string): string {
+  if (pathname === "/") return "/"
+  let best = ""
+  for (const item of NAV_ITEMS) {
+    if (item.href !== "/" && pathname.startsWith(item.href) && item.href.length > best.length) {
+      best = item.href
+    }
+  }
+  return best || "/"
+}
+
 export function Sidebar() {
   const pathname = usePathname()
-
-  function isActive(href: string) {
-    if (href === "/") return pathname === "/"
-    return pathname.startsWith(href)
-  }
+  const activeHref = getActiveHref(pathname)
 
   return (
     <aside
@@ -84,7 +92,7 @@ export function Sidebar() {
       {/* Nav */}
       <nav style={{ flex: 1, padding: "8px 0" }}>
         {NAV_ITEMS.map((item) => {
-          const active = isActive(item.href)
+          const active = item.href === activeHref
           return (
             <Link
               key={item.href}
