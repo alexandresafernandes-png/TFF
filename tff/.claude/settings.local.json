@@ -51,7 +51,10 @@
       "Bash(/bin/zsh -i -c \"which node 2>&1 && node -e 'process.exit\\(0\\)' 2>&1 && echo ok\")",
       "Bash(/Users/alex/TFF/tff/node_modules/.bin/tsc --noEmit --project /Users/alex/TFF/tff/tsconfig.json)",
       "Bash(tsc --version)",
-      "Bash(git -C /Users/alex/TFF/tff diff --name-only HEAD)"
+      "Bash(git -C /Users/alex/TFF/tff diff --name-only HEAD)",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(s['id'], '|', s.get\\('timing',''\\)[:60]\\) for s in data]\")",
+      "Bash(node -e \"console.log\\('/supplement-schedule'.startsWith\\('/supplements'\\)\\)\")",
+      "Bash(python3 -c \"print\\('/supplement-schedule'.startswith\\('/supplements'\\)\\)\")"
     ]
   }
 }

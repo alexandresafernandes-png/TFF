@@ -63,6 +63,11 @@ const QUICK_ACTIONS = [
     description: "Full supplement stack with timing, dose, and source refs.",
   },
   {
+    label: "Supplement Schedule",
+    href: "/supplement-schedule",
+    description: "Personal supplement timing blocks and daily completion tracking.",
+  },
+  {
     label: "Routines",
     href: "/routines",
     description: "Daily, training, sleep, and weekly routine systems.",

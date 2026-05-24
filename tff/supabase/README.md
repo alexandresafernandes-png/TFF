@@ -2,7 +2,7 @@
 
 ## Status
 
-**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, `/progress`, `/weekly-review`, `/fuel`, user notes on `/protocols` + `/bloodwork`, and the dashboard personal summary are wired. All other pages: localStorage only.**
+**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, `/progress`, `/weekly-review`, `/fuel`, `/supplement-schedule`, user notes on `/protocols` + `/bloodwork`, and the dashboard personal summary are wired. All other pages: localStorage only.**
 
 - `/checklist` syncs completions and custom items to Supabase when the user is logged in
 - `/shopping` syncs retainer checkmarks, upgrade status, and custom items to Supabase when the user is logged in
@@ -51,6 +51,7 @@ No Supabase CLI is required. Run migrations manually:
 6. Run `005_user_notes_archive.sql` fifth
 7. Run `006_daily_progress_snapshots.sql` sixth
 8. Run `007_macro_fuel_system.sql` seventh
+9. Run `008_supplement_schedule.sql` eighth
 
 Each file is idempotent: re-running it is safe (`create table if not exists`, `create or replace function`, `drop trigger if exists` before recreating, etc.).
 
@@ -83,6 +84,33 @@ Adds `client_id text` to `checklist_custom_items`. This maps local `c_<timestamp
 ### `004_shopping_client_id.sql` — Phase 1.5 Step 5
 
 Adds `client_id text` to `shopping_custom_items`. This maps local `custom_retainer_<timestamp>_<random>` and `custom_upgrade_<timestamp>_<random>` IDs to Supabase UUIDs, using the same client_id bridge pattern as migration 003. Sparse index on `client_id where client_id is not null`.
+
+---
+
+### `008_supplement_schedule.sql` — Phase 2 Step 6
+
+Creates `supplement_schedule_items` and `supplement_schedule_completions`. Both use owner-only RLS (select / insert / update / delete policies) and `set_updated_at()` triggers from migration 002.
+
+**`supplement_schedule_items`** — User-defined supplement entries. Each item has a name, optional dose, timing block, and optional instructions. Items can be deactivated (soft-delete via `is_active = false`).
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `name` | text | Required — user-entered or from TFF library |
+| `dose_text` | text | Optional — user-entered or from TFF source data |
+| `timing_block` | text | One of: `morning`, `midday`, `pre_workout`, `evening`, `night`, `custom` |
+| `instructions` | text | Optional — user-entered only, no invented content |
+| `is_active` | boolean | Soft-deactivate; default true |
+| `sort_order` | integer | Display order within timing block |
+| `source` | text | `manual` or `tff_library` |
+
+**`supplement_schedule_completions`** — One row per user per item per calendar day. `unique(user_id, item_id, completion_date)` makes upsert safe on every toggle.
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `item_id` | uuid | FK → supplement_schedule_items(id) on delete cascade |
+| `completion_date` | date | Local date (YYYY-MM-DD) |
+| `completed` | boolean | Whether the item was taken |
+| `completed_at` | timestamptz | Timestamp when marked complete (null if unchecked) |
 
 ---
 
@@ -305,6 +333,17 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 - `/progress` reads `checklist_completions`, `routine_completions`, `protocol_tracking`, and `user_notes` (today's notes) via `lib/supabase/progress-sync.ts`.
 - Score formula: `min(completedToday/21, 1) × 70 + min(doneToday × 5, 20) + (active > 0 ? 10 : 0)`. Denominator 21 = actual checklist item count across 7 groups.
 
+### Phase 2 Step 6 — Supplement Schedule (complete)
+
+- `/supplement-schedule` page — today summary (adherence %, completed, remaining), items grouped by timing block (morning / midday / pre-workout / evening / night / custom), add-item form (manual or pre-filled from TFF library), inactive items panel, future integration placeholder.
+- `lib/supabase/supplement-schedule-sync.ts` — types (`TimingBlock`, `SupplementScheduleItem`, `SupplementScheduleCompletion`) and helpers: `getTodayLocalDate`, `groupItemsByTimingBlock`, `calculateSupplementAdherence`, `fetchSupplementScheduleItems`, `createSupplementScheduleItem`, `updateSupplementScheduleItem`, `setSupplementScheduleItemActive`, `fetchSupplementCompletionsForDate`, `upsertSupplementCompletion`.
+- **Local-first**: items and completions cached in localStorage (`tff_sup_items`, `tff_sup_comp_YYYY-MM-DD`). Page renders from cache immediately; Supabase fetch overwrites on success.
+- **Unauthenticated mode**: items created with a `local_` prefixed ID; all data persists in browser storage only. Clear "LOCAL MODE" label shown.
+- **TFF Library picker**: "Add from Library" pre-fills name + dose from `data/supplements.json`. No dosage advice is invented — only existing TFF source data is used. User can edit before saving.
+- Navigation: Sidebar (key S, after Supplements), MobileMoreSheet, Topbar (`INDEX · 14 / SUPP SCHED`), Dashboard Quick Actions.
+- `/supplements` phase2 tab: "Supplement Schedule now active" card with link replaces old "Phase 2" banner.
+- **Not yet wired to Daily Progress or Weekly Review.** Future phase placeholder included on page.
+
 ### Phase 2 Step 5 — Macro & Fuel System (complete)
 
 - `/fuel` page — macro targets form (training + rest day), daily meal log, totals vs. targets, compliance score, day notes, and How to Use section.
@@ -357,9 +396,11 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 10. ~~Weekly Review~~ ✓ Done (Phase 2 Step 3) — `/weekly-review` with score summary, consistency breakdown, last 7 days, objective insights
 11. ~~Active Protocol System v2~~ ✓ Done (Phase 2 Step 4) — `/protocols` protocol tracker summary, currently active list, enhanced tracking detail, adherence placeholder
 12. ~~Macro & Fuel System~~ ✓ Done (Phase 2 Step 5) — `/fuel` page, `macro_profiles` + `daily_fuel_logs` tables, compliance score, navigation wiring, nutrition page link
+13. ~~Supplement Schedule~~ ✓ Done (Phase 2 Step 6) — `/supplement-schedule` page, `supplement_schedule_items` + `supplement_schedule_completions` tables, TFF library picker, local-first with Supabase sync, navigation wiring, supplements page link
 
 ## Next steps
 
 - Phase 2.5: Trend charts (build on `daily_progress_snapshots`)
 - Phase 2.5.1: Full visual upgrade across all pages
+- Wire supplement adherence into Daily Progress score (future phase placeholder is live on `/supplement-schedule`)
 - Wire profile display in `/settings` from `profiles`
