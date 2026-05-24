@@ -338,14 +338,6 @@ export default function ProgressPage() {
                 PAUSED
               </p>
             </div>
-            <div>
-              <span style={{ fontSize: "var(--t-h2)", fontWeight: 600, color: "var(--text-3)" }}>
-                {data.protocols.completed}
-              </span>
-              <p className="mono" style={{ fontSize: 9, color: "var(--text-4)", letterSpacing: "0.08em", marginTop: 2 }}>
-                COMPLETED
-              </p>
-            </div>
           </div>
         ) : (
           <p style={{ fontSize: "var(--t-small)", color: "var(--text-4)" }}>—</p>
