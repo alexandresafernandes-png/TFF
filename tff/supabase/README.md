@@ -2,7 +2,7 @@
 
 ## Status
 
-**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, `/progress`, `/weekly-review`, `/fuel`, `/supplement-schedule`, `/bloodwork-tracking`, user notes on `/protocols` + `/bloodwork`, and the dashboard personal summary are wired. All other pages: localStorage only.**
+**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, `/progress`, `/weekly-review`, `/fuel`, `/supplement-schedule`, `/bloodwork-tracking`, the dashboard Command Center, user notes on `/protocols` + `/bloodwork`, and the dashboard personal summary are wired. All other pages: localStorage only.**
 
 - `/checklist` syncs completions and custom items to Supabase when the user is logged in
 - `/shopping` syncs retainer checkmarks, upgrade status, and custom items to Supabase when the user is logged in
@@ -32,6 +32,7 @@
 | Routine completions | ✓ primary | ✓ when signed in | Daily scope; active / done / inactive |
 | Protocol tracking | ✓ primary | ✓ when signed in | Not date-scoped; one row per protocol per user |
 | Personal notes | ✓ primary | ✓ when signed in | Soft-delete via `is_archived`; area + entity_id scoped |
+| Dashboard Command Center | — | Read-only fetch | 8 parallel queries; partial failure safe; each card degrades independently |
 | Dashboard summary | — | Read-only fetch | `Promise.allSettled`; partial failure safe |
 | Bloodwork tests + results | — | ✓ cloud-only | No localStorage fallback; unauthenticated → clean empty state |
 | Auth | — | Magic link | No route enforcement |
@@ -366,6 +367,32 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 - `/progress` reads `checklist_completions`, `routine_completions`, `protocol_tracking`, and `user_notes` (today's notes) via `lib/supabase/progress-sync.ts`.
 - Score formula: `min(completedToday/21, 1) × 70 + min(doneToday × 5, 20) + (active > 0 ? 10 : 0)`. Denominator 21 = actual checklist item count across 7 groups.
 
+### Phase 2 Step 8 — Dashboard 2.0 (complete)
+
+- `app/(app)/page.tsx` — reorganized as a server component; title updated to "TFF Command Center"; imports `DashboardCommandCenter`; Quick Actions reorganized with Phase 2 tracking tools first (Daily Progress, Weekly Review, Macro & Fuel, Supplement Schedule, Protocols, Bloodwork Tracking) followed by reference tools.
+- `components/tff/DashboardCommandCenter.tsx` — new client component; single `useEffect` fires 8 parallel fetches via `Promise.allSettled`; each card degrades gracefully on partial failure.
+- **No new tables.** Reads from existing Phase 2 systems only:
+  - `fetchProgressData()` + `calcScore()` → Today's Execution card
+  - `fetchRecentProgressSnapshots(14)` + `calculateStreaks()` + `calculateWeeklyStats()` → Streak & Consistency card
+  - `fetchMacroProfile()` + `fetchDailyFuelLog()` + `calculateMacroCompliance()` → Macro & Fuel card
+  - `fetchSupplementScheduleItems()` + `fetchSupplementCompletionsForDate()` + `calculateSupplementAdherence()` → Supplement Schedule card
+  - `fetchProtocolTracking()` → Active Protocols card (names resolved from `data/protocols.json`)
+  - `fetchBloodworkTests()` → Bloodwork card
+- **Setup Status card**: factual-only gap detection (missing macro targets, no active supplements, no active protocols, no bloodwork tests, no progress snapshots). No coaching language.
+- **Bloodwork card**: objective counts only — no diagnosis, no range interpretation.
+- **Unauthenticated state**: clean "Sign in to unlock tracking" card; no crash.
+- **Loading state**: skeleton cards shown while 8 fetches complete.
+- **Full UI upgrade** (typography, color system, layout overhaul) is reserved for Phase 2.5.1.
+
+### Phase 2 Step 7 — Bloodwork Tracking (complete)
+
+- `/bloodwork-tracking` page — TESTS / DETAIL / HISTORY views; add test with inline marker entry at creation time; batch creation via `createBloodworkTestWithResults()`; auto-navigate to detail after creation; per-marker remove; history table by date.
+- `lib/supabase/bloodwork-tracking-sync.ts` — types + all CRUD helpers including `createBloodworkTestWithResults` (sequential batch wrapper).
+- `supabase/migrations/009_bloodwork_tracking.sql` — `bloodwork_tests` + `bloodwork_results`; owner-only RLS; unique(test_id, marker_key).
+- No auto-classification, no invented ranges, no medical advice. All flags manually selected.
+- No localStorage fallback (sensitive data) — clean unauthenticated state shown.
+- Navigation: Sidebar (key B), MobileMoreSheet, Topbar (INDEX · 15 / BW TRACKING, inserted BEFORE /bloodwork to avoid startsWith collision), Dashboard Quick Actions. `/bloodwork` phase2 tab updated with "Active" badge + link.
+
 ### Phase 2 Step 6 — Supplement Schedule (complete)
 
 - `/supplement-schedule` page — today summary (adherence %, completed, remaining), items grouped by timing block (morning / midday / pre-workout / evening / night / custom), add-item form (manual or pre-filled from TFF library), inactive items panel, future integration placeholder.
@@ -430,6 +457,8 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 11. ~~Active Protocol System v2~~ ✓ Done (Phase 2 Step 4) — `/protocols` protocol tracker summary, currently active list, enhanced tracking detail, adherence placeholder
 12. ~~Macro & Fuel System~~ ✓ Done (Phase 2 Step 5) — `/fuel` page, `macro_profiles` + `daily_fuel_logs` tables, compliance score, navigation wiring, nutrition page link
 13. ~~Supplement Schedule~~ ✓ Done (Phase 2 Step 6) — `/supplement-schedule` page, `supplement_schedule_items` + `supplement_schedule_completions` tables, TFF library picker, local-first with Supabase sync, navigation wiring, supplements page link
+14. ~~Bloodwork Tracking~~ ✓ Done (Phase 2 Step 7) — `/bloodwork-tracking` page with TESTS / DETAIL / HISTORY views; inline marker entry at creation; `bloodwork_tests` + `bloodwork_results` tables; no auto-classification; full navigation wiring
+15. ~~Dashboard 2.0~~ ✓ Done (Phase 2 Step 8) — `DashboardCommandCenter` client component; 8 parallel reads from existing Phase 2 systems; Today / Streak / Macro / Supplements / Protocols / Bloodwork / Setup Status cards; no new tables
 
 ## Next steps
 

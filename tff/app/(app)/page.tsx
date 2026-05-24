@@ -1,188 +1,127 @@
-import Link from "next/link"
 import { PageHeader } from "@/components/tff/PageHeader"
-import { TffCard, TffCardHeader } from "@/components/tff/TffCard"
-import { TffBadge } from "@/components/tff/TffBadge"
 import { SectionHeader } from "@/components/tff/SectionHeader"
-import { EmptyState } from "@/components/tff/EmptyState"
 import { StatCard } from "@/components/tff/StatCard"
 import { QuickActionCard } from "@/components/tff/QuickActionCard"
-import { DataHealthCard } from "@/components/tff/DataHealthCard"
-import { DashboardPersonalCards } from "@/components/tff/DashboardPersonalCards"
+import { DashboardCommandCenter } from "@/components/tff/DashboardCommandCenter"
 import { getDataStats } from "@/lib/data/stats"
-import { getChecklistItems } from "@/lib/data/loaders"
 
+// Priority first, reference tools second
 const QUICK_ACTIONS = [
   {
-    label: "Knowledge Search",
-    href: "/search",
-    description: "Search foods, supplements, protocols, and claims.",
-  },
-  {
-    label: "Daily Checklist",
-    href: "/checklist",
-    description: "Track your critical daily habits and non-negotiables.",
-  },
-  {
-    label: "Daily Progress",
-    href: "/progress",
+    label:       "Daily Progress",
+    href:        "/progress",
     description: "Today's execution score — checklist, routines, and protocols.",
   },
   {
-    label: "Weekly Review",
-    href: "/weekly-review",
+    label:       "Weekly Review",
+    href:        "/weekly-review",
     description: "7-day summary of Daily Progress snapshots and consistency trends.",
   },
   {
-    label: "Protocol Library",
-    href: "/protocols",
-    description: "Browse and follow structured optimization protocols.",
-  },
-  {
-    label: "Nutrition & Cooking",
-    href: "/nutrition",
-    description: "Approved foods, cooking guides, and prep methods.",
-  },
-  {
-    label: "Macro & Fuel",
-    href: "/fuel",
+    label:       "Macro & Fuel",
+    href:        "/fuel",
     description: "Set macro targets and log daily food intake by meal.",
   },
   {
-    label: "Bloodwork Reference",
-    href: "/bloodwork",
-    description: "Optimal ranges and markers to track and interpret.",
-  },
-  {
-    label: "Bloodwork Tracking",
-    href: "/bloodwork-tracking",
-    description: "Log lab results, track marker history, and compare draws over time.",
-  },
-  {
-    label: "Shopping List",
-    href: "/shopping",
-    description: "Prioritized items to source for the protocol.",
-  },
-  {
-    label: "Supplements",
-    href: "/supplements",
-    description: "Full supplement stack with timing, dose, and source refs.",
-  },
-  {
-    label: "Supplement Schedule",
-    href: "/supplement-schedule",
+    label:       "Supplement Schedule",
+    href:        "/supplement-schedule",
     description: "Personal supplement timing blocks and daily completion tracking.",
   },
   {
-    label: "Routines",
-    href: "/routines",
+    label:       "Protocol Library",
+    href:        "/protocols",
+    description: "Browse and follow structured optimization protocols.",
+  },
+  {
+    label:       "Bloodwork Tracking",
+    href:        "/bloodwork-tracking",
+    description: "Log lab results, track marker history, and compare draws over time.",
+  },
+  {
+    label:       "Knowledge Search",
+    href:        "/search",
+    description: "Search foods, supplements, protocols, and claims.",
+  },
+  {
+    label:       "Daily Checklist",
+    href:        "/checklist",
+    description: "Track your critical daily habits and non-negotiables.",
+  },
+  {
+    label:       "Bloodwork Reference",
+    href:        "/bloodwork",
+    description: "Optimal ranges and markers to track and interpret.",
+  },
+  {
+    label:       "Nutrition & Cooking",
+    href:        "/nutrition",
+    description: "Approved foods, cooking guides, and prep methods.",
+  },
+  {
+    label:       "Supplements",
+    href:        "/supplements",
+    description: "Full supplement stack with timing, dose, and source refs.",
+  },
+  {
+    label:       "Shopping List",
+    href:        "/shopping",
+    description: "Prioritized items to source for the protocol.",
+  },
+  {
+    label:       "Routines",
+    href:        "/routines",
     description: "Daily, training, sleep, and weekly routine systems.",
   },
   {
-    label: "Settings",
-    href: "/settings",
+    label:       "Settings",
+    href:        "/settings",
     description: "Account, sign-in, and app preferences.",
   },
 ]
 
-const CATEGORY_BADGE_VARIANT: Record<string, "core" | "warn" | "default"> = {
-  sleep: "warn",
-  morning_light: "core",
-  nutrition: "default",
-}
-
 export default function DashboardPage() {
   const stats = getDataStats()
-  const supabaseReady = !!(
-    process.env.NEXT_PUBLIC_SUPABASE_URL &&
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  )
-
-  const medItems = getChecklistItems()
-    .filter(
-      (item) =>
-        item.priority === "critical" &&
-        ["sleep", "morning_light", "nutrition"].includes(item.category)
-    )
-    .slice(0, 6)
 
   return (
     <div className="stack-lg">
       <PageHeader
         crumb="INDEX · 01 / DASHBOARD"
-        title="TFF"
-        subtitle="Phase 2 — daily tracking active."
+        title="TFF Command Center"
+        subtitle="Today's execution, weekly consistency, and active systems."
       />
 
-      {/* ── 1. Today Overview ─────────────────────────────────────────────── */}
-      <TffCard>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-            gap: 16,
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-            <p className="label">TODAY</p>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span
-                style={{
-                  fontSize: "var(--t-h2)",
-                  fontWeight: 600,
-                  color: "var(--text)",
-                }}
-              >
-                Training Day
-              </span>
-              <TffBadge variant="na">Phase 2</TffBadge>
-            </div>
-            <p
-              style={{
-                fontSize: "var(--t-small)",
-                color: "var(--text-4)",
-                maxWidth: 400,
-              }}
-            >
-              Day type will be user-configurable in Phase 2 with personal tracking and calendar planning.
-            </p>
-          </div>
-          <TffBadge variant="core" dot>
-            Phase 1
-          </TffBadge>
-        </div>
-      </TffCard>
+      {/* ── Phase 2: Command Center (client — data from Supabase when signed in) */}
+      <DashboardCommandCenter />
 
-      {/* ── 2. Knowledge Base Stats ───────────────────────────────────────── */}
+      {/* ── Knowledge Base ──────────────────────────────────────────────────── */}
       <div>
         <SectionHeader>Knowledge Base</SectionHeader>
         <div
           style={{
-            display: "grid",
+            display:             "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))",
-            gap: 10,
+            gap:                 10,
           }}
         >
-          <StatCard label="Foods" count={stats.foods} />
-          <StatCard label="Supplements" count={stats.supplements} />
-          <StatCard label="Protocols" count={stats.protocols} />
-          <StatCard label="Blood Markers" count={stats.bloodMarkers} />
+          <StatCard label="Foods"           count={stats.foods} />
+          <StatCard label="Supplements"     count={stats.supplements} />
+          <StatCard label="Protocols"       count={stats.protocols} />
+          <StatCard label="Blood Markers"   count={stats.bloodMarkers} />
           <StatCard label="Checklist Items" count={stats.checklistItems} />
-          <StatCard label="Cooking Guides" count={stats.cookingGuides} />
-          <StatCard label="Shopping Items" count={stats.shoppingItems} />
-          <StatCard label="Claims" count={stats.claims} />
+          <StatCard label="Cooking Guides"  count={stats.cookingGuides} />
+          <StatCard label="Shopping Items"  count={stats.shoppingItems} />
+          <StatCard label="Claims"          count={stats.claims} />
         </div>
       </div>
 
-      {/* ── 3. Phase 1 Quick Actions ──────────────────────────────────────── */}
+      {/* ── Quick Actions ────────────────────────────────────────────────────── */}
       <div>
-        <SectionHeader>Phase 1 Quick Actions</SectionHeader>
+        <SectionHeader>Quick Actions</SectionHeader>
         <div
           style={{
-            display: "grid",
+            display:             "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-            gap: 10,
+            gap:                 10,
           }}
         >
           {QUICK_ACTIONS.map((action) => (
@@ -195,118 +134,6 @@ export default function DashboardPage() {
           ))}
         </div>
       </div>
-
-      {/* ── 4. Personal Summary (client — data from Supabase when signed in) ── */}
-      <DashboardPersonalCards />
-
-      {/* ── 5. Current Focus + Minimum Effective Day ──────────────────────── */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: 16,
-          alignItems: "start",
-        }}
-      >
-        {/* Current Focus */}
-        <TffCard>
-          <TffCardHeader>Current Focus</TffCardHeader>
-          <EmptyState
-            heading="No active protocol selected yet."
-            sub="Browse the protocol library and select one to track."
-            action={
-              <Link href="/protocols" className="btn btn-primary">
-                Browse Protocols
-              </Link>
-            }
-          />
-        </TffCard>
-
-        {/* Minimum Effective Day */}
-        <TffCard>
-          <TffCardHeader>Minimum Effective Day</TffCardHeader>
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-            {medItems.map((item, idx) => (
-              <div
-                key={item.id}
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  justifyContent: "space-between",
-                  gap: 12,
-                  padding: "10px 0",
-                  borderBottom:
-                    idx < medItems.length - 1
-                      ? "1px solid var(--border-soft)"
-                      : "none",
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: "var(--t-small)",
-                    color: "var(--text-2)",
-                    lineHeight: 1.4,
-                    flex: 1,
-                  }}
-                >
-                  {item.title}
-                </span>
-                <TffBadge
-                  variant={CATEGORY_BADGE_VARIANT[item.category] ?? "default"}
-                >
-                  {item.category.replace("_", " ")}
-                </TffBadge>
-              </div>
-            ))}
-          </div>
-          <p
-            style={{
-              fontSize: "var(--t-micro)",
-              color: "var(--text-4)",
-              marginTop: 12,
-            }}
-          >
-            Critical priority · categories: sleep, morning light, nutrition
-          </p>
-        </TffCard>
-      </div>
-
-      {/* ── 6. Advanced Mode Notice ───────────────────────────────────────── */}
-      <TffCard>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "flex-start",
-            justifyContent: "space-between",
-            gap: 16,
-            flexWrap: "wrap",
-          }}
-        >
-          <div>
-            <TffCardHeader>Advanced Mode</TffCardHeader>
-            <p
-              style={{
-                fontSize: "var(--t-small)",
-                color: "var(--text-3)",
-                maxWidth: 520,
-                lineHeight: 1.5,
-              }}
-            >
-              Advanced DHT protocols are hidden by default. Protocols 16–24
-              (advanced DHT optimization) are available behind Advanced Mode,
-              enabled in a future step. Standard Phase 1 protocols are fully
-              accessible now.
-            </p>
-          </div>
-          <TffBadge variant="na">Hidden</TffBadge>
-        </div>
-      </TffCard>
-
-      {/* ── 7. Data Package Health ────────────────────────────────────────── */}
-      <DataHealthCard
-        totalRecords={stats.total}
-        supabaseReady={supabaseReady}
-      />
     </div>
   )
 }
