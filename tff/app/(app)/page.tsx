@@ -43,6 +43,11 @@ const QUICK_ACTIONS = [
     description: "Approved foods, cooking guides, and prep methods.",
   },
   {
+    label: "Macro & Fuel",
+    href: "/fuel",
+    description: "Set macro targets and log daily food intake by meal.",
+  },
+  {
     label: "Bloodwork Reference",
     href: "/bloodwork",
     description: "Optimal ranges and markers to track and interpret.",

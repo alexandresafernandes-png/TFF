@@ -2,7 +2,7 @@
 
 ## Status
 
-**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, user notes on `/protocols` + `/bloodwork`, and the dashboard personal summary are wired. All other pages: localStorage only.**
+**Schema: defined. `/checklist`, `/shopping`, `/routines`, `/protocols`, `/progress`, `/weekly-review`, `/fuel`, user notes on `/protocols` + `/bloodwork`, and the dashboard personal summary are wired. All other pages: localStorage only.**
 
 - `/checklist` syncs completions and custom items to Supabase when the user is logged in
 - `/shopping` syncs retainer checkmarks, upgrade status, and custom items to Supabase when the user is logged in
@@ -50,6 +50,7 @@ No Supabase CLI is required. Run migrations manually:
 5. Run `004_shopping_client_id.sql` fourth
 6. Run `005_user_notes_archive.sql` fifth
 7. Run `006_daily_progress_snapshots.sql` sixth
+8. Run `007_macro_fuel_system.sql` seventh
 
 Each file is idempotent: re-running it is safe (`create table if not exists`, `create or replace function`, `drop trigger if exists` before recreating, etc.).
 
@@ -82,6 +83,36 @@ Adds `client_id text` to `checklist_custom_items`. This maps local `c_<timestamp
 ### `004_shopping_client_id.sql` — Phase 1.5 Step 5
 
 Adds `client_id text` to `shopping_custom_items`. This maps local `custom_retainer_<timestamp>_<random>` and `custom_upgrade_<timestamp>_<random>` IDs to Supabase UUIDs, using the same client_id bridge pattern as migration 003. Sparse index on `client_id where client_id is not null`.
+
+---
+
+### `007_macro_fuel_system.sql` — Phase 2 Step 5
+
+Creates `macro_profiles` and `daily_fuel_logs`. Both use owner-only RLS and `set_updated_at()` triggers from migration 002.
+
+**`macro_profiles`** — One row per user. Stores training-day and rest-day macro targets. All macro fields are `integer nullable` — set only the fields you know.
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `training_calories` | integer | Training day calorie target (nullable) |
+| `training_protein_g` | integer | Training day protein target in grams (nullable) |
+| `training_carbs_g` | integer | Training day carbs target in grams (nullable) |
+| `training_fat_g` | integer | Training day fat target in grams (nullable) |
+| `rest_calories` | integer | Rest day calorie target (nullable) |
+| `rest_protein_g` | integer | Rest day protein target (nullable) |
+| `rest_carbs_g` | integer | Rest day carbs target (nullable) |
+| `rest_fat_g` | integer | Rest day fat target (nullable) |
+
+**`daily_fuel_logs`** — One row per user per calendar day (`unique(user_id, log_date)`). Stores meal list as JSONB array and computed totals.
+
+| Column | Type | Notes |
+|--------|------|-------|
+| `log_date` | date | Local date (YYYY-MM-DD) |
+| `day_type` | text | `'training'` or `'rest'`; check constraint |
+| `meals` | jsonb | Array of `FuelMeal` objects |
+| `totals` | jsonb | Computed totals object (`{calories, protein_g, carbs_g, fat_g}`) |
+| `compliance_score` | numeric | 0–100, computed from macro compliance formula |
+| `notes` | text | Optional day notes |
 
 ---
 
@@ -274,6 +305,16 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 - `/progress` reads `checklist_completions`, `routine_completions`, `protocol_tracking`, and `user_notes` (today's notes) via `lib/supabase/progress-sync.ts`.
 - Score formula: `min(completedToday/21, 1) × 70 + min(doneToday × 5, 20) + (active > 0 ? 10 : 0)`. Denominator 21 = actual checklist item count across 7 groups.
 
+### Phase 2 Step 5 — Macro & Fuel System (complete)
+
+- `/fuel` page — macro targets form (training + rest day), daily meal log, totals vs. targets, compliance score, day notes, and How to Use section.
+- `lib/supabase/macro-fuel-sync.ts` — types (`DayType`, `MacroTarget`, `MacroProfile`, `FuelMeal`, `FuelTotals`, `DailyFuelLog`) and helpers: `getTodayLocalDate`, `getMacroTargetForDay`, `calculateFuelTotals`, `calculateMacroCompliance`, `fetchMacroProfile`, `upsertMacroProfile`, `fetchDailyFuelLog`, `upsertDailyFuelLog`.
+- Compliance formula: Calories 30pts + Protein 30pts + Carbs 20pts + Fat 20pts; `weight × max(0, 1 – (|actual – target| / target) × 2)`; returns `null` if any target is missing.
+- Navigation: Sidebar (key F, after Nutrition & Cooking), MobileMoreSheet, Topbar (`INDEX · 13 / FUEL`), Dashboard Quick Actions.
+- `/nutrition` phase2 tab: "Macro & Fuel now active" card replaces old "Phase 2" banner; MACRO TRACKING hero stat updated to "Active".
+- No auto-calculation of targets — manual entry with "manual review needed" placeholder.
+- All macro data is manual-entry only; no macro data exists in `/data/*.json` files.
+
 ### Phase 2 Step 4 — Active Protocol System v2 (complete)
 - `/protocols` enhanced with an Active Protocol Summary section at the top of the page.
 - No new tables — uses existing `protocol_tracking` table and `lib/supabase/protocols-sync.ts`.
@@ -315,6 +356,7 @@ These tables from 001 are left intact but should not be targeted by Phase 2 wiri
 9. ~~Streak Engine / Daily History~~ ✓ Done (Phase 2 Step 2) — `daily_progress_snapshots` table, current/best streak, 7-day history
 10. ~~Weekly Review~~ ✓ Done (Phase 2 Step 3) — `/weekly-review` with score summary, consistency breakdown, last 7 days, objective insights
 11. ~~Active Protocol System v2~~ ✓ Done (Phase 2 Step 4) — `/protocols` protocol tracker summary, currently active list, enhanced tracking detail, adherence placeholder
+12. ~~Macro & Fuel System~~ ✓ Done (Phase 2 Step 5) — `/fuel` page, `macro_profiles` + `daily_fuel_logs` tables, compliance score, navigation wiring, nutrition page link
 
 ## Next steps
 

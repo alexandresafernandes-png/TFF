@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { label: "Weekly Review",     href: "/weekly-review",   key: "W" },
   { label: "Protocol Library",  href: "/protocols",        key: "4" },
   { label: "Nutrition & Cooking",href: "/nutrition",  key: "5" },
+  { label: "Macro & Fuel",       href: "/fuel",       key: "F" },
   { label: "Supplements",       href: "/supplements", key: "6" },
   { label: "Bloodwork",         href: "/bloodwork",   key: "7" },
   { label: "Shopping List",     href: "/shopping",    key: "8" },

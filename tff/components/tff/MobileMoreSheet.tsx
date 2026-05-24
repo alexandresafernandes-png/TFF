@@ -7,6 +7,7 @@ const MORE_ITEMS = [
   { label: "Daily Progress",      href: "/progress" },
   { label: "Weekly Review",       href: "/weekly-review" },
   { label: "Nutrition & Cooking", href: "/nutrition" },
+  { label: "Macro & Fuel",        href: "/fuel" },
   { label: "Supplements",         href: "/supplements" },
   { label: "Bloodwork",           href: "/bloodwork" },
   { label: "Shopping List",       href: "/shopping" },

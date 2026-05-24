@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import Link from "next/link"
 import { PageHeader } from "@/components/tff/PageHeader"
 import { TffCard, TffCardHeader } from "@/components/tff/TffCard"
 import { TffBadge } from "@/components/tff/TffBadge"
@@ -482,7 +483,7 @@ export default function NutritionPage() {
         <StatCard label="TOTAL FOODS" value={FOODS.length} />
         <StatCard label="CORE APPROVED" value={coreFoods.length} sub="Hard foundation" />
         <StatCard label="MEAL TEMPLATES" value={MEAL_TEMPLATES.length} />
-        <StatCard label="MACRO TRACKING" value="Phase 2" />
+        <StatCard label="MACRO TRACKING" value="Active" />
       </div>
 
       {/* ── Tabs ──────────────────────────────────────────────────────────── */}
@@ -1033,38 +1034,35 @@ export default function NutritionPage() {
       {tab === "phase2" && (
         <div>
           <SectionHeader>Phase 2 — Macro &amp; Fuel System</SectionHeader>
-          <p
-            style={{
-              fontSize: "var(--t-small)",
-              color: "var(--text-3)",
-              marginBottom: 16,
-              lineHeight: 1.6,
-            }}
-          >
-            Macro tracking, meal logging, and personalized carb cycling require Supabase auth
-            and a user-specific data layer. These features ship in Phase 2.
-          </p>
 
           <div
             style={{
               padding: "14px 16px",
               background: "var(--card-2)",
-              border: "1px solid var(--border-soft)",
+              border: "1px solid var(--border)",
               borderRadius: 4,
               marginBottom: 16,
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
               gap: 12,
+              flexWrap: "wrap",
             }}
           >
-            <p
-              className="mono"
-              style={{ fontSize: 10, color: "var(--text-4)", letterSpacing: "0.1em", margin: 0 }}
-            >
-              REQUIRES SUPABASE AUTH + USER DATA LAYER
-            </p>
-            <TffBadge variant="na">Phase 2</TffBadge>
+            <div>
+              <p
+                className="mono"
+                style={{ fontSize: 10, color: "var(--accent)", letterSpacing: "0.1em", margin: "0 0 4px" }}
+              >
+                MACRO &amp; FUEL — NOW ACTIVE
+              </p>
+              <p style={{ fontSize: "var(--t-small)", color: "var(--text-3)", margin: 0 }}>
+                Set macro targets and log daily intake on the Macro &amp; Fuel page.
+              </p>
+            </div>
+            <Link href="/fuel" className="btn btn-primary" style={{ flexShrink: 0 }}>
+              Open Macro &amp; Fuel
+            </Link>
           </div>
 
           <TffCard>
